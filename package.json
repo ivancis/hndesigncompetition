@@ -68,7 +68,7 @@
     "typescript": "^5.1.3"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": [
+    "{app,components,layouts,src}/**/*.{ts,tsx,js,jsx}": [
       "node scripts/ai-linter.mjs"
     ],
     "*.+(js|jsx|ts|tsx)": [
