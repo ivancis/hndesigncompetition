@@ -13,7 +13,7 @@ const Header = () => {
   }
 
   return (
-    <header className={headerClass}>
+    <header className={headerClass} style={{ display: 'none' }}>
       <Link href="/" aria-label={siteMetadata.headerTitle}>
         <div className="flex items-center justify-between">
           <div className="mr-3">

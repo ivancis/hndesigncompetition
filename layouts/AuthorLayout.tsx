@@ -21,9 +21,11 @@ export default function AuthorLayout({ children, content }: Props) {
         </div>
         <div
           className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8"
-          style={{ backgroundColor: '#f4f4f4' }}
+          style={{ backgroundColor: '#f5f6f5' }}
         >
           <h1>WET</h1>
+          <h1>DIRTY</h1>
+
           <div className="flex flex-col items-center space-x-2 pt-8">
             {avatar && (
               <Image
