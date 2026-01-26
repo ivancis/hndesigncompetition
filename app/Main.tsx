@@ -39,6 +39,11 @@ function MyCustomComponent1() {
         <p id="confirm-dialog-description" className="text-sm text-gray-600 dark:text-gray-300">
           Are you sure you want to continue? This action can be reversed later.
         </p>
+
+        <div className="space-y-1">
+          <h1 className="text-3xl font-bold">Heading</h1>
+          <p className="text-sm text-gray-600">Subtitle</p>
+        </div>
       </div>
       <div className="footer flex justify-end gap-2 border-t border-gray-200 pt-3 dark:border-gray-700">
         <button
