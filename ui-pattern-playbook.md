@@ -4,9 +4,9 @@
 January 2026
 
 > **Note:**  
-> This document is for AI code editors (Cursor, Claude Code, Copilot) to follow when maintaining,  
+> This document is for humans and AI agents (Cursor, Claude Code, Codex) to follow when maintaining,  
 > generating, or refactoring React codebases with TailwindCSS.  
-> Guidance is optimized for automation and consistency.
+> It is optimized for automation and can be referenced into `AGENTS.md`.
 
 ---
 
@@ -17,8 +17,11 @@ January 2026
 3. [Spacing System](#3-spacing-system)
 4. [Layouts](#4-layouts)
 5. [Visual Styles](#5-visual-styles)
-6. [Accessibility](#6-accessibility)
-7. [Quick Reference](#quick-reference)
+6. [Status and Health](#6-status-and-health)
+7. [Accessibility](#7-accessibility)
+8. [Navigation](#8-navigation)
+9. [Forms](#9-forms)
+10. [Quick Reference](#10-quick-reference)
 
 ---
 
@@ -145,46 +148,77 @@ Typography establishes content hierarchy and shapes readability. It determines h
 
 **🔴 BOUNDARY:** Never use three dots `...` - always use ellipsis `…`
 
-**🔴 BOUNDARY:** Never use straight quotes `"` - always use curly quotes `“` `”`
+**🔴 BOUNDARY:** Never use straight quotes `"` - always use curly quotes `"` `"`
 
 **🔴 COMMAND:** Use non-breaking space `&nbsp;` between number and unit
 
 ```tsx
+{/* Correct */}
 <p>Loading… please wait</p>
-<p>She said, “Hello world.”</p>
+<p>She said, "Hello world."</p>
 <p>File size: 10&nbsp;MB</p>
+
+{/* Wrong */}
+<p>Loading... please wait</p>
+<p>She said, "Hello world."</p>
+<p>File size: 10 MB</p>
 ```
 
 ---
 
 ### 2.5 Voice and Tone
 
+#### Tone Principles
+
+**🔴 COMMAND:** Be clear and concise - describe with precision, omit unnecessary details.
+
+**🔴 COMMAND:** Be concrete and decisive - provide examples and data, state outcomes clearly.
+
+**🔴 COMMAND:** Be honest and transparent - don't sugarcoat bad news or take undue credit.
+
+**🔴 COMMAND:** Be pragmatic - explain issues and share solutions, anticipate questions.
+
+**🔴 COMMAND:** Be direct - address users clearly in straightforward declarative sentences.
+
+**🟡 DIRECTIVE:** Use simple tenses (past, present, future) - avoid progressive tenses.
+
+---
+
 #### Active Voice
 
 **🔴 COMMAND:** Write in active voice by default.
 
-Structure: `[Subject] + [Verb] + [Object]`
+**Structure:** `[Subject] + [Verb] + [Object]`
 
 ```tsx
+{/* Correct: active voice */}
 <p>The system identified the problem.</p>
 <p>The team investigated the incident.</p>
+<p>All formats support the same request payloads.</p>
+
+{/* Wrong: passive voice */}
+<p>The problem was identified by the system.</p>
+<p>The incident was investigated by the team.</p>
+<p>The same request payloads are supported in all formats.</p>
 ```
 
-- **Be clear and concise.** Describe with precision and without hyperbole. Omit unnecessary details.
-- **Be concrete and decisive.** Provide well-reasoned content with examples and data—clearly state possibilities and outcomes without hedging or waffling.
-- **Be honest and transparent.** Don't sugarcoat bad news or take undue credit for good news. Be upfront and take responsibility.
-- **Be pragmatic.** When there's an issue, explain why and share known solutions. Anticipate user questions and provide answers.
-- **Use active voice.** Active statements convey authority, transparency, and are easier to read. Passive voice often comes off as sounding defensive.
-- **Be direct.** Address users clearly and directly. State facts and explanations in straightforward declarative sentences. Use imperative verbs when providing instructions to users. Use only simple tenses (past, present, and future) and avoid progressive tenses.
+**🟡 DIRECTIVE:** Active voice conveys authority and transparency - easier to read and translate.
+
+---
 
 #### When to Use Passive Voice
 
-**🟡 DIRECTIVE:** Use passive voice when the actor is less important than the action, especially in warnings or system messages.
+**🟡 DIRECTIVE:** Use passive voice when the actor is less important than the action, especially in:
+
+- Warnings
+- System messages
+- Glossary definitions
 
 ```tsx
 {/* Acceptable: passive voice */}
 <p>Deletion cannot be reversed.</p>
 <p>An alert was triggered when the threshold was exceeded.</p>
+<p>The &lt;domain&gt;\&lt;username&gt; format is not supported.</p>
 ```
 
 ---
@@ -195,47 +229,133 @@ Structure: `[Subject] + [Verb] + [Object]`
 
 **Allowed contractions:**
 
-- I'm, it's, what's, that's, we're, they're, let's
-- aren't, can't, don't, isn't, didn't, wasn't, doesn't, hasn't, haven't
+```
+I'm, it's, what's, that's, we're, they're, let's
+aren't, can't, don't, isn't, didn't, wasn't, doesn't, hasn't, haven't
+```
 
 **🔴 BOUNDARY:** Never use these awkward contractions:
 
-- it'll, it'd, they'd, there'd, mustn't, shan't
-- would've, could've, should've, needn't, mayn't, who'd
-
-```tsx
-<p>We're processing your request. It will be ready soon.</p>
+```
+it'll, it'd, they'd, there'd, mustn't, shan't
+would've, could've, should've, needn't, mayn't, who'd
 ```
 
-#### 2.7 Industry terminology
+```tsx
+{/* Correct */}
+<p>We're processing your request. It will be ready soon.</p>
+<p>The service isn't available right now.</p>
 
-This page offers terminology guidelines for HealthNote users. While these terms aren't specific to the health industry, they appear frequently in our app. This is neither a dictionary or a glossary but rather a guide to correct usage.
+{/* Wrong: awkward contraction */}
+<p>It'll be ready soon.</p>
+<p>You should've completed this earlier.</p>
+```
 
-- affect, effect / Most commonly, "affect" is a verb and means to influence or cause change. "Effect" is a noun and is the result of a change.
-  ✅ This might affect performance.
-  ✅ The change affects everyone.
-  ✅ This might have an effect on performance.
-  ✅ The effects of the changes were dramatic.
+---
 
-- after / Use "after" in place of "once."
-  ✅ After you install the software, you can adjust the settings.
-  ❌ Once you install the software, you can adjust the settings.
+### 2.7 Industry Terminology
 
-- click, select / Use "click" only when referring to mouse actions. Otherwise, use "select," which works for all device types.
-  ✅ Select <button label>.
-  ✅ Select <checkbox label>.
-  ✅ Select <radio button label>.
-  ✅ Right-click <button label>.
-  ✅ Double-click <button label>.
-  ✅ Hover over the image and click with your mouse.
-  ✅ Select <button label> on your mobile device.
-  ❌ Click <button label> on your mobile device.
+Standard terminology for consistent interface language.
 
-- configure, configuration, adjust / Configuration is the process of arranging or connecting software components for a specific use in a specific environment, including the adjustment of available settings for installed software. Configuration is typically a part of the software installation process. When settings are changed following release of software into production, use adjust in place of configure.
-  ✅ Your success depends on how you configure your environment settings and workflow rules before deployment.
-  ❌ Your success depends on how you adjust your environment settings and workflow rules before deployment.
-  ✅ You can adjust the settings in the future if you change your mind.
-  ❌ You can configure the settings in the future if you change your mind.
+#### Affect vs Effect
+
+**🔴 COMMAND:** "affect" = verb (to influence or cause change)
+
+**🔴 COMMAND:** "effect" = noun (the result of a change)
+
+```tsx
+{/* Correct */}
+<p>This change might affect performance.</p>
+<p>The update affects all users.</p>
+<p>This might have an effect on performance.</p>
+<p>The effects of the changes were significant.</p>
+
+{/* Wrong */}
+<p>This change might effect performance.</p>
+<p>This might have an affect on performance.</p>
+```
+
+---
+
+#### After vs Once
+
+**🔴 COMMAND:** Use "after" instead of "once"
+
+```tsx
+{/* Correct */}
+<p>After you install the software, you can adjust the settings.</p>
+<p>After saving, the changes will be visible.</p>
+
+{/* Wrong */}
+<p>Once you install the software, you can adjust the settings.</p>
+<p>Once saved, the changes will be visible.</p>
+```
+
+---
+
+#### Click vs Select
+
+**🔴 COMMAND:** Use "click" only for mouse actions
+
+**🔴 COMMAND:** Use "select" for device-agnostic instructions
+
+```tsx
+{/* Correct: device-agnostic */}
+<p>Select <strong>Save</strong>.</p>
+<p>Select the <strong>Enable</strong> checkbox.</p>
+<p>Select the <strong>Monthly</strong> radio button.</p>
+<p>Select <strong>Continue</strong> on your mobile device.</p>
+
+{/* Correct: mouse-specific */}
+<p>Right-click <strong>File</strong>.</p>
+<p>Double-click <strong>Setup.exe</strong>.</p>
+<p>Hover over the image and click with your mouse.</p>
+
+{/* Wrong: mouse terminology on mobile */}
+<p>Click <strong>Submit</strong> on your mobile device.</p>
+<p>Double-click the button.</p>
+```
+
+---
+
+#### Configure vs Adjust
+
+**🔴 COMMAND:** "configure" = arranging components during installation/setup
+
+**🔴 COMMAND:** "adjust" = changing settings after deployment
+
+```tsx
+{/* Correct: during setup */}
+<p>Configure your environment settings before deployment.</p>
+<p>Configure workflow rules during installation.</p>
+
+{/* Correct: after deployment */}
+<p>You can adjust the settings later if needed.</p>
+<p>Adjust your preferences in the Settings menu.</p>
+
+{/* Wrong: mismatched context */}
+<p>Adjust your environment settings before deployment.</p>
+<p>Configure the settings in the future if you change your mind.</p>
+```
+
+---
+
+### 2.8 Terminology Quick Reference
+
+```
+WORD PAIRS
+affect (verb)       → to influence or cause change
+effect (noun)       → result of a change
+
+after              → use instead of "once"
+once               → avoid, use "after"
+
+click              → mouse actions only
+select             → device-agnostic (preferred)
+
+configure          → setup/installation phase
+adjust             → post-deployment changes
+```
 
 ---
 
@@ -608,721 +728,18 @@ rounded-lg  (8px)  →  min p-6  (24px)
 - **Standard components** (cards, panels): `rounded-md p-4`
 - **Large components** (modals, hero sections): `rounded-lg p-6`
 
-```tsx
-{
-  /* Badge: small */
-}
-;<span className="rounded-sm bg-blue-100 p-2 text-sm">New</span>
+````tsx
+{/* Badge: small */}
+<span className="rounded-sm bg-blue-100 p-2 text-sm">New</span>
 
-{
-  /* Button: small */
-}
-;<button className="rounded-sm bg-blue-600 px-3 py-2 text-white">Submit</button>
+{/* Button: small */}
+<button className="rounded-sm bg-blue-600 px-3 py-2 text-white">Submit</button>
 
-{
-  /* Card: large */
-}
-;<div className="rounded-lg border p-6">
+{/* Card: large */}
+<div className="rounded-lg border p-6">
   <h3>Card Title</h3>
   <p>Card content...</p>
 </div>
-```
-
-## 8. Status and Health
-
-### 8.1 Overview
-
-Status describes the condition or health of a system, process, or object. Consistent status visualization helps users assess situations and respond appropriately.
-
-**🔴 COMMAND:** Follow WCAG 2.1 AA accessibility guidelines (Success Criterion 1.4.1).
-
-**🔴 BOUNDARY:** Never use color alone to convey status information.
-
----
-
-### 8.2 Status Levels
-
-**🔴 COMMAND:** Use only these five universal status levels:
-
-```
-1. Ideal    →  emerald  →  Success, desired result
-2. Good     →  indigo   →  Informative, minor issues, new features
-3. Neutral  →  slate    →  Inactive, undefined, unessential
-4. Warning  →  amber    →  Potential issues, attention needed
-5. Critical →  pink     →  Failed, immediate attention required
-```
-
----
-
-### 8.3 Status Color Tokens
-
-**🔴 COMMAND:** Use these exact Tailwind color tokens for status:
-
-**Default emphasis:**
-
-```
-Ideal:    text-emerald-600  bg-emerald-50  border-emerald-200
-Good:     text-indigo-600   bg-indigo-50   border-indigo-200
-Neutral:  text-slate-600    bg-slate-50    border-slate-200
-Warning:  text-amber-600    bg-amber-50    border-amber-200
-Critical: text-pink-600     bg-pink-50     border-pink-200
-```
-
-**Emphasized (more contrast):**
-
-```
-Ideal:    text-emerald-700  bg-emerald-100  border-emerald-300
-Good:     text-indigo-700   bg-indigo-100   border-indigo-300
-Neutral:  text-slate-700    bg-slate-100    border-slate-300
-Warning:  text-amber-700    bg-amber-100    border-amber-300
-Critical: text-pink-700     bg-pink-100     border-pink-300
-```
-
-**Accent (highest contrast):**
-
-```
-Ideal:    text-emerald-900  bg-emerald-200  border-emerald-500
-Good:     text-indigo-900   bg-indigo-200   border-indigo-500
-Neutral:  text-slate-900    bg-slate-200    border-slate-500
-Warning:  text-amber-900    bg-amber-200    border-amber-500
-Critical: text-pink-900     bg-pink-200     border-pink-500
-```
-
----
-
-### 8.4 Status Mapping Examples
-
-**Security Risk:**
-
-```
-Ideal    → (not used)
-Good     → Low
-Neutral  → Muted
-Warning  → Medium
-Critical → High
-```
-
-**Process Status:**
-
-```
-Ideal    → Completed
-Good     → In progress
-Neutral  → Not started
-Warning  → (not used)
-Critical → Failed
-```
-
-**🟡 DIRECTIVE:** Map only the levels your context requires - not every context needs all five levels.
-
----
-
-### 8.5 Accessibility Requirements
-
-**🔴 COMMAND:** Status must be communicated through AT LEAST TWO of:
-
-- Color
-- Icon
-- Shape
-- Text
-
-**🔴 COMMAND:** Icon-only and shape-only indicators must have `aria-label` for screen readers.
-
-```tsx
-{
-  /* ✅ CORRECT: Color + Icon + Text */
-}
-;<div className="flex items-center gap-2 text-emerald-600">
-  <CheckCircle aria-hidden="true" />
-  <span className="text-sm font-semibold">Healthy</span>
-</div>
-
-{
-  /* ✅ CORRECT: Color + Shape + aria-label */
-}
-;<div className="inline-flex rounded-full bg-emerald-100 p-1" role="status" aria-label="Healthy" />
-```
-
----
-
-### 8.6 When to Show Status
-
-**🔴 COMMAND:** Always show status for:
-
-- Warnings
-- Critical conditions
-
-**🟡 DIRECTIVE:** Show ideal status to reassure users everything is okay.
-
-**🔴 BOUNDARY:** Don't over-communicate status - only highlight essential information.
-
-**🔴 COMMAND:** Prioritize negative over positive status when both exist.
-
-```tsx
-{
-  /* ✅ CORRECT: Critical status visible first */
-}
-;<div className="space-y-2">
-  <StatusIndicator level="critical">3 failed services</StatusIndicator>
-  <StatusIndicator level="ideal">12 healthy services</StatusIndicator>
-</div>
-```
-
----
-
-### 8.7 Where to Show Status
-
-**🔴 COMMAND:** Place status indicators to support reading flow (top-left before bottom-right).
-
-**🔴 COMMAND:** Section-level status: Place at top, next to heading.
-
-**🔴 COMMAND:** Element-level status: Place in close proximity to element.
-
-```tsx
-{
-  /* Section-level status */
-}
-;<section className="space-y-4">
-  <div className="flex items-center justify-between">
-    <h2 className="text-xl font-bold">Services</h2>
-    <div className="flex items-center gap-2 text-pink-600">
-      <AlertCircle aria-hidden="true" />
-      <span className="text-sm font-semibold">3 unhealthy</span>
-    </div>
-  </div>
-  <div className="space-y-2">{/* Service list */}</div>
-</section>
-
-{
-  /* Element-level status */
-}
-;<div className="flex items-center justify-between rounded-md border p-4">
-  <div>
-    <h3 className="font-semibold">API Service</h3>
-    <p className="text-sm text-slate-600">api.example.com</p>
-  </div>
-  <div className="flex items-center gap-2 text-emerald-600">
-    <CheckCircle aria-hidden="true" />
-    <span className="text-sm font-semibold">Healthy</span>
-  </div>
-</div>
-```
-
----
-
-### 8.8 Communicating Status Changes
-
-**🟡 DIRECTIVE:** Use Toast component for important status changes that require user attention.
-
-**🔴 BOUNDARY:** Don't use toasts for every status change - they interrupt user flow.
-
-**🟡 DIRECTIVE:** For non-critical changes, update existing indicators without notifications.
-
-```tsx
-{
-  /* Important change: show toast */
-}
-;<Toast variant="critical">
-  <div className="flex items-center gap-2">
-    <AlertCircle aria-hidden="true" />
-    <span>API service has gone down</span>
-  </div>
-</Toast>
-
-{
-  /* Minor change: update indicator only */
-}
-;<div className="flex items-center gap-2 text-emerald-600">
-  <CheckCircle aria-hidden="true" />
-  <span className="text-sm font-semibold">Healthy</span>
-</div>
-```
-
----
-
-### 8.9 Status Component Patterns
-
-#### Pattern: Health Indicator (Subtle)
-
-Subtle status for systems, processes, or objects.
-
-**🔴 COMMAND:** Use shape or icon as visual.
-
-**🔴 COMMAND:** Must be accessible (color + shape/icon + label or aria-label).
-
-```tsx
-{/* Shape-based health indicator */}
-<div className="flex items-center gap-2">
-  <div
-    className="inline-flex rounded-full bg-emerald-100 p-1"
-    role="status"
-    aria-label="Healthy"
-  />
-  <span className="text-sm text-slate-900">API Service</span>
-</div>
-
-{/* Icon-based health indicator */}
-<div className="flex items-center gap-2">
-  <CheckCircle className="text-emerald-600" aria-hidden="true" />
-  <span className="text-sm font-semibold text-emerald-600">Healthy</span>
-</div>
-
-{/* All status levels */}
-<div className="flex items-center gap-2">
-  <div className="inline-flex rounded-full bg-emerald-100 p-1" role="status" aria-label="Ideal" />
-  <span className="text-sm">Ideal</span>
-</div>
-
-<div className="flex items-center gap-2">
-  <div className="inline-flex rounded-full bg-indigo-100 p-1" role="status" aria-label="Good" />
-  <span className="text-sm">Good</span>
-</div>
-
-<div className="flex items-center gap-2">
-  <div className="inline-flex rounded-full bg-slate-100 p-1" role="status" aria-label="Neutral" />
-  <span className="text-sm">Neutral</span>
-</div>
-
-<div className="flex items-center gap-2">
-  <div className="inline-flex rounded-full bg-amber-100 p-1" role="status" aria-label="Warning" />
-  <span className="text-sm">Warning</span>
-</div>
-
-<div className="flex items-center gap-2">
-  <div className="inline-flex rounded-full bg-pink-100 p-1" role="status" aria-label="Critical" />
-  <span className="text-sm">Critical</span>
-</div>
-```
-
-#### Pattern: Chip (Prominent Tag)
-
-Prominent status tags for objects or processes.
-
-**🔴 COMMAND:** Chip padding: `p-2`
-
-**🔴 COMMAND:** Chip text: `text-sm font-semibold`
-
-**🔴 COMMAND:** Chip radius: `rounded-sm`
-
-```tsx
-{/* Status chips - all levels */}
-<span className="inline-flex items-center gap-1 rounded-sm bg-emerald-50 p-2 text-sm font-semibold text-emerald-700">
-  <CheckCircle aria-hidden="true" />
-  Completed
-</span>
-
-<span className="inline-flex items-center gap-1 rounded-sm bg-indigo-50 p-2 text-sm font-semibold text-indigo-700">
-  <Clock aria-hidden="true" />
-  In progress
-</span>
-
-<span className="inline-flex items-center gap-1 rounded-sm bg-slate-50 p-2 text-sm font-semibold text-slate-700">
-  <Minus aria-hidden="true" />
-  Not started
-</span>
-
-<span className="inline-flex items-center gap-1 rounded-sm bg-amber-50 p-2 text-sm font-semibold text-amber-700">
-  <AlertTriangle aria-hidden="true" />
-  Delayed
-</span>
-
-<span className="inline-flex items-center gap-1 rounded-sm bg-pink-50 p-2 text-sm font-semibold text-pink-700">
-  <XCircle aria-hidden="true" />
-  Failed
-</span>
-```
-
-#### Pattern: Message Container
-
-Important conditions or status changes for current section/page.
-
-**🔴 COMMAND:** Container padding: `p-4`
-
-**🔴 COMMAND:** Icon + title + description structure
-
-**🔴 COMMAND:** Use semantic color variants
-
-```tsx
-{
-  /* Critical message container */
-}
-;<div className="flex gap-3 rounded-md border-2 border-pink-300 bg-pink-100 p-4">
-  <AlertCircle className="flex-shrink-0 text-pink-700" aria-hidden="true" />
-  <div className="space-y-1">
-    <h3 className="text-sm font-semibold text-pink-700">Service Unavailable</h3>
-    <p className="text-sm text-pink-700">
-      The API service is currently down. Our team has been notified and is working on a fix.
-    </p>
-  </div>
-</div>
-
-{
-  /* Warning message container */
-}
-;<div className="flex gap-3 rounded-md border border-amber-300 bg-amber-100 p-4">
-  <AlertTriangle className="flex-shrink-0 text-amber-700" aria-hidden="true" />
-  <div className="space-y-1">
-    <h3 className="text-sm font-semibold text-amber-700">High Memory Usage</h3>
-    <p className="text-sm text-amber-700">
-      Database is using 85% of allocated memory. Consider scaling up.
-    </p>
-  </div>
-</div>
-
-{
-  /* Success message container */
-}
-;<div className="flex gap-3 rounded-md border border-emerald-300 bg-emerald-100 p-4">
-  <CheckCircle className="flex-shrink-0 text-emerald-700" aria-hidden="true" />
-  <div className="space-y-1">
-    <h3 className="text-sm font-semibold text-emerald-700">Deployment Successful</h3>
-    <p className="text-sm text-emerald-700">Your changes have been deployed to production.</p>
-  </div>
-</div>
-
-{
-  /* Info message container */
-}
-;<div className="flex gap-3 rounded-md border border-indigo-300 bg-indigo-100 p-4">
-  <Info className="flex-shrink-0 text-indigo-700" aria-hidden="true" />
-  <div className="space-y-1">
-    <h3 className="text-sm font-semibold text-indigo-700">New Feature Available</h3>
-    <p className="text-sm text-indigo-700">
-      Advanced monitoring is now available for all services.
-    </p>
-  </div>
-</div>
-
-{
-  /* Neutral message container */
-}
-;<div className="flex gap-3 rounded-md border border-slate-300 bg-slate-100 p-4">
-  <Minus className="flex-shrink-0 text-slate-700" aria-hidden="true" />
-  <div className="space-y-1">
-    <h3 className="text-sm font-semibold text-slate-700">Service Inactive</h3>
-    <p className="text-sm text-slate-700">This service is currently not in use.</p>
-  </div>
-</div>
-```
-
-#### Pattern: Toast Notification
-
-Notify users about status changes.
-
-**🔴 COMMAND:** Toast padding: `p-4`
-
-**🔴 COMMAND:** Auto-dismiss after 5-7 seconds for non-critical
-
-**🔴 COMMAND:** Manual dismiss for critical
-
-```tsx
-{
-  /* Success toast (auto-dismiss) */
-}
-;<div className="flex items-center gap-3 rounded-md bg-emerald-200 p-4 text-emerald-900 shadow-lg">
-  <CheckCircle aria-hidden="true" />
-  <span className="text-sm font-semibold">Changes saved successfully</span>
-</div>
-
-{
-  /* Info toast */
-}
-;<div className="flex items-center gap-3 rounded-md bg-indigo-200 p-4 text-indigo-900 shadow-lg">
-  <Info aria-hidden="true" />
-  <span className="text-sm font-semibold">Deployment started</span>
-</div>
-
-{
-  /* Warning toast */
-}
-;<div className="flex items-center gap-3 rounded-md bg-amber-200 p-4 text-amber-900 shadow-lg">
-  <AlertTriangle aria-hidden="true" />
-  <span className="text-sm font-semibold">Service degraded</span>
-</div>
-
-{
-  /* Critical toast (manual dismiss) */
-}
-;<div className="flex items-center justify-between gap-3 rounded-md bg-pink-200 p-4 text-pink-900 shadow-lg">
-  <div className="flex items-center gap-3">
-    <AlertCircle aria-hidden="true" />
-    <span className="text-sm font-semibold">Connection lost</span>
-  </div>
-  <button className="rounded-sm p-2">
-    <X aria-hidden="true" />
-  </button>
-</div>
-```
-
-#### Pattern: Information Overlay
-
-Detailed status information in contextual overlay.
-
-**🔴 COMMAND:** Triggered by status icon with label
-
-**🔴 COMMAND:** Overlay shows additional context
-
-```tsx
-{
-  /* Trigger */
-}
-;<button className="flex items-center gap-1 text-sm text-amber-700 hover:text-amber-800">
-  <AlertTriangle aria-hidden="true" />
-  <span>2 warnings</span>
-</button>
-
-{
-  /* Overlay content */
-}
-;<div className="max-w-sm rounded-md border bg-white p-4 shadow-lg">
-  <div className="space-y-3">
-    <div className="flex items-start gap-2">
-      <AlertTriangle className="flex-shrink-0 text-amber-600" aria-hidden="true" />
-      <div className="space-y-1">
-        <p className="text-sm font-semibold text-slate-900">High memory usage</p>
-        <p className="text-sm text-slate-600">Service using 85% of allocated memory</p>
-      </div>
-    </div>
-
-    <div className="flex items-start gap-2">
-      <AlertTriangle className="flex-shrink-0 text-amber-600" aria-hidden="true" />
-      <div className="space-y-1">
-        <p className="text-sm font-semibold text-slate-900">Slow response time</p>
-        <p className="text-sm text-slate-600">Average latency increased to 450ms</p>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
----
-
-### 8.10 Other Status Indicators
-
-#### Status Highlights
-
-Visual emphasis with colored vertical line.
-
-**🔴 COMMAND:** Use `border-l-4` for vertical highlight
-
-**🔴 BOUNDARY:** Must be accompanied by other status indicators nearby for accessibility
-
-```tsx
-{
-  /* Table row with critical highlight */
-}
-;<tr className="border-l-4 border-pink-300 bg-pink-100">
-  <td className="px-4 py-3">
-    <div className="flex items-center gap-2">
-      <AlertCircle className="text-pink-600" aria-hidden="true" />
-      <span className="font-semibold">API Service</span>
-    </div>
-  </td>
-  <td className="px-4 py-3">
-    <span className="text-sm text-pink-700">Unhealthy</span>
-  </td>
-</tr>
-
-{
-  /* List item with warning highlight */
-}
-;<div className="flex items-center gap-3 border-l-4 border-amber-300 bg-amber-100 p-4">
-  <AlertTriangle className="text-amber-600" aria-hidden="true" />
-  <div>
-    <p className="text-sm font-semibold text-amber-700">Database backup pending</p>
-    <p className="text-sm text-amber-700">Last backup: 36 hours ago</p>
-  </div>
-</div>
-
-{
-  /* List item with success highlight */
-}
-;<div className="flex items-center gap-3 border-l-4 border-emerald-300 bg-emerald-100 p-4">
-  <CheckCircle className="text-emerald-600" aria-hidden="true" />
-  <div>
-    <p className="text-sm font-semibold text-emerald-700">Deployment complete</p>
-    <p className="text-sm text-emerald-700">Version 2.4.1 deployed successfully</p>
-  </div>
-</div>
-```
-
-#### Trend Indicators
-
-Communicate positive or negative changes in data.
-
-**🔴 COMMAND:** Use for reporting, never for predictions
-
-**🔴 COMMAND:** Context or label must clarify if trend is positive/negative
-
-**🔴 BOUNDARY:** Don't rely on color alone - upward arrow doesn't always mean "good"
-
-```tsx
-{
-  /* Positive trend (revenue up is good) */
-}
-;<div className="flex items-center gap-2">
-  <span className="text-2xl font-bold text-slate-900">$45,231</span>
-  <div className="flex items-center gap-1 text-emerald-600">
-    <TrendingUp aria-hidden="true" />
-    <span className="text-sm font-semibold">+12%</span>
-  </div>
-</div>
-
-{
-  /* Negative trend (error rate up is bad) */
-}
-;<div className="flex items-center gap-2">
-  <span className="text-2xl font-bold text-slate-900">3.2%</span>
-  <div className="flex items-center gap-1 text-pink-600">
-    <TrendingUp aria-hidden="true" />
-    <span className="text-sm font-semibold">+1.2%</span>
-  </div>
-  <span className="text-sm text-slate-600">error rate</span>
-</div>
-
-{
-  /* Neutral trend */
-}
-;<div className="flex items-center gap-2">
-  <span className="text-2xl font-bold text-slate-900">156</span>
-  <div className="flex items-center gap-1 text-slate-600">
-    <Minus aria-hidden="true" />
-    <span className="text-sm font-semibold">0%</span>
-  </div>
-</div>
-
-{
-  /* Warning trend */
-}
-;<div className="flex items-center gap-2">
-  <span className="text-2xl font-bold text-slate-900">2.1s</span>
-  <div className="flex items-center gap-1 text-amber-600">
-    <TrendingUp aria-hidden="true" />
-    <span className="text-sm font-semibold">+450ms</span>
-  </div>
-  <span className="text-sm text-slate-600">avg response time</span>
-</div>
-```
-
-**🟡 DIRECTIVE:** Label should make it clear whether upward/downward is positive or negative based on metric context.
-
----
-
-### 8.11 Complete Status Dashboard Example
-
-```tsx
-<div className="space-y-6">
-  {/* Page header with overall status */}
-  <div className="flex items-center justify-between">
-    <h1 className="text-3xl font-bold">System Health</h1>
-    <div className="flex items-center gap-2 text-amber-600">
-      <AlertTriangle aria-hidden="true" />
-      <span className="font-semibold">2 warnings</span>
-    </div>
-  </div>
-
-  {/* Critical alert banner */}
-  <div className="flex gap-3 rounded-md border-2 border-pink-300 bg-pink-100 p-4">
-    <AlertCircle className="flex-shrink-0 text-pink-700" aria-hidden="true" />
-    <div className="space-y-1">
-      <h3 className="text-sm font-semibold text-pink-700">Payment Service Down</h3>
-      <p className="text-sm text-pink-700">Immediate attention required. Incident #1234 created.</p>
-    </div>
-  </div>
-
-  {/* Services list */}
-  <div className="space-y-2">
-    <h2 className="text-lg font-semibold">Services</h2>
-
-    <div className="space-y-1">
-      {/* Critical service */}
-      <div className="flex items-center justify-between border-l-4 border-pink-300 bg-pink-100 p-4">
-        <div className="flex items-center gap-3">
-          <XCircle className="text-pink-700" aria-hidden="true" />
-          <div>
-            <p className="font-semibold text-pink-700">Payment API</p>
-            <p className="text-sm text-pink-700">Last healthy: 5 minutes ago</p>
-          </div>
-        </div>
-        <span className="rounded-sm bg-pink-100 p-2 text-sm font-semibold text-pink-700">
-          Critical
-        </span>
-      </div>
-
-      {/* Warning service */}
-      <div className="flex items-center justify-between border-l-4 border-amber-300 bg-amber-100 p-4">
-        <div className="flex items-center gap-3">
-          <AlertTriangle className="text-amber-700" aria-hidden="true" />
-          <div>
-            <p className="font-semibold text-amber-700">Database</p>
-            <p className="text-sm text-amber-700">High memory usage: 85%</p>
-          </div>
-        </div>
-        <span className="rounded-sm bg-amber-100 p-2 text-sm font-semibold text-amber-700">
-          Warning
-        </span>
-      </div>
-
-      {/* Healthy service */}
-      <div className="flex items-center justify-between p-4">
-        <div className="flex items-center gap-3">
-          <CheckCircle className="text-emerald-600" aria-hidden="true" />
-          <div>
-            <p className="font-semibold">Auth API</p>
-            <p className="text-sm text-slate-600">All systems operational</p>
-          </div>
-        </div>
-        <span className="rounded-sm bg-emerald-50 p-2 text-sm font-semibold text-emerald-700">
-          Healthy
-        </span>
-      </div>
-
-      {/* Inactive service */}
-      <div className="flex items-center justify-between p-4">
-        <div className="flex items-center gap-3">
-          <Minus className="text-slate-400" aria-hidden="true" />
-          <div>
-            <p className="font-semibold text-slate-600">Legacy API</p>
-            <p className="text-sm text-slate-500">Service not in use</p>
-          </div>
-        </div>
-        <span className="rounded-sm bg-slate-50 p-2 text-sm font-semibold text-slate-600">
-          Inactive
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
----
-
-### 8.12 Status Color Quick Reference
-
-```
-STATUS COLORS (Default)
-Ideal:    emerald-600  emerald-50  emerald-200
-Good:     indigo-600   indigo-50   indigo-200
-Neutral:  slate-600    slate-50    slate-200
-Warning:  amber-600    amber-50    amber-200
-Critical: pink-600     pink-50     pink-200
-
-STATUS COLORS (Emphasized)
-Ideal:    emerald-700  emerald-100  emerald-300
-Good:     indigo-700   indigo-100   indigo-300
-Neutral:  slate-700    slate-100    slate-300
-Warning:  amber-700    amber-100    amber-300
-Critical: pink-700     pink-100     pink-300
-
-STATUS COLORS (Accent)
-Ideal:    emerald-900  emerald-200  emerald-500
-Good:     indigo-900   indigo-200   indigo-500
-Neutral:  slate-900    slate-200    slate-500
-Warning:  amber-900    amber-200    amber-500
-Critical: pink-900     pink-200     pink-500
-```
-
----
-
 **🔴 BOUNDARY:** Never use `rounded` (4px) or `rounded-xl` (12px) - they break the scale.
 
 **🟡 DIRECTIVE:** Match visual weight of border radius to component importance. Larger radius = more prominent component.
@@ -1345,7 +762,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 ```tsx
 <button className="rounded-sm bg-violet-500 px-3 py-2 text-white">Default Button</button>
-```
+````
 
 ##### Hover State
 
@@ -1608,17 +1025,403 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 ---
 
-## 6. Accessibility
+## 6. Status and Health
 
-### 6.1 Nested Interactivity & DOM Flattening
+### 6.1 Overview
 
-#### 6.1.1 BOUNDARY: Structural Constraints
+Status communicates the health of a system, process, or object. Use consistent, accessible indicators so users can assess conditions quickly.
+
+**🔴 COMMAND:** Follow WCAG 2.1 AA accessibility guidelines.  
+**🔴 BOUNDARY:** Never use color alone to convey status.
+
+---
+
+### 6.2 Status Levels
+
+**🔴 COMMAND:** Use only these five universal status levels:
+
+```
+1. Ideal    →  emerald  →  Success, desired result
+2. Good     →  indigo   →  Informative, minor issues, new features
+3. Neutral  →  slate    →  Inactive, undefined, unessential
+4. Warning  →  amber    →  Potential issues, attention needed
+5. Critical →  pink     →  Failed, immediate attention required
+```
+
+---
+
+### 6.3 Status Color Tokens
+
+**🔴 COMMAND:** Use these exact Tailwind color tokens for status:
+
+**Default emphasis:**
+
+```
+Ideal:    text-emerald-600  bg-emerald-50  border-emerald-200
+Good:     text-indigo-600   bg-indigo-50   border-indigo-200
+Neutral:  text-slate-600    bg-slate-50    border-slate-200
+Warning:  text-amber-600    bg-amber-50    border-amber-200
+Critical: text-pink-600     bg-pink-50     border-pink-200
+```
+
+**Emphasized (more contrast):**
+
+```
+Ideal:    text-emerald-700  bg-emerald-100  border-emerald-300
+Good:     text-indigo-700   bg-indigo-100   border-indigo-300
+Neutral:  text-slate-700    bg-slate-100    border-slate-300
+Warning:  text-amber-700    bg-amber-100    border-amber-300
+Critical: text-pink-700     bg-pink-100     border-pink-300
+```
+
+**Accent (highest contrast):**
+
+```
+Ideal:    text-emerald-900  bg-emerald-200  border-emerald-500
+Good:     text-indigo-900   bg-indigo-200   border-indigo-500
+Neutral:  text-slate-900    bg-slate-200    border-slate-500
+Warning:  text-amber-900    bg-amber-200    border-amber-500
+Critical: text-pink-900     bg-pink-200     border-pink-500
+```
+
+---
+
+### 6.4 Status Mapping Examples
+
+Map universal levels to your context:
+
+**Kubernetes Health:**
+
+```
+Ideal    → Healthy
+Good     → Monitored
+Neutral  → Unmonitored
+Warning  → (not used)
+Critical → Unhealthy
+```
+
+**Security Risk:**
+
+```
+Ideal    → (not used)
+Good     → Low
+Neutral  → Muted
+Warning  → Medium
+Critical → High
+```
+
+**Process Status:**
+
+```
+Ideal    → Completed
+Good     → In progress
+Neutral  → Not started
+Warning  → (not used)
+Critical → Failed
+```
+
+**🟡 DIRECTIVE:** Use only the levels your context needs.
+
+---
+
+### 6.5 Accessibility Requirements
+
+**🔴 COMMAND:** Status must be communicated through at least two of:
+
+- Color
+- Icon
+- Shape
+- Text
+
+**🔴 COMMAND:** Icon-only and shape-only indicators must include `aria-label`.
+
+```tsx
+{
+  /* Color + Icon + Text */
+}
+;<div className="flex items-center gap-2 text-emerald-600">
+  <CheckCircle aria-hidden="true" />
+  <span className="text-sm font-semibold">Healthy</span>
+</div>
+
+{
+  /* Color + Shape + aria-label */
+}
+;<div className="inline-flex rounded-full bg-emerald-100 p-1" role="status" aria-label="Healthy" />
+```
+
+---
+
+### 6.6 When to Show Status
+
+**🔴 COMMAND:** Always show status for:
+
+- Warnings
+- Critical conditions
+
+**🟡 DIRECTIVE:** Show ideal status to reassure users when appropriate.  
+**🔴 BOUNDARY:** Avoid flooding the UI with non-critical status.
+
+**🔴 COMMAND:** Prioritize negative over positive status when both exist.
+
+```tsx
+<div className="space-y-2">
+  <StatusIndicator level="critical">3 failed services</StatusIndicator>
+  <StatusIndicator level="ideal">12 healthy services</StatusIndicator>
+</div>
+```
+
+---
+
+### 6.7 Where to Show Status
+
+**🔴 COMMAND:** Place status indicators to support reading flow (top-left before bottom-right).  
+**🔴 COMMAND:** Section-level status goes next to the section heading.  
+**🔴 COMMAND:** Element-level status sits adjacent to the element.
+
+```tsx
+{
+  /* Section-level status */
+}
+;<section className="space-y-4">
+  <div className="flex items-center justify-between">
+    <h2 className="text-xl font-bold">Services</h2>
+    <div className="flex items-center gap-2 text-pink-600">
+      <AlertCircle aria-hidden="true" />
+      <span className="text-sm font-semibold">3 unhealthy</span>
+    </div>
+  </div>
+  <div className="space-y-2">{/* Service list */}</div>
+</section>
+
+{
+  /* Element-level status */
+}
+;<div className="flex items-center justify-between rounded-md border p-4">
+  <div>
+    <h3 className="font-semibold">API Service</h3>
+    <p className="text-sm text-slate-600">api.example.com</p>
+  </div>
+  <div className="flex items-center gap-2 text-emerald-600">
+    <CheckCircle aria-hidden="true" />
+    <span className="text-sm font-semibold">Healthy</span>
+  </div>
+</div>
+```
+
+---
+
+### 6.8 Communicating Status Changes
+
+**🟡 DIRECTIVE:** Use a toast for important status changes.  
+**🔴 BOUNDARY:** Do not toast every change.  
+**🟡 DIRECTIVE:** For minor changes, update the indicator only.
+
+```tsx
+{
+  /* Important change: show toast */
+}
+;<Toast variant="critical">
+  <div className="flex items-center gap-2">
+    <AlertCircle aria-hidden="true" />
+    <span>API service has gone down</span>
+  </div>
+</Toast>
+
+{
+  /* Minor change: update indicator only */
+}
+;<div className="flex items-center gap-2 text-emerald-600">
+  <CheckCircle aria-hidden="true" />
+  <span className="text-sm font-semibold">Healthy</span>
+</div>
+```
+
+---
+
+### 6.9 Status Component Patterns
+
+#### Pattern: Health Indicator (Subtle)
+
+Subtle status for systems, processes, or objects.
+
+**🔴 COMMAND:** Use shape or icon as the visual.
+**🔴 COMMAND:** Must be accessible (color + shape/icon + label or aria-label).
+
+```tsx
+{
+  /* Shape-based health indicator */
+}
+;<div className="flex items-center gap-2">
+  <div className="inline-flex rounded-full bg-emerald-100 p-1" role="status" aria-label="Healthy" />
+  <span className="text-sm text-slate-900">API Service</span>
+</div>
+
+{
+  /* Icon-based health indicator */
+}
+;<div className="flex items-center gap-2">
+  <CheckCircle className="text-emerald-600" aria-hidden="true" />
+  <span className="text-sm font-semibold text-emerald-600">Healthy</span>
+</div>
+```
+
+#### Pattern: Chip (Prominent Tag)
+
+**🔴 COMMAND:** Chip padding: `p-2`  
+**🔴 COMMAND:** Chip text: `text-sm font-semibold`  
+**🔴 COMMAND:** Chip radius: `rounded-sm`
+
+```tsx
+<span className="inline-flex items-center gap-1 rounded-sm bg-emerald-50 p-2 text-sm font-semibold text-emerald-700">
+  <CheckCircle aria-hidden="true" />
+  Completed
+</span>
+```
+
+#### Pattern: Message Container
+
+**🔴 COMMAND:** Container padding: `p-4`  
+**🔴 COMMAND:** Use icon + title + description structure  
+**🔴 COMMAND:** Use semantic color variants
+
+```tsx
+<div className="flex gap-3 rounded-md border-2 border-pink-300 bg-pink-100 p-4">
+  <AlertCircle className="flex-shrink-0 text-pink-700" aria-hidden="true" />
+  <div className="space-y-1">
+    <h3 className="text-sm font-semibold text-pink-700">Service Unavailable</h3>
+    <p className="text-sm text-pink-700">
+      The API service is currently down. Our team has been notified and is working on a fix.
+    </p>
+  </div>
+</div>
+```
+
+#### Pattern: Toast Notification
+
+**🔴 COMMAND:** Toast padding: `p-4`  
+**🔴 COMMAND:** Auto-dismiss non-critical toasts after 5-7 seconds  
+**🔴 COMMAND:** Critical toasts must be manually dismissible
+
+```tsx
+<div className="flex items-center gap-3 rounded-md bg-emerald-200 p-4 text-emerald-900 shadow-lg">
+  <CheckCircle aria-hidden="true" />
+  <span className="text-sm font-semibold">Changes saved successfully</span>
+</div>
+```
+
+#### Pattern: Information Overlay
+
+**🔴 COMMAND:** Triggered by a status icon with label  
+**🔴 COMMAND:** Overlay shows additional context
+
+```tsx
+<button className="flex items-center gap-1 text-sm text-amber-700 hover:text-amber-800">
+  <AlertTriangle aria-hidden="true" />
+  <span>2 warnings</span>
+</button>
+```
+
+---
+
+### 6.10 Other Status Indicators
+
+#### Status Highlights
+
+**🔴 COMMAND:** Use `border-l-4` for vertical highlight  
+**🔴 BOUNDARY:** Must be accompanied by another indicator for accessibility
+
+```tsx
+<div className="flex items-center gap-3 border-l-4 border-amber-300 bg-amber-100 p-4">
+  <AlertTriangle className="text-amber-600" aria-hidden="true" />
+  <div>
+    <p className="text-sm font-semibold text-amber-700">Database backup pending</p>
+    <p className="text-sm text-amber-700">Last backup: 36 hours ago</p>
+  </div>
+</div>
+```
+
+#### Trend Indicators
+
+**🔴 COMMAND:** Use for reporting, not predictions  
+**🔴 COMMAND:** Label must clarify if trend is positive or negative  
+**🔴 BOUNDARY:** Do not rely on color alone
+
+```tsx
+<div className="flex items-center gap-2">
+  <span className="text-2xl font-bold text-slate-900">3.2%</span>
+  <div className="flex items-center gap-1 text-pink-600">
+    <TrendingUp aria-hidden="true" />
+    <span className="text-sm font-semibold">+1.2%</span>
+  </div>
+  <span className="text-sm text-slate-600">error rate</span>
+</div>
+```
+
+---
+
+### 6.11 Complete Status Dashboard Example
+
+```tsx
+<div className="space-y-6">
+  <div className="flex items-center justify-between">
+    <h1 className="text-3xl font-bold">System Health</h1>
+    <div className="flex items-center gap-2 text-amber-600">
+      <AlertTriangle aria-hidden="true" />
+      <span className="font-semibold">2 warnings</span>
+    </div>
+  </div>
+
+  <div className="flex gap-3 rounded-md border-2 border-pink-300 bg-pink-100 p-4">
+    <AlertCircle className="flex-shrink-0 text-pink-700" aria-hidden="true" />
+    <div className="space-y-1">
+      <h3 className="text-sm font-semibold text-pink-700">Payment Service Down</h3>
+      <p className="text-sm text-pink-700">Immediate attention required. Incident #1234 created.</p>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 6.12 Status Color Quick Reference
+
+```
+STATUS COLORS (Default)
+Ideal:    emerald-600  emerald-50  emerald-200
+Good:     indigo-600   indigo-50   indigo-200
+Neutral:  slate-600    slate-50    slate-200
+Warning:  amber-600    amber-50    amber-200
+Critical: pink-600     pink-50     pink-200
+
+STATUS COLORS (Emphasized)
+Ideal:    emerald-700  emerald-100  emerald-300
+Good:     indigo-700   indigo-100   indigo-300
+Neutral:  slate-700    slate-100    slate-300
+Warning:  amber-700    amber-100    amber-300
+Critical: pink-700     pink-100     pink-300
+
+STATUS COLORS (Accent)
+Ideal:    emerald-900  emerald-200  emerald-500
+Good:     indigo-900   indigo-200   indigo-500
+Neutral:  slate-900    slate-200    slate-500
+Warning:  amber-900    amber-200    amber-500
+Critical: pink-900     pink-200     pink-500
+```
+
+---
+
+## 7. Accessibility
+
+### 7.1 Nested Interactivity & DOM Flattening
+
+#### 7.1.1 BOUNDARY: Structural Constraints
 
 - **Forbidden Nesting:** An interactive element (Parent) **must never** contain another interactive element (Child).
 - **Target Elements:** `<a>`, `<button>`, `<details>`, `<input>`, `<select>`, `<textarea>`, and any element with `tabindex="0"`.
 - **WCAG Mapping:** Direct violation of **4.1.1 (Parsing)**, **2.1.1 (Keyboard)**, and **4.1.2 (Name, Role, Value)**.
 
-#### 6.1.2 DIRECTIVE: The "Stretched Sibling" Pattern
+#### 7.1.2 DIRECTIVE: The "Stretched Sibling" Pattern
 
 When a container (e.g., a Card) requires a primary click area plus secondary internal actions, agents must apply the following logic:
 
@@ -1626,52 +1429,11 @@ When a container (e.g., a Card) requires a primary click area plus secondary int
 2. **Expand:** Use a CSS `::after` pseudo-element on the primary link, set to `position: absolute` with inset `0`, to cover the parent container.
 3. **Layer:** Apply `position: relative` and a higher `z-index` to the secondary buttons to ensure they remain "on top" of the primary link's hit area.
 
-## Quick Reference
-
-### Spacing Cheat Sheet
-
-```
-VERTICAL                    HORIZONTAL
-Groups:      space-y-8      Groups:      gap-8
-Default:     space-y-4      Default:     gap-4
-Related:     space-y-2      Related:     gap-2
-Text:        space-y-1      Dense:       gap-1
-Lists:       space-y-0
-
-INSET (PADDING)
-Page:        p-12 (or p-4 dense)
-Surface:     p-6  (or p-4 dense)
-Container:   p-4
-Field:       p-3 or less
-```
-
-### Typography Cheat Sheet
-
-```
-Display:     text-5xl font-extrabold
-Heading:     text-xl font-bold
-Subheading:  text-lg font-semibold
-Body:        text-base font-normal
-Subtext:     text-sm font-medium
-```
-
-### Border Radius Cheat Sheet
-
-```
-Small:       rounded-sm p-2
-Standard:    rounded-md p-4
-Large:       rounded-lg p-6
-```
-
 ---
 
-## Component usage guidelines
+## 8. Navigation
 
-#### Basic kit
-
-## 6. Navigation
-
-### 6.1 Overview
+### 8.1 Overview
 
 Navigation provides predictable ways for users to move through your app. Consistent navigation patterns and logical information structure are essential for usability.
 
@@ -1681,7 +1443,7 @@ Navigation provides predictable ways for users to move through your app. Consist
 
 ---
 
-### 6.2 Navigation Hierarchy Types
+### 8.2 Navigation Hierarchy Types
 
 #### Flat Hierarchy
 
@@ -1754,7 +1516,7 @@ Navigation provides predictable ways for users to move through your app. Consist
 
 ---
 
-### 6.3 Navigation Levels
+### 8.3 Navigation Levels
 
 #### Primary Navigation
 
@@ -1824,7 +1586,7 @@ Secondary navigation leads to pages branching from main entry points - hierarchi
 
 ---
 
-### 6.4 Navigation Components
+### 8.4 Navigation Components
 
 #### Tabs
 
@@ -1910,15 +1672,15 @@ Links enable navigation between pages and sections.
 
 ---
 
-## 7. Forms
+## 9. Forms
 
-### 7.1 Overview
+### 9.1 Overview
 
 Forms gather input from users and allow configuration of options. Well-designed forms reduce friction and errors.
 
 ---
 
-### 7.2 Form Element Anatomy
+### 9.2 Form Element Anatomy
 
 Every form element consists of up to four parts:
 
@@ -1929,7 +1691,7 @@ Every form element consists of up to four parts:
 
 ---
 
-### 7.3 Form Element Components
+### 9.3 Form Element Components
 
 #### Labels
 
@@ -1963,7 +1725,7 @@ Every form element consists of up to four parts:
 <input
   type="date"
   placeholder="YYYY-MM-DD"
-  className="rounded-sm border border-gray-300 px-3 py-2"
+  className="rounded-sm border border-gray-300 px-3 py-2 placeholder:text-gray-500"
 />
 ```
 
@@ -2005,7 +1767,7 @@ Every form element consists of up to four parts:
 
 ---
 
-### 7.4 Form Layout
+### 9.4 Form Layout
 
 #### Spacing Rules
 
@@ -2101,7 +1863,7 @@ Every form element consists of up to four parts:
 
 ---
 
-### 7.5 Form Actions (Buttons)
+### 9.5 Form Actions (Buttons)
 
 #### Alignment
 
@@ -2177,7 +1939,7 @@ Every form element consists of up to four parts:
 
 ---
 
-### 7.6 Validation and Errors
+### 9.6 Validation and Errors
 
 #### Showing Errors
 
@@ -2250,7 +2012,7 @@ Every form element consists of up to four parts:
 
 ---
 
-### 7.7 Complete Form Pattern
+### 9.7 Complete Form Pattern
 
 ```tsx
 <form className="max-w-md space-y-8">
@@ -2317,11 +2079,50 @@ Every form element consists of up to four parts:
 
 ---
 
-#### Empty, loading, success and error states
+### 9.8 Empty, Loading, Success, and Error States
 
-#### Search and filter
+### 9.9 Search and Filter
 
-#### Tables, graphs and charts
+### 9.10 Tables, Graphs, and Charts
+
+---
+
+## 10. Quick Reference
+
+### 10.1 Spacing Cheat Sheet
+
+```
+VERTICAL                    HORIZONTAL
+Groups:      space-y-8      Groups:      gap-8
+Default:     space-y-4      Default:     gap-4
+Related:     space-y-2      Related:     gap-2
+Text:        space-y-1      Dense:       gap-1
+Lists:       space-y-0
+
+INSET (PADDING)
+Page:        p-12 (or p-4 dense)
+Surface:     p-6  (or p-4 dense)
+Container:   p-4
+Field:       p-3 or less
+```
+
+### 10.2 Typography Cheat Sheet
+
+```
+Display:     text-5xl font-extrabold
+Heading:     text-xl font-bold
+Subheading:  text-lg font-semibold
+Body:        text-base font-normal
+Subtext:     text-sm font-medium
+```
+
+### 10.3 Border Radius Cheat Sheet
+
+```
+Small:       rounded-sm p-2
+Standard:    rounded-md p-4
+Large:       rounded-lg p-6
+```
 
 ---
 
