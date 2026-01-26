@@ -13,7 +13,7 @@ const MAX_DISPLAY = 5
 
 function MyCustomComponentBase({ label }: { label: string }) {
   return (
-    <div className="rounded-md border border-gray-200 bg-white px-3 py-2 text-xs text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
+    <div className="rounded-sm border border-gray-200 bg-white p-2 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
       Custom component: {label}
     </div>
   )
@@ -23,40 +23,41 @@ function MyCustomComponent1() {
   return (
     <div
       role="dialog"
-      aria-labelledby="confirm-dialog-title"
-      aria-describedby="confirm-dialog-description"
+      aria-labelledby="unsaved-dialog-title"
+      aria-describedby="unsaved-dialog-description"
       className="rounded-md border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
     >
-      <div className="header border-b border-gray-200 pb-3 dark:border-gray-700">
+      <div className="border-b border-gray-200 pb-3 dark:border-gray-700">
         <h4
-          id="confirm-dialog-title"
-          className="text-base font-semibold text-gray-900 dark:text-gray-100"
+          id="unsaved-dialog-title"
+          className="text-xl font-bold text-gray-900 dark:text-gray-100"
         >
-          Confirm action
+          Unsaved changes
         </h4>
       </div>
-      <div className="body py-3">
-        <p id="confirm-dialog-description" className="text-sm text-gray-600 dark:text-gray-300">
-          Are you sure you want to continue? This action can be reversed later.
-        </p>
-
+      <div className="px-4 py-3">
         <div className="space-y-1">
-          <h1 className="text-3xl font-bold">Heading</h1>
-          <p className="text-sm text-gray-600">Subtitle</p>
+          <p id="unsaved-dialog-description" className="text-sm text-gray-600 dark:text-gray-300">
+            You have unsaved changes. Save before you leave to avoid losing work.
+          </p>
+          <p className="text-sm text-gray-600 dark:text-gray-300">
+            Title formula: <strong>Action</strong> + <strong>object</strong>. Body formula:
+            <strong> state</strong> + <strong> consequence</strong> + <strong> next step</strong>.
+          </p>
         </div>
       </div>
-      <div className="footer flex justify-end gap-2 border-t border-gray-200 pt-3 dark:border-gray-700">
+      <div className="flex justify-end gap-2 border-t border-gray-200 pt-3 dark:border-gray-700">
         <button
           type="button"
-          className="rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+          className="rounded-sm border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
         >
-          Cancel
+          Keep editing
         </button>
         <button
           type="button"
-          className="rounded-md bg-gray-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
+          className="rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
         >
-          MOIST
+          Save changes
         </button>
       </div>
     </div>
@@ -67,32 +68,49 @@ function MyCustomComponent2() {
   return (
     <div
       role="dialog"
-      aria-labelledby="danger-dialog-title"
-      aria-describedby="danger-dialog-description"
-      className="rounded-md border border-red-200 bg-red-50 p-4 text-sm text-red-900 shadow-sm dark:border-red-500/40 dark:bg-red-950 dark:text-red-100"
+      aria-labelledby="glossary-dialog-title"
+      aria-describedby="glossary-dialog-description"
+      className="rounded-md border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
     >
-      <div className="header border-b border-red-200 pb-3 dark:border-red-500/40">
-        <h4 id="danger-dialog-title" className="text-base font-semibold">
-          Delete file
+      <div className="border-b border-gray-200 pb-3 dark:border-gray-700">
+        <h4
+          id="glossary-dialog-title"
+          className="text-xl font-bold text-gray-900 dark:text-gray-100"
+        >
+          Contextual glossary
         </h4>
       </div>
-      <div className="body py-3">
-        <p id="danger-dialog-description" className="text-sm text-red-800 dark:text-red-200">
-          This will permanently delete the file. This action cannot be undone.
-        </p>
+      <div className="px-4 py-3">
+        <div className="space-y-2">
+          <p id="glossary-dialog-description" className="text-sm text-gray-600 dark:text-gray-300">
+            Use consistent terms in UI copy to reduce ambiguity.
+          </p>
+          <div className="space-y-1 text-sm text-gray-600 dark:text-gray-300">
+            <p>
+              <strong>Affect</strong> (verb): influence or cause change.
+            </p>
+            <p>
+              <strong>Effect</strong> (noun): result of a change.
+            </p>
+            <p>
+              Use <strong>select</strong> for device-agnostic actions. Use <strong>click</strong>{' '}
+              for mouse actions only.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="footer flex justify-end gap-2 border-t border-red-200 pt-3 dark:border-red-500/40">
+      <div className="flex justify-end gap-2 border-t border-gray-200 pt-3 dark:border-gray-700">
         <button
           type="button"
-          className="rounded-md border border-red-200 bg-white px-3 py-1.5 text-xs font-semibold text-red-900 hover:bg-red-100 dark:border-red-500/40 dark:bg-red-950 dark:text-red-100 dark:hover:bg-red-900"
+          className="rounded-sm border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
         >
           Cancel
         </button>
         <button
           type="button"
-          className="rounded-md bg-red-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-red-500"
+          className="rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
         >
-          Delete
+          Got it
         </button>
       </div>
     </div>
@@ -103,34 +121,73 @@ function MyCustomComponent3() {
   return (
     <div
       role="dialog"
-      aria-labelledby="warning-dialog-title"
-      aria-describedby="warning-dialog-description"
-      className="rounded-md border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-900 shadow-sm dark:border-yellow-500/40 dark:bg-yellow-950 dark:text-yellow-100"
+      aria-labelledby="voice-builder-title"
+      aria-describedby="voice-builder-description"
+      className="rounded-md border border-gray-200 bg-white p-4 text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
     >
-      <div className="header border-b border-yellow-200 pb-3 dark:border-yellow-500/40">
-        <h4 id="warning-dialog-title" className="text-base font-semibold">
-          Production change
+      <div className="border-b border-gray-200 pb-3 dark:border-gray-700">
+        <h4 id="voice-builder-title" className="text-xl font-bold text-gray-900 dark:text-gray-100">
+          Voice agent builder
         </h4>
       </div>
-      <div className="body py-3">
-        <p id="warning-dialog-description" className="text-sm text-yellow-800 dark:text-yellow-200">
-          This change will be reflected in the production environment. Review carefully before
-          proceeding.
-        </p>
-      </div>
-      <div className="footer flex justify-end gap-2 border-t border-yellow-200 pt-3 dark:border-yellow-500/40">
-        <button
-          type="button"
-          className="rounded-md border border-yellow-200 bg-white px-3 py-1.5 text-xs font-semibold text-yellow-900 hover:bg-yellow-100 dark:border-yellow-500/40 dark:bg-yellow-950 dark:text-yellow-100 dark:hover:bg-yellow-900"
-        >
-          Cancel
-        </button>
-        <button
-          type="button"
-          className="rounded-md bg-yellow-500 px-3 py-1.5 text-xs font-semibold text-gray-900 hover:bg-yellow-400"
-        >
-          Confirm
-        </button>
+      <div className="px-4 py-3">
+        <div className="space-y-4">
+          <p id="voice-builder-description" className="text-sm text-gray-600 dark:text-gray-300">
+            Use the controls to preview and pause the current prompt. Stop ends the session and
+            clears the buffer.
+          </p>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="4" height="10" rx="1.2" fill="currentColor" />
+                <rect x="9" y="3" width="4" height="10" rx="1.2" fill="currentColor" />
+              </svg>
+              Pause
+            </button>
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-gray-200"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 3.5L12 8L4 12.5V3.5Z" fill="currentColor" />
+              </svg>
+              Play
+            </button>
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="9" height="9" rx="1.2" fill="currentColor" />
+              </svg>
+              Stop
+            </button>
+          </div>
+          <div
+            className="rounded-md border border-gray-200 bg-gray-50 p-4 text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300"
+            aria-label="Audio recording visualization"
+          >
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Recording signal
+              </p>
+              <div className="rounded-sm bg-white p-2 dark:bg-gray-900">
+                <svg width="100%" height="48" viewBox="0 0 240 48" fill="none" aria-hidden="true">
+                  <path
+                    d="M4 24H18L24 10L32 38L40 18L48 30L56 16L64 24L72 8L80 40L88 20L96 28L104 12L112 24L120 6L128 42L136 22L144 30L152 18L160 24L168 14L176 34L184 20L192 28L200 10L208 38L216 24L224 32L232 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -159,41 +216,45 @@ export default function Home({ posts }) {
   const activeCondition = conditionOptions.find((option) => option.label === conditionLevel)
   const tabGroups = [
     {
-      label: 'Here I am',
+      label: 'Demo 1',
       items: [
         {
           title: 'Catch me if you can',
           body: 'Drop your content here and keep the layout consistent.',
-          footer: 'Last updated just now',
+          footer: 'Status: Good — In progress',
           slot: <MyCustomComponent1 />,
         },
         {
           title: 'Second Item',
           body: 'Each item uses a header/body/footer structure.',
-          footer: 'Status: Ready',
+          footer: 'Status: Ideal — Completed',
+        },
+        {
+          title: 'Third Item',
+          body: 'Each item uses a header/body/footer structure.',
+          footer: 'Status: Critical — Error',
+        },
+      ],
+    },
+    {
+      label: 'Demo 2',
+      items: [
+        {
+          title: '2',
+          body: 'Older items can live in a separate tab.',
+          footer: 'Status: Neutral — Inactive',
           slot: <MyCustomComponent2 />,
         },
       ],
     },
     {
-      label: '2',
-      items: [
-        {
-          title: '2',
-          body: 'Older items can live in a separate tab.',
-          footer: 'Status: Archived',
-          slot: <MyCustomComponent3 />,
-        },
-      ],
-    },
-    {
-      label: '3',
+      label: 'Demo 3',
       items: [
         {
           title: '3',
           body: 'Older items can live in a separate tab.',
-          footer: 'Status: Archived',
-          slot: <MyCustomComponent4 />,
+          footer: 'Status: Neutral — Inactive',
+          slot: <MyCustomComponent3 />,
         },
       ],
     },
@@ -203,8 +264,8 @@ export default function Home({ posts }) {
         {
           title: '4',
           body: 'Older items can live in a separate tab.',
-          footer: 'Status: Archived',
-          slot: <MyCustomComponent5 />,
+          footer: 'Status: Warning — Needs review',
+          slot: <MyCustomComponent4 />,
         },
       ],
     },
@@ -214,8 +275,8 @@ export default function Home({ posts }) {
         {
           title: '5',
           body: 'Older items can live in a separate tab.',
-          footer: 'Status: Archived',
-          slot: <MyCustomComponent6 />,
+          footer: 'Status: Neutral — Inactive',
+          slot: <MyCustomComponent5 />,
         },
       ],
     },
@@ -225,7 +286,7 @@ export default function Home({ posts }) {
         {
           title: '6',
           body: 'Older items can live in a separate tab.',
-          footer: 'Status: Archived',
+          footer: 'Status: Neutral — Inactive',
           slot: <MyCustomComponent6 />,
         },
       ],
@@ -235,18 +296,18 @@ export default function Home({ posts }) {
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
+        <div className="w-full space-y-5 pt-6 pb-8">
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Goodbye friendo
+            <code>ui-pattern-playbook.md</code>
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
           </p>
-          <div className="flex justify-center pt-6">
+          <div className="flex w-full justify-center pt-6">
             <Tab.Group>
               <div
                 className={[
-                  'w-full max-w-2xl rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-900',
+                  'w-full rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900',
                   activeCondition?.className,
                 ]
                   .filter(Boolean)
@@ -256,7 +317,7 @@ export default function Home({ posts }) {
                 <div className="mb-4 text-center text-sm font-semibold tracking-wide text-gray-500 uppercase dark:text-gray-400">
                   Render Zone
                 </div>
-                <div className="flex justify-center">
+                {/* <div className="flex justify-center">
                   <div className="mb-4 flex flex-wrap justify-center gap-2">
                     {conditionOptions.map((option) => (
                       <button
@@ -275,7 +336,7 @@ export default function Home({ posts }) {
                       </button>
                     ))}
                   </div>
-                </div>
+                </div> */}
                 <Tab.List
                   className="flex justify-center gap-2"
                   data-condition-level={conditionLevel}

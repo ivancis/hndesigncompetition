@@ -477,6 +477,24 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 
 **🔴 COMMAND:** Between closely related elements in dense layouts: `gap-1` (4px)
 
+**🔴 COMMAND:** Icon + label buttons and chips must use `gap-2` (8px).
+
+**🔴 COMMAND:** For icon + label buttons and chips, use horizontal padding one step larger than vertical (example: `px-3 py-2`).
+
+```tsx
+<button className="inline-flex items-center gap-2 rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M4 3.5L12 8L4 12.5V3.5Z" fill="currentColor" />
+  </svg>
+  Play
+</button>
+
+<span className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50 px-3 py-2 text-sm font-semibold text-gray-700">
+  <span className="inline-flex rounded-full bg-gray-400 p-1" aria-hidden="true" />
+  Status
+</span>
+```
+
 ```tsx
 {
   /* Groups */
@@ -593,22 +611,29 @@ Understanding element nesting determines spacing strategy.
 
 ```tsx
 {
-  /* Correct nesting */
+  /* Base */
 }
 ;<div className="bg-gray-50 p-12">
-  {' '}
-  {/* Base */}
-  <div className="rounded-lg border p-6">
-    {' '}
-    {/* Surface */}
-    <div className="rounded-md bg-gray-100 p-4">
-      {' '}
-      {/* Container */}
-      <button className="rounded-sm px-3 py-2">
-        {' '}
+  {/* Surface */}
+  <div className="rounded-lg border bg-white p-6">
+    {/* Container */}
+    <div className="rounded-md border bg-gray-50 p-4">
+      <div className="space-y-1">
+        <h2 className="text-xl font-bold">Unsaved changes</h2>
+        <p className="text-sm text-gray-600">
+          You have unsaved changes. Save before you leave to avoid losing work.
+        </p>
+      </div>
+      <div className="mt-4 flex justify-end gap-2 border-t pt-3">
         {/* Field */}
-        Action
-      </button>
+        <button className="rounded-sm border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100">
+          Keep editing
+        </button>
+        {/* Field */}
+        <button className="rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800">
+          Save changes
+        </button>
+      </div>
     </div>
   </div>
 </div>
