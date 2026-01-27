@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import TabItemCard from '@/components/TabItemCard'
@@ -1342,6 +1343,184 @@ function MyCustomComponent1() {
             </div>
           </div>
         </section>
+
+        <Divider />
+
+        {/* ——— 13. Voice Agent Builder Patterns ——— */}
+        <section className="space-y-4">
+          <SectionTitle>13. Voice Agent Builder Patterns</SectionTitle>
+          <ScenarioTitle>Template Gallery: Grid layout, badges, hover states</ScenarioTitle>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md dark:border-gray-700 dark:bg-gray-900">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
+                  <svg
+                    className="size-6 text-indigo-600 dark:text-indigo-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                    />
+                  </svg>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline gap-2">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">
+                      Inbound Support
+                    </h3>
+                    <span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                      Popular
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    Handles FAQs and routing
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                      Customer Support
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ScenarioTitle>Progressive Disclosure: Simple → Advanced toggle</ScenarioTitle>
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <div>
+                <label htmlFor="voice-language" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
+                  Voice Language
+                </label>
+                <select
+                  id="voice-language"
+                  defaultValue="en-US"
+                  className="mt-1 block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+                >
+                  <option value="en-US">English (US)</option>
+                  <option value="en-GB">English (UK)</option>
+                </select>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
+            >
+              <svg
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Show advanced settings
+            </button>
+          </div>
+          <ScenarioTitle>Inline Glossary: Dotted underline term with tooltip</ScenarioTitle>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            The agent uses{' '}
+            <button
+              type="button"
+              className="border-b-2 border-dotted border-gray-400 text-gray-900 cursor-help hover:border-gray-600 dark:text-gray-100 dark:border-gray-500"
+            >
+              temperature
+            </button>
+            {' '}to control response variability.
+          </p>
+          <ScenarioTitle>Error Translation: Plain language + fix suggestion</ScenarioTitle>
+          <div className="rounded-lg border border-red-600 bg-red-50 p-4 dark:border-red-500 dark:bg-red-900/40">
+            <div className="flex gap-3">
+              <svg
+                className="size-5 shrink-0 text-red-600 dark:text-red-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                />
+              </svg>
+              <div>
+                <h3 className="text-sm font-semibold text-red-800 dark:text-red-300">
+                  Unable to connect to API
+                </h3>
+                <p className="mt-1 text-sm text-red-700 dark:text-red-400">
+                  The service is temporarily unavailable. Please try again in a few minutes.
+                </p>
+                <button className="mt-3 text-sm font-semibold text-indigo-600 underline hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300">
+                  Retry connection
+                </button>
+              </div>
+            </div>
+          </div>
+          <ScenarioTitle>Publish Checklist: Blocked items with fix actions</ScenarioTitle>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <svg
+                className="size-5 shrink-0 text-red-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  API endpoint configured
+                </p>
+                <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                  Required for agent to function
+                </p>
+                <button className="mt-2 text-sm font-semibold text-indigo-600 underline hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300">
+                  Fix now
+                </button>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <svg
+                className="size-5 shrink-0 text-green-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
+                  Voice settings configured
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )
@@ -1415,9 +1594,11 @@ function MyCustomComponent2() {
             className="flex items-center gap-2 rounded-sm transition focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
             aria-label="Profile menu"
           >
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="User profile"
+              width={32}
+              height={32}
               className="size-8 rounded-full"
             />
             <svg
@@ -1807,15 +1988,35 @@ function MyCustomComponent3() {
       {/* DESCRIPTION LISTS */}
       <section className="space-y-16">
         {/* Global Rules Console - Ref: Tailwind UI Card Headings + Description Lists */}
-        <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
-          <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
-            <h3 className="text-base font-bold text-gray-900 dark:text-gray-100">
-              Global Safety Policy v2.4
+        <div className="mb-8">
+          <div className="mb-4 flex items-baseline gap-2">
+            <svg
+              className="size-5 shrink-0 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              />
+            </svg>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              Global Rules Console
             </h3>
-            <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/40 dark:text-green-300">
-              Active
-            </span>
           </div>
+          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+            <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+              <h4 className="text-base font-bold text-gray-900 dark:text-gray-100">
+                Global Safety Policy v2.4
+              </h4>
+              <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/40 dark:text-green-300">
+                Active
+              </span>
+            </div>
           <dl className="divide-y divide-gray-200 px-6 py-4 dark:divide-gray-700">
             <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
               <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -1826,6 +2027,7 @@ function MyCustomComponent3() {
               </dd>
             </div>
           </dl>
+          </div>
         </div>
 
         {/* Agent-Specific Instructions with Inheritance Indicator */}
@@ -1836,7 +2038,7 @@ function MyCustomComponent3() {
                 Agent Instructions
               </h3>
               <svg
-                className="h-4 w-4 text-gray-400"
+                className="size-4 shrink-0 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1846,7 +2048,7 @@ function MyCustomComponent3() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                 />
               </svg>
             </div>
@@ -1886,51 +2088,70 @@ function MyCustomComponent3() {
         </div>
 
         {/* Rule Builder - Grid List Cards */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
-            <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tone</h4>
-              <textarea
-                rows={3}
-                className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
-                placeholder="Describe the desired tone…"
+        <div className="mb-8">
+          <div className="mb-4 flex items-baseline gap-2">
+            <svg
+              className="size-5 shrink-0 text-gray-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
               />
-              <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
-                <option>Strict</option>
-                <option>Suggestion</option>
-              </select>
-            </div>
+            </svg>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Builder</h3>
           </div>
-
-          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
-            <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tools</h4>
-              <textarea
-                rows={3}
-                className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
-                placeholder="Specify allowed tools…"
-              />
-              <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
-                <option>Strict</option>
-                <option>Suggestion</option>
-              </select>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tone</h4>
+                <textarea
+                  rows={3}
+                  className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+                  placeholder="Describe the desired tone…"
+                />
+                <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+                  <option>Strict</option>
+                  <option>Suggestion</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
-            <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                Data Access
-              </h4>
-              <textarea
-                rows={3}
-                className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
-                placeholder="Define data access rules…"
-              />
-              <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
-                <option>Strict</option>
-                <option>Suggestion</option>
-              </select>
+            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tools</h4>
+                <textarea
+                  rows={3}
+                  className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+                  placeholder="Specify allowed tools…"
+                />
+                <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+                  <option>Strict</option>
+                  <option>Suggestion</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+              <div className="space-y-4">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+                  Data Access
+                </h4>
+                <textarea
+                  rows={3}
+                  className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+                  placeholder="Define data access rules…"
+                />
+                <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+                  <option>Strict</option>
+                  <option>Suggestion</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -1940,15 +2161,17 @@ function MyCustomComponent3() {
           <div className="flex">
             <div className="flex-shrink-0">
               <svg
-                className="h-5 w-5 text-red-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+                className="h-5 w-5 text-red-600 dark:text-red-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
                 aria-hidden="true"
               >
                 <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
-                  clipRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
                 />
               </svg>
             </div>
@@ -1987,7 +2210,7 @@ function MyCustomComponent3() {
             </h3>
           </div>
           <div className="space-y-4 px-6 py-4">
-            <div className="rounded-sm bg-gray-50 p-4 dark:bg-gray-800">
+            <div className="rounded-sm border-l-4 border-red-500 bg-gray-50 p-4 dark:bg-gray-800">
               <p className="font-mono text-sm text-gray-900 dark:text-gray-100">
                 Rule: PII_REDACTION_STRICT
               </p>
@@ -2000,8 +2223,22 @@ function MyCustomComponent3() {
             </div>
             <button
               type="button"
-              className="inline-flex items-center rounded-sm border border-transparent bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+              className="inline-flex items-center gap-2 rounded-sm border border-transparent bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600"
             >
+              <svg
+                className="size-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.392 1.272 1.05 1.272h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9.75l2.715 2.715M14.25 12l2.715-2.715m-2.715 2.715l-2.715 2.715"
+                />
+              </svg>
               Generate fix suggestion
             </button>
           </div>
@@ -2011,7 +2248,7 @@ function MyCustomComponent3() {
         <div className="rounded-lg border-2 border-amber-200 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-900/40">
           <div className="flex items-center gap-3">
             <svg
-              className="h-6 w-6 text-amber-600 dark:text-amber-400"
+              className="size-5 shrink-0 text-amber-600 dark:text-amber-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -2024,12 +2261,14 @@ function MyCustomComponent3() {
                 d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
               />
             </svg>
-            <h4 className="font-bold text-amber-900 dark:text-amber-200">High Risk Deployment</h4>
+            <div className="space-y-1">
+              <h4 className="font-bold text-amber-900 dark:text-amber-200">High Risk Deployment</h4>
+              <p className="text-sm text-amber-800 dark:text-amber-300">
+                This version modifies <strong>Tool Access</strong> permissions. Review the security diff
+                before proceeding.
+              </p>
+            </div>
           </div>
-          <p className="mt-2 text-sm text-amber-800 dark:text-amber-300">
-            This version modifies <strong>Tool Access</strong> permissions. Review the security diff
-            before proceeding.
-          </p>
           <div className="mt-4 flex gap-3">
             <button
               type="button"

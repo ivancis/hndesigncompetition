@@ -4734,7 +4734,9 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Use `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3` as the standard responsive pattern for template galleries.
 
 ```tsx
-<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">{/* Template cards */}</div>
+<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {/* Template cards */}
+</div>
 ```
 
 ---
@@ -4771,13 +4773,13 @@ ACCESSIBILITY REQUIREMENTS
 
 **Badge Categories:**
 
-| Badge Type | Color Scheme                                                              | Use Case                       |
-| ---------- | ------------------------------------------------------------------------- | ------------------------------ |
-| Popular    | `bg-blue-50 text-blue-700` (dark: `bg-blue-900/40 text-blue-300`)         | High usage templates           |
-| New        | `bg-green-50 text-green-700` (dark: `bg-green-900/40 text-green-300`)     | Recently added (< 30 days)     |
+| Badge Type | Color Scheme | Use Case |
+|-----------|-------------|----------|
+| Popular | `bg-blue-50 text-blue-700` (dark: `bg-blue-900/40 text-blue-300`) | High usage templates |
+| New | `bg-green-50 text-green-700` (dark: `bg-green-900/40 text-green-300`) | Recently added (< 30 days) |
 | Enterprise | `bg-purple-50 text-purple-700` (dark: `bg-purple-900/40 text-purple-300`) | Advanced features, higher tier |
-| Beta       | `bg-amber-50 text-amber-700` (dark: `bg-amber-900/40 text-amber-300`)     | Experimental features          |
-| Capability | `bg-gray-100 text-gray-700` (dark: `bg-gray-800 text-gray-300`)           | Technical capabilities         |
+| Beta | `bg-amber-50 text-amber-700` (dark: `bg-amber-900/40 text-amber-300`) | Experimental features |
+| Capability | `bg-gray-100 text-gray-700` (dark: `bg-gray-800 text-gray-300`) | Technical capabilities |
 
 **🔴 COMMAND:** Status badges (Popular, New, Enterprise, Beta) must appear before capability badges.
 
@@ -4800,17 +4802,13 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Use `transition-all` for smooth state changes between default, hover, and selected states.
 
 ```tsx
-{
-  /* Hover state */
-}
-;<div className="rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
+{/* Hover state */}
+<div className="rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
   {/* Content */}
 </div>
 
-{
-  /* Selected state */
-}
-;<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6 shadow-md">
+{/* Selected state */}
+<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6 shadow-md">
   <div className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600">
     <Check className="h-4 w-4 text-white" />
   </div>
@@ -4869,12 +4867,10 @@ ACCESSIBILITY REQUIREMENTS
             <div className="mt-1 flex gap-2">{/* Badges */}</div>
           </div>
         </div>
-        <button aria-label="Close">
-          <X className="h-5 w-5" />
-        </button>
+        <button aria-label="Close"><X className="h-5 w-5" /></button>
       </div>
     </div>
-
+    
     <div className="border-b">
       <nav className="flex gap-4 px-6">
         <button className="border-b-2 border-indigo-600 px-1 py-3 text-sm font-semibold text-indigo-600">
@@ -4885,9 +4881,9 @@ ACCESSIBILITY REQUIREMENTS
         </button>
       </nav>
     </div>
-
+    
     <div className="max-h-[500px] overflow-y-auto px-6 py-4">{/* Tab content */}</div>
-
+    
     <div className="flex items-center justify-between border-t px-6 py-4">
       <button className="text-sm font-semibold text-gray-700">View documentation</button>
       <div className="flex gap-3">
@@ -4923,7 +4919,7 @@ ACCESSIBILITY REQUIREMENTS
     <input
       type="text"
       placeholder="Search templates…"
-      className="block w-full rounded-sm border py-2 pr-3 pl-10 text-sm"
+      className="block w-full rounded-sm border py-2 pl-10 pr-3 text-sm"
     />
   </div>
   <div className="flex gap-3">
@@ -4972,39 +4968,33 @@ ACCESSIBILITY REQUIREMENTS
 #### Gallery Pattern Guidelines for AGENTS.MD
 
 **Context Provision:**
-
 - Always provide users with their position in the collection ("X of Y templates")
 - Display active filters and search terms to maintain orientation
 - Show result counts before presenting the grid
 
 **Multiple Navigation Options:**
-
 - Support both browsing (grid view) and searching (text input)
 - Provide category filters for common groupings
 - Include sort options (popularity, recency, alphabetical)
 - Enable keyboard navigation for accessibility
 
 **Progressive Enhancement:**
-
 - Start with simple grid layout, add filters only when collection is large (>12 items)
 - Implement preview modals for detailed information without losing context
 - Use "Load more" or pagination for collections exceeding 24 items
 
 **Visual Hierarchy:**
-
 - Use badges to quickly communicate template characteristics
 - Maintain consistent card structure across all templates
 - Provide clear hover states to indicate interactivity
 - Use color coding for status (Popular, New, Beta, Enterprise)
 
 **Empty States:**
-
 - Always handle the case when no templates match filters
 - Provide clear path to resolution (clear filters, adjust search)
 - Maintain visual consistency with the rest of the interface
 
 **Selection Patterns:**
-
 - Provide immediate visual feedback on hover
 - Show selection state clearly with border and checkmark
 - Enable quick comparison via preview modal
@@ -5044,10 +5034,8 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Use horizontal layout for step indicators on desktop, vertical condensed list on mobile.
 
 ```tsx
-{
-  /* Horizontal Step Indicator */
-}
-;<nav aria-label="Progress">
+{/* Horizontal Step Indicator */}
+<nav aria-label="Progress">
   <ol className="flex items-center gap-2">
     {/* Completed step */}
     <li className="flex items-center gap-2">
@@ -5057,7 +5045,7 @@ ACCESSIBILITY REQUIREMENTS
       <span className="text-sm font-medium text-green-600">Setup</span>
       <ChevronRight className="h-4 w-4 text-gray-400" />
     </li>
-
+    
     {/* Current step */}
     <li className="flex items-center gap-2">
       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-indigo-600 bg-white">
@@ -5066,7 +5054,7 @@ ACCESSIBILITY REQUIREMENTS
       <span className="text-sm font-semibold text-indigo-600">Voice Settings</span>
       <ChevronRight className="h-4 w-4 text-gray-400" />
     </li>
-
+    
     {/* Upcoming step */}
     <li className="flex items-center gap-2">
       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-gray-300 bg-white">
@@ -5089,17 +5077,15 @@ ACCESSIBILITY REQUIREMENTS
 **🔴 COMMAND:** Progress fill uses `bg-indigo-600` with smooth transition animation.
 
 ```tsx
-{
-  /* Progress Bar */
-}
-;<div className="mb-8">
-  <div className="mb-2 flex items-center justify-between">
+{/* Progress Bar */}
+<div className="mb-8">
+  <div className="flex items-center justify-between mb-2">
     <span className="text-sm font-medium text-gray-700">Step 2 of 4</span>
     <span className="text-sm font-medium text-gray-700">50% complete</span>
   </div>
   <div className="h-2 overflow-hidden rounded-full bg-gray-200">
-    <div
-      className="h-full rounded-full bg-indigo-600 transition-all duration-300"
+    <div 
+      className="h-full rounded-full bg-indigo-600 transition-all duration-300" 
       style={{ width: '50%' }}
     />
   </div>
@@ -5119,10 +5105,8 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Use red-50 background with red-600 border for error summary boxes at top of step.
 
 ```tsx
-{
-  /* Error Summary */
-}
-;<div className="mb-6 rounded-lg border border-red-600 bg-red-50 p-4">
+{/* Error Summary */}
+<div className="mb-6 rounded-lg border border-red-600 bg-red-50 p-4">
   <div className="flex gap-3">
     <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
     <div>
@@ -5135,19 +5119,15 @@ ACCESSIBILITY REQUIREMENTS
   </div>
 </div>
 
-{
-  /* Field with error */
-}
-;<div>
+{/* Field with error */}
+<div>
   <label className="block text-sm font-medium text-gray-900">Agent Name</label>
-  <input
+  <input 
     className="mt-1 block w-full rounded-sm border border-red-600 bg-white px-3 py-2 text-sm"
     aria-invalid="true"
     aria-describedby="name-error"
   />
-  <p id="name-error" className="mt-1 text-sm text-red-600">
-    Agent name is required
-  </p>
+  <p id="name-error" className="mt-1 text-sm text-red-600">Agent name is required</p>
 </div>
 ```
 
@@ -5163,28 +5143,26 @@ ACCESSIBILITY REQUIREMENTS
 
 **Default Value Guidelines:**
 
-| Field Type     | Default Strategy    | Example                    |
-| -------------- | ------------------- | -------------------------- |
-| Text input     | Most common value   | "Customer Support Agent"   |
-| Dropdown       | Most popular option | Language: "English (US)"   |
-| Number stepper | Expected average    | Response delay: "500ms"    |
-| Toggle         | Safest option       | PII redaction: ON          |
-| Radio group    | Recommended choice  | Voice type: "Professional" |
+| Field Type | Default Strategy | Example |
+|-----------|------------------|---------|
+| Text input | Most common value | "Customer Support Agent" |
+| Dropdown | Most popular option | Language: "English (US)" |
+| Number stepper | Expected average | Response delay: "500ms" |
+| Toggle | Safest option | PII redaction: ON |
+| Radio group | Recommended choice | Voice type: "Professional" |
 
 ```tsx
-{
-  /* Pre-filled defaults */
-}
-;<div className="space-y-4">
+{/* Pre-filled defaults */}
+<div className="space-y-4">
   <div>
     <label className="block text-sm font-medium text-gray-900">Agent Name</label>
-    <input
+    <input 
       type="text"
       defaultValue="Customer Support Agent"
       className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm"
     />
   </div>
-
+  
   <div>
     <label className="block text-sm font-medium text-gray-900">Voice Language</label>
     <select defaultValue="en-US" className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm">
@@ -5214,25 +5192,23 @@ ACCESSIBILITY REQUIREMENTS
 - Next/Continue: Right-aligned group, primary style
 
 ```tsx
-{
-  /* Navigation buttons */
-}
-;<div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-  <button
+{/* Navigation buttons */}
+<div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+  <button 
     type="button"
     className="order-2 rounded-sm px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:order-1"
   >
     Cancel
   </button>
-
+  
   <div className="order-1 flex gap-3 sm:order-2">
-    <button
+    <button 
       type="button"
       className="flex-1 rounded-sm border border-gray-300 px-4 py-2 text-sm font-semibold sm:flex-initial"
     >
       Previous
     </button>
-    <button
+    <button 
       type="button"
       className="flex-1 rounded-sm bg-indigo-600 px-4 py-2 text-sm font-semibold text-white sm:flex-initial"
       disabled={hasErrors}
@@ -5254,10 +5230,8 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Navigation buttons stack vertically with full width on mobile, horizontal on desktop.
 
 ```tsx
-{
-  /* Mobile compact step indicator */
-}
-;<div className="block sm:hidden">
+{/* Mobile compact step indicator */}
+<div className="block sm:hidden">
   <div className="flex items-center gap-2 text-sm">
     <span className="font-medium text-gray-900">Step 2 of 4:</span>
     <span className="text-gray-600">Voice Settings</span>
@@ -5279,10 +5253,8 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Disable forward navigation to uncompleted steps to maintain sequential flow.
 
 ```tsx
-{
-  /* Clickable completed step */
-}
-;<button
+{/* Clickable completed step */}
+<button
   type="button"
   className="flex items-center gap-2 text-sm font-medium text-green-600 hover:text-green-700"
   onClick={() => goToStep(1)}
@@ -5305,17 +5277,17 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Use `border-b` to separate header from step content area.
 
 ```tsx
-{
-  /* Sticky wizard header */
-}
-;<div className="sticky top-0 z-10 border-b bg-white px-6 py-4">
+{/* Sticky wizard header */}
+<div className="sticky top-0 z-10 border-b bg-white px-6 py-4">
   <div className="mb-3">
     <h1 className="text-xl font-bold text-gray-900">Create Voice Agent</h1>
     <p className="mt-1 text-sm text-gray-600">Configure your agent in 4 simple steps</p>
   </div>
-
+  
   {/* Progress indicator */}
-  <nav aria-label="Progress">{/* Step indicators */}</nav>
+  <nav aria-label="Progress">
+    {/* Step indicators */}
+  </nav>
 </div>
 ```
 
@@ -5330,18 +5302,18 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Maximum content width: `max-w-2xl` centered with `mx-auto` for optimal readability.
 
 ```tsx
-{
-  /* Step content container */
-}
-;<div className="px-4 py-6 sm:px-6 sm:py-8">
+{/* Step content container */}
+<div className="px-4 py-6 sm:px-6 sm:py-8">
   <div className="mx-auto max-w-2xl">
     <div className="space-y-6">
       <div>
         <h2 className="text-lg font-semibold text-gray-900">Voice Settings</h2>
         <p className="mt-1 text-sm text-gray-600">Choose how your agent will sound</p>
       </div>
-
-      <div className="space-y-4">{/* Form fields */}</div>
+      
+      <div className="space-y-4">
+        {/* Form fields */}
+      </div>
     </div>
   </div>
 </div>
@@ -5358,12 +5330,10 @@ ACCESSIBILITY REQUIREMENTS
 **🔴 COMMAND:** Use Submit/Create as final action button label, not "Next".
 
 ```tsx
-{
-  /* Review step */
-}
-;<div className="space-y-6">
+{/* Review step */}
+<div className="space-y-6">
   <div className="rounded-lg border border-gray-200 bg-white p-6">
-    <div className="mb-4 flex items-center justify-between">
+    <div className="flex items-center justify-between mb-4">
       <h3 className="text-base font-semibold text-gray-900">Basic Information</h3>
       <button className="text-sm font-semibold text-indigo-600" onClick={() => goToStep(1)}>
         Edit
@@ -5376,7 +5346,7 @@ ACCESSIBILITY REQUIREMENTS
       </div>
     </dl>
   </div>
-
+  
   {/* Final actions */}
   <div className="flex gap-3">
     <button className="flex-1 rounded-sm border px-4 py-2 text-sm font-semibold">
@@ -5408,28 +5378,24 @@ ACCESSIBILITY REQUIREMENTS
 #### Wizard Pattern Guidelines for AGENTS.MD
 
 **Sequential Flow Management:**
-
 - Always maintain linear progression (no skipping uncompleted steps forward)
 - Allow backward navigation to completed steps for review/editing
 - Persist all user input across navigation actions
 - Validate each step before allowing forward progression
 
 **Default Value Strategy:**
-
 - Pre-fill every field with sensible defaults based on common use cases
 - Use most popular option as default for dropdowns and radio groups
 - Set safest/most conservative option as default for security settings
 - Enable immediate "Next" action without forcing user input
 
 **Progress Communication:**
-
 - Display step number and total count prominently ("Step 2 of 4")
 - Show percentage complete if helpful for user planning
 - Use visual progress bar for at-a-glance completion status
 - Indicate completed vs. current vs. upcoming steps clearly
 
 **Validation and Error Handling:**
-
 - Validate fields on blur (after user leaves field)
 - Show inline errors immediately after interaction
 - Display error summary at step level if multiple issues exist
@@ -5437,21 +5403,18 @@ ACCESSIBILITY REQUIREMENTS
 - Preserve valid data when navigating backward to fix errors
 
 **Mobile Optimization:**
-
 - Collapse detailed step indicators to compact progress bar
 - Stack navigation buttons vertically with full width
 - Reduce padding and spacing for smaller screens
 - Ensure touch targets meet minimum 44x44px size
 
 **Save and Exit Patterns:**
-
 - Provide "Save as Draft" option for partial completion
 - Warn users about unsaved changes before exit
 - Allow resume from saved state when returning
 - Clear distinction between "Save Draft" and final submission
 
 **Step Completion:**
-
 - Mark completed steps with clear visual indicator (checkmark)
 - Enable backward navigation to any completed step
 - Maintain data integrity when editing previous steps
@@ -5493,50 +5456,42 @@ ACCESSIBILITY REQUIREMENTS
 
 **Common Simple Parameters:**
 
-| Category | Simple Setting    | Default Value |
-| -------- | ----------------- | ------------- |
-| Voice    | Language          | English (US)  |
-| Voice    | Speaking Rate     | Normal        |
-| Behavior | Response Length   | Concise       |
-| Safety   | PII Redaction     | Enabled       |
-| Tools    | Tool Access Level | Basic         |
+| Category | Simple Setting | Default Value |
+|----------|---------------|---------------|
+| Voice | Language | English (US) |
+| Voice | Speaking Rate | Normal |
+| Behavior | Response Length | Concise |
+| Safety | PII Redaction | Enabled |
+| Tools | Tool Access Level | Basic |
 
 ```tsx
-{
-  /* Simple view */
-}
-;<div className="space-y-6">
+{/* Simple view */}
+<div className="space-y-6">
   <div>
     <h3 className="text-base font-semibold text-gray-900">Basic Settings</h3>
     <p className="mt-1 text-sm text-gray-600">Essential configuration for your voice agent</p>
   </div>
-
+  
   <div className="space-y-4">
     <div>
       <label className="block text-sm font-medium text-gray-900">Voice Language</label>
-      <select
-        defaultValue="en-US"
-        className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm"
-      >
+      <select defaultValue="en-US" className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm">
         <option value="en-US">English (US)</option>
         <option value="en-GB">English (UK)</option>
       </select>
     </div>
-
+    
     <div>
       <label className="block text-sm font-medium text-gray-900">Response Style</label>
-      <select
-        defaultValue="concise"
-        className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm"
-      >
+      <select defaultValue="concise" className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm">
         <option value="concise">Concise</option>
         <option value="detailed">Detailed</option>
       </select>
     </div>
   </div>
-
+  
   {/* Advanced toggle */}
-  <button
+  <button 
     type="button"
     className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
   >
@@ -5562,10 +5517,8 @@ ACCESSIBILITY REQUIREMENTS
 - Expanded: "Hide advanced settings" or "Hide advanced [category] settings"
 
 ```tsx
-{
-  /* Collapsed state */
-}
-;<button
+{/* Collapsed state */}
+<button 
   type="button"
   className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
   onClick={() => setShowAdvanced(true)}
@@ -5574,10 +5527,8 @@ ACCESSIBILITY REQUIREMENTS
   Show advanced settings
 </button>
 
-{
-  /* Expanded state */
-}
-;<button
+{/* Expanded state */}
+<button 
   type="button"
   className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
   onClick={() => setShowAdvanced(false)}
@@ -5600,22 +5551,22 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Group advanced settings by technical complexity or user persona (curious vs. cautious users).
 
 ```tsx
-{
-  /* Advanced section */
-}
-;<div className="mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-6">
+{/* Advanced section */}
+<div className="mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-6">
   <div className="mb-4">
     <h4 className="text-sm font-semibold text-gray-900">Advanced LLM Parameters</h4>
-    <p className="mt-1 text-sm text-gray-500">Fine-tune model behavior for specific use cases</p>
+    <p className="mt-1 text-sm text-gray-500">
+      Fine-tune model behavior for specific use cases
+    </p>
   </div>
-
+  
   <div className="space-y-4">
     <div>
       <label className="block text-sm font-medium text-gray-900">Temperature</label>
       <p className="mt-1 text-sm text-gray-500">
         Controls randomness. Lower values make responses more focused and deterministic.
       </p>
-      <input
+      <input 
         type="number"
         step="0.1"
         min="0"
@@ -5624,13 +5575,13 @@ ACCESSIBILITY REQUIREMENTS
         className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
       />
     </div>
-
+    
     <div>
       <label className="block text-sm font-medium text-gray-900">Max Tokens</label>
       <p className="mt-1 text-sm text-gray-500">
         Maximum length of the response in tokens (roughly 4 characters per token)
       </p>
-      <input
+      <input 
         type="number"
         defaultValue="1000"
         className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
@@ -5651,10 +5602,8 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Show count of modified advanced settings in toggle button when collapsed.
 
 ```tsx
-{
-  /* Modified field indicator */
-}
-;<div>
+{/* Modified field indicator */}
+<div>
   <div className="flex items-center gap-2">
     <label className="block text-sm font-medium text-gray-900">Temperature</label>
     <div className="h-2 w-2 rounded-full bg-indigo-600" />
@@ -5665,17 +5614,11 @@ ACCESSIBILITY REQUIREMENTS
       Reset to default
     </button>
   </div>
-  <input
-    type="number"
-    value="1.2"
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
-  />
+  <input type="number" value="1.2" className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm" />
 </div>
 
-{
-  /* Collapsed toggle with modification count */
-}
-;<button
+{/* Collapsed toggle with modification count */}
+<button 
   type="button"
   className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
 >
@@ -5700,14 +5643,12 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Always display critical information upfront; use expandable text only for supplementary details.
 
 ```tsx
-{
-  /* Expandable explanation */
-}
-;<div>
+{/* Expandable explanation */}
+<div>
   <label className="block text-sm font-medium text-gray-900">Top P (Nucleus Sampling)</label>
   <div className="mt-1 text-sm text-gray-500">
     <p>Controls diversity by limiting token selection to top probability mass.</p>
-    <button
+    <button 
       className="mt-1 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
       onClick={() => setExpanded(!expanded)}
     >
@@ -5715,20 +5656,13 @@ ACCESSIBILITY REQUIREMENTS
     </button>
     {expanded && (
       <p className="mt-2">
-        A value of 0.9 means only tokens comprising the top 90% probability mass are considered.
-        Lower values make output more focused; higher values increase diversity. Generally, alter
-        either temperature or top_p, but not both.
+        A value of 0.9 means only tokens comprising the top 90% probability mass are 
+        considered. Lower values make output more focused; higher values increase diversity. 
+        Generally, alter either temperature or top_p, but not both.
       </p>
     )}
   </div>
-  <input
-    type="number"
-    step="0.1"
-    min="0"
-    max="1"
-    defaultValue="1"
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
-  />
+  <input type="number" step="0.1" min="0" max="1" defaultValue="1" className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm" />
 </div>
 ```
 
@@ -5745,13 +5679,11 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Include external link to detailed documentation when available.
 
 ```tsx
-{
-  /* Parameter with info overlay */
-}
-;<div>
+{/* Parameter with info overlay */}
+<div>
   <div className="flex items-center gap-2">
     <label className="block text-sm font-medium text-gray-900">Frequency Penalty</label>
-    <button
+    <button 
       type="button"
       className="flex h-4 w-4 items-center justify-center rounded-full text-gray-400 hover:text-gray-600"
       aria-label="More information about frequency penalty"
@@ -5759,15 +5691,10 @@ ACCESSIBILITY REQUIREMENTS
       <Info className="h-4 w-4" />
     </button>
   </div>
-  <p className="mt-1 text-sm text-gray-500">Reduces likelihood of repeating the same phrases</p>
-  <input
-    type="number"
-    step="0.1"
-    min="-2"
-    max="2"
-    defaultValue="0"
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
-  />
+  <p className="mt-1 text-sm text-gray-500">
+    Reduces likelihood of repeating the same phrases
+  </p>
+  <input type="number" step="0.1" min="-2" max="2" defaultValue="0" className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm" />
 </div>
 ```
 
@@ -5789,22 +5716,24 @@ ACCESSIBILITY REQUIREMENTS
 - **Safety & Compliance:** Content filtering, PII handling, logging
 
 ```tsx
-{
-  /* Categorized advanced section */
-}
-;<div className="space-y-6">
+{/* Categorized advanced section */}
+<div className="space-y-6">
   {/* Category 1 */}
   <div>
     <h4 className="mb-3 text-sm font-semibold text-gray-900">Response Generation</h4>
-    <div className="space-y-4">{/* Parameters */}</div>
+    <div className="space-y-4">
+      {/* Parameters */}
+    </div>
   </div>
-
+  
   <div className="border-t border-gray-200" />
-
+  
   {/* Category 2 */}
   <div>
     <h4 className="mb-3 text-sm font-semibold text-gray-900">Content Control</h4>
-    <div className="space-y-4">{/* Parameters */}</div>
+    <div className="space-y-4">
+      {/* Parameters */}
+    </div>
   </div>
 </div>
 ```
@@ -5822,15 +5751,13 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Selecting a preset automatically updates all advanced parameters; switching to "Custom" when user manually changes any value.
 
 ```tsx
-{
-  /* Preset selector */
-}
-;<div className="mb-6">
+{/* Preset selector */}
+<div className="mb-6">
   <label className="block text-sm font-medium text-gray-900">Configuration Preset</label>
   <p className="mt-1 text-sm text-gray-500">
     Choose a preset or customize individual parameters below
   </p>
-  <select
+  <select 
     value={preset}
     onChange={(e) => applyPreset(e.target.value)}
     className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
@@ -5854,17 +5781,15 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Include brief explanation of risk with warning indicator.
 
 ```tsx
-{
-  /* Risky parameter with warning */
-}
-;<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
+{/* Risky parameter with warning */}
+<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
   <div className="flex gap-3">
     <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
     <div className="min-w-0 flex-1">
       <label className="block text-sm font-semibold text-amber-900">Disable Safety Filters</label>
       <p className="mt-1 text-sm text-amber-700">
-        Removing safety filters may result in inappropriate responses. Only disable for controlled
-        testing environments.
+        Removing safety filters may result in inappropriate responses. Only disable for 
+        controlled testing environments.
       </p>
       <div className="mt-3 flex items-center gap-2">
         <input type="checkbox" id="disable-safety" className="rounded-sm" />
@@ -5891,18 +5816,16 @@ ACCESSIBILITY REQUIREMENTS
 - Reset to defaults: `Cmd/Ctrl + R`
 
 ```tsx
-{
-  /* Toggle with keyboard shortcut indicator */
-}
-;<div className="flex items-center gap-3">
-  <button
+{/* Toggle with keyboard shortcut indicator */}
+<div className="flex items-center gap-3">
+  <button 
     type="button"
     className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600"
   >
     <ChevronRight className="h-4 w-4" />
     Show advanced settings
   </button>
-  <kbd className="rounded border border-gray-300 bg-gray-50 px-2 py-0.5 font-mono text-xs text-gray-600">
+  <kbd className="rounded border border-gray-300 bg-gray-50 px-2 py-0.5 text-xs font-mono text-gray-600">
     ⌘⇧A
   </kbd>
 </div>
@@ -5922,7 +5845,7 @@ ACCESSIBILITY REQUIREMENTS
 
 ```tsx
 {/* Accessible toggle implementation */}
-<button
+<button 
   type="button"
   aria-expanded={showAdvanced}
   aria-controls="advanced-settings"
@@ -5932,7 +5855,7 @@ ACCESSIBILITY REQUIREMENTS
   {showAdvanced ? 'Hide' : 'Show'} advanced settings
 </button>
 
-<div
+<div 
   id="advanced-settings"
   className={showAdvanced ? 'block' : 'hidden'}
   role="region"
@@ -5947,61 +5870,52 @@ ACCESSIBILITY REQUIREMENTS
 #### Progressive Disclosure Guidelines for AGENTS.MD
 
 **Design Foundation:**
-
 - Default to simple, intuitive interface that works for 80% of users
 - Never require advanced settings for basic functionality
 - Pre-fill all fields with safe, production-ready defaults
 - Use progressive disclosure to manage complexity, not hide critical features
 
 **User Control Principles:**
-
 - Let users decide when they need more control
 - Provide clear toggle mechanism with descriptive labels
 - Allow both expansion and collapse of advanced sections
 - Maintain state when navigating between simple/advanced views
 
 **Context and Clarity:**
-
 - Keep advanced options within relevant section, not separate pages
 - Provide inline help (info overlays, expandable text) for complex parameters
 - Use clear, jargon-free explanations for technical concepts
 - Link to detailed documentation for comprehensive information
 
 **Visual Distinction:**
-
 - Use lighter background color for advanced sections
 - Clearly separate simple from advanced with visual hierarchy
 - Indicate modified values with visual markers
 - Use appropriate warning indicators for risky settings
 
 **Categorization Strategy:**
-
 - Group advanced settings by functionality or user persona
 - Order categories from basic to expert complexity
 - Use clear category headings with consistent styling
 - Consider offering preset configurations for common patterns
 
 **Modification Tracking:**
-
 - Show which advanced parameters have been changed
 - Provide easy reset to default values
 - Display modification count in collapsed toggle
 - Persist modifications across sessions
 
 **Support for Different User Types:**
-
 - **Curious users:** Provide freedom to explore, clear signifiers for advanced features
 - **Cautious users:** Offer presets, detailed explanations, safe defaults
 - **Power users:** Keyboard shortcuts, batch operations, expert mode
 
 **Mobile Considerations:**
-
 - Advanced sections may need different layout on mobile
 - Ensure touch targets for toggles meet minimum size
 - Consider full-screen overlay for complex advanced settings on small screens
 
 **Performance Optimization:**
-
 - Lazy load advanced option values until section is expanded
 - Use smooth transitions for expansion/collapse
 - Avoid layout shift when toggling advanced sections
@@ -6027,19 +5941,17 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Cursor changes to `cursor-help` on hover to signal additional information is available.
 
 ```tsx
-{
-  /* Glossary term inline */
-}
-;<p className="text-sm text-gray-600">
+{/* Glossary term inline */}
+<p className="text-sm text-gray-600">
   The agent uses{' '}
   <button
     type="button"
-    className="cursor-help border-b-2 border-dotted border-gray-400 text-gray-900 hover:border-gray-600"
+    className="border-b-2 border-dotted border-gray-400 text-gray-900 cursor-help hover:border-gray-600"
     onClick={() => showTooltip('temperature')}
   >
     temperature
-  </button>{' '}
-  to control response variability.
+  </button>
+  {' '}to control response variability.
 </p>
 ```
 
@@ -6056,16 +5968,14 @@ ACCESSIBILITY REQUIREMENTS
 **🟡 DIRECTIVE:** Include small arrow pointing to triggering term using pseudo-elements or SVG.
 
 ```tsx
-{
-  /* Tooltip overlay */
-}
-;<div
+{/* Tooltip overlay */}
+<div 
   role="tooltip"
   className="absolute z-50 max-w-xs rounded-sm bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
 >
   <p>
-    Controls randomness in responses. Lower values produce more focused output; higher values
-    increase creativity.
+    Controls randomness in responses. Lower values produce more focused output; 
+    higher values increase creativity.
   </p>
   {/* Arrow */}
   <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-gray-900" />
@@ -6087,7 +5997,7 @@ ACCESSIBILITY REQUIREMENTS
 **Definition Structure Pattern:**
 
 1. **What:** Brief explanation of the term (1 sentence)
-2. **Impact:** How it affects behavior (1 sentence)
+2. **Impact:** How it affects behavior (1 sentence)  
 3. **Range/Default:** Common values or recommendations (optional)
 
 **Content Rules:**
@@ -6101,16 +6011,16 @@ ACCESSIBILITY REQUIREMENTS
 {/* Good definition examples */}
 
 {/* Example 1: Temperature */}
-"Controls randomness in responses. Lower values (0.1-0.5) produce focused,
+"Controls randomness in responses. Lower values (0.1-0.5) produce focused, 
 deterministic output; higher values (0.7-1.5) increase creativity and variation."
 
 {/* Example 2: Latency */}
-"Time between user speech ending and agent response beginning. Measured in
+"Time between user speech ending and agent response beginning. Measured in 
 milliseconds. Target: under 500ms for natural conversation flow."
 
 {/* Example 3: Context Window */}
-"Maximum amount of conversation history the agent can remember. Measured in
-tokens (roughly 4 characters each). Larger windows improve coherence but
+"Maximum amount of conversation history the agent can remember. Measured in 
+tokens (roughly 4 characters each). Larger windows improve coherence but 
 increase cost."
 ```
 
@@ -6125,18 +6035,16 @@ increase cost."
 **🟡 DIRECTIVE:** Links should not break reading flow; place after complete explanation.
 
 ```tsx
-{
-  /* Definition with external link */
-}
-;<div
+{/* Definition with external link */}
+<div 
   role="tooltip"
   className="absolute z-50 max-w-xs rounded-sm bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
 >
   <p>
-    Reduces likelihood of repeating tokens that have already appeared. Range: -2.0 to 2.0. Higher
-    values penalize repetition more strongly.
+    Reduces likelihood of repeating tokens that have already appeared. 
+    Range: -2.0 to 2.0. Higher values penalize repetition more strongly.
   </p>
-  <a
+  <a 
     href="https://docs.example.com/frequency-penalty"
     target="_blank"
     rel="noopener noreferrer"
@@ -6157,19 +6065,15 @@ increase cost."
 **Passive Voice Examples:**
 
 ```tsx
-{
-  /* Correct: Passive voice */
-}
-;('Maximum tokens is set to control response length.')
-;('The threshold is measured in milliseconds.')
-;('Values are constrained between 0 and 2.')
+{/* Correct: Passive voice */}
+"Maximum tokens is set to control response length."
+"The threshold is measured in milliseconds."
+"Values are constrained between 0 and 2."
 
-{
-  /* Avoid: Active voice */
-}
-;('You set maximum tokens to control response length.')
-;('The system measures the threshold in milliseconds.')
-;('We constrain values between 0 and 2.')
+{/* Avoid: Active voice */}
+"You set maximum tokens to control response length."
+"The system measures the threshold in milliseconds."
+"We constrain values between 0 and 2."
 ```
 
 ---
@@ -6189,17 +6093,13 @@ increase cost."
 - Giving usage tips or recommendations
 
 ```tsx
-{
-  /* Terminology overlay - for definitions */
-}
-;<span className="cursor-help border-b-2 border-dotted border-gray-400 text-gray-900">
+{/* Terminology overlay - for definitions */}
+<span className="border-b-2 border-dotted border-gray-400 text-gray-900 cursor-help">
   temperature
 </span>
 
-{
-  /* Information overlay - for contextual help */
-}
-;<div className="flex items-center gap-2">
+{/* Information overlay - for contextual help */}
+<div className="flex items-center gap-2">
   <label className="text-sm font-medium text-gray-900">Response Delay</label>
   <button className="flex h-4 w-4 items-center justify-center text-gray-400 hover:text-gray-600">
     <Info className="h-4 w-4" />
@@ -6218,10 +6118,8 @@ increase cost."
 **🟡 DIRECTIVE:** Consider showing tooltip in fixed position overlay on mobile to avoid viewport issues.
 
 ```tsx
-{
-  /* Mobile-optimized glossary term */
-}
-;<button
+{/* Mobile-optimized glossary term */}
+<button
   type="button"
   className="inline-block min-h-[44px] border-b-2 border-dotted border-gray-400 py-2 text-gray-900"
   onClick={() => setActiveTooltip('temperature')}
@@ -6229,11 +6127,9 @@ increase cost."
   temperature
 </button>
 
-{
-  /* Mobile tooltip with close button */
-}
-;<div className="fixed inset-x-4 bottom-4 z-50 rounded-lg bg-gray-900 p-4 text-sm text-white shadow-xl sm:hidden">
-  <button
+{/* Mobile tooltip with close button */}
+<div className="fixed inset-x-4 bottom-4 z-50 rounded-lg bg-gray-900 p-4 text-sm text-white shadow-xl sm:hidden">
+  <button 
     className="absolute top-2 right-2 rounded-sm p-1 hover:bg-gray-800"
     onClick={() => setActiveTooltip(null)}
   >
@@ -6254,18 +6150,16 @@ increase cost."
 **🔴 COMMAND:** Glossary index displays terms alphabetically with expandable definitions.
 
 ```tsx
-{
-  /* Glossary index modal */
-}
-;<div className="rounded-lg bg-white p-6">
+{/* Glossary index modal */}
+<div className="rounded-lg bg-white p-6">
   <h2 className="text-xl font-bold text-gray-900">Glossary</h2>
   <p className="mt-1 text-sm text-gray-600">
     Technical terms and concepts used in voice agent configuration
   </p>
-
+  
   <div className="mt-6 space-y-4">
     <div>
-      <button
+      <button 
         className="flex w-full items-center justify-between text-left"
         onClick={() => toggleTerm('temperature')}
       >
@@ -6274,8 +6168,8 @@ increase cost."
       </button>
       {expandedTerm === 'temperature' && (
         <p className="mt-2 text-sm text-gray-600">
-          Controls randomness in responses. Lower values produce more focused output; higher values
-          increase creativity.
+          Controls randomness in responses. Lower values produce more focused 
+          output; higher values increase creativity.
         </p>
       )}
     </div>
@@ -6295,12 +6189,10 @@ increase cost."
 **🟡 DIRECTIVE:** Use `Tab` to navigate between glossary terms, `Enter` or `Space` to trigger tooltip.
 
 ```tsx
-{
-  /* Keyboard accessible term */
-}
-;<button
+{/* Keyboard accessible term */}
+<button
   type="button"
-  className="cursor-help border-b-2 border-dotted border-gray-400 text-gray-900 hover:border-gray-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
+  className="border-b-2 border-dotted border-gray-400 text-gray-900 cursor-help hover:border-gray-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
   onFocus={() => showTooltip('temperature')}
   onBlur={() => hideTooltip()}
   onKeyDown={(e) => e.key === 'Escape' && hideTooltip()}
@@ -6321,19 +6213,15 @@ increase cost."
 **Term Consistency Examples:**
 
 ```tsx
-{
-  /* Consistent */
-}
-;('Configure the temperature parameter...')
-;('Adjust temperature to control...')
-;('Current temperature: 0.7')
+{/* Consistent */}
+"Configure the temperature parameter..."
+"Adjust temperature to control..."
+"Current temperature: 0.7"
 
-{
-  /* Inconsistent - avoid */
-}
-;('Configure the temperature parameter...')
-;('Adjust randomness to control...') // Use "temperature" not "randomness"
-;('Current heat setting: 0.7') // Use "temperature" not "heat"
+{/* Inconsistent - avoid */}
+"Configure the temperature parameter..."
+"Adjust randomness to control..."  // Use "temperature" not "randomness"
+"Current heat setting: 0.7"        // Use "temperature" not "heat"
 ```
 
 ---
@@ -6391,21 +6279,18 @@ increase cost."
 #### Inline Glossary Guidelines for AGENTS.MD
 
 **When to Use Glossary Terms:**
-
 - Technical parameters not obvious to general users (Temperature, Top P, Frequency Penalty)
 - Domain-specific concepts (Latency, Context Window, Token Limits)
 - Acronyms and abbreviations (NLU, ASR, TTS, PII)
 - Platform-specific terminology unique to voice agents
 
 **When NOT to Use:**
-
 - Common words users already understand
 - Terms that appear in labels with sufficient context
 - Concepts better explained through UI design itself
 - Every technical word (avoid over-glossarization)
 
 **Content Creation Principles:**
-
 - Focus on what users need to know, not exhaustive technical detail
 - Explain impact and practical usage, not just academic definition
 - Use analogies or comparisons when helpful
@@ -6413,35 +6298,30 @@ increase cost."
 - Link to comprehensive documentation for complex topics
 
 **Interaction Design:**
-
 - Make glossary terms visually distinct but not like navigation links
 - Ensure tooltips don't obscure important UI elements
 - Position tooltips intelligently based on available viewport space
 - Provide alternative access method (glossary index) for comprehensive reference
 
 **Progressive Learning:**
-
 - Start with essential terms in simple view
 - Introduce advanced terms only in advanced settings sections
 - Allow users to access definitions repeatedly without penalty
 - Consider user learning curve when deciding term prominence
 
 **Consistency Standards:**
-
 - Use same term throughout interface for same concept
 - Maintain central glossary source of truth
 - Apply consistent visual treatment across all instances
 - Update all instances when definition changes
 
 **Mobile Optimization:**
-
 - Ensure touch targets meet minimum size requirements
 - Use tap instead of hover for mobile interactions
 - Consider modal or overlay approach for small screens
 - Always provide close/dismiss mechanism on mobile
 
 **Accessibility Requirements:**
-
 - Full keyboard navigation support
 - Screen reader announcements for definitions
 - Sufficient color contrast for visual indicators
@@ -6469,10 +6349,8 @@ increase cost."
 **🟡 DIRECTIVE:** Display risk level badge prominently in card header.
 
 ```tsx
-{
-  /* High-risk tool card */
-}
-;<div className="rounded-lg border-2 border-red-600 bg-white p-6">
+{/* High-risk tool card */}
+<div className="rounded-lg border-2 border-red-600 bg-white p-6">
   <div className="flex items-start gap-3">
     <AlertTriangle className="h-5 w-5 shrink-0 text-red-600" />
     <div className="min-w-0 flex-1">
@@ -6527,10 +6405,8 @@ increase cost."
 **🔴 COMMAND:** Use `border-indigo-500 border-2` for selected state.
 
 ```tsx
-{
-  /* Selected tool card */
-}
-;<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6">
+{/* Selected tool card */}
+<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6">
   <div className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600">
     <Check className="h-4 w-4 text-white" />
   </div>
@@ -6555,7 +6431,7 @@ increase cost."
     <input
       type="text"
       placeholder="Search tools…"
-      className="block w-full rounded-sm border py-2 pr-3 pl-10 text-sm"
+      className="block w-full rounded-sm border py-2 pl-10 pr-3 text-sm"
     />
   </div>
   <select className="block rounded-sm border px-3 py-2 text-sm">
@@ -6575,10 +6451,8 @@ increase cost."
 **🟡 DIRECTIVE:** Use amber-50 background with amber-600 border for dependency warnings.
 
 ```tsx
-{
-  /* Dependent tool warning */
-}
-;<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
+{/* Dependent tool warning */}
+<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
   <div className="flex gap-3">
     <AlertCircle className="h-5 w-5 shrink-0 text-amber-600" />
     <div>
@@ -6608,21 +6482,18 @@ increase cost."
 #### Tool Picker Pattern Guidelines for AGENTS.MD
 
 **Risk Communication:**
-
 - Always display risk level prominently before user selects tool
 - Require explicit confirmation for high-risk tools
 - Explain consequences clearly in plain language
 - Show cost implications upfront to prevent surprises
 
 **Dependency Management:**
-
 - Prevent enabling dependent tools without prerequisites
 - Provide clear path to enable required parent tools
 - Visualize dependency relationships when helpful
 - Block selection until dependencies are met
 
 **Selection Patterns:**
-
 - Support multi-select for tools that work together
 - Show clear visual feedback for selected state
 - Allow easy deselection with confirmation for high-risk tools
@@ -6648,39 +6519,31 @@ increase cost."
 
 **Node Type Styling:**
 
-| Node Type | Visual Treatment                       | Use Case              |
-| --------- | -------------------------------------- | --------------------- |
-| Start     | Green-600 circle with "Start" label    | Entry point           |
-| Decision  | Diamond shape with indigo-600 border   | Conditional branching |
-| Action    | Rounded rectangle with gray-200 border | Process step          |
-| End       | Red-600 circle with "End" label        | Exit point            |
+| Node Type | Visual Treatment | Use Case |
+|-----------|-----------------|----------|
+| Start | Green-600 circle with "Start" label | Entry point |
+| Decision | Diamond shape with indigo-600 border | Conditional branching |
+| Action | Rounded rectangle with gray-200 border | Process step |
+| End | Red-600 circle with "End" label | Exit point |
 
 ```tsx
-{
-  /* Start node */
-}
-;<div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600">
+{/* Start node */}
+<div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-600">
   <span className="text-sm font-semibold text-white">Start</span>
 </div>
 
-{
-  /* Decision node */
-}
-;<div className="flex h-16 w-16 rotate-45 items-center justify-center border-2 border-indigo-600 bg-white">
-  <span className="-rotate-45 text-xs font-medium text-indigo-600">User intent?</span>
+{/* Decision node */}
+<div className="flex h-16 w-16 items-center justify-center rotate-45 border-2 border-indigo-600 bg-white">
+  <span className="text-xs font-medium text-indigo-600 -rotate-45">User intent?</span>
 </div>
 
-{
-  /* Action node */
-}
-;<div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
+{/* Action node */}
+<div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
   <p className="text-sm font-medium text-gray-900">Process request</p>
 </div>
 
-{
-  /* End node */
-}
-;<div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600">
+{/* End node */}
+<div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600">
   <span className="text-sm font-semibold text-white">End</span>
 </div>
 ```
@@ -6698,28 +6561,39 @@ increase cost."
 **🟡 DIRECTIVE:** Display decision conditions on connection lines as `text-xs` badges.
 
 ```tsx
-{
-  /* Primary path connection */
-}
-;<svg className="text-indigo-500">
-  <path d="M 0 0 L 100 0" stroke="currentColor" strokeWidth="2" fill="none" />
+{/* Primary path connection */}
+<svg className="text-indigo-500">
+  <path
+    d="M 0 0 L 100 0"
+    stroke="currentColor"
+    strokeWidth="2"
+    fill="none"
+  />
 </svg>
 
-{
-  /* Fallback path connection */
-}
-;<svg className="text-amber-500">
-  <path d="M 0 0 L 100 0" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" fill="none" />
+{/* Fallback path connection */}
+<svg className="text-amber-500">
+  <path
+    d="M 0 0 L 100 0"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeDasharray="4 4"
+    fill="none"
+  />
   <text x="50" y="-5" className="text-xs font-medium text-amber-600">
     Timeout
   </text>
 </svg>
 
-{
-  /* Error path connection */
-}
-;<svg className="text-red-500">
-  <path d="M 0 0 L 100 0" stroke="currentColor" strokeWidth="2" strokeDasharray="4 4" fill="none" />
+{/* Error path connection */}
+<svg className="text-red-500">
+  <path
+    d="M 0 0 L 100 0"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeDasharray="4 4"
+    fill="none"
+  />
 </svg>
 ```
 
@@ -6736,7 +6610,7 @@ increase cost."
   <svg className="text-indigo-500">
     <path d="M 0 0 L 100 0" stroke="currentColor" strokeWidth="2" fill="none" />
   </svg>
-  <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-white px-1.5 py-0.5 text-xs font-medium text-indigo-600">
+  <span className="absolute left-1/2 -top-2 -translate-x-1/2 rounded bg-white px-1.5 py-0.5 text-xs font-medium text-indigo-600">
     Yes
   </span>
 </div>
@@ -6775,10 +6649,8 @@ increase cost."
 **🟡 DIRECTIVE:** Show validation errors inline with affected nodes.
 
 ```tsx
-{
-  /* Validation error on node */
-}
-;<div className="rounded-lg border-2 border-red-600 bg-red-50 px-4 py-3">
+{/* Validation error on node */}
+<div className="rounded-lg border-2 border-red-600 bg-red-50 px-4 py-3">
   <div className="flex items-center gap-2">
     <AlertCircle className="h-4 w-4 text-red-600" />
     <p className="text-sm font-medium text-red-900">No connection to end node</p>
@@ -6811,21 +6683,18 @@ increase cost."
 #### Conversation Flow Pattern Guidelines for AGENTS.MD
 
 **Visual Hierarchy:**
-
 - Use distinct colors and line styles for different path types
 - Make primary path most prominent (solid, indigo)
 - Clearly distinguish fallback and error paths (dashed, amber/red)
 - Use consistent node styling across flow diagram
 
 **Flow Validation:**
-
 - Enforce maximum node limit to prevent complexity
 - Require start and end nodes for valid flows
 - Detect and warn about potential infinite loops
 - Validate all nodes have connections (no orphaned nodes)
 
 **User Guidance:**
-
 - Display decision conditions clearly on connection lines
 - Provide inline validation errors with specific fixes
 - Show flow summary or statistics (node count, path count)
@@ -6852,20 +6721,16 @@ increase cost."
 **🔴 COMMAND:** Timestamps use `text-xs text-gray-500` below each message.
 
 ```tsx
-{
-  /* User message */
-}
-;<div className="flex justify-start">
+{/* User message */}
+<div className="flex justify-start">
   <div className="max-w-[80%] rounded-lg bg-gray-100 px-4 py-2">
     <p className="text-sm text-gray-900">Hello, I need help with my order.</p>
     <p className="mt-1 text-xs text-gray-500">10:23:45 AM</p>
   </div>
 </div>
 
-{
-  /* Agent message */
-}
-;<div className="flex justify-end">
+{/* Agent message */}
+<div className="flex justify-end">
   <div className="max-w-[80%] rounded-lg bg-indigo-50 px-4 py-2">
     <p className="text-sm text-gray-900">I'd be happy to help with your order.</p>
     <p className="mt-1 text-xs text-gray-500">10:23:47 AM</p>
@@ -6882,10 +6747,8 @@ increase cost."
 **🟡 DIRECTIVE:** Include avatar or icon indicator for additional visual distinction.
 
 ```tsx
-{
-  /* Message with avatar */
-}
-;<div className="flex items-start gap-3">
+{/* Message with avatar */}
+<div className="flex items-start gap-3">
   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-600">
     <span className="text-xs font-semibold text-white">AI</span>
   </div>
@@ -6904,11 +6767,9 @@ increase cost."
 **🟡 DIRECTIVE:** Show relative time (e.g., "2s ago") for recent messages, absolute time for older messages.
 
 ```tsx
-;<p className="mt-1 text-xs text-gray-500">10:23:45 AM</p>
-{
-  /* Or relative */
-}
-;<p className="mt-1 text-xs text-gray-500">2 seconds ago</p>
+<p className="mt-1 text-xs text-gray-500">10:23:45 AM</p>
+{/* Or relative */}
+<p className="mt-1 text-xs text-gray-500">2 seconds ago</p>
 ```
 
 ---
@@ -6922,20 +6783,16 @@ increase cost."
 **🟡 DIRECTIVE:** Group debug information by category: Variables, API Calls, Errors, Performance.
 
 ```tsx
-{
-  /* Collapsible debug panel */
-}
-;<div className="border-t">
+{/* Collapsible debug panel */}
+<div className="border-t">
   <button
     className="flex w-full items-center justify-between px-4 py-3 text-left"
     onClick={() => setDebugOpen(!debugOpen)}
   >
     <span className="text-sm font-semibold text-gray-900">Debug Information</span>
-    <ChevronDown
-      className={`h-4 w-4 text-gray-500 transition-transform ${debugOpen ? 'rotate-180' : ''}`}
-    />
+    <ChevronDown className={`h-4 w-4 text-gray-500 transition-transform ${debugOpen ? 'rotate-180' : ''}`} />
   </button>
-
+  
   {debugOpen && (
     <div className="border-t bg-gray-50 px-4 py-3">
       <div className="space-y-2">
@@ -6978,10 +6835,8 @@ increase cost."
 **🔴 COMMAND:** Include error icon and description for failed messages.
 
 ```tsx
-{
-  /* Error message */
-}
-;<div className="flex justify-end">
+{/* Error message */}
+<div className="flex justify-end">
   <div className="max-w-[80%] rounded-lg border border-red-600 bg-red-100 px-4 py-2">
     <div className="flex items-start gap-2">
       <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
@@ -7002,18 +6857,14 @@ increase cost."
 **🟡 DIRECTIVE:** Display latency metrics as badges: <200ms (green), 200-500ms (amber), >500ms (red).
 
 ```tsx
-{
-  /* Latency badge */
-}
-;<span
-  className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
-    latency < 200
-      ? 'bg-green-100 text-green-700'
-      : latency < 500
-        ? 'bg-amber-100 text-amber-700'
-        : 'bg-red-100 text-red-700'
-  }`}
->
+{/* Latency badge */}
+<span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
+  latency < 200 
+    ? 'bg-green-100 text-green-700' 
+    : latency < 500 
+    ? 'bg-amber-100 text-amber-700' 
+    : 'bg-red-100 text-red-700'
+}`}>
   {latency}ms
 </span>
 ```
@@ -7056,28 +6907,24 @@ increase cost."
 #### Test Simulator Pattern Guidelines for AGENTS.MD
 
 **Real-Time Updates:**
-
 - Use `aria-live="polite"` for incoming messages to announce to screen readers
 - Update transcript smoothly without disrupting user's reading position
 - Show loading indicators for pending agent responses
 - Display connection status when testing live agents
 
 **Message Organization:**
-
 - Clearly distinguish user vs. agent messages with visual and semantic differences
 - Group related messages or show conversation threads when helpful
 - Allow filtering or searching within transcript
 - Provide clear timestamps for debugging timing issues
 
 **Debug Information:**
-
 - Keep debug panel collapsed by default to reduce visual clutter
 - Organize debug data by category for easy navigation
 - Show variable values in readable format (not raw JSON)
 - Highlight errors prominently with actionable information
 
 **Performance Metrics:**
-
 - Display latency for each message exchange
 - Show aggregate statistics (average latency, error rate)
 - Visualize performance trends over conversation duration
@@ -7104,10 +6951,8 @@ increase cost."
 **🔴 COMMAND:** Info errors use blue-50 background with blue-700 text.
 
 ```tsx
-{
-  /* Critical error */
-}
-;<div className="rounded-lg border border-red-600 bg-red-50 p-4">
+{/* Critical error */}
+<div className="rounded-lg border border-red-600 bg-red-50 p-4">
   <div className="flex gap-3">
     <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
     <div>
@@ -7119,10 +6964,8 @@ increase cost."
   </div>
 </div>
 
-{
-  /* Warning error */
-}
-;<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
+{/* Warning error */}
+<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
   <div className="flex gap-3">
     <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
     <div>
@@ -7134,10 +6977,8 @@ increase cost."
   </div>
 </div>
 
-{
-  /* Info error */
-}
-;<div className="rounded-lg border border-blue-600 bg-blue-50 p-4">
+{/* Info error */}
+<div className="rounded-lg border border-blue-600 bg-blue-50 p-4">
   <div className="flex gap-3">
     <Info className="h-5 w-5 shrink-0 text-blue-600" />
     <div>
@@ -7162,19 +7003,18 @@ increase cost."
 
 ```tsx
 const errorMessages = {
-  API_TIMEOUT: {
+  'API_TIMEOUT': {
     title: 'Request took too long',
     description: 'The API did not respond within the expected time.',
     cause: 'The service may be experiencing high load or network issues.',
-    resolution:
-      'Try again in a few moments. If the problem persists, check your network connection.',
+    resolution: 'Try again in a few moments. If the problem persists, check your network connection.'
   },
-  INVALID_CONFIG: {
+  'INVALID_CONFIG': {
     title: 'Configuration error',
     description: 'One or more settings are invalid.',
     cause: 'A required field is missing or contains an invalid value.',
-    resolution: 'Review the highlighted fields and correct any errors.',
-  },
+    resolution: 'Review the highlighted fields and correct any errors.'
+  }
 }
 ```
 
@@ -7206,7 +7046,7 @@ const errorMessages = {
 **🔴 COMMAND:** Links use `text-sm text-indigo-600` with external link icon.
 
 ```tsx
-<a
+<a 
   href="/docs/troubleshooting/api-errors"
   className="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
 >
@@ -7244,18 +7084,18 @@ const errorMessages = {
 **🔴 COMMAND:** Default to collapsed state; show "Show technical details" toggle.
 
 ```tsx
-;<button
+<button
   className="mt-2 text-sm font-semibold text-gray-600 hover:text-gray-900"
   onClick={() => setShowStack(!showStack)}
 >
   {showStack ? 'Hide' : 'Show'} technical details
 </button>
 
-{
-  showStack && (
-    <pre className="mt-2 overflow-auto rounded border bg-gray-50 p-3 text-xs">{stackTrace}</pre>
-  )
-}
+{showStack && (
+  <pre className="mt-2 overflow-auto rounded border bg-gray-50 p-3 text-xs">
+    {stackTrace}
+  </pre>
+)}
 ```
 
 ---
@@ -7269,7 +7109,7 @@ const errorMessages = {
 ```tsx
 <div>
   <label className="block text-sm font-medium text-gray-900">API Key</label>
-  <input
+  <input 
     className="mt-1 block w-full rounded-sm border border-red-600 px-3 py-2 text-sm"
     aria-invalid="true"
     aria-describedby="api-key-error"
@@ -7313,28 +7153,24 @@ const errorMessages = {
 #### Error Translation Pattern Guidelines for AGENTS.MD
 
 **Plain Language Principles:**
-
 - Translate all technical error codes to human-readable messages
 - Explain what happened in user's terms, not system terms
 - Provide context about why the error occurred
 - Offer clear, actionable steps to resolve the issue
 
 **Error Presentation:**
-
 - Use appropriate severity levels with matching visual treatment
 - Keep inline errors concise (maximum 2 lines)
 - Provide expandable details for complex errors
 - Include one-click fixes when possible
 
 **Developer Support:**
-
 - Hide technical details by default but make accessible
 - Provide copy functionality for support tickets
 - Include error codes in technical details section
 - Link to relevant documentation for complex issues
 
 **Error Frequency:**
-
 - Track and display error frequency to identify patterns
 - Alert users to recurring issues that may need attention
 - Provide aggregate error statistics in dashboard views
@@ -7362,45 +7198,39 @@ const errorMessages = {
 **🔴 COMMAND:** Optional items show gray-300 circle with italic label.
 
 ```tsx
-{
-  /* Blocked item */
-}
-;<div className="flex items-start gap-3">
+{/* Blocked item */}
+<div className="flex items-start gap-3">
   <X className="h-5 w-5 shrink-0 text-red-600" />
   <div className="min-w-0 flex-1">
     <p className="text-sm font-medium text-gray-900">API endpoint configured</p>
     <p className="mt-1 text-sm text-gray-600">Required for agent to function</p>
-    <button className="mt-2 text-sm font-semibold text-indigo-600 underline">Fix now</button>
+    <button className="mt-2 text-sm font-semibold text-indigo-600 underline">
+      Fix now
+    </button>
   </div>
 </div>
 
-{
-  /* Complete item */
-}
-;<div className="flex items-start gap-3">
+{/* Complete item */}
+<div className="flex items-start gap-3">
   <Check className="h-5 w-5 shrink-0 text-green-600" />
   <div className="min-w-0 flex-1">
     <p className="text-sm font-medium text-gray-900">Voice settings configured</p>
   </div>
 </div>
 
-{
-  /* Incomplete item */
-}
-;<div className="flex items-start gap-3">
+{/* Incomplete item */}
+<div className="flex items-start gap-3">
   <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-400" />
   <div className="min-w-0 flex-1">
     <p className="text-sm font-medium text-gray-900">Test conversation completed</p>
   </div>
 </div>
 
-{
-  /* Optional item */
-}
-;<div className="flex items-start gap-3">
+{/* Optional item */}
+<div className="flex items-start gap-3">
   <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-300" />
   <div className="min-w-0 flex-1">
-    <p className="text-sm font-medium text-gray-500 italic">Custom branding applied</p>
+    <p className="text-sm font-medium italic text-gray-500">Custom branding applied</p>
   </div>
 </div>
 ```
@@ -7436,7 +7266,7 @@ const errorMessages = {
 **🔴 COMMAND:** Fix links use `text-sm font-semibold text-indigo-600 underline` styling.
 
 ```tsx
-<button
+<button 
   className="text-sm font-semibold text-indigo-600 underline hover:text-indigo-700"
   onClick={() => navigateToFix('api-endpoint')}
 >
@@ -7492,8 +7322,7 @@ const errorMessages = {
 <div className="mb-6 flex items-center justify-between">
   <h2 className="text-xl font-bold text-gray-900">Publish Checklist</h2>
   <p className="text-sm text-gray-600">
-    <span className="font-semibold text-gray-900">7</span> of{' '}
-    <span className="font-semibold text-gray-900">10</span> checks passed
+    <span className="font-semibold text-gray-900">7</span> of <span className="font-semibold text-gray-900">10</span> checks passed
   </p>
 </div>
 ```
@@ -7511,9 +7340,9 @@ const errorMessages = {
   disabled={!allChecksPassed}
   aria-disabled={!allChecksPassed}
   className={`rounded-sm px-4 py-2 text-sm font-semibold text-white ${
-    allChecksPassed
-      ? 'bg-indigo-600 hover:bg-indigo-700'
-      : 'cursor-not-allowed bg-gray-400 opacity-50'
+    allChecksPassed 
+      ? 'bg-indigo-600 hover:bg-indigo-700' 
+      : 'bg-gray-400 opacity-50 cursor-not-allowed'
   }`}
 >
   Publish Agent
@@ -7535,28 +7364,24 @@ const errorMessages = {
 #### Publish Checklist Pattern Guidelines for AGENTS.MD
 
 **Checklist Organization:**
-
 - Group related items together (e.g., API configuration, voice settings)
 - Show dependencies clearly to help users understand requirements
 - Prioritize critical items at top of list
 - Mark optional items clearly to reduce confusion
 
 **Blocked Item Handling:**
-
 - Make blocked items highly visible with red indicators
 - Provide direct path to fix each blocked item
 - Explain why item is required when helpful
 - Allow users to skip optional items without blocking publish
 
 **Progress Communication:**
-
 - Show completion percentage prominently
 - Update progress in real-time as items are completed
 - Display estimated time to completion when applicable
 - Celebrate completion of all required items
 
 **Publish Readiness:**
-
 - Clearly distinguish between required and optional items
 - Disable publish button until all required items pass
 - Show rollback plan requirement for production
@@ -7651,10 +7476,8 @@ const errorMessages = {
 **🔴 BOUNDARY:** PII redaction cannot be disabled without admin role.
 
 ```tsx
-{
-  /* Confirmation dialog for disabling safety rail */
-}
-;<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+{/* Confirmation dialog for disabling safety rail */}
+<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
   <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
     <h2 className="text-lg font-semibold">Disable PII Redaction?</h2>
     <p className="mt-2 text-sm text-gray-600">
@@ -7666,7 +7489,9 @@ const errorMessages = {
       rows={3}
     />
     <div className="mt-4 flex gap-3">
-      <button className="flex-1 rounded-sm border px-4 py-2 text-sm font-semibold">Cancel</button>
+      <button className="flex-1 rounded-sm border px-4 py-2 text-sm font-semibold">
+        Cancel
+      </button>
       <button className="flex-1 rounded-sm bg-red-600 px-4 py-2 text-sm font-semibold text-white">
         Disable
       </button>
@@ -7682,17 +7507,13 @@ const errorMessages = {
 **🔴 COMMAND:** Use "Active Voice" to state exactly what data is being protected.
 
 ```tsx
-{
-  /* Correct: Active voice */
-}
-;<p className="text-sm text-gray-500">
+{/* Correct: Active voice */}
+<p className="text-sm text-gray-500">
   The system masks credit card numbers and SSNs in all conversation transcripts.
 </p>
 
-{
-  /* Avoid: Passive voice */
-}
-;<p className="text-sm text-gray-500">
+{/* Avoid: Passive voice */}
+<p className="text-sm text-gray-500">
   Credit card numbers and SSNs are masked in conversation transcripts.
 </p>
 ```
@@ -7712,29 +7533,22 @@ const errorMessages = {
 #### Safety Rails Pattern Guidelines for AGENTS.MD
 
 **Safety Communication:**
-
 - Use active voice to clearly state what protection is provided
 - Explain impact of enabling/disabling each safety rail
 - Show risk level prominently for high-impact settings
 - Require explicit justification for disabling protections
 
 **Confirmation Patterns:**
-
 - Require confirmation for all high-impact safety changes
 - Request written justification for disabling critical protections
 - Enforce role-based permissions (admin required for sensitive changes)
 - Log all safety rail modifications with audit trail
 
 **Visual Hierarchy:**
-
 - Make high-risk toggles visually distinct (red borders, warning icons)
 - Show impact descriptions clearly below each toggle
 - Display audit information (who changed what, when)
 - Group related safety settings together
-
-**Reference:**
-
-- [Guardrails Implementation Best Practice](https://medium.com/@dickson.lukose/guardrails-implementation-best-practice-e5fa2c1e4e09)
 
 ---
 
@@ -7778,7 +7592,14 @@ const errorMessages = {
     <label className="block text-sm font-medium text-gray-900">Speech Rate</label>
     <span className="text-sm text-gray-600">1.0x</span>
   </div>
-  <input type="range" min="0.5" max="2.0" step="0.1" defaultValue="1.0" className="mt-2 w-full" />
+  <input 
+    type="range" 
+    min="0.5" 
+    max="2.0" 
+    step="0.1" 
+    defaultValue="1.0"
+    className="mt-2 w-full"
+  />
   <div className="mt-1 flex justify-between text-xs text-gray-500">
     <span>0.5x (Slow)</span>
     <span>2.0x (Fast)</span>
@@ -7800,8 +7621,8 @@ const errorMessages = {
   <p className="mt-1 text-sm text-gray-500">
     Time to wait (in milliseconds) before considering user finished speaking.
   </p>
-  <input
-    type="number"
+  <input 
+    type="number" 
     defaultValue="500"
     className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
   />
@@ -7865,14 +7686,12 @@ const errorMessages = {
 #### Voice Controls Pattern Guidelines for AGENTS.MD
 
 **Parameter Organization:**
-
 - Group related settings together (output, input, processing)
 - Provide clear descriptions of what each setting affects
 - Show current values and acceptable ranges
 - Offer presets for common configurations
 
 **User Guidance:**
-
 - Explain impact of each setting on user experience
 - Provide audio previews when possible
 - Include recommended values for common use cases
@@ -8015,21 +7834,18 @@ const errorMessages = {
 #### Analytics Dashboard Pattern Guidelines for AGENTS.MD
 
 **Metric Organization:**
-
 - Group related metrics together in logical sections
 - Use consistent card layout for all metric displays
 - Show trends and comparisons (vs. previous period)
 - Provide drill-down capability for detailed analysis
 
 **Visualization:**
-
 - Use charts for time-series data (line charts, bar charts)
 - Display key numbers prominently with context
 - Show percentage changes with color coding (green up, red down)
 - Provide date range selectors for flexible time periods
 
 **Actionability:**
-
 - Highlight metrics that need attention (errors, high costs)
 - Provide links to detailed reports or configuration
 - Show recommendations based on metrics when applicable
@@ -8155,14 +7971,12 @@ const errorMessages = {
 #### Version Comparison Pattern Guidelines for AGENTS.MD
 
 **Comparison Display:**
-
 - Use side-by-side layout for easy comparison
 - Highlight differences clearly with color coding
 - Show both configuration and performance metrics
 - Provide context about when changes were made
 
 **Decision Support:**
-
 - Surface key metrics that indicate success or failure
 - Show trends over time, not just point-in-time comparison
 - Provide recommendations based on comparison data
@@ -8219,9 +8033,7 @@ const errorMessages = {
       <p className="text-sm font-medium text-gray-900">
         <span className="font-semibold">admin@example.com</span> updated Voice Settings
       </p>
-      <p className="mt-1 text-sm text-gray-600">
-        Changed language from English (US) to English (UK)
-      </p>
+      <p className="mt-1 text-sm text-gray-600">Changed language from English (US) to English (UK)</p>
       <p className="mt-1 text-xs text-gray-500">2 hours ago</p>
     </div>
   </div>
@@ -8285,28 +8097,24 @@ const errorMessages = {
 #### Collaboration Pattern Guidelines for AGENTS.MD
 
 **Team Management:**
-
 - Display team members with clear role indicators
 - Show permissions for each role clearly
 - Enable easy addition/removal of team members
 - Support role-based access control
 
 **Change Tracking:**
-
 - Maintain complete audit trail of all configuration changes
 - Show who made changes, what changed, and when
 - Enable filtering and searching of edit history
 - Provide rollback capability to previous versions
 
 **Communication:**
-
 - Support inline comments on configuration sections
 - Notify relevant team members of changes
 - Enable @mentions for specific people
 - Show comment threads with replies
 
 **Approval Workflows:**
-
 - Require approvals for production deployments
 - Show approval status clearly
 - Notify reviewers when action is needed
@@ -8329,9 +8137,11 @@ const errorMessages = {
   /* Ref: Tailwind UI Card Headings + Description Lists */
 }
 ;<div className="mb-8">
-  <div className="mb-4 flex items-baseline gap-2">
+  <div className="flex items-baseline gap-2 mb-4">
     <ShieldCheck className="size-5 text-gray-400" aria-hidden="true" />
-    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Global Rules Console</h3>
+    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+      Global Rules Console
+    </h3>
   </div>
   <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
     <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
@@ -8352,6 +8162,7 @@ const errorMessages = {
     </dl>
   </div>
 </div>
+
 ```
 
 ---
@@ -8376,7 +8187,23 @@ const errorMessages = {
 
 ```tsx
 <div className="mb-8">
-  <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Builder</h3>
+  <div className="mb-4 flex items-baseline gap-2">
+    <svg
+      className="size-5 shrink-0 text-gray-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+      />
+    </svg>
+    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Builder</h3>
+  </div>
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
       <div className="space-y-4">
@@ -8424,6 +8251,7 @@ const errorMessages = {
     </div>
   </div>
 </div>
+
 ```
 
 ---
@@ -8447,13 +8275,29 @@ const errorMessages = {
 
 ```tsx
 <div className="mb-8">
-  <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Simulator</h3>
+  <div className="mb-4 flex items-baseline gap-2">
+    <svg
+      className="size-5 shrink-0 text-gray-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+      />
+    </svg>
+    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Simulator</h3>
+  </div>
   <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
     <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
       <h4 className="text-base font-bold text-gray-900 dark:text-gray-100">Reasoning Trace</h4>
     </div>
     <div className="space-y-4 px-6 py-4">
-      <div className="rounded-sm border-l-4 border-red-500 bg-gray-50 p-4 dark:bg-gray-800">
+      <div className="rounded-sm bg-gray-50 p-4 border-l-4 border-red-500 dark:bg-gray-800">
         <p className="font-mono text-sm text-gray-900 dark:text-gray-100">
           Rule: PII_REDACTION_STRICT
         </p>
@@ -8474,6 +8318,7 @@ const errorMessages = {
     </div>
   </div>
 </div>
+
 ```
 
 ---
@@ -8496,8 +8341,8 @@ const errorMessages = {
     <div className="space-y-1">
       <h4 className="font-bold text-amber-900">High Risk Deployment</h4>
       <p className="text-sm text-amber-800">
-        This version modifies <strong>Tool Access</strong> permissions. Review the security diff
-        before proceeding.
+        This version modifies <strong>Tool Access</strong> permissions. Review the security diff before
+        proceeding.
       </p>
     </div>
   </div>
@@ -8508,6 +8353,7 @@ const errorMessages = {
     <button className="text-sm text-amber-700 underline">Cancel</button>
   </div>
 </div>
+
 ```
 
 ---
