@@ -10,6 +10,7 @@ import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
+import AgentationDev from '@/components/AgentationDev'
 import { Metadata } from 'next'
 
 const space_grotesk = Space_Grotesk({
@@ -104,6 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </SearchProvider>
             <Footer />
           </SectionContainer>
+          <AgentationDev />
         </ThemeProviders>
       </body>
     </html>

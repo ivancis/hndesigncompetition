@@ -17,7 +17,7 @@ const statusThemes: Record<string, StatusTheme> = {
   good: { badge: 'text-indigo-700 bg-indigo-100 border-indigo-300', dot: 'bg-indigo-700' },
   neutral: { badge: 'text-slate-700 bg-slate-100 border-slate-300', dot: 'bg-slate-700' },
   warning: { badge: 'text-amber-700 bg-amber-100 border-amber-300', dot: 'bg-amber-700' },
-  critical: { badge: 'text-pink-700 bg-pink-100 border-pink-300', dot: 'bg-pink-700' },
+  critical: { badge: 'text-red-700 bg-red-100 border-red-300', dot: 'bg-red-700' },
 }
 
 const defaultStatusTheme: StatusTheme = {
@@ -39,7 +39,7 @@ export default function TabItemCard({ title, body, footer, slot }: TabItemCardPr
   const { badge, dot } = getStatusTheme(footer)
 
   return (
-    <div className="rounded-md border border-gray-200 bg-gray-50 p-4 text-left dark:border-gray-700 dark:bg-gray-800">
+    <div className="w-full">
       <div className="header border-b border-gray-200 pb-2 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
         <h4>{title}</h4>
       </div>

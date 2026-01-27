@@ -21,7 +21,14 @@ January 2026
 7. [Accessibility](#7-accessibility)
 8. [Navigation](#8-navigation)
 9. [Forms](#9-forms)
-10. [Quick Reference](#10-quick-reference)
+10. [Common Actions](#10-common-actions)
+11. [Disabled States](#11-disabled-states)
+12. [Empty States](#12-empty-states)
+13. [Loading States](#13-loading-states)
+14. [Modal Patterns](#14-modal-patterns)
+15. [Voice Agent Builder Patterns](#15-voice-agent-builder-patterns)
+16. [AI Instructions + Global Rules](#16-ai-instructions--global-rules)
+17. [Quick Reference](#17-quick-reference)
 
 ---
 
@@ -481,6 +488,8 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 
 **🔴 COMMAND:** For icon + label buttons and chips, use horizontal padding one step larger than vertical (example: `px-3 py-2`).
 
+**🔴 COMMAND:** Icon + label combinations must have similar visual weight. Use `text-lg leading-5` (18px font-size, 20px line-height) for labels to match icon height (typically 20px). This ensures the first line aligns with the icon even when text wraps.
+
 ```tsx
 <button className="inline-flex items-center gap-2 rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -526,6 +535,31 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 ;<div className="flex gap-1">
   <Badge />
   <Badge />
+</div>
+```
+
+#### Header label + icon
+
+**🔴 COMMAND:** When a header (section title, card title, or similar) includes both a label and an icon, the icon must be placed on the left and aligned to the baseline of the label.
+
+**🔴 COMMAND:** Use `flex items-baseline gap-2` (or `gap-4` if more separation is needed). Icon first, then label.
+
+**🔴 BOUNDARY:** Never place icons to the right of header labels - icons must always be on the left for consistency and visual hierarchy.
+
+```tsx
+{
+  /* Header with label + icon */
+}
+;<div className="flex items-baseline gap-2">
+  <svg
+    className="size-5 shrink-0 text-gray-400"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M12 2v20M2 12h20" />
+  </svg>
+  <h2 className="text-xl font-bold">Section Title</h2>
 </div>
 ```
 
@@ -858,46 +892,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 </button>
 ```
 
-**Disable vs Hide Decision Tree:**
-
-**✅ DISABLE when:**
-
-- User needs to know the feature exists
-- Feature will become available later
-- Helpful to show what's possible
-
-**❌ HIDE when:**
-
-- Element contains sensitive data
-- Element provides no value to user
-- Element interrupts user flow
-
-```tsx
-{
-  /* Show disabled button */
-}
-;<button disabled className="disabled:opacity-50">
-  Save (requires changes)
-</button>
-
-{
-  /* Conditionally hide sensitive action */
-}
-{
-  hasPermission && <button>Delete Account</button>
-}
-```
-
-**🟡 DIRECTIVE:** When disabling, make it apparent WHY the element is disabled - use helper text or tooltips.
-
-```tsx
-<div className="space-y-1">
-  <button disabled className="disabled:opacity-50">
-    Submit
-  </button>
-  <p className="text-sm text-gray-600">Complete all fields to submit</p>
-</div>
-```
+**🟡 DIRECTIVE:** For detailed disabled state patterns, see [Section 11: Disabled States](#11-disabled-states).
 
 ---
 
@@ -1048,6 +1043,29 @@ These states are mutually exclusive - an element can only be in one state at a t
 </button>
 ```
 
+#### Pattern: Icon-Only Button
+
+**🔴 COMMAND:** Buttons with a single icon (no text label) must render as a perfect square, matching its height.
+
+**🔴 COMMAND:** Use equal padding on all sides (e.g., `p-2` for a 32px square button, `p-3` for a 40px square button).
+
+**🔴 COMMAND:** Ensure the button meets minimum touch target size requirements (44×44px minimum for accessibility).
+
+```tsx
+{
+  /* Icon-only close button - perfect square */
+}
+;<button
+  type="button"
+  className="flex h-10 w-10 items-center justify-center rounded-sm text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-500"
+  aria-label="Close"
+>
+  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+  </svg>
+</button>
+```
+
 ---
 
 ## 6. Status and Health
@@ -1070,7 +1088,7 @@ Status communicates the health of a system, process, or object. Use consistent, 
 2. Good     →  indigo   →  Informative, minor issues, new features
 3. Neutral  →  slate    →  Inactive, undefined, unessential
 4. Warning  →  amber    →  Potential issues, attention needed
-5. Critical →  pink     →  Failed, immediate attention required
+5. Critical →  red     →  Failed, immediate attention required
 ```
 
 ---
@@ -1086,7 +1104,7 @@ Ideal:    text-emerald-600  bg-emerald-50  border-emerald-200
 Good:     text-indigo-600   bg-indigo-50   border-indigo-200
 Neutral:  text-slate-600    bg-slate-50    border-slate-200
 Warning:  text-amber-600    bg-amber-50    border-amber-200
-Critical: text-pink-600     bg-pink-50     border-pink-200
+Critical: text-red-600     bg-red-50     border-red-200
 ```
 
 **Emphasized (more contrast):**
@@ -1096,7 +1114,7 @@ Ideal:    text-emerald-700  bg-emerald-100  border-emerald-300
 Good:     text-indigo-700   bg-indigo-100   border-indigo-300
 Neutral:  text-slate-700    bg-slate-100    border-slate-300
 Warning:  text-amber-700    bg-amber-100    border-amber-300
-Critical: text-pink-700     bg-pink-100     border-pink-300
+Critical: text-red-700     bg-red-100     border-red-300
 ```
 
 **Accent (highest contrast):**
@@ -1106,7 +1124,7 @@ Ideal:    text-emerald-900  bg-emerald-200  border-emerald-500
 Good:     text-indigo-900   bg-indigo-200   border-indigo-500
 Neutral:  text-slate-900    bg-slate-200    border-slate-500
 Warning:  text-amber-900    bg-amber-200    border-amber-500
-Critical: text-pink-900     bg-pink-200     border-pink-500
+Critical: text-red-900     bg-red-200     border-red-500
 ```
 
 ---
@@ -1114,16 +1132,6 @@ Critical: text-pink-900     bg-pink-200     border-pink-500
 ### 6.4 Status Mapping Examples
 
 Map universal levels to your context:
-
-**Kubernetes Health:**
-
-```
-Ideal    → Healthy
-Good     → Monitored
-Neutral  → Unmonitored
-Warning  → (not used)
-Critical → Unhealthy
-```
 
 **Security Risk:**
 
@@ -1211,7 +1219,7 @@ Critical → Failed
 ;<section className="space-y-4">
   <div className="flex items-center justify-between">
     <h2 className="text-xl font-bold">Services</h2>
-    <div className="flex items-center gap-2 text-pink-600">
+    <div className="flex items-center gap-2 text-red-600">
       <AlertCircle aria-hidden="true" />
       <span className="text-sm font-semibold">3 unhealthy</span>
     </div>
@@ -1286,7 +1294,7 @@ Subtle status for systems, processes, or objects.
   /* Icon-based health indicator */
 }
 ;<div className="flex items-center gap-2">
-  <CheckCircle className="text-emerald-600" aria-hidden="true" />
+  <div className="inline-flex rounded-full bg-emerald-600" aria-hidden="true" />
   <span className="text-sm font-semibold text-emerald-600">Healthy</span>
 </div>
 ```
@@ -1297,9 +1305,31 @@ Subtle status for systems, processes, or objects.
 **🔴 COMMAND:** Chip text: `text-sm font-semibold`  
 **🔴 COMMAND:** Chip radius: `rounded-sm`
 
+**🔴 COMMAND:** When a chip/badge/tag has an icon as the first element (leftmost), add extra left padding (`pl-3` or `pl-2.5`) to compensate for visual weight and ensure balanced spacing.
+
+**🟡 EXCEPTION:** When the container is fully rounded (`rounded-full`), do NOT add extra left padding - use standard padding (`px-2.5` or `px-3`) instead, as the fully rounded shape already provides visual balance.
+
 ```tsx
-<span className="inline-flex items-center gap-1 rounded-sm bg-emerald-50 p-2 text-sm font-semibold text-emerald-700">
-  <CheckCircle aria-hidden="true" />
+{
+  /* Chip with icon first - extra left padding */
+}
+;<span className="inline-flex items-center gap-2 rounded-sm bg-emerald-50 py-2 pr-2 pl-3 text-sm font-semibold text-emerald-700">
+  <div className="inline-flex h-2 w-2 rounded-full bg-emerald-600" aria-hidden="true" />
+  Completed
+</span>
+
+{
+  /* Chip without icon - standard padding */
+}
+;<span className="inline-flex items-center rounded-sm bg-emerald-50 px-2 py-2 text-sm font-semibold text-emerald-700">
+  Completed
+</span>
+
+{
+  /* Fully rounded chip with icon - NO extra left padding (exception) */
+}
+;<span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-2.5 py-0.5 text-sm font-medium text-emerald-700">
+  <div className="inline-flex h-2 w-2 rounded-full bg-emerald-600" aria-hidden="true" />
   Completed
 </span>
 ```
@@ -1311,11 +1341,11 @@ Subtle status for systems, processes, or objects.
 **🔴 COMMAND:** Use semantic color variants
 
 ```tsx
-<div className="flex gap-3 rounded-md border-2 border-pink-300 bg-pink-100 p-4">
-  <AlertCircle className="flex-shrink-0 text-pink-700" aria-hidden="true" />
+<div className="flex gap-3 rounded-md border-2 border-red-300 bg-red-100 p-4">
+  <div className="inline-flex flex-shrink-0 rounded-full bg-red-700" aria-hidden="true" />
   <div className="space-y-1">
-    <h3 className="text-sm font-semibold text-pink-700">Service Unavailable</h3>
-    <p className="text-sm text-pink-700">
+    <h3 className="text-sm font-semibold text-red-700">Service Unavailable</h3>
+    <p className="text-sm text-red-700">
       The API service is currently down. Our team has been notified and is working on a fix.
     </p>
   </div>
@@ -1375,7 +1405,7 @@ Subtle status for systems, processes, or objects.
 ```tsx
 <div className="flex items-center gap-2">
   <span className="text-2xl font-bold text-slate-900">3.2%</span>
-  <div className="flex items-center gap-1 text-pink-600">
+  <div className="flex items-center gap-1 text-red-600">
     <TrendingUp aria-hidden="true" />
     <span className="text-sm font-semibold">+1.2%</span>
   </div>
@@ -1397,11 +1427,11 @@ Subtle status for systems, processes, or objects.
     </div>
   </div>
 
-  <div className="flex gap-3 rounded-md border-2 border-pink-300 bg-pink-100 p-4">
-    <AlertCircle className="flex-shrink-0 text-pink-700" aria-hidden="true" />
+  <div className="flex gap-3 rounded-md border-2 border-red-300 bg-red-100 p-4">
+    <AlertCircle className="flex-shrink-0 text-red-700" aria-hidden="true" />
     <div className="space-y-1">
-      <h3 className="text-sm font-semibold text-pink-700">Payment Service Down</h3>
-      <p className="text-sm text-pink-700">Immediate attention required. Incident #1234 created.</p>
+      <h3 className="text-sm font-semibold text-red-700">Payment Service Down</h3>
+      <p className="text-sm text-red-700">Immediate attention required. Incident #1234 created.</p>
     </div>
   </div>
 </div>
@@ -1417,21 +1447,21 @@ Ideal:    emerald-600  emerald-50  emerald-200
 Good:     indigo-600   indigo-50   indigo-200
 Neutral:  slate-600    slate-50    slate-200
 Warning:  amber-600    amber-50    amber-200
-Critical: pink-600     pink-50     pink-200
+Critical: red-600     red-50     red-200
 
 STATUS COLORS (Emphasized)
 Ideal:    emerald-700  emerald-100  emerald-300
 Good:     indigo-700   indigo-100   indigo-300
 Neutral:  slate-700    slate-100    slate-300
 Warning:  amber-700    amber-100    amber-300
-Critical: pink-700     pink-100     pink-300
+Critical: red-700     red-100     red-300
 
 STATUS COLORS (Accent)
 Ideal:    emerald-900  emerald-200  emerald-500
 Good:     indigo-900   indigo-200   indigo-500
 Neutral:  slate-900    slate-200    slate-500
 Warning:  amber-900    amber-200    amber-500
-Critical: pink-900     pink-200     pink-500
+Critical: red-900     red-200     red-500
 ```
 
 ---
@@ -2104,17 +2134,2913 @@ Every form element consists of up to four parts:
 
 ---
 
-### 9.8 Empty, Loading, Success, and Error States
+## 10. Common Actions
 
-### 9.9 Search and Filter
+### 10.1 Overview
 
-### 9.10 Tables, Graphs, and Charts
+Use consistent patterns and clear labeling to reduce uncertainty and guide users effectively.
+
+**🔴 COMMAND:** Action labels must be descriptive and specific (e.g., "Delete account" not "OK").
+
+**🟡 DIRECTIVE:** Consider these questions for every action:
+
+- What are the implications? (financial, access, legal)
+- Does the user have correct permissions to perform this action?
+- Is the action permanent or reversible?
+- What timeframe will it take? (seconds, minutes, hours)
+- What happens if the action fails?
+- Is this a single or bulk action?
 
 ---
 
-## 10. Quick Reference
+### 10.2 Action Patterns
 
-### 10.1 Spacing Cheat Sheet
+#### Add
+
+**Use for:** Inserting an existing object to a list, set, or system.
+
+**🔴 COMMAND:** Button emphasis depends on importance:
+
+- High emphasis: Primary button
+- Medium/Low emphasis: Secondary button
+
+```tsx
+{
+  /* High emphasis add */
+}
+;<button className="flex items-center gap-2 rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700">
+  <Plus width="16" height="16" aria-hidden="true" />
+  Add document
+</button>
+
+{
+  /* Low emphasis add */
+}
+;<button className="flex items-center gap-2 rounded-sm border px-3 py-2 text-sm hover:bg-slate-50">
+  <Plus width="16" height="16" aria-hidden="true" />
+  Add
+</button>
+```
+
+---
+
+#### Cancel
+
+**Use for:** Stopping current action and closing component.
+
+**🔴 COMMAND:** Use secondary button or link for cancel actions.
+
+**🔴 COMMAND:** Warn user of negative consequences (data loss, data corruption).
+
+```tsx
+{
+  /* Cancel in modal */
+}
+;<div className="flex justify-end gap-2">
+  <button className="rounded-sm border px-3 py-2 hover:bg-slate-50">Cancel</button>
+  <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Save changes</button>
+</div>
+```
+
+---
+
+#### Clear
+
+**Use for:** Removing data from fields or selections.
+
+**🔴 COMMAND:** Use close icon (X) on right side of field.
+
+**🟡 DIRECTIVE:** For controls with defaults (radio buttons), reset to default value.
+
+```tsx
+{
+  /* Clear in search field */
+}
+;<div className="relative">
+  <input className="w-full rounded-sm border pr-8" />
+  <button className="absolute top-1/2 right-2 -translate-y-1/2">
+    <X width="16" height="16" className="text-slate-400" aria-hidden="true" />
+  </button>
+</div>
+```
+
+---
+
+#### Close
+
+**Use for:** Terminating page, window, or menu. Dismissing notifications.
+
+**🔴 COMMAND:** Use close icon (X), typically upper right.
+
+**🔴 BOUNDARY:** Never use "close" in a button - use icon only.
+
+```tsx
+{
+  /* Close in toast */
+}
+;<div className="flex items-center justify-between gap-3 rounded-md bg-slate-900 p-4 text-white">
+  <span>Action completed</span>
+  <button className="rounded-sm p-1 hover:bg-slate-800">
+    <X width="16" height="16" aria-hidden="true" />
+  </button>
+</div>
+```
+
+---
+
+#### Copy
+
+**Use for:** Creating new identical instance of selected object(s).
+
+**🔴 COMMAND:** Use copy icon with "Copied" confirmation tooltip.
+
+```tsx
+{
+  /* Copy code snippet */
+}
+;<div className="relative">
+  <pre className="rounded-md bg-slate-900 p-4">
+    <code>npm install package</code>
+  </pre>
+  <button
+    className="absolute top-2 right-2 rounded-sm p-1.5 hover:bg-slate-800"
+    aria-label="Copy to clipboard"
+  >
+    <Copy width="16" height="16" className="text-slate-400" aria-hidden="true" />
+  </button>
+</div>
+```
+
+---
+
+#### Delete
+
+**Use for:** Destroying an object permanently.
+
+**🔴 COMMAND:** Delete actions use:
+
+- Delete or trash icon
+- Danger button styling
+- Danger option in menu
+
+**🔴 COMMAND:** Warn user of negative consequences (data loss).
+
+**Impact levels:**
+
+**Low-impact deletion:**
+
+- Trivial to undo or recreate
+- Delete immediately without warning
+
+**Moderate-impact deletion:**
+
+- Cannot undo or recreate easily
+- Ask for confirmation with explanation
+
+**High-impact deletion:**
+
+- Very expensive or time-consuming to recreate
+- Large amount of data deleted
+- Require typed confirmation (manual verification)
+
+```tsx
+{
+  /* Low-impact: immediate deletion */
+}
+;<button className="rounded-sm p-1 text-red-600 hover:bg-red-50">
+  <Trash2 width="16" height="16" aria-hidden="true" />
+</button>
+
+{
+  /* Moderate-impact: confirmation dialog */
+}
+;<div className="rounded-md border p-4">
+  <h3 className="font-semibold">Delete 3 items?</h3>
+  <p className="text-sm text-slate-600">This action cannot be undone.</p>
+  <div className="mt-4 flex gap-2">
+    <button className="rounded-sm border px-3 py-2">Cancel</button>
+    <button className="rounded-sm bg-red-600 px-3 py-2 text-white">Delete</button>
+  </div>
+</div>
+
+{
+  /* High-impact: typed confirmation */
+}
+;<div className="space-y-4">
+  <p className="text-sm">
+    Type <strong>delete-production-db</strong> to confirm
+  </p>
+  <input className="w-full rounded-sm border px-3 py-2" />
+  <button disabled className="rounded-sm bg-red-600 px-3 py-2 text-white disabled:opacity-50">
+    Delete database
+  </button>
+</div>
+```
+
+**Post-deletion:**
+
+**🔴 COMMAND:** After deletion, return to list page.
+
+**🔴 COMMAND:** Animate removal from list.
+
+**🔴 COMMAND:** Show success notification.
+
+**🔴 COMMAND:** If deletion fails, show error notification and animate data back.
+
+---
+
+#### Edit
+
+**Use for:** Changing data or values.
+
+**🔴 COMMAND:** Offer as menu option, button, or edit icon.
+
+```tsx
+{
+  /* Edit in overflow menu */
+}
+;<button className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-slate-50">
+  <Edit2 width="16" height="16" aria-hidden="true" />
+  Edit
+</button>
+
+{
+  /* Edit icon button */
+}
+;<button className="rounded-sm p-1.5 hover:bg-slate-100">
+  <Edit2 width="16" height="16" className="text-slate-600" aria-hidden="true" />
+</button>
+```
+
+---
+
+#### Next
+
+**Use for:** Advancing to next step in sequence (wizards).
+
+**🔴 COMMAND:** Use button with forward icon or standalone forward icon.
+
+```tsx
+{
+  /* Next button in wizard */
+}
+;<div className="flex justify-end gap-2">
+  <button className="rounded-sm border px-3 py-2">Back</button>
+  <button className="flex items-center gap-2 rounded-sm bg-indigo-600 px-3 py-2 text-white">
+    Next
+    <ChevronRight width="16" height="16" aria-hidden="true" />
+  </button>
+</div>
+```
+
+---
+
+#### Refresh
+
+**Use for:** Reloading view when displayed data is unsynchronized.
+
+**🔴 COMMAND:** Use refresh icon or button.
+
+```tsx
+{
+  /* Refresh button */
+}
+;<button className="flex items-center gap-2 rounded-sm border px-3 py-2 text-sm hover:bg-slate-50">
+  <RefreshCw width="16" height="16" aria-hidden="true" />
+  Refresh
+</button>
+```
+
+---
+
+#### Remove
+
+**Use for:** Removing object from list (not destroying it).
+
+**🔴 COMMAND:** Use button or subtract/minus icon.
+
+**🟡 DIRECTIVE:** Remove is rarely primary action - avoid over-emphasis.
+
+**🟡 DIRECTIVE:** Clarify difference from delete - removal doesn't destroy data.
+
+```tsx
+{
+  /* Remove from list */
+}
+;<button className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900">
+  <Minus width="16" height="16" aria-hidden="true" />
+  Remove from collection
+</button>
+```
+
+---
+
+#### Reset
+
+**Use for:** Reverting values to last saved state.
+
+**🔴 COMMAND:** Use link styling (not button).
+
+```tsx
+{
+  /* Reset form */
+}
+;<button className="text-sm text-indigo-600 underline hover:text-indigo-700">
+  Reset to defaults
+</button>
+```
+
+---
+
+### 10.3 Error Handling
+
+**🔴 COMMAND:** Errors must provide:
+
+- Context of what happened
+- Clear path to continue or resolve
+
+**🔴 COMMAND:** Be brief, honest, and supportive.
+
+**🔴 COMMAND:** Maximum length:
+
+- Full-page/large modals: 3 paragraph lines
+- Form errors: 2 lines
+
+**🟡 DIRECTIVE:** Consider redirecting to previous state, support page, or offering recommendations.
+
+```tsx
+{
+  /* Inline form error */
+}
+;<div className="space-y-1">
+  <input aria-invalid="true" className="w-full rounded-md border-2 border-red-500 px-3 py-2" />
+  <p className="text-sm text-red-600">Password must be at least 8 characters</p>
+</div>
+
+{
+  /* Full-page error */
+}
+;<div className="flex min-h-screen items-center justify-center p-4">
+  <div className="max-w-md space-y-4 text-center">
+    <AlertCircle width="48" height="48" className="mx-auto text-red-600" aria-hidden="true" />
+    <h1 className="text-2xl font-bold">Something went wrong</h1>
+    <p className="text-slate-600">
+      We couldn't process your request. Please try again or contact support if the problem persists.
+    </p>
+    <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Try again</button>
+  </div>
+</div>
+```
+
+---
+
+## 11. Disabled States
+
+### 11.1 Overview
+
+Disabled states remove interactive function when users cannot interact with component due to permissions, dependencies, or prerequisites.
+
+---
+
+### 11.2 Disabled Variations
+
+**🔴 COMMAND:** Use one of these three variations:
+
+```
+1. Default disabled → Cannot interact, not read by screen reader
+2. Read-only       → Cannot interact, readable by screen reader
+3. Hidden          → Completely hidden from view
+```
+
+---
+
+#### Default Disabled
+
+**Use when:** Temporarily disabled due to dependencies or unmet prerequisites.
+
+**🔴 COMMAND:** Component returns to enabled state once conditions are met.
+
+**🔴 BOUNDARY:** Never hide temporarily disabled components.
+
+**Style:**
+
+```
+Component:  50% opacity
+Text:       25% opacity
+Icons:      50% opacity
+Hover:      None
+Cursor:     not-allowed
+```
+
+```tsx
+{
+  /* Disabled button */
+}
+;<button
+  disabled
+  className="rounded-sm bg-indigo-600 px-3 py-2 text-white disabled:cursor-not-allowed disabled:opacity-50"
+>
+  Submit
+</button>
+
+{
+  /* Disabled input */
+}
+;<input
+  disabled
+  className="rounded-sm border px-3 py-2 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:opacity-50"
+/>
+```
+
+**🟡 DIRECTIVE:** Show inline warning if disabled item affects multiple items or primary action.
+
+```tsx
+<div className="space-y-2">
+  <button disabled className="disabled:opacity-50">
+    Submit application
+  </button>
+  <div className="flex gap-2 rounded-md border border-amber-200 bg-amber-50 p-3">
+    <AlertTriangle className="h-4 w-4 flex-shrink-0 text-amber-600" />
+    <p className="text-sm text-amber-700">Complete all required fields to enable submission</p>
+  </div>
+</div>
+```
+
+---
+
+#### Read-Only
+
+**Use when:** Content is relevant but user cannot change it.
+
+**🔴 COMMAND:** Content must be accessible to screen readers.
+
+**🔴 BOUNDARY:** No interactive indicators (hover states, brand colors, underlines).
+
+```tsx
+{
+  /* Read-only input */
+}
+;<input
+  readOnly
+  value="john@example.com"
+  className="rounded-sm border bg-slate-50 px-3 py-2 text-slate-600"
+/>
+
+{
+  /* Read-only text */
+}
+;<p className="text-sm text-slate-600">
+  Account ID: <span className="font-mono">abc-123-def</span>
+</p>
+```
+
+---
+
+#### Hidden
+
+**Use when:** User lacks permission to view, interact, or take action.
+
+**🔴 COMMAND:** Completely remove from UI.
+
+**🟡 DIRECTIVE:** Only way to reveal is changing assigned permissions.
+
+```tsx
+{
+  /* Conditionally render based on permissions */
+}
+{
+  hasPermission && (
+    <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Add member</button>
+  )
+}
+```
+
+---
+
+## 12. Empty States
+
+### 12.1 Overview
+
+Empty states occur when no data is available to display. They keep users informed and guide next steps.
+
+**🟡 DIRECTIVE:** Turn empty states into positive, productive experiences with just enough contextual guidance.
+
+---
+
+### 12.2 Empty State Anatomy
+
+```
+┌─────────────────────────────┐
+│                             │
+│     [Optional Image]        │
+│                             │
+│     Title                   │
+│     Body copy explaining    │
+│     next steps              │
+│                             │
+│     [Primary Action]        │
+│                             │
+│     [Secondary Link]        │
+│                             │
+└─────────────────────────────┘
+```
+
+**🔴 COMMAND:** Empty state must include:
+
+1. **Title:** Short, positive explanation
+2. **Body:** Clear next action or explanation
+
+**🟡 DIRECTIVE:** Optional elements:
+
+- Image (non-interactive, relates to situation)
+- Primary action button/link
+- Secondary call to action link
+
+---
+
+### 12.3 Empty State Types
+
+#### No Data (First Use)
+
+**Use for:** User hasn't added data yet.
+
+**Goal:** User understands what will appear when data exists and how to add it.
+
+```tsx
+{
+  /* Basic first-use empty state */
+}
+;<div className="flex flex-col items-center justify-center p-12 text-center">
+  <Database width="48" height="48" className="text-slate-400" aria-hidden="true" />
+  <h3 className="mt-4 text-lg font-semibold">No data sources yet</h3>
+  <p className="mt-2 text-sm text-slate-600">
+    Connect your first data source to start analyzing metrics
+  </p>
+  <button className="mt-6 rounded-sm bg-indigo-600 px-3 py-2 text-white">Add data source</button>
+</div>
+
+{
+  /* Alternative: direct to UI element */
+}
+;<div className="p-12 text-center">
+  <h3 className="text-lg font-semibold">No projects yet</h3>
+  <p className="mt-2 text-sm text-slate-600">
+    Click <strong>New project</strong> in the top right to get started
+  </p>
+</div>
+```
+
+---
+
+#### User Action Result
+
+**Use for:** No results from search, filters, or completed process.
+
+**Goal:** User understands why and knows how to adjust or continue.
+
+```tsx
+{
+  /* No search results */
+}
+;<div className="p-12 text-center">
+  <Search width="48" height="48" className="mx-auto text-slate-400" aria-hidden="true" />
+  <h3 className="mt-4 text-lg font-semibold">No results found</h3>
+  <p className="mt-2 text-sm text-slate-600">Try adjusting your search terms or filters</p>
+</div>
+
+{
+  /* Success confirmation */
+}
+;<div className="p-12 text-center">
+  <CheckCircle width="48" height="48" className="mx-auto text-emerald-600" aria-hidden="true" />
+  <h3 className="mt-4 text-lg font-semibold">All caught up!</h3>
+  <p className="mt-2 text-sm text-slate-600">No pending notifications</p>
+</div>
+```
+
+---
+
+#### Error Management
+
+**Use for:** Permissions issue, system error, or configuration required.
+
+**Goal:** User understands problem and knows corrective actions.
+
+```tsx
+{
+  /* Permissions error */
+}
+;<div className="p-12 text-center">
+  <Lock width="48" height="48" className="mx-auto text-slate-400" aria-hidden="true" />
+  <h3 className="mt-4 text-lg font-semibold">Access restricted</h3>
+  <p className="mt-2 text-sm text-slate-600">
+    You don't have permission to view this data. Contact your administrator to request access.
+  </p>
+  <a href="/support" className="mt-4 inline-block text-sm text-indigo-600 underline">
+    Contact support
+  </a>
+</div>
+
+{
+  /* System error */
+}
+;<div className="p-12 text-center">
+  <AlertCircle width="48" height="48" className="mx-auto text-amber-600" aria-hidden="true" />
+  <h3 className="mt-4 text-lg font-semibold">Unable to load data</h3>
+  <p className="mt-2 text-sm text-slate-600">
+    We're having trouble connecting to the server. Check the activity log for details.
+  </p>
+  <button className="mt-6 rounded-sm border px-3 py-2">View activity log</button>
+</div>
+```
+
+---
+
+### 12.4 Empty State Placement
+
+**🔴 COMMAND:** Empty states replace the element that would show (table, list, etc.).
+
+**🔴 BOUNDARY:** Don't show table headers/footers with empty table - replace entire table.
+
+For small spaces (tiles, side panels):
+
+Left-align text and button as block
+Exception: Small tiles center image above left-aligned text
+
+```tsx
+{
+  /* Small tile empty state */
+}
+;<div className="rounded-lg border p-4">
+  <FileQuestion width="32" height="32" className="mx-auto text-slate-400" aria-hidden="true" />
+  <h4 className="mt-3 text-sm font-semibold">No files</h4>
+  <p className="mt-1 text-xs text-slate-600">Upload your first file to get started</p>
+  <button className="mt-3 w-full rounded-sm border px-3 py-2 text-sm">Upload file</button>
+</div>
+```
+
+For large spaces (full pages, large sections):
+
+Left-align block with wider left margin OR center block
+Image can be above text OR to the left
+
+```tsx
+{
+  /* Full page empty state - centered */
+}
+;<div className="flex min-h-screen items-center justify-center p-4">
+  <div className="max-w-md text-center">
+    <Database width="64" height="64" className="mx-auto text-slate-400" aria-hidden="true" />
+    <h2 className="mt-6 text-2xl font-bold">No databases configured</h2>
+    <p className="mt-3 text-slate-600">
+      Connect your first database to start managing your data infrastructure
+    </p>
+    <button className="mt-6 rounded-sm bg-indigo-600 px-3 py-2 text-white">Connect database</button>
+    <a href="/docs" className="mt-4 block text-sm text-indigo-600 underline">
+      View documentation
+    </a>
+  </div>
+</div>
+```
+
+### 12.5 Empty State Best Practices
+
+**✅ DO:**
+
+Be specific about what will appear when data exists
+Keep text minimal and scannable
+Provide actionable next steps
+Use positive language ("Start by..." vs "You don't have...")
+Make primary action fast (link in copy or button)
+
+**❌ DON'T:**
+
+Cover multiple options in one empty state
+Use product jargon users may not understand
+Include content about other app areas
+Lead users to dead ends without next steps
+Show multiple identical empty states on same page
+
+**🟡 DIRECTIVE:** If multiple empty states appear simultaneously, use tertiary buttons to avoid visual clutter.
+
+---
+
+## 13. Loading States
+
+### 13.1 Overview
+
+Loading patterns communicate that processes are ongoing and prevent users from thinking the app is frozen.
+
+**🔴 COMMAND:** Use skeleton states for initial page loads.
+
+**🔴 COMMAND:** Use loading indicators for user-triggered actions.
+
+### 13.2 Skeleton States
+
+**Use for:** Initial page load before content appears.
+
+**🔴 COMMAND:** Only appear for a few seconds.
+
+**🔴 COMMAND:** Use on container components (tiles, cards, tables) and data components.
+
+**🔴 BOUNDARY:** Never use skeleton states for:
+
+- Action components (buttons, inputs, checkboxes)
+- Toast notifications
+- Dropdown items
+- Modals
+- Overflow menus
+
+```tsx
+{
+  /* Text skeleton */
+}
+;<div className="space-y-2">
+  <div className="h-4 w-3/4 animate-pulse rounded bg-slate-200" />
+  <div className="h-4 w-1/2 animate-pulse rounded bg-slate-200" />
+</div>
+
+{
+  /* Card skeleton */
+}
+;<div className="rounded-lg border p-4">
+  <div className="h-6 w-32 animate-pulse rounded bg-slate-200" />
+  <div className="mt-3 space-y-2">
+    <div className="h-4 w-full animate-pulse rounded bg-slate-200" />
+    <div className="h-4 w-5/6 animate-pulse rounded bg-slate-200" />
+  </div>
+</div>
+
+{
+  /* Table row skeleton */
+}
+;<tr>
+  <td className="px-4 py-3">
+    <div className="h-4 w-24 animate-pulse rounded bg-slate-200" />
+  </td>
+  <td className="px-4 py-3">
+    <div className="h-4 w-32 animate-pulse rounded bg-slate-200" />
+  </td>
+</tr>
+```
+
+### 13.3 Loading Indicators
+
+#### Full-Screen Loading
+
+**Use when:** Entire application is processing after user submission.
+
+**🔴 COMMAND:** Use overlay with loading spinner.
+
+**🟡 DIRECTIVE:** If process takes >few minutes, add notification explaining delay.
+
+```tsx
+{
+  /* Full-screen loading */
+}
+;<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50">
+  <div className="rounded-lg bg-white p-8 text-center">
+    <Loader2
+      width="48"
+      height="48"
+      className="mx-auto animate-spin text-indigo-600"
+      aria-hidden="true"
+    />
+    <p className="mt-4 font-semibold">Saving changes...</p>
+  </div>
+</div>
+```
+
+#### Inline Loading
+
+**Use when:** Single component is processing.
+
+**🔴 COMMAND:** Show loading state on specific component only.
+
+```tsx
+{
+  /* Inline loading button */
+}
+;<button
+  disabled
+  className="flex items-center gap-2 rounded-sm bg-indigo-600 px-3 py-2 text-white disabled:opacity-75"
+>
+  <Loader2 width="16" height="16" className="animate-spin" aria-hidden="true" />
+  Sending invite...
+</button>
+
+{
+  /* Inline loading in content area */
+}
+;<div className="flex items-center gap-2 text-sm text-slate-600">
+  <Loader2 width="16" height="16" className="animate-spin" aria-hidden="true" />
+  <span>Loading data...</span>
+</div>
+```
+
+### 13.4 Progressive Loading
+
+**Use when:** Page loads in batches (common for dashboards).
+
+**Load sequence:**
+
+1. First batch: Page structure (skeleton containers) + static text
+2. Second batch: Images, content outside viewport
+3. Third batch: Interactive components, data-based text
+
+```tsx
+{
+  /* Phase 1: Skeleton */
+}
+;<div className="grid grid-cols-3 gap-4">
+  <div className="rounded-lg border p-4">
+    <div className="h-6 w-32 animate-pulse rounded bg-slate-200" />
+    <div className="mt-3 h-24 animate-pulse rounded bg-slate-200" />
+  </div>
+  {/* More skeleton cards */}
+</div>
+
+{
+  /* Phase 2: Partial data */
+}
+;<div className="grid grid-cols-3 gap-4">
+  <div className="rounded-lg border p-4">
+    <h3 className="text-lg font-semibold">Revenue</h3>
+    <div className="mt-3 h-24 animate-pulse rounded bg-slate-200" />
+  </div>
+</div>
+
+{
+  /* Phase 3: Complete */
+}
+;<div className="grid grid-cols-3 gap-4">
+  <div className="rounded-lg border p-4">
+    <h3 className="text-lg font-semibold">Revenue</h3>
+    <p className="mt-3 text-3xl font-bold">$45,231</p>
+  </div>
+</div>
+```
+
+### 13.5 Load More
+
+**Use when:** Extending lists with large datasets.
+
+**🔴 COMMAND:** Load data in progressive batches on user action.
+
+```tsx
+{
+  /* Load more button */
+}
+;<div className="space-y-2">
+  {items.map((item) => (
+    <Item key={item.id} />
+  ))}
+
+  <button className="w-full rounded-sm border px-3 py-2 hover:bg-slate-50">Load more</button>
+</div>
+
+{
+  /* Load more with loading state */
+}
+;<button
+  disabled={isLoading}
+  className="flex w-full items-center justify-center gap-2 rounded-md border px-4 py-2"
+>
+  {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+  {isLoading ? 'Loading...' : 'Load more'}
+</button>
+```
+
+### 13.6 Loading Accessibility
+
+**🔴 COMMAND:** Screen reader must announce loading states.
+
+**🔴 COMMAND:** Use aria-live for dynamic loading notifications.
+
+**🔴 COMMAND:** Announce when loading fails.
+
+```tsx
+{
+  /* Accessible loading indicator */
+}
+;<div role="status" aria-live="polite">
+  {isLoading ? (
+    <div className="flex items-center gap-2">
+      <Loader2 width="16" height="16" className="animate-spin" aria-hidden="true" />
+      <span>Loading data...</span>
+    </div>
+  ) : (
+    <span className="sr-only">Data loaded</span>
+  )}
+</div>
+```
+
+---
+
+## 14. Modal Patterns
+
+### 14.1 Overview
+
+Modals interrupt workflow to capture attention for critical tasks. They prevent users from interacting with the underlying page until dismissed.
+
+**🔴 COMMAND:** Use modals only when user input or acknowledgment is required immediately.
+
+**🔴 BOUNDARY:** Never use modals for:
+
+- Non-critical information
+- Complex multi-step workflows (use dedicated pages)
+- Content users may need to reference while completing the task
+
+**🟡 DIRECTIVE:** Prefer inline patterns (expandable sections, slide-over panels) when interruption isn't necessary.
+
+---
+
+### 14.2 Modal Anatomy
+
+All modals share this structure:
+
+```tsx
+{
+  /* Modal overlay + container */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50"
+  onClick={handleBackdropClick}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+>
+  {/* Modal content */}
+  <div className="max-w-md rounded-lg bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
+    {/* Title */}
+    <h2 id="modal-title" className="text-xl font-bold">
+      Modal Title
+    </h2>
+
+    {/* Body */}
+    <div className="mt-4">{/* Content */}</div>
+
+    {/* Actions */}
+    <div className="mt-6 flex justify-end gap-2">
+      <button className="rounded-sm border px-3 py-2">Cancel</button>
+      <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Confirm</button>
+    </div>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** All modals must include:
+
+- Backdrop overlay (`bg-slate-900/50`)
+- Focus trap (keyboard navigation stays within modal)
+- `role="dialog"` and `aria-modal="true"`
+- `aria-labelledby` pointing to title
+
+---
+
+### 14.3 Universal Modal Rules
+
+#### Escape Behavior
+
+**🔴 COMMAND:** Modals must support these dismissal methods:
+
+- Escape key
+- Backdrop click (clicking outside modal)
+- Close button (X icon in top-right)
+- Cancel/secondary action button
+
+**🔴 BOUNDARY:** Destructive modals require explicit action - disable backdrop click for destructive actions.
+
+```tsx
+{
+  /* Standard dismissal */
+}
+const handleEscape = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') closeModal()
+}
+
+const handleBackdropClick = () => {
+  closeModal()
+}
+
+{
+  /* Destructive action - no backdrop dismiss */
+}
+const handleBackdropClick = () => {
+  // Do nothing - force explicit choice
+}
+```
+
+#### Focus Management
+
+**🔴 COMMAND:** On open:
+
+1. Set focus to first interactive element (usually primary action)
+2. Trap focus within modal (Tab cycles through modal elements only)
+
+**🔴 COMMAND:** On close:
+
+1. Return focus to element that triggered modal
+
+```tsx
+import { useEffect, useRef } from 'react'
+
+const Modal = ({ isOpen, onClose }) => {
+  const modalRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    if (isOpen) {
+      // Store trigger element
+      triggerRef.current = document.activeElement as HTMLElement
+
+      // Focus first interactive element
+      const firstButton = modalRef.current?.querySelector('button')
+      firstButton?.focus()
+    } else {
+      // Return focus to trigger
+      triggerRef.current?.focus()
+    }
+  }, [isOpen])
+
+  // Focus trap implementation
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      const focusableElements = modalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+
+      if (!focusableElements?.length) return
+
+      const firstElement = focusableElements[0] as HTMLElement
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault()
+        lastElement.focus()
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault()
+        firstElement.focus()
+      }
+    }
+  }
+
+  return (
+    <div ref={modalRef} onKeyDown={handleKeyDown} role="dialog" aria-modal="true">
+      {/* Modal content */}
+    </div>
+  )
+}
+```
+
+#### Mobile Behavior
+
+**🔴 COMMAND:** On mobile (< 640px):
+
+- Modal expands to full width with `mx-4` margins (16px)
+- Reduce padding to `p-4` (16px)
+- Stack buttons vertically with full width
+
+**🟡 DIRECTIVE:** For small screens, prefer bottom sheets or full-page overlays.
+
+```tsx
+{
+  /* Responsive modal */
+}
+;<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    <h2 className="text-lg font-bold sm:text-xl">Title</h2>
+
+    <div className="mt-3 sm:mt-4">{/* Content */}</div>
+
+    {/* Mobile: stacked buttons, Desktop: horizontal */}
+    <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
+      <button className="w-full rounded-sm border px-3 py-2 sm:w-auto">Cancel</button>
+      <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white sm:w-auto">
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 14.4 Modal Pattern Library
+
+---
+
+#### 14.4.1 Confirm/Cancel (High Impact)
+
+**Use for:** Significant actions that aren't destructive but have meaningful consequences.
+
+**Examples:** Publishing content, inviting users, changing settings that affect others.
+
+**Title Formula:** `[Action] [object]?`
+
+**Body Formula:** Explain what will happen + who/what is affected.
+
+**Action Rules:**
+
+- Primary button: Confirms action (indigo/blue)
+- Secondary button: "Cancel" (border only)
+- Button order: Cancel (left) → Confirm (right)
+
+**Escape Rules:**
+
+- ✅ Escape key closes (treated as Cancel)
+- ✅ Backdrop click closes (treated as Cancel)
+- ✅ Close button (X) in top-right
+
+**Focus/Keyboard:**
+
+- Initial focus: Primary (Confirm) button
+- Tab order: Cancel → Confirm → Close button
+- Enter: Activates focused button
+- Escape: Cancels
+
+**Mobile Behavior:**
+
+- Stack buttons vertically (Cancel on top)
+- Full-width buttons
+- Reduce padding to `p-4`
+
+**Anti-patterns:**
+
+- ❌ Don't use for destructive actions (use Destructive pattern instead)
+- ❌ Don't include form fields (use dedicated form modal)
+- ❌ Don't write vague body text ("Are you sure?")
+
+```tsx
+{
+  /* Publish confirmation modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="publish-title"
+>
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    {/* Close button */}
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      aria-label="Close"
+    >
+      <X className="h-5 w-5" />
+    </button>
+
+    {/* Title */}
+    <h2 id="publish-title" className="text-lg font-bold sm:text-xl">
+      Publish article?
+    </h2>
+
+    {/* Body */}
+    <p className="mt-3 text-sm text-slate-600 sm:mt-4">
+      This article will be visible to all subscribers immediately. You'll be notified when it's
+      published.
+    </p>
+
+    {/* Actions */}
+    <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
+      <button
+        onClick={onClose}
+        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={handlePublish}
+        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+      >
+        Publish now
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.4.2 Destructive (Undo-First)
+
+**Use for:** Actions that permanently delete or destroy data.
+
+**Examples:** Deleting accounts, removing team members, destroying resources.
+
+**Title Formula:** `Delete [object]?` OR `Remove [object]?`
+
+**Body Formula:**
+
+1. State what will be deleted
+2. Explain consequences (data loss, affected users)
+3. Mention if action is permanent
+4. PREFERRED: Offer undo mechanism instead of confirmation
+
+**Action Rules:**
+
+- Primary button: Destructive action (red/red)
+- Secondary button: "Cancel" (border only)
+- Button text: Use specific verb ("Delete account", not "Confirm")
+- **🔴 COMMAND:** Show undo toast after action when possible
+
+**Escape Rules:**
+
+- ✅ Escape key closes (treated as Cancel)
+- 🔴 BOUNDARY: Disable backdrop click - force explicit choice
+- ✅ Close button (X) in top-right
+
+**Focus/Keyboard:**
+
+- Initial focus: Secondary (Cancel) button - prevent accidental deletion
+- Tab order: Cancel → Delete
+- Enter: Activates focused button (starts on Cancel)
+- Escape: Cancels
+
+**Mobile Behavior:**
+
+- Stack buttons vertically (Cancel on top)
+- Full-width buttons
+- Keep red background for delete button
+
+**Anti-patterns:**
+
+- ❌ Don't ask "Are you sure?" - be specific about what's being deleted
+- ❌ Don't use generic "Confirm" or "OK" - use "Delete [thing]"
+- ❌ Don't omit consequences - tell user what they'll lose
+- ❌ Don't skip undo mechanism - prefer undo toast over confirmation
+
+```tsx
+{
+  /* Destructive action modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  onClick={(e) => e.stopPropagation()} // No backdrop dismiss
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="delete-title"
+>
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    {/* Icon + close button */}
+    <div className="flex items-start justify-between">
+      <div className="flex items-center gap-3">
+        <div className="rounded-full bg-red-100 p-2">
+          <AlertTriangle className="h-6 w-6 text-red-600" aria-hidden="true" />
+        </div>
+        <h2 id="delete-title" className="text-lg font-bold sm:text-xl">
+          Delete team member?
+        </h2>
+      </div>
+      <button onClick={onClose} className="rounded-sm p-1 hover:bg-slate-100" aria-label="Close">
+        <X className="h-5 w-5" />
+      </button>
+    </div>
+
+    {/* Body */}
+    <div className="mt-2 ml-11">
+      <p className="text-sm text-slate-600">
+        Removing <strong>Sarah Johnson</strong> will revoke her access immediately. She won't be
+        able to view projects or data.
+      </p>
+      <p className="mt-2 text-sm font-semibold text-slate-900">This action cannot be undone.</p>
+    </div>
+
+    {/* Actions */}
+    <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
+      <button
+        onClick={onClose}
+        autoFocus // Focus cancel button first
+        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={handleDelete}
+        className="w-full rounded-sm bg-red-600 px-3 py-2 text-white hover:bg-red-700 sm:w-auto"
+      >
+        Delete member
+      </button>
+    </div>
+  </div>
+</div>
+
+{
+  /* BETTER: Undo toast after immediate action (no modal) */
+}
+;<div className="fixed right-4 bottom-4 left-4 rounded-lg bg-slate-900 p-4 text-white shadow-xl sm:right-4 sm:left-auto sm:w-96">
+  <div className="flex items-start justify-between gap-3">
+    <div>
+      <p className="font-semibold">Member removed</p>
+      <p className="mt-1 text-sm text-slate-300">Sarah Johnson no longer has access</p>
+    </div>
+    <button
+      onClick={handleUndo}
+      className="rounded-sm border border-white/20 px-3 py-1.5 text-sm font-semibold whitespace-nowrap hover:bg-white/10"
+    >
+      Undo
+    </button>
+  </div>
+</div>
+```
+
+---
+
+#### 14.4.3 Error Recovery
+
+**Use for:** System errors that prevent user from continuing, requiring user to make a choice.
+
+**Examples:** Network failures, permission errors, data conflicts, failed uploads.
+
+**Title Formula:** `[Problem description]` (NOT "Error" or "Oops")
+
+**Body Formula:**
+
+1. Explain what happened (in plain language)
+2. Explain why it happened (if known and helpful)
+3. Tell user what to do next
+
+**Action Rules:**
+
+- Primary button: Recovery action (indigo/blue) - "Try again", "Contact support"
+- Secondary button: Alternative path (border) - "Go back", "Cancel"
+- **🔴 COMMAND:** Always provide actionable next step
+
+**Escape Rules:**
+
+- ✅ Escape key closes (if there's a safe fallback)
+- ✅ Backdrop click closes (if there's a safe fallback)
+- 🔴 BOUNDARY: If no safe fallback exists, disable escape/backdrop
+
+**Focus/Keyboard:**
+
+- Initial focus: Primary action button
+- Tab order: Primary → Secondary
+- Enter: Activates focused button
+- Escape: Closes (if safe)
+
+**Mobile Behavior:**
+
+- Stack buttons vertically
+- Full-width buttons
+- Ensure error icon is visible
+
+**Anti-patterns:**
+
+- ❌ Don't use technical error messages ("Error 500", "NullPointerException")
+- ❌ Don't blame the user ("You did something wrong")
+- ❌ Don't provide dead-end errors with no action
+- ❌ Don't use red for system errors (reserve for user mistakes)
+
+```tsx
+{
+  /* Error recovery modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="error-title"
+>
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    {/* Icon */}
+    <div className="flex items-center gap-3">
+      <div className="rounded-full bg-amber-100 p-2">
+        <AlertCircle className="h-6 w-6 text-amber-600" aria-hidden="true" />
+      </div>
+      <h2 id="error-title" className="text-lg font-bold sm:text-xl">
+        Connection lost
+      </h2>
+    </div>
+
+    {/* Body */}
+    <div className="mt-2 ml-11">
+      <p className="text-sm text-slate-600">
+        We couldn't save your changes because the connection was interrupted. Your work is saved
+        locally.
+      </p>
+      <p className="mt-2 text-sm text-slate-600">
+        Check your internet connection and try saving again.
+      </p>
+    </div>
+
+    {/* Actions */}
+    <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
+      <button
+        onClick={onClose}
+        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={handleRetry}
+        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+      >
+        Try again
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.4.4 Permissions Request
+
+**Use for:** Asking user to grant application permissions (camera, location, notifications).
+
+**Examples:** Camera access for uploads, location for maps, notification permissions.
+
+**Title Formula:** `Allow [app] to [action]?`
+
+**Body Formula:**
+
+1. Explain what permission is needed
+2. Explain why you need it (benefit to user)
+3. Optional: Explain what happens if denied
+
+**Action Rules:**
+
+- Primary button: "Allow" or "Grant access" (indigo/blue)
+- Secondary button: "Don't allow" or "Not now" (border)
+- **🔴 COMMAND:** Respect denial - don't re-prompt immediately
+
+**Escape Rules:**
+
+- ✅ Escape key closes (treated as denial)
+- ✅ Backdrop click closes (treated as denial)
+- ✅ Close button (X) available
+
+**Focus/Keyboard:**
+
+- Initial focus: Primary (Allow) button
+- Tab order: Allow → Don't allow
+- Enter: Activates focused button
+- Escape: Closes (treated as denial)
+
+**Mobile Behavior:**
+
+- Stack buttons vertically
+- Full-width buttons
+- Ensure clear explanation for small screens
+
+**Anti-patterns:**
+
+- ❌ Don't explain permissions with technical jargon
+- ❌ Don't guilt-trip users ("We won't work without this")
+- ❌ Don't hide the deny option
+- ❌ Don't re-prompt immediately after denial
+
+```tsx
+{
+  /* Permission request modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="permission-title"
+>
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    {/* Close button */}
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      aria-label="Close"
+    >
+      <X className="h-5 w-5" />
+    </button>
+
+    {/* Icon + title */}
+    <div className="flex items-center gap-3">
+      <div className="rounded-full bg-indigo-100 p-2">
+        <Camera className="h-6 w-6 text-indigo-600" aria-hidden="true" />
+      </div>
+      <h2 id="permission-title" className="text-lg font-bold sm:text-xl">
+        Allow camera access?
+      </h2>
+    </div>
+
+    {/* Body */}
+    <div className="mt-2 ml-11">
+      <p className="text-sm text-slate-600">
+        We need camera access to scan QR codes and upload profile photos.
+      </p>
+      <p className="mt-2 text-sm text-slate-600">You can change this anytime in settings.</p>
+    </div>
+
+    {/* Actions */}
+    <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
+      <button
+        onClick={handleDeny}
+        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+      >
+        Not now
+      </button>
+      <button
+        onClick={handleAllow}
+        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+      >
+        Allow
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.4.5 Tool Connection / OAuth
+
+**Use for:** Connecting third-party services, OAuth authentication flows.
+
+**Examples:** Connecting Slack, GitHub, Google Drive, payment processors.
+
+**Title Formula:** `Connect [service name]?`
+
+**Body Formula:**
+
+1. Explain what you'll be able to do with connection
+2. List specific permissions being requested
+3. Privacy/security note if sensitive
+
+**Action Rules:**
+
+- Primary button: "Connect" or "Connect [service]" (indigo/blue)
+- Secondary button: "Cancel" (border)
+- **🔴 COMMAND:** After connection, show success confirmation with "Disconnect" option
+
+**Escape Rules:**
+
+- ✅ Escape key closes (treated as Cancel)
+- ✅ Backdrop click closes (treated as Cancel)
+- ✅ Close button (X) available
+
+**Focus/Keyboard:**
+
+- Initial focus: Primary (Connect) button
+- Tab order: Connect → Cancel
+- Enter: Activates focused button
+- Escape: Cancels connection
+
+**Mobile Behavior:**
+
+- Stack buttons vertically
+- Full-width buttons
+- Ensure permission list is readable
+
+**Anti-patterns:**
+
+- ❌ Don't hide what permissions you're requesting
+- ❌ Don't make it difficult to disconnect later
+- ❌ Don't assume connection - always confirm first
+- ❌ Don't use "Login" or "Sign in" for connections (confusing)
+
+```tsx
+{
+  /* OAuth connection modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="connect-title"
+>
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    {/* Close button */}
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      aria-label="Close"
+    >
+      <X className="h-5 w-5" />
+    </button>
+
+    {/* Icon + title */}
+    <div className="flex items-center gap-3">
+      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100">
+        <img src="/slack-logo.svg" alt="" className="h-8 w-8" />
+      </div>
+      <h2 id="connect-title" className="text-lg font-bold sm:text-xl">
+        Connect Slack?
+      </h2>
+    </div>
+
+    {/* Body */}
+    <div className="mt-4">
+      <p className="text-sm text-slate-600">
+        We'll be able to send notifications to your Slack workspace and read channel messages to
+        sync data.
+      </p>
+
+      {/* Permissions list */}
+      <div className="mt-3 space-y-2 rounded-md border bg-slate-50 p-3">
+        <p className="text-xs font-semibold text-slate-500 uppercase">This will allow us to:</p>
+        <ul className="space-y-1.5 text-sm text-slate-700">
+          <li className="flex items-start gap-2">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden="true" />
+            <span>Send messages to channels</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden="true" />
+            <span>Read channel messages</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden="true" />
+            <span>View workspace members</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Actions */}
+    <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
+      <button
+        onClick={onClose}
+        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={handleConnect}
+        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+      >
+        Connect Slack
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.4.6 Preview Before Publish
+
+**Use for:** Showing final preview before irreversible or public action.
+
+**Examples:** Publishing blog posts, sending emails, posting to social media.
+
+**Title Formula:** `Preview [content type]`
+
+**Body Formula:**
+
+- Show preview of content (with scroll if needed)
+- Include metadata (recipients, visibility, schedule)
+- Optional: Show character/word count
+
+**Action Rules:**
+
+- Primary button: "Publish" or "Send" (indigo/blue)
+- Secondary button: "Edit" or "Cancel" (border)
+- Tertiary option: "Save as draft" (link below buttons)
+
+**Escape Rules:**
+
+- ✅ Escape key closes (treated as Cancel - back to edit)
+- ✅ Backdrop click closes (treated as Cancel)
+- ✅ Close button (X) available
+
+**Focus/Keyboard:**
+
+- Initial focus: Primary (Publish) button
+- Tab order: Publish → Edit → Close button
+- Enter: Activates focused button
+- Escape: Returns to edit mode
+
+**Mobile Behavior:**
+
+- Stack buttons vertically
+- Scrollable preview area with max-height
+- Reduce preview padding on mobile
+
+**Anti-patterns:**
+
+- ❌ Don't show identical preview that's already visible
+- ❌ Don't omit key metadata (who will see this, when it sends)
+- ❌ Don't make preview area too large (use max-height + scroll)
+- ❌ Don't hide "Edit" option - users should easily go back
+
+```tsx
+{
+  /* Preview before publish modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="preview-title"
+>
+  <div className="w-full max-w-2xl rounded-lg bg-white shadow-xl">
+    {/* Header */}
+    <div className="flex items-center justify-between border-b p-4 sm:p-6">
+      <h2 id="preview-title" className="text-lg font-bold sm:text-xl">
+        Preview article
+      </h2>
+      <button onClick={onClose} className="rounded-sm p-1 hover:bg-slate-100" aria-label="Close">
+        <X className="h-5 w-5" />
+      </button>
+    </div>
+
+    {/* Preview content - scrollable */}
+    <div className="max-h-96 overflow-y-auto p-4 sm:p-6">
+      {/* Metadata */}
+      <div className="mb-4 space-y-1 rounded-md border bg-slate-50 p-3 text-sm">
+        <div className="flex justify-between">
+          <span className="text-slate-600">Visibility:</span>
+          <span className="font-semibold">All subscribers</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-slate-600">Publish date:</span>
+          <span className="font-semibold">Immediately</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-slate-600">Word count:</span>
+          <span className="font-semibold">1,247 words</span>
+        </div>
+      </div>
+
+      {/* Preview */}
+      <article className="prose prose-slate max-w-none">
+        <h1>Article Title Goes Here</h1>
+        <p className="text-slate-600">
+          This is a preview of how your article will appear to readers...
+        </p>
+        {/* Content preview */}
+      </article>
+    </div>
+
+    {/* Footer with actions */}
+    <div className="border-t p-4 sm:p-6">
+      <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
+        <button
+          onClick={handleEdit}
+          className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        >
+          Edit article
+        </button>
+        <button
+          onClick={handlePublish}
+          className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+        >
+          Publish now
+        </button>
+      </div>
+      <button
+        onClick={handleSaveDraft}
+        className="mt-3 w-full text-sm text-indigo-600 underline hover:text-indigo-700 sm:w-auto"
+      >
+        Save as draft instead
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.4.7 Unsaved Changes
+
+**Use for:** Warning when user tries to leave with unsaved changes.
+
+**Examples:** Closing form, navigating away from editor, closing modal with edits.
+
+**Title Formula:** `Unsaved changes` OR `Save changes?`
+
+**Body Formula:**
+
+1. State what will be lost
+2. Offer to save or discard
+
+**Action Rules:**
+
+- Primary button: "Save changes" (indigo/blue)
+- Secondary button: "Discard" (border)
+- Tertiary button: "Keep editing" (border) OR link
+
+**Escape Rules:**
+
+- ✅ Escape key closes (treated as "Keep editing")
+- ✅ Backdrop click closes (treated as "Keep editing")
+- ✅ Close button (X) available
+
+**Focus/Keyboard:**
+
+- Initial focus: Primary (Save) button
+- Tab order: Save → Discard → Keep editing
+- Enter: Activates focused button
+- Escape: Keeps editing (safest option)
+
+**Mobile Behavior:**
+
+- Stack buttons vertically
+- Full-width buttons
+- Keep "Save" on bottom (thumb-friendly)
+
+**Anti-patterns:**
+
+- ❌ Don't force choice between "OK" and "Cancel" (confusing)
+- ❌ Don't use only "Discard" without "Save" option
+- ❌ Don't make "Discard" the primary action
+- ❌ Don't trigger for trivial changes (opening dropdown, etc.)
+
+```tsx
+{
+  /* Unsaved changes modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="unsaved-title"
+>
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    {/* Close button */}
+    <button
+      onClick={handleKeepEditing}
+      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      aria-label="Close"
+    >
+      <X className="h-5 w-5" />
+    </button>
+
+    {/* Icon + title */}
+    <div className="flex items-center gap-3">
+      <div className="rounded-full bg-amber-100 p-2">
+        <AlertTriangle className="h-6 w-6 text-amber-600" aria-hidden="true" />
+      </div>
+      <h2 id="unsaved-title" className="text-lg font-bold sm:text-xl">
+        Unsaved changes
+      </h2>
+    </div>
+
+    {/* Body */}
+    <div className="mt-2 ml-11">
+      <p className="text-sm text-slate-600">
+        You have unsaved changes to this document. Save them before leaving?
+      </p>
+    </div>
+
+    {/* Actions */}
+    <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
+      <button
+        onClick={handleDiscard}
+        className="order-2 w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:order-1 sm:w-auto"
+      >
+        Discard
+      </button>
+      <button
+        onClick={handleKeepEditing}
+        className="order-1 w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:order-2 sm:w-auto"
+      >
+        Keep editing
+      </button>
+      <button
+        onClick={handleSave}
+        className="order-3 w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+      >
+        Save changes
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.4.8 Contextual Help / Glossary
+
+**Use for:** Explaining unfamiliar terms, providing additional context, showing examples.
+
+**Examples:** Term definitions, feature explanations, "What's this?" links.
+
+**Title Formula:** `[Term or feature name]`
+
+**Body Formula:**
+
+1. Clear definition or explanation
+2. Example or use case (if helpful)
+3. Optional: Link to full documentation
+
+**Action Rules:**
+
+- Primary button: "Got it" or "Close" (border only)
+- Optional: "Learn more" link to full docs
+
+**Escape Rules:**
+
+- ✅ Escape key closes
+- ✅ Backdrop click closes
+- ✅ Close button (X) available
+
+**Focus/Keyboard:**
+
+- Initial focus: Close/Got it button
+- Tab order: Got it → Learn more link → Close button
+- Enter: Activates focused button
+- Escape: Closes
+
+**Mobile Behavior:**
+
+- Reduce padding on mobile
+- Full-width close button
+- Ensure definition is readable
+
+**Anti-patterns:**
+
+- ❌ Don't show long documentation (link to it instead)
+- ❌ Don't use technical jargon in explanations
+- ❌ Don't force user to take action (just reading is fine)
+- ❌ Don't interrupt workflow - show on explicit request only
+
+```tsx
+{
+  /* Contextual help modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="help-title"
+>
+  <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
+    {/* Close button */}
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      aria-label="Close"
+    >
+      <X className="h-5 w-5" />
+    </button>
+
+    {/* Icon + title */}
+    <div className="flex items-center gap-3">
+      <div className="rounded-full bg-indigo-100 p-2">
+        <HelpCircle className="h-6 w-6 text-indigo-600" aria-hidden="true" />
+      </div>
+      <h2 id="help-title" className="text-lg font-bold sm:text-xl">
+        API rate limit
+      </h2>
+    </div>
+
+    {/* Body */}
+    <div className="mt-2 ml-11 space-y-3">
+      <p className="text-sm text-slate-600">
+        Rate limits control how many API requests you can make per hour. They prevent abuse and
+        ensure fair usage for all users.
+      </p>
+
+      {/* Example */}
+      <div className="rounded-md border bg-slate-50 p-3">
+        <p className="text-xs font-semibold text-slate-500 uppercase">Example</p>
+        <p className="mt-1 text-sm text-slate-700">
+          With a 1,000 requests/hour limit, you can make about 16 requests per minute.
+        </p>
+      </div>
+
+      {/* Learn more link */}
+      <a
+        href="/docs/rate-limits"
+        className="inline-flex items-center gap-1 text-sm text-indigo-600 underline hover:text-indigo-700"
+      >
+        Learn more about rate limits
+        <ExternalLink className="h-4 w-4" aria-hidden="true" />
+      </a>
+    </div>
+
+    {/* Action */}
+    <div className="mt-4 flex justify-end sm:mt-6">
+      <button
+        onClick={onClose}
+        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+      >
+        Got it
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 14.5 Additional Modal Patterns
+
+These are simpler modal patterns for common use cases. They follow the same universal rules but have standardized structures.
+
+---
+
+#### 14.5.1 Passive Modal
+
+**Use for:** Informational announcements that don't require user action.
+
+**Examples:** Scheduled maintenance notices, system status updates, informational alerts.
+
+**🔴 COMMAND:** No action buttons - informational only.
+
+**🔴 COMMAND:** Dismiss methods: X icon, backdrop click, or Escape key.
+
+**🔴 BOUNDARY:** Use sparingly - prefer toasts/banners for passive information.
+
+**When to use Passive vs Toast:**
+
+- Passive modal: Information user should see before continuing
+- Toast: Non-blocking update or confirmation
+
+```tsx
+{
+  /* Passive modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  onClick={onClose}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="passive-title"
+>
+  <div
+    className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6"
+    onClick={(e) => e.stopPropagation()}
+  >
+    <div className="flex items-start justify-between">
+      <h2 id="passive-title" className="text-lg font-semibold">
+        Maintenance scheduled
+      </h2>
+      <button onClick={onClose} className="rounded-sm p-1 hover:bg-slate-100" aria-label="Close">
+        <X className="h-4 w-4" aria-hidden="true" />
+      </button>
+    </div>
+    <p className="mt-2 text-sm text-slate-600">
+      System will be unavailable tomorrow from 2–4&nbsp;AM EST for scheduled maintenance.
+    </p>
+  </div>
+</div>
+```
+
+---
+
+#### 14.5.2 Transactional Modal
+
+**Use for:** Actions that require user decision to complete a transaction.
+
+**Examples:** Saving changes, confirming orders, applying settings.
+
+**🔴 COMMAND:** Must include cancel and primary action buttons.
+
+**🔴 COMMAND:** Primary action describes what will happen (not "OK" or "Confirm").
+
+**Title Formula:** `[Action] [object]?`
+
+**Action Rules:**
+
+- Primary button: Specific action verb (indigo-600)
+- Secondary button: "Cancel" (border only)
+- Button order: Cancel → Primary
+
+```tsx
+{
+  /* Transactional modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  onClick={onClose}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="transaction-title"
+>
+  <div
+    className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6"
+    onClick={(e) => e.stopPropagation()}
+  >
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      aria-label="Close"
+    >
+      <X className="h-4 w-4" />
+    </button>
+
+    <h2 id="transaction-title" className="text-lg font-semibold">
+      Save changes?
+    </h2>
+
+    <p className="mt-2 text-sm text-slate-600">
+      You have unsaved changes. Do you want to save before closing?
+    </p>
+
+    <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end">
+      <button
+        onClick={handleDiscard}
+        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+      >
+        Discard
+      </button>
+      <button
+        onClick={handleSave}
+        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+      >
+        Save changes
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.5.3 Acknowledgment Modal
+
+**Use for:** Success confirmations or information requiring user acknowledgment.
+
+**Examples:** "Profile updated", "Email sent", "Task completed".
+
+**🔴 COMMAND:** Single button only (typically "Got it" or "OK").
+
+**🔴 BOUNDARY:** Use only for success states - errors need recovery actions.
+
+**Title Formula:** `[Thing] [completed state]`
+
+**Body Formula:** Brief confirmation of what happened.
+
+**Action Rules:**
+
+- Single primary button (indigo-600)
+- Button text: "Got it", "OK", or "Close"
+- Button width: 50% width, right-aligned
+
+```tsx
+{
+  /* Acknowledgment modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  onClick={onClose}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="acknowledgment-title"
+>
+  <div
+    className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6"
+    onClick={(e) => e.stopPropagation()}
+  >
+    <button
+      onClick={onClose}
+      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      aria-label="Close"
+    >
+      <X className="h-4 w-4" />
+    </button>
+
+    {/* Success icon */}
+    <div className="flex items-center gap-3">
+      <div className="rounded-full bg-green-100 p-2">
+        <Check className="h-6 w-6 text-green-600" aria-hidden="true" />
+      </div>
+      <h2 id="acknowledgment-title" className="text-lg font-semibold">
+        Update complete
+      </h2>
+    </div>
+
+    <p className="mt-2 ml-11 text-sm text-slate-600">Your profile has been updated successfully.</p>
+
+    <div className="mt-4 flex justify-end">
+      <button
+        onClick={onClose}
+        className="w-1/2 rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700"
+      >
+        Got it
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 14.5.4 Progress Modal (Multi-Step)
+
+**Use for:** Multi-step processes like wizards, onboarding, or setup flows.
+
+**Examples:** Account setup, configuration wizards, guided tutorials.
+
+**🔴 COMMAND:** Must include step indicator in title.
+
+**🔴 COMMAND:** Includes cancel, previous, and next/complete buttons.
+
+**Title Formula:** `[Process name] (Step [N] of [Total])`
+
+**Action Rules:**
+
+- Primary button: "Next" (indigo-600) or "Complete" on final step
+- Secondary button: "Previous" (border only)
+- Tertiary button: "Cancel" (text only, left-aligned)
+
+**Button Layout:**
+
+- Cancel: Left-aligned, ghost style
+- Previous + Next: Right-aligned, grouped
+
+**Progress Indicator:**
+
+- Show step numbers in title
+- Optional: Visual progress bar above content
+
+```tsx
+{
+  /* Progress/wizard modal */
+}
+;<div
+  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  onClick={(e) => e.stopPropagation()} // No backdrop dismiss
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="progress-title"
+>
+  <div
+    className="w-full max-w-md rounded-lg bg-white shadow-xl"
+    onClick={(e) => e.stopPropagation()}
+  >
+    {/* Header with progress */}
+    <div className="border-b p-4 sm:p-6">
+      <h2 id="progress-title" className="text-lg font-semibold">
+        Setup wizard (Step 2 of 3)
+      </h2>
+
+      {/* Optional: Visual progress bar */}
+      <div className="mt-3 flex gap-1">
+        <div className="h-1 flex-1 rounded-full bg-indigo-600" />
+        <div className="h-1 flex-1 rounded-full bg-indigo-600" />
+        <div className="h-1 flex-1 rounded-full bg-slate-200" />
+      </div>
+    </div>
+
+    {/* Step content */}
+    <div className="p-4 sm:p-6">
+      <div className="space-y-4">
+        <div>
+          <label className="text-sm font-medium">Company name</label>
+          <input type="text" className="mt-1 w-full rounded-sm border px-3 py-2" />
+        </div>
+        <div>
+          <label className="text-sm font-medium">Industry</label>
+          <select className="mt-1 w-full rounded-sm border px-3 py-2">
+            <option>Select industry</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    {/* Footer with actions */}
+    <div className="border-t p-4 sm:p-6">
+      <div className="flex items-center justify-between">
+        <button
+          onClick={handleCancel}
+          className="rounded-sm px-3 py-2 text-slate-600 hover:bg-slate-50"
+        >
+          Cancel
+        </button>
+        <div className="flex gap-2">
+          <button
+            onClick={handlePrevious}
+            className="w-24 rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50"
+          >
+            Previous
+          </button>
+          <button
+            onClick={handleNext}
+            className="w-24 rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 14.6 Dialog Button Layouts
+
+Standard button layouts for consistent modal footers.
+
+**🔴 COMMAND:** Cancel always leftmost, primary action always rightmost.
+
+**🔴 COMMAND:** Only one primary action per dialog.
+
+**🟡 DIRECTIVE:** On mobile, stack buttons vertically with full width.
+
+---
+
+#### One Button (50% width, right-aligned)
+
+**Use for:** Acknowledgment modals, passive modals with action.
+
+```tsx
+<div className="flex justify-end">
+  <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white sm:w-1/2">Got it</button>
+</div>
+```
+
+---
+
+#### Two Buttons (each 50% width)
+
+**Use for:** Transactional modals, confirm/cancel patterns.
+
+**🔴 COMMAND:** Use `flex-1` for equal-width buttons.
+
+```tsx
+{
+  /* Desktop: side-by-side */
+}
+;<div className="flex flex-col gap-2 sm:flex-row">
+  <button className="flex-1 rounded-sm border border-slate-300 px-3 py-2">Cancel</button>
+  <button className="flex-1 rounded-sm bg-indigo-600 px-3 py-2 text-white">Save</button>
+</div>
+```
+
+---
+
+#### Three Buttons (each 25% width, right-aligned)
+
+**Use for:** Modals with tertiary action (e.g., "Save as draft").
+
+**🔴 BOUNDARY:** Rarely use three buttons - can overwhelm users.
+
+**🟡 DIRECTIVE:** Consider moving tertiary action to a link below buttons.
+
+```tsx
+{
+  /* Three buttons - use sparingly */
+}
+;<div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
+  <button className="w-full rounded-sm border px-3 py-2 text-sm sm:w-1/4">Discard</button>
+  <button className="w-full rounded-sm border px-3 py-2 text-sm sm:w-1/4">Save draft</button>
+  <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-sm text-white sm:w-1/4">
+    Publish
+  </button>
+</div>
+
+{
+  /* BETTER: Two buttons + tertiary link */
+}
+;<div className="space-y-3">
+  <div className="flex flex-col gap-2 sm:flex-row">
+    <button className="flex-1 rounded-sm border px-3 py-2">Discard</button>
+    <button className="flex-1 rounded-sm bg-indigo-600 px-3 py-2 text-white">Publish</button>
+  </div>
+  <button className="w-full text-sm text-indigo-600 underline hover:text-indigo-700 sm:w-auto">
+    Save as draft instead
+  </button>
+</div>
+```
+
+---
+
+#### Progress Buttons (Split layout)
+
+**Use for:** Multi-step wizards.
+
+**🔴 COMMAND:** Cancel left-aligned, Previous + Next right-aligned grouped.
+
+```tsx
+<div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+  <button className="order-2 w-full rounded-sm px-3 py-2 text-slate-600 hover:bg-slate-50 sm:order-1 sm:w-auto">
+    Cancel
+  </button>
+  <div className="order-1 flex gap-2 sm:order-2">
+    <button className="w-full rounded-sm border border-slate-300 px-3 py-2 sm:w-24">
+      Previous
+    </button>
+    <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white sm:w-24">Next</button>
+  </div>
+</div>
+```
+
+---
+
+### 14.7 Modal Accessibility Checklist
+
+**🔴 COMMAND:** All modals must implement:
+
+- [ ] `role="dialog"` and `aria-modal="true"` on container
+- [ ] `aria-labelledby` pointing to modal title
+- [ ] Focus trap (Tab cycles within modal only)
+- [ ] Initial focus set to appropriate element
+- [ ] Return focus to trigger element on close
+- [ ] Escape key closes modal (when safe)
+- [ ] Screen reader announces modal opening
+- [ ] All interactive elements have visible focus indicators
+- [ ] Backdrop has sufficient contrast (`bg-slate-900/50` minimum)
+- [ ] Close button includes `aria-label="Close"`
+
+---
+
+### 14.8 Focus Management Behaviors
+
+**🔴 COMMAND:** When dialog opens, focus first interactive element.
+
+**🔴 COMMAND:** Trap focus inside modal until dismissed.
+
+**🔴 COMMAND:** When dialog closes, return focus to triggering element.
+
+**🔴 BOUNDARY:** Never set initial focus on primary action button if there are inputs to complete first.
+
+**Focus Priority:**
+
+1. **Modals with forms:** Focus first input field
+2. **Destructive modals:** Focus secondary (Cancel) button
+3. **Standard modals:** Focus primary action button
+4. **Passive/info modals:** Focus close button
+
+---
+
+### 14.9 Complete Accessible Modal Implementation
+
+```tsx
+{
+  /* Accessible modal implementation */
+}
+import { useEffect, useRef } from 'react'
+
+const AccessibleModal = ({ isOpen, onClose, title, children }) => {
+  const modalRef = useRef<HTMLDivElement>(null)
+  const previousActiveElement = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    if (isOpen) {
+      // Store previously focused element
+      previousActiveElement.current = document.activeElement as HTMLElement
+
+      // Focus first focusable element in modal
+      const firstFocusable = modalRef.current?.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      ) as HTMLElement
+      firstFocusable?.focus()
+
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden'
+    } else {
+      // Restore focus and body scroll
+      previousActiveElement.current?.focus()
+      document.body.style.overflow = ''
+    }
+
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  // Focus trap
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      onClose()
+      return
+    }
+
+    if (e.key === 'Tab') {
+      const focusableElements = modalRef.current?.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+
+      if (!focusableElements?.length) return
+
+      const firstElement = focusableElements[0] as HTMLElement
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault()
+        lastElement.focus()
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault()
+        firstElement.focus()
+      }
+    }
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div
+        ref={modalRef}
+        className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6"
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={handleKeyDown}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+          aria-label="Close"
+        >
+          <X className="h-5 w-5" />
+        </button>
+
+        <h2 id="modal-title" className="text-lg font-bold sm:text-xl">
+          {title}
+        </h2>
+
+        <div className="mt-4">{children}</div>
+      </div>
+    </div>
+  )
+}
+```
+
+---
+
+### 14.10 Modal Anti-Patterns
+
+**🔴 BOUNDARY:** Never do these:
+
+❌ **Modal inception** - Don't open modals from modals (use multi-step flow instead)
+
+❌ **Auto-opening modals** - Don't show modals on page load without user action
+
+❌ **Non-dismissible modals** - Always provide escape method (even for critical actions)
+
+❌ **Vague actions** - Don't use "OK", "Submit", "Confirm" - be specific
+
+❌ **Hidden information** - Don't require scrolling to see action buttons
+
+❌ **Surprise modals** - Don't trigger modals from non-button elements (images, text)
+
+❌ **Modal for everything** - Don't use modals for complex forms (use dedicated page)
+
+❌ **Blocking passive content** - Don't use modals for announcements (use toasts/banners)
+
+---
+
+### 14.11 Quick Reference
+
+```
+MODAL TYPE               PRIMARY BUTTON COLOR    FOCUS FIRST    BACKDROP DISMISS
+Confirm/Cancel           indigo-600              Primary        ✅
+Destructive              red-600                Secondary      ❌
+Error Recovery           indigo-600              Primary        ✅ (if safe)
+Permissions Request      indigo-600              Primary        ✅
+Tool Connection          indigo-600              Primary        ✅
+Preview Before Publish   indigo-600              Primary        ✅
+Unsaved Changes          indigo-600              Primary        ✅
+Contextual Help          border only             Close button   ✅
+
+ESCAPE BEHAVIOR
+Standard:      Escape key + backdrop click + X button
+Destructive:   Escape key + X button only (no backdrop)
+Help/Info:     All methods (least disruptive)
+
+MOBILE ADAPTATIONS
+- Full width with mx-4 margins
+- Reduce padding to p-4
+- Stack buttons vertically
+- Full-width buttons
+- Scrollable content with max-height
+
+ACCESSIBILITY REQUIREMENTS
+- role="dialog" + aria-modal="true"
+- aria-labelledby on title
+- Focus trap with Tab cycling
+- Return focus to trigger on close
+- Escape key support
+- Visible focus indicators
+```
+
+---
+
+## 15. Voice Agent Builder Patterns
+
+### 15.1 Template Gallery
+
+**Use for:** Providing pre-configured agent shells to accelerate development.
+
+**🔴 COMMAND:** Use a grid of "Surface" cards (`p-6`) with high-contrast labels.
+**🔴 COMMAND:** Display specific capabilities (e.g., "Outbound Sales," "Customer Support") as secondary labels using `text-sm`.
+
+```tsx
+{
+  /* Grid List Pattern - Ref: Tailwind UI Grid Lists */
+}
+;<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="rounded-lg border bg-white p-6 hover:border-indigo-500">
+    <div className="flex items-baseline gap-2">
+      <h3 className="text-lg font-bold">Inbound Support</h3>
+    </div>
+    <p className="mt-1 text-sm text-gray-600">Handles FAQs and routing.</p>
+  </div>
+</div>
+```
+
+---
+
+### 15.2 Guided Wizard (Progress + Safe Defaults)
+
+**Use for:** Step-by-step agent configuration for complex voice setups.
+
+**🔴 COMMAND:** Use `gap-8` between vertical steps to maintain clear grouping.
+**🔴 COMMAND:** Pre-fill all fields with "Safe Defaults" to allow immediate "Next" actions.
+
+---
+
+### 15.3 Simple → Advanced (Progressive Disclosure)
+
+**Use for:** Keeping the interface clean while allowing expert overrides for LLM parameters.
+
+**🟡 DIRECTIVE:** Default to "Simple" view; use a button link to reveal "Advanced" settings.
+**🔴 COMMAND:** Labels for advanced settings must use "Subtext" (`text-sm`) styling.
+
+---
+
+### 15.4 Inline Glossary
+
+**Use for:** Defining technical terms (e.g., Latency, Temperature) without leaving the builder context.
+
+**🟡 DIRECTIVE:** Use "Passive Voice" for definitions.
+**🔴 COMMAND:** Trigger via hover or click on dotted-underlined text.
+
+---
+
+### 15.5 Tool Picker Cards (Risks)
+
+**Use for:** Selecting external capabilities (APIs, Database access) for the agent.
+
+**🔴 COMMAND:** Cards with high-risk tools (e.g., "Delete Data") must feature a "red/Red" danger indicator.
+**🟡 DIRECTIVE:** Describe implications (financial/access) within the card body using "Description List" formatting.
+
+---
+
+### 15.6 Conversation Flow (Happy + Fallback)
+
+**Use for:** Visualizing the primary path and error-handling branches.
+
+**🔴 COMMAND:** Use `items-baseline gap-2` for step labels to ensure vertical alignment.
+**🔴 COMMAND:** Fallback paths must be visually distinct (e.g., dashed borders).
+
+---
+
+### 15.7 Test Simulator (Transcripts + Debugging)
+
+**Use for:** Real-time testing of the voice agent performance.
+
+**🔴 COMMAND:** Use `role="status"` and `aria-live="polite"` for incoming transcript text.
+**🔴 COMMAND:** Debugging logs must use "Subtext" (`text-sm`) and be collapsible.
+
+---
+
+### 15.8 Error Translation (Plain-Language + Recommended Fix)
+
+**Use for:** Converting technical LLM errors into actionable user steps.
+
+**🔴 COMMAND:** Never show raw code errors. Provide a "Context" and a "Path to resolve."
+**🔴 COMMAND:** Maximum 2 lines for inline form-based errors.
+
+---
+
+### 15.9 Publish Checklist (Blocked Items)
+
+**Use for:** Final verification before the voice agent goes live.
+
+**🔴 COMMAND:** Use "red/Red" for blocked items and "Gray/Neutral" for optional tasks.
+**🔴 BOUNDARY:** Disable the "Publish" button until all critical items are resolved.
+
+---
+
+### 15.10 Safety Rails (PII + Confirmations)
+
+**Use for:** Preventing the agent from collecting or sharing sensitive user data.
+
+**🔴 COMMAND:** High-impact safety changes require a "Moderate-impact" confirmation dialog.
+**🔴 COMMAND:** Use "Active Voice" to state exactly what data is being protected.
+
+```tsx
+{
+  /* Safety Toggle Pattern - Ref: Tailwind UI Card Headings */
+}
+;<div className="rounded-lg border bg-white shadow-sm">
+  <div className="border-b px-4 py-3">
+    <h3 className="text-base font-semibold">Safety Rails</h3>
+  </div>
+  <div className="space-y-4 p-4">
+    <div className="flex items-center justify-between">
+      <div className="space-y-1">
+        <p className="text-sm font-medium">Redact PII</p>
+        <p className="text-sm text-gray-500">Automatically masks SSNs and credit cards.</p>
+      </div>
+      <input type="checkbox" className="rounded-sm" />
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## 16. AI Instructions + Global Rules
+
+### 16.1 Global Rules Console (System Prompt + Policies)
+
+**Use for:** Managing top-level behavioral constraints that apply to all agents in an organization.
+
+**🔴 COMMAND:** Use a "Sticky Header" for the version selector and "Publish" status.
+**🔴 COMMAND:** Separate "System Persona" from "Safety Policies" using `space-y-8` to prevent instruction bleeding.
+
+```tsx
+{
+  /* Ref: Tailwind UI Card Headings + Description Lists */
+}
+;<div className="mb-8">
+  <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+    Global Rules Console
+  </h3>
+  <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+    <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+      <h4 className="text-base font-bold text-gray-900 dark:text-gray-100">
+        Global Safety Policy v2.4
+      </h4>
+      <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/40 dark:text-green-300">
+        Active
+      </span>
+    </div>
+    <dl className="divide-y divide-gray-200 px-6 py-4 dark:divide-gray-700">
+      <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+        <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Last Modified</dt>
+        <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 dark:text-gray-100">
+          Jan 24, 2026 by @admin
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+```
+
+---
+
+### 16.2 Agent-Specific Instructions (Inheritance/Overrides)
+
+**Use for:** Defining local agent behavior while honoring global guardrails.
+
+**🟡 DIRECTIVE:** Use "Visual Indicators" (e.g., an inheritance icon) to show which rules are locked by the Global Console.
+**🔴 COMMAND:** Local overrides must be explicitly toggled and require a "Change Reason" log.
+
+---
+
+### 16.3 Rule Builder (Plain-Language Cards)
+
+**Use for:** Converting natural language intent into structured, machine-readable prompts.
+
+**🔴 COMMAND:** Use "Grid List" cards for rule categories (e.g., "Tone," "Tools," "Data Access").
+**🔴 COMMAND:** Each card must contain a `textarea` for the natural language rule and a `select` for the "Enforcement Level" (Strict vs. Suggestion).
+
+```tsx
+<div className="mb-8">
+  <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Builder</h3>
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+      <div className="space-y-4">
+        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tone</h4>
+        <textarea
+          rows={3}
+          className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          placeholder="Describe the desired tone…"
+        />
+        <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+          <option>Strict</option>
+          <option>Suggestion</option>
+        </select>
+      </div>
+    </div>
+
+    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+      <div className="space-y-4">
+        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tools</h4>
+        <textarea
+          rows={3}
+          className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          placeholder="Specify allowed tools…"
+        />
+        <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+          <option>Strict</option>
+          <option>Suggestion</option>
+        </select>
+      </div>
+    </div>
+
+    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+      <div className="space-y-4">
+        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Data Access</h4>
+        <textarea
+          rows={3}
+          className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          placeholder="Define data access rules…"
+        />
+        <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+          <option>Strict</option>
+          <option>Suggestion</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 16.4 Conflict Detection + Resolution
+
+**Use for:** Identifying contradictory instructions between global and local prompts.
+
+**🔴 COMMAND:** Trigger a "red/Red" warning banner if a local instruction negates a global safety policy.
+**🟡 DIRECTIVE:** Resolve via "Ranked Priority." Global Rules > Department Rules > Agent Overrides.
+
+---
+
+### 16.5 Rule Simulator / Dry Run
+
+**Use for:** Debugging why an agent performed (or refused) an action before going live.
+
+**🔴 COMMAND:** Present a "Reasoning Trace" using `text-sm font-mono` to show which specific rule triggered a block.
+**🔴 COMMAND:** Provide a "Fix Suggestion" button that automatically drafts a prompt adjustment.
+
+```tsx
+<div className="mb-8">
+  <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Simulator</h3>
+  <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+    <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+      <h4 className="text-base font-bold text-gray-900 dark:text-gray-100">Reasoning Trace</h4>
+    </div>
+    <div className="space-y-4 px-6 py-4">
+      <div className="rounded-sm bg-gray-50 p-4 dark:bg-gray-800">
+        <p className="font-mono text-sm text-gray-900 dark:text-gray-100">
+          Rule: PII_REDACTION_STRICT
+        </p>
+        <p className="mt-1 font-mono text-sm text-gray-500 dark:text-gray-400">
+          Triggered: Credit card number detected in response
+        </p>
+        <p className="mt-1 font-mono text-sm text-gray-500 dark:text-gray-400">
+          Action: Response blocked
+        </p>
+      </div>
+      <button
+        type="button"
+        className="inline-flex items-center rounded-sm border border-transparent bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+      >
+        Generate fix suggestion
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+### 16.6 Change Review + Publish Gate
+
+**Use for:** Managing the risk of deploying new agent instructions to production.
+
+**🔴 COMMAND:** Display a "Risk Summary" card highlighting any changes to PII handling or external tool access.
+**🔴 COMMAND:** All "Publish" actions must include a mandatory "Rollback Version" selection.
+
+```tsx
+{
+  /* Ref: Tailwind UI Card Headings (Action-oriented) */
+}
+;<div className="rounded-lg border-2 border-amber-200 bg-amber-50 p-4">
+  <div className="flex items-center gap-3">
+    <AlertTriangle className="text-amber-600" />
+    <h4 className="font-bold text-amber-900">High Risk Deployment</h4>
+  </div>
+  <p className="mt-2 text-sm text-amber-800">
+    This version modifies <strong>Tool Access</strong> permissions. Review the security diff before
+    proceeding.
+  </p>
+  <div className="mt-4 flex gap-3">
+    <button className="rounded-sm bg-amber-600 px-4 py-2 text-sm font-bold text-white">
+      Review Diff
+    </button>
+    <button className="text-sm text-amber-700 underline">Cancel</button>
+  </div>
+</div>
+```
+
+---
+
+### 16.7 Versioning & Rollback
+
+**Use for:** Keeping a historical record of instruction sets and restoring previous states.
+
+**🔴 COMMAND:** Use a "Vertical Timeline" for version history.
+**🔴 COMMAND:** Labels must include "Version ID," "Timestamp," and "Performance Score" (if available).
+
+---
+
+## 17. Quick Reference
+
+### 17.1 Spacing Cheat Sheet
 
 ```
 VERTICAL                    HORIZONTAL
@@ -2124,6 +5050,8 @@ Related:     space-y-2      Related:     gap-2
 Text:        space-y-1      Dense:       gap-1
 Lists:       space-y-0
 
+Header label + icon: icon left, items-baseline gap-2
+
 INSET (PADDING)
 Page:        p-12 (or p-4 dense)
 Surface:     p-6  (or p-4 dense)
@@ -2131,7 +5059,7 @@ Container:   p-4
 Field:       p-3 or less
 ```
 
-### 10.2 Typography Cheat Sheet
+### 17.2 Typography Cheat Sheet
 
 ```
 Display:     text-5xl font-extrabold
@@ -2141,7 +5069,7 @@ Body:        text-base font-normal
 Subtext:     text-sm font-medium
 ```
 
-### 10.3 Border Radius Cheat Sheet
+### 17.3 Border Radius Cheat Sheet
 
 ```
 Small:       rounded-sm p-2
@@ -2149,6 +5077,48 @@ Standard:    rounded-md p-4
 Large:       rounded-lg p-6
 ```
 
----
+### 17.4 Actions Quick Reference
 
-**End of Playbook v1.0.0**
+```
+Add:       Insert to list/system
+Cancel:    Stop and close
+Clear:     Remove from field
+Close:     Terminate/dismiss (X icon only)
+Copy:      Create duplicate
+Delete:    Destroy permanently (warn user)
+Edit:      Change values
+Next:      Advance in sequence
+Refresh:   Reload view
+Remove:    Remove from list (not destroy)
+Reset:     Revert to last saved (link only)
+```
+
+### 17.5 Dialog Sizes
+
+```
+Small:   max-w-sm  (384px)
+Medium:  max-w-md  (448px)
+Large:   max-w-lg  (512px)
+X-Large: max-w-xl  (576px)
+```
+
+### 17.6 Empty State Layouts
+
+```
+Small tile:    Center image, left-align text
+Side panel:    Left-align all
+Large space:   Wide margin OR centered block
+Full page:     Centered block preferred
+```
+
+### 17.7 Loading Types
+
+```
+Skeleton:      Initial page load
+Full-screen:   App-wide processing
+Inline:        Component-specific
+Progressive:   Batched loading
+Load more:     Extending lists
+```
+
+---
