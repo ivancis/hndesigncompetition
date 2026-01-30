@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import TabItemCard from '@/components/TabItemCard'
+import MyCustomComponent4 from '@/components/MyCustomComponent4'
+import MyCustomComponent5 from '@/components/MyCustomComponent5'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
@@ -1394,7 +1396,10 @@ function MyCustomComponent1() {
           <div className="space-y-6">
             <div className="space-y-4">
               <div>
-                <label htmlFor="voice-language" className="block text-sm font-medium text-gray-900 dark:text-gray-100">
+                <label
+                  htmlFor="voice-language"
+                  className="block text-sm font-medium text-gray-900 dark:text-gray-100"
+                >
                   Voice Language
                 </label>
                 <select
@@ -1433,11 +1438,11 @@ function MyCustomComponent1() {
             The agent uses{' '}
             <button
               type="button"
-              className="border-b-2 border-dotted border-gray-400 text-gray-900 cursor-help hover:border-gray-600 dark:text-gray-100 dark:border-gray-500"
+              className="cursor-help border-b-2 border-dotted border-gray-400 text-gray-900 hover:border-gray-600 dark:border-gray-500 dark:text-gray-100"
             >
               temperature
-            </button>
-            {' '}to control response variability.
+            </button>{' '}
+            to control response variability.
           </p>
           <ScenarioTitle>Error Translation: Plain language + fix suggestion</ScenarioTitle>
           <div className="rounded-lg border border-red-600 bg-red-50 p-4 dark:border-red-500 dark:bg-red-900/40">
@@ -2017,16 +2022,16 @@ function MyCustomComponent3() {
                 Active
               </span>
             </div>
-          <dl className="divide-y divide-gray-200 px-6 py-4 dark:divide-gray-700">
-            <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
-              <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                Last Modified
-              </dt>
-              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 dark:text-gray-100">
-                Jan 24, 2026 by @admin
-              </dd>
-            </div>
-          </dl>
+            <dl className="divide-y divide-gray-200 px-6 py-4 dark:divide-gray-700">
+              <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  Last Modified
+                </dt>
+                <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 dark:text-gray-100">
+                  Jan 24, 2026 by @admin
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
 
@@ -2264,8 +2269,8 @@ function MyCustomComponent3() {
             <div className="space-y-1">
               <h4 className="font-bold text-amber-900 dark:text-amber-200">High Risk Deployment</h4>
               <p className="text-sm text-amber-800 dark:text-amber-300">
-                This version modifies <strong>Tool Access</strong> permissions. Review the security diff
-                before proceeding.
+                This version modifies <strong>Tool Access</strong> permissions. Review the security
+                diff before proceeding.
               </p>
             </div>
           </div>
@@ -3649,14 +3654,6 @@ function MyCustomComponent3() {
   )
 }
 
-function MyCustomComponent4() {
-  return <MyCustomComponentBase label="Tab4" />
-}
-
-function MyCustomComponent5() {
-  return <MyCustomComponentBase label="Tab5" />
-}
-
 function MyCustomComponent6() {
   return <MyCustomComponentBase label="Tab6" />
 }
@@ -3714,7 +3711,7 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: '4',
+      label: 'Kitchen Sink',
       items: [
         {
           title: '4',
@@ -3725,7 +3722,7 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: '5',
+      label: 'Kitchen Sink Styled',
       items: [
         {
           title: '5',
