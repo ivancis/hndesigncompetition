@@ -3,7 +3,7 @@
 /**
  * Kitchen Sink / UI Kit Stress Test component.
  * Renders a comprehensive set of HTML elements for consistency testing.
- * Styled per ui-pattern-playbook.md: Tailwind only, typography/spacing from scale.
+ * Styled per ui-pattern-playbook/: Tailwind only, typography/spacing from scale.
  */
 export default function MyCustomComponent5() {
   return (
