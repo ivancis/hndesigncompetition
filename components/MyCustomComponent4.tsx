@@ -216,7 +216,7 @@ export default function MyCustomComponent4() {
 
           <figure>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="https://via.placeholder.com/300x150" />
+            <img src="https://via.placeholder.com/300x150" alt="Placeholder" />
             <figcaption>Figure 1: A standard placeholder image with a caption.</figcaption>
           </figure>
 
