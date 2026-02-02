@@ -40,21 +40,21 @@ export default function TabItemCard({ title, body, footer, slot }: TabItemCardPr
 
   return (
     <div className="w-full">
-      <div className="header border-b border-gray-200 pb-2 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
+      {/* <div className="header border-b border-gray-200 pb-2 text-sm font-semibold text-gray-900 dark:border-gray-700 dark:text-gray-100">
         <h4>{title}</h4>
-      </div>
-      <div className="body py-3 text-sm text-gray-600 dark:text-gray-300">
+      </div> */}
+      <div className="body py-3 text-sm text-gray-600">
         <p>{body}</p>
         {slot ? <div className="mt-3">{slot}</div> : null}
       </div>
-      <div className="footer border-t border-gray-200 pt-2 text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
+      {/* <div className="footer border-t border-gray-200 pt-2 text-xs text-gray-500 dark:border-gray-700 dark:text-gray-400">
         <p
           className={`inline-flex items-center gap-2 rounded-sm border p-2 text-sm font-semibold ${badge}`}
         >
           <span className={`inline-flex rounded-full p-1 ${dot}`} aria-hidden="true" />
           {footer}
         </p>
-      </div>
+      </div> */}
     </div>
   )
 }

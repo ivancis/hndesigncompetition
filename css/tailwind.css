@@ -13,29 +13,85 @@
 
   /* Colors */
   /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.971 0.014 343.198);
-  --color-primary-100: oklch(0.948 0.028 342.258);
-  --color-primary-200: oklch(0.899 0.061 343.231);
-  --color-primary-300: oklch(0.823 0.12 346.018);
-  --color-primary-400: oklch(0.718 0.202 349.761);
-  --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
+  --color-primary-50: var(--color-indigo-50);
+  --color-primary-100: var(--color-indigo-100);
+  --color-primary-200: var(--color-indigo-200);
+  --color-primary-300: var(--color-indigo-300);
+  --color-primary-400: var(--color-indigo-100);
+  --color-primary-500: var(--color-indigo-500);
+  --color-primary-600: var(--color-indigo-600);
+  --color-primary-700: var(--color-indigo-700);
+  --color-primary-800: var(--color-indigo-800);
+  --color-primary-900: var(--color-indigo-900);
+  --color-primary-950: var(--color-indigo-950);
 
-  --color-gray-50: oklch(0.985 0.002 247.839);
-  --color-gray-100: oklch(0.967 0.003 264.542);
-  --color-gray-200: oklch(0.928 0.006 264.531);
-  --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
-  --color-gray-700: oklch(0.373 0.034 259.733);
-  --color-gray-800: oklch(0.278 0.033 256.848);
-  --color-gray-900: oklch(0.21 0.034 264.665);
-  --color-gray-950: oklch(0.13 0.028 261.692);
+  --color-grey-50: oklch(98.4% 0.003 247.858);
+  --color-grey-100: oklch(96.8% 0.007 247.896);
+  --color-grey-200: oklch(92.9% 0.013 255.508);
+  --color-grey-300: oklch(86.9% 0.022 252.894);
+  --color-grey-400: oklch(70.4% 0.04 256.788);
+  --color-grey-500: oklch(55.4% 0.046 257.417);
+  --color-grey-600: oklch(44.6% 0.043 257.281);
+  --color-grey-700: oklch(37.2% 0.044 257.287);
+  --color-grey-800: oklch(27.9% 0.041 260.031);
+  --color-grey-900: oklch(20.8% 0.042 265.755);
+
+  /* Red (Base #ffa776) */
+  --color-red-50: hsl(21, 100%, 97%);
+  --color-red-100: hsl(21, 100%, 92%);
+  --color-red-200: hsl(21, 100%, 85%);
+  --color-red-300: hsl(21, 100%, 78%);
+  --color-red-400: #fea89a;
+  --color-red-500: hsl(21, 90%, 65%);
+  --color-red-600: hsl(21, 80%, 55%);
+  --color-red-700: hsl(21, 70%, 45%);
+  --color-red-800: hsl(21, 60%, 35%);
+  --color-red-900: hsl(21, 50%, 25%);
+
+  /* Amber (Base #ffd787) */
+  --color-amber-50: hsl(40, 100%, 97%);
+  --color-amber-100: hsl(40, 100%, 92%);
+  --color-amber-200: hsl(40, 100%, 85%);
+  --color-amber-300: hsl(40, 100%, 80%);
+  --color-amber-400: #fed787;
+  --color-amber-500: hsl(40, 90%, 65%);
+  --color-amber-600: hsl(40, 80%, 55%);
+  --color-amber-700: hsl(40, 70%, 45%);
+  --color-amber-800: hsl(40, 60%, 35%);
+  --color-amber-900: hsl(40, 50%, 25%);
+
+  /* Emerald (Base #abe6bb / #abe5bc) */
+  --color-emerald-50: hsl(137, 54%, 97%);
+  --color-emerald-100: hsl(137, 54%, 92%);
+  --color-emerald-200: hsl(137, 54%, 88%);
+  --color-emerald-300: hsl(137, 54%, 83%);
+  --color-emerald-400: hsl(137, 54%, 78%); /* #abe6bb */
+  --color-emerald-500: hsl(137, 54%, 73%);
+  --color-emerald-600: hsl(138, 52%, 78%); /* #abe5bc */
+  --color-emerald-700: hsl(138, 45%, 55%);
+  --color-emerald-800: hsl(138, 40%, 45%);
+  --color-emerald-900: hsl(138, 35%, 35%);
+
+  /* Blue & Indigo (Base #cfade8) */
+  --color-indigo-50: hsl(275, 56%, 96%);
+  --color-indigo-100: hsl(275, 56%, 93%);
+  --color-indigo-200: hsl(275, 56%, 87%);
+  --color-indigo-300: hsl(275, 56%, 83%);
+  --color-indigo-400: hsl(275, 56%, 79%); /* Base #cfade8 */
+  --color-indigo-500: hsl(275, 50%, 65%);
+  --color-indigo-600: hsl(275, 45%, 55%);
+  --color-indigo-700: hsl(275, 40%, 48%);
+  --color-indigo-800: hsl(275, 35%, 40%);
+  --color-indigo-900: hsl(275, 30%, 33%);
+  --color-indigo-950: hsl(275, 25%, 22%);
+
+  --spacing: 0.3rem;
+  --text-xs: 1.1rem;
+  --text-sm: 1.1rem;
+  --text-base: 1.03rem;
+  --text-lg: 1.4rem;
+
+  --radius-lg: 14px;
 
   /* Line heights */
   --line-height-11: 2.75rem;
@@ -47,6 +103,50 @@
   --z-60: 60;
   --z-70: 70;
   --z-80: 80;
+
+  /* xs — fine print, disclaimers only */
+  --text-xs: 1rem; /* 16px — hard floor, nothing below this */
+  --text-xs--line-height: 1.5;
+
+  /* sm — captions, secondary labels */
+  --text-sm: 1.125rem; /* 18px */
+  --text-sm--line-height: 1.5;
+
+  /* base — primary body text */
+  --text-base: 1.25rem; /* 20px */
+  --text-base--line-height: 1.6;
+
+  /* lg — lead paragraphs, important body */
+  --text-lg: 1.5rem; /* 24px */
+  --text-lg--line-height: 1.5;
+
+  /* xl — subheadings, card titles */
+  --text-xl: 1.875rem; /* 30px */
+  --text-xl--line-height: 1.4;
+
+  /* 2xl — H3 */
+  --text-2xl: 2.25rem; /* 36px */
+  --text-2xl--line-height: 1.3;
+
+  /* 3xl — H2 */
+  --text-3xl: 2.75rem; /* 44px */
+  --text-3xl--line-height: 1.2;
+
+  /* 4xl — H1 */
+  --text-4xl: 3.5rem; /* 56px */
+  --text-4xl--line-height: 1.1;
+
+  /* 5xl — hero titles */
+  --text-5xl: 4.5rem; /* 72px */
+  --text-5xl--line-height: 1;
+
+  /* 6xl — large hero / banner */
+  --text-6xl: 5.5rem; /* 88px */
+  --text-6xl--line-height: 1;
+
+  /* 8xl — statement / splash */
+  --text-8xl: 7rem; /* 112px */
+  --text-8xl--line-height: 1;
 }
 
 /*
@@ -173,4 +273,14 @@ input:-webkit-autofill:focus {
 .linkicon {
   display: inline-block;
   vertical-align: middle;
+}
+
+body {
+  background: var(--color-white);
+}
+
+button,
+input,
+a {
+  cursor: pointer;
 }

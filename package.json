@@ -21,6 +21,8 @@
     "body-scroll-lock": "^4.0.0-beta.0",
     "contentlayer2": "0.5.5",
     "esbuild": "0.25.2",
+    "feather-icons": "^4.29.2",
+    "react-feather": "^2.0.10",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.2",
     "hast-util-from-html-isomorphic": "^2.0.0",
