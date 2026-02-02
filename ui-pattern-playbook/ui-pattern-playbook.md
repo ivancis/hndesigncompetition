@@ -10,6 +10,16 @@ January 2026
 
 ---
 
+## Consumption order (AI agents)
+
+| Document                                     | Purpose                                                              |
+| -------------------------------------------- | -------------------------------------------------------------------- |
+| [foundations.md](./foundations.md)           | Core tokens (spacing, typography, layouts, visual styles)            |
+| [components.md](./components.md)             | Standard UI patterns (forms, buttons, disabled/empty/loading states) |
+| [patterns.md](./patterns.md)                 | Complex workflows (common actions, modals, voice agent, AI rules)    |
+| [guidelines.md](./guidelines.md)             | Content, tone, accessibility, navigation                             |
+| [quick-references.md](./quick-references.md) | Token lookups, spacing cheat sheets                                  |
+
 ## Table of Contents
 
 **This document**
@@ -80,32 +90,3 @@ January 2026
 - Apply spacing rules (vertical, horizontal, inset).
 - Ensure interaction states are defined and visible.
 - Validate accessibility (focus, disabled, nested interactivity).
-
----
-
-## Sourced from
-
-The playbook is split into five source documents. Reference them as needed:
-
-| Document                                     | Purpose                                                              |
-| -------------------------------------------- | -------------------------------------------------------------------- |
-| [foundations.md](./foundations.md)           | Core tokens (spacing, typography, layouts, visual styles)            |
-| [components.md](./components.md)             | Standard UI patterns (forms, buttons, disabled/empty/loading states) |
-| [patterns.md](./patterns.md)                 | Complex workflows (common actions, modals, voice agent, AI rules)    |
-| [guidelines.md](./guidelines.md)             | Content, tone, accessibility, navigation                             |
-| [quick-references.md](./quick-references.md) | Token lookups, spacing cheat sheets                                  |
-
----
-
-## Consumption order (AI agents)
-
-**Sequential (first-time / new feature):**
-
-1. **foundations.md** → Core tokens (spacing, typography, layouts, visual styles)
-2. **components.md** → Standard UI patterns (forms, buttons, states)
-3. **patterns.md** → Complex workflows (modals, AI features)
-
-**Continuous reference (during implementation):**
-
-- **guidelines.md** → Content, tone, accessibility, navigation rules
-- **quick-references.md** → Token lookups, spacing cheat sheets

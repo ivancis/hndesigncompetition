@@ -34,16 +34,16 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* High emphasis add */
 }
-;<button className="flex items-center gap-2 rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700">
-  <Plus width="16" height="16" aria-hidden="true" />
+;<button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 inline-flex min-w-32 items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+  <PlusCircle className="h-5 w-5" />
   Add document
 </button>
 
 {
   /* Low emphasis add */
 }
-;<button className="flex items-center gap-2 rounded-sm border px-3 py-2 text-sm hover:bg-slate-50">
-  <Plus width="16" height="16" aria-hidden="true" />
+;<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+  <PlusCircle className="h-5 w-5" />
   Add
 </button>
 ```
@@ -63,8 +63,12 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
   /* Cancel in modal */
 }
 ;<div className="flex justify-end gap-2">
-  <button className="rounded-sm border px-3 py-2 hover:bg-slate-50">Cancel</button>
-  <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Save changes</button>
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Cancel
+  </button>
+  <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Save changes
+  </button>
 </div>
 ```
 
@@ -83,9 +87,9 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
   /* Clear in search field */
 }
 ;<div className="relative">
-  <input className="w-full rounded-sm border pr-8" />
+  <input className="border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 pr-8 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2" />
   <button className="absolute top-1/2 right-2 -translate-y-1/2">
-    <X width="16" height="16" className="text-slate-400" aria-hidden="true" />
+    <XCircle className="text-grey-400 h-5 w-5" aria-hidden="true" />
   </button>
 </div>
 ```
@@ -104,10 +108,10 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Close in toast */
 }
-;<div className="flex items-center justify-between gap-3 rounded-md bg-slate-900 p-4 text-white">
+;<div className="bg-grey-900 flex items-center justify-between gap-3 rounded-md border-2 p-4 text-white">
   <span>Action completed</span>
-  <button className="rounded-sm p-1 hover:bg-slate-800">
-    <X width="16" height="16" aria-hidden="true" />
+  <button className="hover:bg-grey-800 rounded-md p-1 transition">
+    <XCircle className="h-5 w-5" aria-hidden="true" />
   </button>
 </div>
 ```
@@ -125,14 +129,14 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
   /* Copy code snippet */
 }
 ;<div className="relative">
-  <pre className="rounded-md bg-slate-900 p-4">
+  <pre className="bg-grey-900 rounded-md border-2 p-4">
     <code>npm install package</code>
   </pre>
   <button
-    className="absolute top-2 right-2 rounded-sm p-1.5 hover:bg-slate-800"
+    className="hover:bg-grey-800 absolute top-2 right-2 rounded-md p-1.5 transition"
     aria-label="Copy to clipboard"
   >
-    <Copy width="16" height="16" className="text-slate-400" aria-hidden="true" />
+    <Copy className="text-grey-400 h-5 w-5" aria-hidden="true" />
   </button>
 </div>
 ```
@@ -173,8 +177,8 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Low-impact: immediate deletion */
 }
-;<button className="rounded-sm p-1 text-red-600 hover:bg-red-50">
-  <Trash2 width="16" height="16" aria-hidden="true" />
+;<button className="rounded-md p-1 text-red-600 hover:bg-red-50">
+  <Trash2 className="h-5 w-5" aria-hidden="true" />
 </button>
 
 {
@@ -182,10 +186,10 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 }
 ;<div className="rounded-md border p-4">
   <h3 className="font-semibold">Delete 3 items?</h3>
-  <p className="text-sm text-slate-600">This action cannot be undone.</p>
+  <p className="text-grey-600 text-sm">This action cannot be undone.</p>
   <div className="mt-4 flex gap-2">
-    <button className="rounded-sm border px-3 py-2">Cancel</button>
-    <button className="rounded-sm bg-red-600 px-3 py-2 text-white">Delete</button>
+    <button className="text-md rounded-md border-2 px-4 py-2 font-semibold">Cancel</button>
+    <button className="rounded-md bg-red-300 px-3 py-2 text-white">Delete</button>
   </div>
 </div>
 
@@ -193,11 +197,14 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
   /* High-impact: typed confirmation */
 }
 ;<div className="space-y-4">
-  <p className="text-sm">
+  <p className="text-sm text-black">
     Type <strong>delete-production-db</strong> to confirm
   </p>
-  <input className="w-full rounded-sm border px-3 py-2" />
-  <button disabled className="rounded-sm bg-red-600 px-3 py-2 text-white disabled:opacity-50">
+  <input className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2" />
+  <button
+    disabled
+    className="text-md disabled:bg-grey-300 disabled:text-grey-500 disabled:border-grey-400 rounded-md border-2 bg-red-300 px-4 py-2 font-semibold text-black transition-colors disabled:cursor-not-allowed"
+  >
     Delete database
   </button>
 </div>
@@ -225,16 +232,16 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Edit in overflow menu */
 }
-;<button className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-slate-50">
-  <Edit2 width="16" height="16" aria-hidden="true" />
+;<button className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium transition-colors hover:text-black">
+  <Edit2 className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
   Edit
 </button>
 
 {
   /* Edit icon button */
 }
-;<button className="rounded-sm p-1.5 hover:bg-slate-100">
-  <Edit2 width="16" height="16" className="text-slate-600" aria-hidden="true" />
+;<button className="hover:bg-grey-100 rounded-md p-1.5 transition">
+  <Edit2 className="text-grey-600 h-5 w-5" aria-hidden="true" />
 </button>
 ```
 
@@ -251,10 +258,10 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
   /* Next button in wizard */
 }
 ;<div className="flex justify-end gap-2">
-  <button className="rounded-sm border px-3 py-2">Back</button>
-  <button className="flex items-center gap-2 rounded-sm bg-indigo-600 px-3 py-2 text-white">
+  <button className="text-md rounded-md border-2 px-4 py-2 font-semibold">Back</button>
+  <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Next
-    <ChevronRight width="16" height="16" aria-hidden="true" />
+    <ArrowRight className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
   </button>
 </div>
 ```
@@ -271,8 +278,8 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Refresh button */
 }
-;<button className="flex items-center gap-2 rounded-sm border px-3 py-2 text-sm hover:bg-slate-50">
-  <RefreshCw width="16" height="16" aria-hidden="true" />
+;<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+  <RefreshCcw className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
   Refresh
 </button>
 ```
@@ -293,8 +300,8 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Remove from list */
 }
-;<button className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900">
-  <Minus width="16" height="16" aria-hidden="true" />
+;<button className="text-grey-600 flex items-center gap-2 text-sm hover:text-black">
+  <Minus className="h-5 w-5" aria-hidden="true" />
   Remove from collection
 </button>
 ```
@@ -311,7 +318,7 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Reset form */
 }
-;<button className="text-sm text-indigo-600 underline hover:text-indigo-700">
+;<button className="text-primary-600 hover:text-primary-700 text-sm underline">
   Reset to defaults
 </button>
 ```
@@ -348,12 +355,12 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 }
 ;<div className="flex min-h-screen items-center justify-center p-4">
   <div className="max-w-md space-y-4 text-center">
-    <AlertCircle width="48" height="48" className="mx-auto text-red-600" aria-hidden="true" />
+    <AlertCircle className="h-12 w-12" className="mx-auto text-red-600" aria-hidden="true" />
     <h1 className="text-2xl font-bold">Something went wrong</h1>
-    <p className="text-slate-600">
+    <p className="text-grey-600">
       We couldn't process your request. Please try again or contact support if the problem persists.
     </p>
-    <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Try again</button>
+    <button className="bg-primary-300 rounded-md px-3 py-2 text-white">Try again</button>
   </div>
 </div>
 ```
@@ -389,7 +396,7 @@ All modals share this structure:
   /* Modal overlay + container */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center"
   onClick={handleBackdropClick}
   role="dialog"
   aria-modal="true"
@@ -407,8 +414,8 @@ All modals share this structure:
 
     {/* Actions */}
     <div className="mt-6 flex justify-end gap-2">
-      <button className="rounded-sm border px-3 py-2">Cancel</button>
-      <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Confirm</button>
+      <button className="text-md rounded-md border-2 px-4 py-2 font-semibold">Cancel</button>
+      <button className="bg-primary-300 rounded-md px-3 py-2 text-white">Confirm</button>
     </div>
   </div>
 </div>
@@ -416,7 +423,7 @@ All modals share this structure:
 
 **🔴 COMMAND:** All modals must include:
 
-- Backdrop overlay (`bg-slate-900/50`)
+- Backdrop overlay (`bg-grey-900/50`)
 - Focus trap (keyboard navigation stays within modal)
 - `role="dialog"` and `aria-modal="true"`
 - `aria-labelledby` pointing to title
@@ -532,7 +539,7 @@ const Modal = ({ isOpen, onClose }) => {
 {
   /* Responsive modal */
 }
-;<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+;<div className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4">
   <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-xl sm:p-6">
     <h2 className="text-lg font-bold sm:text-xl">Title</h2>
 
@@ -540,8 +547,10 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Mobile: stacked buttons, Desktop: horizontal */}
     <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
-      <button className="w-full rounded-sm border px-3 py-2 sm:w-auto">Cancel</button>
-      <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white sm:w-auto">
+      <button className="text-md w-full rounded-md border-2 px-4 py-2 font-semibold sm:w-auto">
+        Cancel
+      </button>
+      <button className="bg-primary-300 w-full rounded-md px-3 py-2 text-white sm:w-auto">
         Confirm
       </button>
     </div>
@@ -601,7 +610,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* Publish confirmation modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="publish-title"
@@ -610,7 +619,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Close button */}
     <button
       onClick={onClose}
-      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
       aria-label="Close"
     >
       <X className="h-5 w-5" />
@@ -622,7 +631,7 @@ const Modal = ({ isOpen, onClose }) => {
     </h2>
 
     {/* Body */}
-    <p className="mt-3 text-sm text-slate-600 sm:mt-4">
+    <p className="text-grey-600 mt-3 text-sm sm:mt-4">
       This article will be visible to all subscribers immediately. You'll be notified when it's
       published.
     </p>
@@ -631,13 +640,13 @@ const Modal = ({ isOpen, onClose }) => {
     <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
       <button
         onClick={onClose}
-        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
       >
         Cancel
       </button>
       <button
         onClick={handlePublish}
-        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+        className="bg-primary-300 hover:bg-primary-200 w-full rounded-md px-3 py-2 text-white sm:w-auto"
       >
         Publish now
       </button>
@@ -701,7 +710,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* Destructive action modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   onClick={(e) => e.stopPropagation()} // No backdrop dismiss
   role="dialog"
   aria-modal="true"
@@ -718,18 +727,18 @@ const Modal = ({ isOpen, onClose }) => {
           Delete team member?
         </h2>
       </div>
-      <button onClick={onClose} className="rounded-sm p-1 hover:bg-slate-100" aria-label="Close">
+      <button onClick={onClose} className="hover:bg-grey-100 rounded-md p-1" aria-label="Close">
         <X className="h-5 w-5" />
       </button>
     </div>
 
     {/* Body */}
     <div className="mt-2 ml-11">
-      <p className="text-sm text-slate-600">
+      <p className="text-grey-600 text-sm">
         Removing <strong>Sarah Johnson</strong> will revoke her access immediately. She won't be
         able to view projects or data.
       </p>
-      <p className="mt-2 text-sm font-semibold text-slate-900">This action cannot be undone.</p>
+      <p className="mt-2 text-sm font-semibold text-black">This action cannot be undone.</p>
     </div>
 
     {/* Actions */}
@@ -737,13 +746,13 @@ const Modal = ({ isOpen, onClose }) => {
       <button
         onClick={onClose}
         autoFocus // Focus cancel button first
-        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
       >
         Cancel
       </button>
       <button
         onClick={handleDelete}
-        className="w-full rounded-sm bg-red-600 px-3 py-2 text-white hover:bg-red-700 sm:w-auto"
+        className="w-full rounded-md bg-red-300 px-3 py-2 text-white hover:bg-red-200 sm:w-auto"
       >
         Delete member
       </button>
@@ -754,15 +763,15 @@ const Modal = ({ isOpen, onClose }) => {
 {
   /* BETTER: Undo toast after immediate action (no modal) */
 }
-;<div className="fixed right-4 bottom-4 left-4 rounded-lg bg-slate-900 p-4 text-white shadow-xl sm:right-4 sm:left-auto sm:w-96">
+;<div className="bg-grey-900 fixed right-4 bottom-4 left-4 rounded-lg p-4 text-white shadow-xl sm:right-4 sm:left-auto sm:w-96">
   <div className="flex items-start justify-between gap-3">
     <div>
       <p className="font-semibold">Member removed</p>
-      <p className="mt-1 text-sm text-slate-300">Sarah Johnson no longer has access</p>
+      <p className="text-grey-300 mt-1 text-sm">Sarah Johnson no longer has access</p>
     </div>
     <button
       onClick={handleUndo}
-      className="rounded-sm border border-white/20 px-3 py-1.5 text-sm font-semibold whitespace-nowrap hover:bg-white/10"
+      className="rounded-md border border-white/20 px-3 py-1.5 text-sm font-semibold whitespace-nowrap hover:bg-white/10"
     >
       Undo
     </button>
@@ -823,7 +832,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* Error recovery modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="error-title"
@@ -841,11 +850,11 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Body */}
     <div className="mt-2 ml-11">
-      <p className="text-sm text-slate-600">
+      <p className="text-grey-600 text-sm">
         We couldn't save your changes because the connection was interrupted. Your work is saved
         locally.
       </p>
-      <p className="mt-2 text-sm text-slate-600">
+      <p className="text-grey-600 mt-2 text-sm">
         Check your internet connection and try saving again.
       </p>
     </div>
@@ -854,13 +863,13 @@ const Modal = ({ isOpen, onClose }) => {
     <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
       <button
         onClick={onClose}
-        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
       >
         Cancel
       </button>
       <button
         onClick={handleRetry}
-        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+        className="bg-primary-300 hover:bg-primary-200 w-full rounded-md px-3 py-2 text-white sm:w-auto"
       >
         Try again
       </button>
@@ -922,7 +931,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* Permission request modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="permission-title"
@@ -931,7 +940,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Close button */}
     <button
       onClick={onClose}
-      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
       aria-label="Close"
     >
       <X className="h-5 w-5" />
@@ -940,7 +949,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Icon + title */}
     <div className="flex items-center gap-3">
       <div className="rounded-full bg-indigo-100 p-2">
-        <Camera className="h-6 w-6 text-indigo-600" aria-hidden="true" />
+        <Camera className="text-primary-600 h-6 w-6" aria-hidden="true" />
       </div>
       <h2 id="permission-title" className="text-lg font-bold sm:text-xl">
         Allow camera access?
@@ -949,23 +958,23 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Body */}
     <div className="mt-2 ml-11">
-      <p className="text-sm text-slate-600">
+      <p className="text-grey-600 text-sm">
         We need camera access to scan QR codes and upload profile photos.
       </p>
-      <p className="mt-2 text-sm text-slate-600">You can change this anytime in settings.</p>
+      <p className="text-grey-600 mt-2 text-sm">You can change this anytime in settings.</p>
     </div>
 
     {/* Actions */}
     <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
       <button
         onClick={handleDeny}
-        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
       >
         Not now
       </button>
       <button
         onClick={handleAllow}
-        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+        className="bg-primary-300 hover:bg-primary-200 w-full rounded-md px-3 py-2 text-white sm:w-auto"
       >
         Allow
       </button>
@@ -1027,7 +1036,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* OAuth connection modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="connect-title"
@@ -1036,7 +1045,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Close button */}
     <button
       onClick={onClose}
-      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
       aria-label="Close"
     >
       <X className="h-5 w-5" />
@@ -1044,7 +1053,7 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Icon + title */}
     <div className="flex items-center gap-3">
-      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-100">
+      <div className="bg-grey-100 flex h-12 w-12 items-center justify-center rounded-lg">
         <img src="/slack-logo.svg" alt="" className="h-8 w-8" />
       </div>
       <h2 id="connect-title" className="text-lg font-bold sm:text-xl">
@@ -1054,13 +1063,13 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Body */}
     <div className="mt-4">
-      <p className="text-sm text-slate-600">
+      <p className="text-grey-600 text-sm">
         We'll be able to send notifications to your Slack workspace and read channel messages to
         sync data.
       </p>
 
       {/* Permissions list */}
-      <div className="mt-3 space-y-2 rounded-md border bg-slate-50 p-3">
+      <div className="bg-grey-50 mt-3 space-y-2 rounded-md border p-3">
         <p className="text-xs font-semibold text-slate-500 uppercase">This will allow us to:</p>
         <ul className="space-y-1.5 text-sm text-slate-700">
           <li className="flex items-start gap-2">
@@ -1083,13 +1092,13 @@ const Modal = ({ isOpen, onClose }) => {
     <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
       <button
         onClick={onClose}
-        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
       >
         Cancel
       </button>
       <button
         onClick={handleConnect}
-        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+        className="bg-primary-300 hover:bg-primary-200 w-full rounded-md px-3 py-2 text-white sm:w-auto"
       >
         Connect Slack
       </button>
@@ -1151,7 +1160,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* Preview before publish modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="preview-title"
@@ -1162,7 +1171,7 @@ const Modal = ({ isOpen, onClose }) => {
       <h2 id="preview-title" className="text-lg font-bold sm:text-xl">
         Preview article
       </h2>
-      <button onClick={onClose} className="rounded-sm p-1 hover:bg-slate-100" aria-label="Close">
+      <button onClick={onClose} className="hover:bg-grey-100 rounded-md p-1" aria-label="Close">
         <X className="h-5 w-5" />
       </button>
     </div>
@@ -1170,17 +1179,17 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Preview content - scrollable */}
     <div className="max-h-96 overflow-y-auto p-4 sm:p-6">
       {/* Metadata */}
-      <div className="mb-4 space-y-1 rounded-md border bg-slate-50 p-3 text-sm">
+      <div className="bg-grey-50 mb-4 space-y-1 rounded-md border p-3 text-sm">
         <div className="flex justify-between">
-          <span className="text-slate-600">Visibility:</span>
+          <span className="text-grey-600">Visibility:</span>
           <span className="font-semibold">All subscribers</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-slate-600">Publish date:</span>
+          <span className="text-grey-600">Publish date:</span>
           <span className="font-semibold">Immediately</span>
         </div>
         <div className="flex justify-between">
-          <span className="text-slate-600">Word count:</span>
+          <span className="text-grey-600">Word count:</span>
           <span className="font-semibold">1,247 words</span>
         </div>
       </div>
@@ -1188,7 +1197,7 @@ const Modal = ({ isOpen, onClose }) => {
       {/* Preview */}
       <article className="prose prose-slate max-w-none">
         <h1>Article Title Goes Here</h1>
-        <p className="text-slate-600">
+        <p className="text-grey-600">
           This is a preview of how your article will appear to readers...
         </p>
         {/* Content preview */}
@@ -1200,20 +1209,20 @@ const Modal = ({ isOpen, onClose }) => {
       <div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
         <button
           onClick={handleEdit}
-          className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+          className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
         >
           Edit article
         </button>
         <button
           onClick={handlePublish}
-          className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+          className="bg-primary-300 hover:bg-primary-200 w-full rounded-md px-3 py-2 text-white sm:w-auto"
         >
           Publish now
         </button>
       </div>
       <button
         onClick={handleSaveDraft}
-        className="mt-3 w-full text-sm text-indigo-600 underline hover:text-indigo-700 sm:w-auto"
+        className="text-primary-600 hover:text-primary-700 mt-3 w-full text-sm underline sm:w-auto"
       >
         Save as draft instead
       </button>
@@ -1274,7 +1283,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* Unsaved changes modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="unsaved-title"
@@ -1283,7 +1292,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Close button */}
     <button
       onClick={handleKeepEditing}
-      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
       aria-label="Close"
     >
       <X className="h-5 w-5" />
@@ -1301,7 +1310,7 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Body */}
     <div className="mt-2 ml-11">
-      <p className="text-sm text-slate-600">
+      <p className="text-grey-600 text-sm">
         You have unsaved changes to this document. Save them before leaving?
       </p>
     </div>
@@ -1310,19 +1319,19 @@ const Modal = ({ isOpen, onClose }) => {
     <div className="mt-4 flex flex-col gap-2 sm:mt-6 sm:flex-row sm:justify-end">
       <button
         onClick={handleDiscard}
-        className="order-2 w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:order-1 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 order-2 w-full rounded-md border-2 px-3 py-2 sm:order-1 sm:w-auto"
       >
         Discard
       </button>
       <button
         onClick={handleKeepEditing}
-        className="order-1 w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:order-2 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 order-1 w-full rounded-md border-2 px-3 py-2 sm:order-2 sm:w-auto"
       >
         Keep editing
       </button>
       <button
         onClick={handleSave}
-        className="order-3 w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+        className="bg-primary-300 hover:bg-primary-200 order-3 w-full rounded-md px-3 py-2 text-white sm:w-auto"
       >
         Save changes
       </button>
@@ -1383,7 +1392,7 @@ const Modal = ({ isOpen, onClose }) => {
   /* Contextual help modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   role="dialog"
   aria-modal="true"
   aria-labelledby="help-title"
@@ -1392,7 +1401,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Close button */}
     <button
       onClick={onClose}
-      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
       aria-label="Close"
     >
       <X className="h-5 w-5" />
@@ -1401,7 +1410,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Icon + title */}
     <div className="flex items-center gap-3">
       <div className="rounded-full bg-indigo-100 p-2">
-        <HelpCircle className="h-6 w-6 text-indigo-600" aria-hidden="true" />
+        <HelpCircle className="text-primary-600 h-6 w-6" aria-hidden="true" />
       </div>
       <h2 id="help-title" className="text-lg font-bold sm:text-xl">
         API rate limit
@@ -1410,13 +1419,13 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Body */}
     <div className="mt-2 ml-11 space-y-3">
-      <p className="text-sm text-slate-600">
+      <p className="text-grey-600 text-sm">
         Rate limits control how many API requests you can make per hour. They prevent abuse and
         ensure fair usage for all users.
       </p>
 
       {/* Example */}
-      <div className="rounded-md border bg-slate-50 p-3">
+      <div className="bg-grey-50 rounded-md border p-3">
         <p className="text-xs font-semibold text-slate-500 uppercase">Example</p>
         <p className="mt-1 text-sm text-slate-700">
           With a 1,000 requests/hour limit, you can make about 16 requests per minute.
@@ -1426,7 +1435,7 @@ const Modal = ({ isOpen, onClose }) => {
       {/* Learn more link */}
       <a
         href="/docs/rate-limits"
-        className="inline-flex items-center gap-1 text-sm text-indigo-600 underline hover:text-indigo-700"
+        className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-1 text-sm underline"
       >
         Learn more about rate limits
         <ExternalLink className="h-4 w-4" aria-hidden="true" />
@@ -1437,7 +1446,7 @@ const Modal = ({ isOpen, onClose }) => {
     <div className="mt-4 flex justify-end sm:mt-6">
       <button
         onClick={onClose}
-        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
       >
         Got it
       </button>
@@ -1476,7 +1485,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
   /* Passive modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   onClick={onClose}
   role="dialog"
   aria-modal="true"
@@ -1490,11 +1499,11 @@ These are simpler modal patterns for common use cases. They follow the same univ
       <h2 id="passive-title" className="text-lg font-semibold">
         Maintenance scheduled
       </h2>
-      <button onClick={onClose} className="rounded-sm p-1 hover:bg-slate-100" aria-label="Close">
+      <button onClick={onClose} className="hover:bg-grey-100 rounded-md p-1" aria-label="Close">
         <X className="h-4 w-4" aria-hidden="true" />
       </button>
     </div>
-    <p className="mt-2 text-sm text-slate-600">
+    <p className="text-grey-600 mt-2 text-sm">
       System will be unavailable tomorrow from 2–4&nbsp;AM EST for scheduled maintenance.
     </p>
   </div>
@@ -1526,7 +1535,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
   /* Transactional modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   onClick={onClose}
   role="dialog"
   aria-modal="true"
@@ -1538,7 +1547,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
   >
     <button
       onClick={onClose}
-      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
       aria-label="Close"
     >
       <X className="h-4 w-4" />
@@ -1548,20 +1557,20 @@ These are simpler modal patterns for common use cases. They follow the same univ
       Save changes?
     </h2>
 
-    <p className="mt-2 text-sm text-slate-600">
+    <p className="text-grey-600 mt-2 text-sm">
       You have unsaved changes. Do you want to save before closing?
     </p>
 
     <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:justify-end">
       <button
         onClick={handleDiscard}
-        className="w-full rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50 sm:w-auto"
+        className="border-grey-300 hover:bg-grey-50 w-full rounded-md border-2 px-3 py-2 sm:w-auto"
       >
         Discard
       </button>
       <button
         onClick={handleSave}
-        className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700 sm:w-auto"
+        className="bg-primary-300 hover:bg-primary-200 w-full rounded-md px-3 py-2 text-white sm:w-auto"
       >
         Save changes
       </button>
@@ -1597,7 +1606,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
   /* Acknowledgment modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   onClick={onClose}
   role="dialog"
   aria-modal="true"
@@ -1609,7 +1618,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
   >
     <button
       onClick={onClose}
-      className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+      className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
       aria-label="Close"
     >
       <X className="h-4 w-4" />
@@ -1625,12 +1634,12 @@ These are simpler modal patterns for common use cases. They follow the same univ
       </h2>
     </div>
 
-    <p className="mt-2 ml-11 text-sm text-slate-600">Your profile has been updated successfully.</p>
+    <p className="text-grey-600 mt-2 ml-11 text-sm">Your profile has been updated successfully.</p>
 
     <div className="mt-4 flex justify-end">
       <button
         onClick={onClose}
-        className="w-1/2 rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700"
+        className="bg-primary-300 hover:bg-primary-200 w-1/2 rounded-md px-3 py-2 text-white"
       >
         Got it
       </button>
@@ -1674,7 +1683,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
   /* Progress/wizard modal */
 }
 ;<div
-  className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+  className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
   onClick={(e) => e.stopPropagation()} // No backdrop dismiss
   role="dialog"
   aria-modal="true"
@@ -1692,9 +1701,9 @@ These are simpler modal patterns for common use cases. They follow the same univ
 
       {/* Optional: Visual progress bar */}
       <div className="mt-3 flex gap-1">
-        <div className="h-1 flex-1 rounded-full bg-indigo-600" />
-        <div className="h-1 flex-1 rounded-full bg-indigo-600" />
-        <div className="h-1 flex-1 rounded-full bg-slate-200" />
+        <div className="bg-primary-300 h-1 flex-1 rounded-full" />
+        <div className="bg-primary-300 h-1 flex-1 rounded-full" />
+        <div className="bg-grey-200 h-1 flex-1 rounded-full" />
       </div>
     </div>
 
@@ -1703,11 +1712,14 @@ These are simpler modal patterns for common use cases. They follow the same univ
       <div className="space-y-4">
         <div>
           <label className="text-sm font-medium">Company name</label>
-          <input type="text" className="mt-1 w-full rounded-sm border px-3 py-2" />
+          <input
+            type="text"
+            className="text-md mt-1 w-full rounded-md border-2 px-4 py-2 font-semibold"
+          />
         </div>
         <div>
           <label className="text-sm font-medium">Industry</label>
-          <select className="mt-1 w-full rounded-sm border px-3 py-2">
+          <select className="text-md mt-1 w-full rounded-md border-2 px-4 py-2 font-semibold">
             <option>Select industry</option>
           </select>
         </div>
@@ -1719,20 +1731,20 @@ These are simpler modal patterns for common use cases. They follow the same univ
       <div className="flex items-center justify-between">
         <button
           onClick={handleCancel}
-          className="rounded-sm px-3 py-2 text-slate-600 hover:bg-slate-50"
+          className="text-grey-600 hover:bg-grey-50 rounded-md px-3 py-2"
         >
           Cancel
         </button>
         <div className="flex gap-2">
           <button
             onClick={handlePrevious}
-            className="w-24 rounded-sm border border-slate-300 px-3 py-2 hover:bg-slate-50"
+            className="border-grey-300 hover:bg-grey-50 w-24 rounded-md border-2 px-3 py-2"
           >
             Previous
           </button>
           <button
             onClick={handleNext}
-            className="w-24 rounded-sm bg-indigo-600 px-3 py-2 text-white hover:bg-indigo-700"
+            className="bg-primary-300 hover:bg-primary-200 w-24 rounded-md px-3 py-2 text-white"
           >
             Next
           </button>
@@ -1763,7 +1775,7 @@ Standard button layouts for consistent modal footers.
 
 ```tsx
 <div className="flex justify-end">
-  <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white sm:w-1/2">Got it</button>
+  <button className="bg-primary-300 w-full rounded-md px-3 py-2 text-white sm:w-1/2">Got it</button>
 </div>
 ```
 
@@ -1780,8 +1792,8 @@ Standard button layouts for consistent modal footers.
   /* Desktop: side-by-side */
 }
 ;<div className="flex flex-col gap-2 sm:flex-row">
-  <button className="flex-1 rounded-sm border border-slate-300 px-3 py-2">Cancel</button>
-  <button className="flex-1 rounded-sm bg-indigo-600 px-3 py-2 text-white">Save</button>
+  <button className="border-grey-300 flex-1 rounded-md border-2 px-3 py-2">Cancel</button>
+  <button className="bg-primary-300 flex-1 rounded-md px-3 py-2 text-white">Save</button>
 </div>
 ```
 
@@ -1800,9 +1812,13 @@ Standard button layouts for consistent modal footers.
   /* Three buttons - use sparingly */
 }
 ;<div className="flex flex-col gap-2 sm:flex-row sm:justify-end">
-  <button className="w-full rounded-sm border px-3 py-2 text-sm sm:w-1/4">Discard</button>
-  <button className="w-full rounded-sm border px-3 py-2 text-sm sm:w-1/4">Save draft</button>
-  <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-sm text-white sm:w-1/4">
+  <button className="text-md w-full rounded-md border-2 px-4 py-2 text-sm font-semibold sm:w-1/4">
+    Discard
+  </button>
+  <button className="text-md w-full rounded-md border-2 px-4 py-2 text-sm font-semibold sm:w-1/4">
+    Save draft
+  </button>
+  <button className="bg-primary-300 w-full rounded-md px-3 py-2 text-sm text-white sm:w-1/4">
     Publish
   </button>
 </div>
@@ -1812,10 +1828,10 @@ Standard button layouts for consistent modal footers.
 }
 ;<div className="space-y-3">
   <div className="flex flex-col gap-2 sm:flex-row">
-    <button className="flex-1 rounded-sm border px-3 py-2">Discard</button>
-    <button className="flex-1 rounded-sm bg-indigo-600 px-3 py-2 text-white">Publish</button>
+    <button className="text-md flex-1 rounded-md border-2 px-4 py-2 font-semibold">Discard</button>
+    <button className="bg-primary-300 flex-1 rounded-md px-3 py-2 text-white">Publish</button>
   </div>
-  <button className="w-full text-sm text-indigo-600 underline hover:text-indigo-700 sm:w-auto">
+  <button className="text-primary-600 hover:text-primary-700 w-full text-sm underline sm:w-auto">
     Save as draft instead
   </button>
 </div>
@@ -1831,14 +1847,14 @@ Standard button layouts for consistent modal footers.
 
 ```tsx
 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-  <button className="order-2 w-full rounded-sm px-3 py-2 text-slate-600 hover:bg-slate-50 sm:order-1 sm:w-auto">
+  <button className="text-grey-600 hover:bg-grey-50 order-2 w-full rounded-md px-3 py-2 sm:order-1 sm:w-auto">
     Cancel
   </button>
   <div className="order-1 flex gap-2 sm:order-2">
-    <button className="w-full rounded-sm border border-slate-300 px-3 py-2 sm:w-24">
+    <button className="border-grey-300 w-full rounded-md border-2 px-3 py-2 sm:w-24">
       Previous
     </button>
-    <button className="w-full rounded-sm bg-indigo-600 px-3 py-2 text-white sm:w-24">Next</button>
+    <button className="bg-primary-300 w-full rounded-md px-3 py-2 text-white sm:w-24">Next</button>
   </div>
 </div>
 ```
@@ -1857,7 +1873,7 @@ Standard button layouts for consistent modal footers.
 - [ ] Escape key closes modal (when safe)
 - [ ] Screen reader announces modal opening
 - [ ] All interactive elements have visible focus indicators
-- [ ] Backdrop has sufficient contrast (`bg-slate-900/50` minimum)
+- [ ] Backdrop has sufficient contrast (`bg-grey-900/50` minimum)
 - [ ] Close button includes `aria-label="Close"`
 
 ---
@@ -1948,7 +1964,7 @@ const AccessibleModal = ({ isOpen, onClose, title, children }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4"
+      className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -1962,7 +1978,7 @@ const AccessibleModal = ({ isOpen, onClose, title, children }) => {
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 rounded-sm p-1 hover:bg-slate-100"
+          className="hover:bg-grey-100 absolute top-4 right-4 rounded-md p-1"
           aria-label="Close"
         >
           <X className="h-5 w-5" />
@@ -2068,19 +2084,19 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Each card must include: icon, title, description, capability badges, and action area.
 
-**🔴 COMMAND:** Cards use `rounded-lg border border-gray-200 bg-white p-6` as base styling.
+**🔴 COMMAND:** Cards use `rounded-lg border-2 border-grey-200 bg-white p-6` as base styling.
 
-**🔴 COMMAND:** Apply `dark:border-gray-700 dark:bg-gray-900` for dark mode support.
+**🔴 COMMAND:** Apply `dark:border-grey-700 dark:bg-grey-900` for dark mode support.
 
 ```tsx
-<div className="rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md dark:border-gray-700 dark:bg-gray-900">
+<div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
   <div className="flex items-start gap-4">
     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
       {/* Icon */}
     </div>
     <div className="min-w-0 flex-1">
-      <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100">Title</h3>
-      <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Description</p>
+      <h3 className="text-lg font-bold text-black dark:text-gray-100">Title</h3>
+      <p className="text-grey-600 mt-1 text-sm dark:text-gray-400">Description</p>
       <div className="mt-3 flex flex-wrap gap-2">{/* Badges */}</div>
       <button className="mt-4">{/* Action */}</button>
     </div>
@@ -2102,7 +2118,7 @@ ACCESSIBILITY REQUIREMENTS
 | New        | `bg-green-50 text-green-700` (dark: `bg-green-900/40 text-green-300`)     | Recently added (< 30 days)     |
 | Enterprise | `bg-purple-50 text-purple-700` (dark: `bg-purple-900/40 text-purple-300`) | Advanced features, higher tier |
 | Beta       | `bg-amber-50 text-amber-700` (dark: `bg-amber-900/40 text-amber-300`)     | Experimental features          |
-| Capability | `bg-gray-100 text-gray-700` (dark: `bg-gray-800 text-gray-300`)           | Technical capabilities         |
+| Capability | `bg-grey-100 text-gray-700` (dark: `bg-gray-800 text-gray-300`)           | Technical capabilities         |
 
 **🔴 COMMAND:** Status badges (Popular, New, Enterprise, Beta) must appear before capability badges.
 
@@ -2128,7 +2144,7 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Hover state */
 }
-;<div className="rounded-lg border border-gray-200 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
+;<div className="border-grey-200 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
   {/* Content */}
 </div>
 
@@ -2136,7 +2152,7 @@ ACCESSIBILITY REQUIREMENTS
   /* Selected state */
 }
 ;<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6 shadow-md">
-  <div className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600">
+  <div className="bg-primary-300 absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full">
     <Check className="h-4 w-4 text-white" />
   </div>
   {/* Content */}
@@ -2153,16 +2169,16 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Use centered layout with `max-w-md mx-auto` for empty state content.
 
-**🔴 COMMAND:** Empty state heading uses `text-lg font-semibold`, description uses `text-sm text-gray-600`.
+**🔴 COMMAND:** Empty state heading uses `text-lg font-semibold`, description uses `text-sm text-grey-600`.
 
 ```tsx
 <div className="flex min-h-[400px] items-center justify-center px-4 py-12">
   <div className="max-w-md text-center">
-    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
+    <div className="bg-grey-100 mx-auto flex h-16 w-16 items-center justify-center rounded-full">
       <Search className="h-8 w-8 text-gray-400" />
     </div>
-    <h3 className="mt-4 text-lg font-semibold text-gray-900">No templates found</h3>
-    <p className="mt-2 text-sm text-gray-600">Try adjusting your filters or search terms.</p>
+    <h3 className="mt-4 text-lg font-semibold text-black">No templates found</h3>
+    <p className="text-grey-600 mt-2 text-sm">Try adjusting your filters or search terms.</p>
     <button className="mt-6">Clear all filters</button>
   </div>
 </div>
@@ -2181,7 +2197,7 @@ ACCESSIBILITY REQUIREMENTS
 **🔴 COMMAND:** Use tabbed interface for organizing: Overview, Features, Examples, and Configuration sections.
 
 ```tsx
-<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+<div className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4">
   <div className="w-full max-w-2xl overflow-hidden rounded-lg bg-white shadow-xl">
     <div className="border-b px-6 py-4">
       <div className="flex items-start justify-between">
@@ -2202,7 +2218,7 @@ ACCESSIBILITY REQUIREMENTS
 
     <div className="border-b">
       <nav className="flex gap-4 px-6">
-        <button className="border-b-2 border-indigo-600 px-1 py-3 text-sm font-semibold text-indigo-600">
+        <button className="text-primary-600 border-b-2 border-indigo-600 px-1 py-3 text-sm font-semibold">
           Overview
         </button>
         <button className="border-b-2 border-transparent px-1 py-3 text-sm font-semibold text-gray-500">
@@ -2248,14 +2264,14 @@ ACCESSIBILITY REQUIREMENTS
     <input
       type="text"
       placeholder="Search templates…"
-      className="block w-full rounded-sm border py-2 pr-3 pl-10 text-sm"
+      className="block w-full rounded-md border py-2 pr-3 pl-10 text-sm"
     />
   </div>
   <div className="flex gap-3">
-    <select className="block rounded-sm border px-3 py-2 text-sm">
+    <select className="text-md block rounded-md border-2 px-4 py-2 text-sm font-semibold">
       <option>All categories</option>
     </select>
-    <select className="block rounded-sm border px-3 py-2 text-sm">
+    <select className="text-md block rounded-md border-2 px-4 py-2 text-sm font-semibold">
       <option>Popular first</option>
     </select>
   </div>
@@ -2268,13 +2284,13 @@ ACCESSIBILITY REQUIREMENTS
 
 **🟡 DIRECTIVE:** Display gallery context to help users understand their position in the collection.
 
-**🔴 COMMAND:** Show result count as "Showing X of Y templates" using `text-sm text-gray-600`.
+**🔴 COMMAND:** Show result count as "Showing X of Y templates" using `text-sm text-grey-600`.
 
 **🔴 COMMAND:** For large collections (>12 items), implement pagination or "Load more" button.
 
 ```tsx
 <div className="mb-4">
-  <p className="text-sm text-gray-600 dark:text-gray-400">Showing 12 of 48 templates</p>
+  <p className="text-grey-600 text-sm dark:text-gray-400">Showing 12 of 48 templates</p>
 </div>
 ```
 
@@ -2344,7 +2360,7 @@ ACCESSIBILITY REQUIREMENTS
     <div className="flex items-baseline gap-2">
       <h3 className="text-lg font-bold">Inbound Support</h3>
     </div>
-    <p className="mt-1 text-sm text-gray-600">Handles FAQs and routing.</p>
+    <p className="text-grey-600 mt-1 text-sm">Handles FAQs and routing.</p>
   </div>
 </div>
 ```
@@ -2364,7 +2380,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Step indicators must show three states: completed (checkmark + green-600), current (number + indigo-600), upcoming (number + gray-400).
 
-**🔴 COMMAND:** Display "X of Y steps" in page header using `text-sm text-gray-600`.
+**🔴 COMMAND:** Display "X of Y steps" in page header using `text-sm text-grey-600`.
 
 **🟡 DIRECTIVE:** Use horizontal layout for step indicators on desktop, vertical condensed list on mobile.
 
@@ -2386,9 +2402,9 @@ ACCESSIBILITY REQUIREMENTS
     {/* Current step */}
     <li className="flex items-center gap-2">
       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-indigo-600 bg-white">
-        <span className="text-sm font-semibold text-indigo-600">2</span>
+        <span className="text-primary-600 text-sm font-semibold">2</span>
       </div>
-      <span className="text-sm font-semibold text-indigo-600">Voice Settings</span>
+      <span className="text-primary-600 text-sm font-semibold">Voice Settings</span>
       <ChevronRight className="h-4 w-4 text-gray-400" />
     </li>
 
@@ -2411,7 +2427,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Use `h-2 rounded-full` for progress bar container with `bg-gray-200` background.
 
-**🔴 COMMAND:** Progress fill uses `bg-indigo-600` with smooth transition animation.
+**🔴 COMMAND:** Progress fill uses `bg-primary-300` with smooth transition animation.
 
 ```tsx
 {
@@ -2424,7 +2440,7 @@ ACCESSIBILITY REQUIREMENTS
   </div>
   <div className="h-2 overflow-hidden rounded-full bg-gray-200">
     <div
-      className="h-full rounded-full bg-indigo-600 transition-all duration-300"
+      className="bg-primary-300 h-full rounded-full transition-all duration-300"
       style={{ width: '50%' }}
     />
   </div>
@@ -2464,9 +2480,9 @@ ACCESSIBILITY REQUIREMENTS
   /* Field with error */
 }
 ;<div>
-  <label className="block text-sm font-medium text-gray-900">Agent Name</label>
+  <label className="block text-sm font-medium text-black">Agent Name</label>
   <input
-    className="mt-1 block w-full rounded-sm border border-red-600 bg-white px-3 py-2 text-sm"
+    className="mt-1 block w-full rounded-md border border-red-600 bg-white px-3 py-2 text-sm"
     aria-invalid="true"
     aria-describedby="name-error"
   />
@@ -2502,17 +2518,20 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div className="space-y-4">
   <div>
-    <label className="block text-sm font-medium text-gray-900">Agent Name</label>
+    <label className="block text-sm font-medium text-black">Agent Name</label>
     <input
       type="text"
       defaultValue="Customer Support Agent"
-      className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm"
+      className="text-md mt-1 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
     />
   </div>
 
   <div>
-    <label className="block text-sm font-medium text-gray-900">Voice Language</label>
-    <select defaultValue="en-US" className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm">
+    <label className="block text-sm font-medium text-black">Voice Language</label>
+    <select
+      defaultValue="en-US"
+      className="text-md mt-1 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
+    >
       <option value="en-US">English (US)</option>
       <option value="en-GB">English (UK)</option>
     </select>
@@ -2545,7 +2564,7 @@ ACCESSIBILITY REQUIREMENTS
 ;<div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
   <button
     type="button"
-    className="order-2 rounded-sm px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:order-1"
+    className="hover:bg-grey-50 order-2 rounded-md px-4 py-2 text-sm font-semibold text-gray-700 sm:order-1"
   >
     Cancel
   </button>
@@ -2553,13 +2572,13 @@ ACCESSIBILITY REQUIREMENTS
   <div className="order-1 flex gap-3 sm:order-2">
     <button
       type="button"
-      className="flex-1 rounded-sm border border-gray-300 px-4 py-2 text-sm font-semibold sm:flex-initial"
+      className="flex-1 rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold sm:flex-initial"
     >
       Previous
     </button>
     <button
       type="button"
-      className="flex-1 rounded-sm bg-indigo-600 px-4 py-2 text-sm font-semibold text-white sm:flex-initial"
+      className="bg-primary-300 flex-1 rounded-md px-4 py-2 text-sm font-semibold text-white sm:flex-initial"
       disabled={hasErrors}
     >
       Next
@@ -2584,11 +2603,11 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div className="block sm:hidden">
   <div className="flex items-center gap-2 text-sm">
-    <span className="font-medium text-gray-900">Step 2 of 4:</span>
-    <span className="text-gray-600">Voice Settings</span>
+    <span className="font-medium text-black">Step 2 of 4:</span>
+    <span className="text-grey-600">Voice Settings</span>
   </div>
   <div className="mt-2 h-1 overflow-hidden rounded-full bg-gray-200">
-    <div className="h-full bg-indigo-600 transition-all" style={{ width: '50%' }} />
+    <div className="bg-primary-300 h-full transition-all" style={{ width: '50%' }} />
   </div>
 </div>
 ```
@@ -2635,8 +2654,8 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div className="sticky top-0 z-10 border-b bg-white px-6 py-4">
   <div className="mb-3">
-    <h1 className="text-xl font-bold text-gray-900">Create Voice Agent</h1>
-    <p className="mt-1 text-sm text-gray-600">Configure your agent in 4 simple steps</p>
+    <h1 className="text-xl font-bold text-black">Create Voice Agent</h1>
+    <p className="text-grey-600 mt-1 text-sm">Configure your agent in 4 simple steps</p>
   </div>
 
   {/* Progress indicator */}
@@ -2662,8 +2681,8 @@ ACCESSIBILITY REQUIREMENTS
   <div className="mx-auto max-w-2xl">
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-gray-900">Voice Settings</h2>
-        <p className="mt-1 text-sm text-gray-600">Choose how your agent will sound</p>
+        <h2 className="text-lg font-semibold text-black">Voice Settings</h2>
+        <p className="text-grey-600 mt-1 text-sm">Choose how your agent will sound</p>
       </div>
 
       <div className="space-y-4">{/* Form fields */}</div>
@@ -2687,27 +2706,27 @@ ACCESSIBILITY REQUIREMENTS
   /* Review step */
 }
 ;<div className="space-y-6">
-  <div className="rounded-lg border border-gray-200 bg-white p-6">
+  <div className="border-grey-200 rounded-lg border-2 bg-white p-6">
     <div className="mb-4 flex items-center justify-between">
-      <h3 className="text-base font-semibold text-gray-900">Basic Information</h3>
-      <button className="text-sm font-semibold text-indigo-600" onClick={() => goToStep(1)}>
+      <h3 className="text-base font-semibold text-black">Basic Information</h3>
+      <button className="text-primary-600 text-sm font-semibold" onClick={() => goToStep(1)}>
         Edit
       </button>
     </div>
     <dl className="space-y-3">
       <div>
         <dt className="text-sm font-medium text-gray-500">Agent Name</dt>
-        <dd className="mt-1 text-sm text-gray-900">Customer Support Agent</dd>
+        <dd className="mt-1 text-sm text-black">Customer Support Agent</dd>
       </div>
     </dl>
   </div>
 
   {/* Final actions */}
   <div className="flex gap-3">
-    <button className="flex-1 rounded-sm border px-4 py-2 text-sm font-semibold">
+    <button className="flex-1 rounded-md border px-4 py-2 text-sm font-semibold">
       Save as Draft
     </button>
-    <button className="flex-1 rounded-sm bg-indigo-600 px-4 py-2 text-sm font-semibold text-white">
+    <button className="bg-primary-300 flex-1 rounded-md px-4 py-2 text-sm font-semibold text-white">
       Create Agent
     </button>
   </div>
@@ -2832,16 +2851,16 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div className="space-y-6">
   <div>
-    <h3 className="text-base font-semibold text-gray-900">Basic Settings</h3>
-    <p className="mt-1 text-sm text-gray-600">Essential configuration for your voice agent</p>
+    <h3 className="text-base font-semibold text-black">Basic Settings</h3>
+    <p className="text-grey-600 mt-1 text-sm">Essential configuration for your voice agent</p>
   </div>
 
   <div className="space-y-4">
     <div>
-      <label className="block text-sm font-medium text-gray-900">Voice Language</label>
+      <label className="block text-sm font-medium text-black">Voice Language</label>
       <select
         defaultValue="en-US"
-        className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm"
+        className="text-md mt-1 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
       >
         <option value="en-US">English (US)</option>
         <option value="en-GB">English (UK)</option>
@@ -2849,10 +2868,10 @@ ACCESSIBILITY REQUIREMENTS
     </div>
 
     <div>
-      <label className="block text-sm font-medium text-gray-900">Response Style</label>
+      <label className="block text-sm font-medium text-black">Response Style</label>
       <select
         defaultValue="concise"
-        className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm"
+        className="text-md mt-1 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
       >
         <option value="concise">Concise</option>
         <option value="detailed">Detailed</option>
@@ -2863,7 +2882,7 @@ ACCESSIBILITY REQUIREMENTS
   {/* Advanced toggle */}
   <button
     type="button"
-    className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+    className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-2 text-sm font-semibold"
   >
     <ChevronRight className="h-4 w-4" />
     Show advanced settings
@@ -2877,7 +2896,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Advanced toggle must use chevron icon (right when collapsed, down when expanded) with clear label text.
 
-**🔴 COMMAND:** Toggle button uses `text-sm font-semibold text-indigo-600` styling.
+**🔴 COMMAND:** Toggle button uses `text-sm font-semibold text-primary-600` styling.
 
 **🟡 DIRECTIVE:** Position toggle at the bottom of simple settings section with `mt-6` spacing.
 
@@ -2892,7 +2911,7 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<button
   type="button"
-  className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+  className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-2 text-sm font-semibold"
   onClick={() => setShowAdvanced(true)}
 >
   <ChevronRight className="h-4 w-4" />
@@ -2904,7 +2923,7 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<button
   type="button"
-  className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+  className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-2 text-sm font-semibold"
   onClick={() => setShowAdvanced(false)}
 >
   <ChevronDown className="h-4 w-4" />
@@ -2918,9 +2937,9 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Advanced section must appear immediately below the toggle with smooth transition animation.
 
-**🔴 COMMAND:** Advanced settings container uses lighter background: `bg-gray-50 border border-gray-200 rounded-lg p-6`.
+**🔴 COMMAND:** Advanced settings container uses lighter background: `bg-grey-50 border border-gray-200 rounded-lg p-6`.
 
-**🔴 COMMAND:** Advanced setting labels use `text-sm font-medium text-gray-900` with helper text in `text-sm text-gray-500`.
+**🔴 COMMAND:** Advanced setting labels use `text-sm font-medium text-black` with helper text in `text-sm text-gray-500`.
 
 **🟡 DIRECTIVE:** Group advanced settings by technical complexity or user persona (curious vs. cautious users).
 
@@ -2928,15 +2947,15 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Advanced section */
 }
-;<div className="mt-4 overflow-hidden rounded-lg border border-gray-200 bg-gray-50 p-6">
+;<div className="border-grey-200 bg-grey-50 mt-4 overflow-hidden rounded-lg border-2 p-6">
   <div className="mb-4">
-    <h4 className="text-sm font-semibold text-gray-900">Advanced LLM Parameters</h4>
+    <h4 className="text-sm font-semibold text-black">Advanced LLM Parameters</h4>
     <p className="mt-1 text-sm text-gray-500">Fine-tune model behavior for specific use cases</p>
   </div>
 
   <div className="space-y-4">
     <div>
-      <label className="block text-sm font-medium text-gray-900">Temperature</label>
+      <label className="block text-sm font-medium text-black">Temperature</label>
       <p className="mt-1 text-sm text-gray-500">
         Controls randomness. Lower values make responses more focused and deterministic.
       </p>
@@ -2946,19 +2965,19 @@ ACCESSIBILITY REQUIREMENTS
         min="0"
         max="2"
         defaultValue="0.7"
-        className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
+        className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
       />
     </div>
 
     <div>
-      <label className="block text-sm font-medium text-gray-900">Max Tokens</label>
+      <label className="block text-sm font-medium text-black">Max Tokens</label>
       <p className="mt-1 text-sm text-gray-500">
         Maximum length of the response in tokens (roughly 4 characters per token)
       </p>
       <input
         type="number"
         defaultValue="1000"
-        className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
+        className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
       />
     </div>
   </div>
@@ -2971,7 +2990,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Advanced parameters modified from defaults must show indigo-600 dot indicator next to label.
 
-**🔴 COMMAND:** Display "Reset to default" link button next to modified fields using `text-sm text-gray-600`.
+**🔴 COMMAND:** Display "Reset to default" link button next to modified fields using `text-sm text-grey-600`.
 
 **🟡 DIRECTIVE:** Show count of modified advanced settings in toggle button when collapsed.
 
@@ -2981,19 +3000,17 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div>
   <div className="flex items-center gap-2">
-    <label className="block text-sm font-medium text-gray-900">Temperature</label>
-    <div className="h-2 w-2 rounded-full bg-indigo-600" />
+    <label className="block text-sm font-medium text-black">Temperature</label>
+    <div className="bg-primary-300 h-2 w-2 rounded-full" />
   </div>
   <div className="mt-1 flex items-center justify-between">
     <p className="text-sm text-gray-500">Controls response randomness</p>
-    <button className="text-sm font-medium text-gray-600 hover:text-gray-900">
-      Reset to default
-    </button>
+    <button className="text-grey-600 text-sm font-medium hover:text-black">Reset to default</button>
   </div>
   <input
     type="number"
     value="1.2"
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
+    className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
   />
 </div>
 
@@ -3002,11 +3019,11 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<button
   type="button"
-  className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+  className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-2 text-sm font-semibold"
 >
   <ChevronRight className="h-4 w-4" />
   Show advanced settings
-  <span className="rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium text-indigo-700">
+  <span className="text-primary-700 rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium">
     3 modified
   </span>
 </button>
@@ -3029,11 +3046,11 @@ ACCESSIBILITY REQUIREMENTS
   /* Expandable explanation */
 }
 ;<div>
-  <label className="block text-sm font-medium text-gray-900">Top P (Nucleus Sampling)</label>
+  <label className="block text-sm font-medium text-black">Top P (Nucleus Sampling)</label>
   <div className="mt-1 text-sm text-gray-500">
     <p>Controls diversity by limiting token selection to top probability mass.</p>
     <button
-      className="mt-1 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+      className="text-primary-600 hover:text-primary-700 mt-1 text-sm font-semibold"
       onClick={() => setExpanded(!expanded)}
     >
       {expanded ? 'Show less' : 'Show more'}
@@ -3052,7 +3069,7 @@ ACCESSIBILITY REQUIREMENTS
     min="0"
     max="1"
     defaultValue="1"
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
+    className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
   />
 </div>
 ```
@@ -3075,10 +3092,10 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div>
   <div className="flex items-center gap-2">
-    <label className="block text-sm font-medium text-gray-900">Frequency Penalty</label>
+    <label className="block text-sm font-medium text-black">Frequency Penalty</label>
     <button
       type="button"
-      className="flex h-4 w-4 items-center justify-center rounded-full text-gray-400 hover:text-gray-600"
+      className="hover:text-grey-600 flex h-4 w-4 items-center justify-center rounded-full text-gray-400"
       aria-label="More information about frequency penalty"
     >
       <Info className="h-4 w-4" />
@@ -3091,7 +3108,7 @@ ACCESSIBILITY REQUIREMENTS
     min="-2"
     max="2"
     defaultValue="0"
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
+    className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
   />
 </div>
 ```
@@ -3102,7 +3119,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Group advanced settings into logical categories with clear subheadings.
 
-**🔴 COMMAND:** Category headings use `text-sm font-semibold text-gray-900` with divider lines between groups.
+**🔴 COMMAND:** Category headings use `text-sm font-semibold text-black` with divider lines between groups.
 
 **🟡 DIRECTIVE:** Order categories by technical complexity: basic → intermediate → expert.
 
@@ -3120,7 +3137,7 @@ ACCESSIBILITY REQUIREMENTS
 ;<div className="space-y-6">
   {/* Category 1 */}
   <div>
-    <h4 className="mb-3 text-sm font-semibold text-gray-900">Response Generation</h4>
+    <h4 className="mb-3 text-sm font-semibold text-black">Response Generation</h4>
     <div className="space-y-4">{/* Parameters */}</div>
   </div>
 
@@ -3128,7 +3145,7 @@ ACCESSIBILITY REQUIREMENTS
 
   {/* Category 2 */}
   <div>
-    <h4 className="mb-3 text-sm font-semibold text-gray-900">Content Control</h4>
+    <h4 className="mb-3 text-sm font-semibold text-black">Content Control</h4>
     <div className="space-y-4">{/* Parameters */}</div>
   </div>
 </div>
@@ -3151,14 +3168,14 @@ ACCESSIBILITY REQUIREMENTS
   /* Preset selector */
 }
 ;<div className="mb-6">
-  <label className="block text-sm font-medium text-gray-900">Configuration Preset</label>
+  <label className="block text-sm font-medium text-black">Configuration Preset</label>
   <p className="mt-1 text-sm text-gray-500">
     Choose a preset or customize individual parameters below
   </p>
   <select
     value={preset}
     onChange={(e) => applyPreset(e.target.value)}
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
+    className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
   >
     <option value="balanced">Balanced (Recommended)</option>
     <option value="creative">Creative (Higher variability)</option>
@@ -3192,7 +3209,7 @@ ACCESSIBILITY REQUIREMENTS
         testing environments.
       </p>
       <div className="mt-3 flex items-center gap-2">
-        <input type="checkbox" id="disable-safety" className="rounded-sm" />
+        <input type="checkbox" id="disable-safety" className="rounded-md" />
         <label htmlFor="disable-safety" className="text-sm font-medium text-amber-900">
           I understand the risks
         </label>
@@ -3222,12 +3239,12 @@ ACCESSIBILITY REQUIREMENTS
 ;<div className="flex items-center gap-3">
   <button
     type="button"
-    className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600"
+    className="text-primary-600 inline-flex items-center gap-2 text-sm font-semibold"
   >
     <ChevronRight className="h-4 w-4" />
     Show advanced settings
   </button>
-  <kbd className="rounded border border-gray-300 bg-gray-50 px-2 py-0.5 font-mono text-xs text-gray-600">
+  <kbd className="bg-grey-50 text-grey-600 rounded border border-gray-300 px-2 py-0.5 font-mono text-xs">
     ⌘⇧A
   </kbd>
 </div>
@@ -3251,7 +3268,7 @@ ACCESSIBILITY REQUIREMENTS
   type="button"
   aria-expanded={showAdvanced}
   aria-controls="advanced-settings"
-  className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600"
+  className="inline-flex items-center gap-2 text-sm font-semibold text-primary-600"
 >
   {showAdvanced ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
   {showAdvanced ? 'Hide' : 'Show'} advanced settings
@@ -3347,7 +3364,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Glossary terms must use dotted underline with `border-b-2 border-dotted border-gray-400` styling.
 
-**🔴 COMMAND:** Term text color uses `text-gray-900` (not link color) to distinguish from navigation links.
+**🔴 COMMAND:** Term text color uses `text-black` (not link color) to distinguish from navigation links.
 
 **🟡 DIRECTIVE:** Cursor changes to `cursor-help` on hover to signal additional information is available.
 
@@ -3355,11 +3372,11 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Glossary term inline */
 }
-;<p className="text-sm text-gray-600">
+;<p className="text-grey-600 text-sm">
   The agent uses{' '}
   <button
     type="button"
-    className="cursor-help border-b-2 border-dotted border-gray-400 text-gray-900 hover:border-gray-600"
+    className="cursor-help border-b-2 border-dotted border-gray-400 text-black hover:border-gray-600"
     onClick={() => showTooltip('temperature')}
   >
     temperature
@@ -3374,7 +3391,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Tooltip appears on hover (desktop) with 200ms delay, on click/tap (mobile) with immediate display.
 
-**🔴 COMMAND:** Tooltip container uses `bg-gray-900 text-white rounded-sm px-3 py-2 text-sm` with max width of `max-w-xs`.
+**🔴 COMMAND:** Tooltip container uses `bg-gray-900 text-white rounded-md px-3 py-2 text-sm` with max width of `max-w-xs`.
 
 **🔴 COMMAND:** Position tooltip above term by default; adjust to below if insufficient space above.
 
@@ -3386,7 +3403,7 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div
   role="tooltip"
-  className="absolute z-50 max-w-xs rounded-sm bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
+  className="absolute z-50 max-w-xs rounded-md bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
 >
   <p>
     Controls randomness in responses. Lower values produce more focused output; higher values
@@ -3455,7 +3472,7 @@ increase cost."
 }
 ;<div
   role="tooltip"
-  className="absolute z-50 max-w-xs rounded-sm bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
+  className="absolute z-50 max-w-xs rounded-md bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
 >
   <p>
     Reduces likelihood of repeating tokens that have already appeared. Range: -2.0 to 2.0. Higher
@@ -3517,7 +3534,7 @@ increase cost."
 {
   /* Terminology overlay - for definitions */
 }
-;<span className="cursor-help border-b-2 border-dotted border-gray-400 text-gray-900">
+;<span className="cursor-help border-b-2 border-dotted border-gray-400 text-black">
   temperature
 </span>
 
@@ -3525,8 +3542,8 @@ increase cost."
   /* Information overlay - for contextual help */
 }
 ;<div className="flex items-center gap-2">
-  <label className="text-sm font-medium text-gray-900">Response Delay</label>
-  <button className="flex h-4 w-4 items-center justify-center text-gray-400 hover:text-gray-600">
+  <label className="text-sm font-medium text-black">Response Delay</label>
+  <button className="hover:text-grey-600 flex h-4 w-4 items-center justify-center text-gray-400">
     <Info className="h-4 w-4" />
   </button>
 </div>
@@ -3548,7 +3565,7 @@ increase cost."
 }
 ;<button
   type="button"
-  className="inline-block min-h-[44px] border-b-2 border-dotted border-gray-400 py-2 text-gray-900"
+  className="inline-block min-h-[44px] border-b-2 border-dotted border-gray-400 py-2 text-black"
   onClick={() => setActiveTooltip('temperature')}
 >
   temperature
@@ -3559,7 +3576,7 @@ increase cost."
 }
 ;<div className="fixed inset-x-4 bottom-4 z-50 rounded-lg bg-gray-900 p-4 text-sm text-white shadow-xl sm:hidden">
   <button
-    className="absolute top-2 right-2 rounded-sm p-1 hover:bg-gray-800"
+    className="absolute top-2 right-2 rounded-md p-1 hover:bg-gray-800"
     onClick={() => setActiveTooltip(null)}
   >
     <X className="h-4 w-4" />
@@ -3583,8 +3600,8 @@ increase cost."
   /* Glossary index modal */
 }
 ;<div className="rounded-lg bg-white p-6">
-  <h2 className="text-xl font-bold text-gray-900">Glossary</h2>
-  <p className="mt-1 text-sm text-gray-600">
+  <h2 className="text-xl font-bold text-black">Glossary</h2>
+  <p className="text-grey-600 mt-1 text-sm">
     Technical terms and concepts used in voice agent configuration
   </p>
 
@@ -3594,11 +3611,11 @@ increase cost."
         className="flex w-full items-center justify-between text-left"
         onClick={() => toggleTerm('temperature')}
       >
-        <span className="text-sm font-semibold text-gray-900">Temperature</span>
+        <span className="text-sm font-semibold text-black">Temperature</span>
         <ChevronDown className="h-4 w-4 text-gray-500" />
       </button>
       {expandedTerm === 'temperature' && (
-        <p className="mt-2 text-sm text-gray-600">
+        <p className="text-grey-600 mt-2 text-sm">
           Controls randomness in responses. Lower values produce more focused output; higher values
           increase creativity.
         </p>
@@ -3625,7 +3642,7 @@ increase cost."
 }
 ;<button
   type="button"
-  className="cursor-help border-b-2 border-dotted border-gray-400 text-gray-900 hover:border-gray-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
+  className="cursor-help border-b-2 border-dotted border-gray-400 text-black hover:border-gray-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
   onFocus={() => showTooltip('temperature')}
   onBlur={() => hideTooltip()}
   onKeyDown={(e) => e.key === 'Escape' && hideTooltip()}
@@ -3680,7 +3697,7 @@ increase cost."
   role="button"
   aria-describedby="tooltip-temperature"
   aria-label="Definition for temperature"
-  className="border-b-2 border-dotted border-gray-400 text-gray-900 cursor-help"
+  className="border-b-2 border-dotted border-gray-400 text-black cursor-help"
 >
   temperature
 </button>
@@ -3689,7 +3706,7 @@ increase cost."
   id="tooltip-temperature"
   role="tooltip"
   aria-live="polite"
-  className="absolute z-50 max-w-xs rounded-sm bg-gray-900 px-3 py-2 text-sm text-white"
+  className="absolute z-50 max-w-xs rounded-md bg-gray-900 px-3 py-2 text-sm text-white"
 >
   Controls randomness in responses. Lower values produce more focused output.
 </div>
@@ -3802,7 +3819,7 @@ increase cost."
     <AlertTriangle className="h-5 w-5 shrink-0 text-red-600" />
     <div className="min-w-0 flex-1">
       <div className="flex items-center gap-2">
-        <h3 className="text-lg font-bold text-gray-900">Delete Data API</h3>
+        <h3 className="text-lg font-bold text-black">Delete Data API</h3>
         <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-700">
           High Risk
         </span>
@@ -3818,13 +3835,13 @@ increase cost."
 
 **🔴 COMMAND:** Display required permissions using description list format within card body.
 
-**🔴 COMMAND:** Use `text-sm text-gray-600` for permission descriptions.
+**🔴 COMMAND:** Use `text-sm text-grey-600` for permission descriptions.
 
 ```tsx
 <dl className="mt-4 space-y-2">
   <div className="flex items-start gap-2">
-    <dt className="text-sm font-medium text-gray-900">Permissions:</dt>
-    <dd className="text-sm text-gray-600">Read/Write access to user database</dd>
+    <dt className="text-sm font-medium text-black">Permissions:</dt>
+    <dd className="text-grey-600 text-sm">Read/Write access to user database</dd>
   </div>
 </dl>
 ```
@@ -3856,7 +3873,7 @@ increase cost."
   /* Selected tool card */
 }
 ;<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6">
-  <div className="absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600">
+  <div className="bg-primary-300 absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full">
     <Check className="h-4 w-4 text-white" />
   </div>
   {/* Card content */}
@@ -3880,10 +3897,10 @@ increase cost."
     <input
       type="text"
       placeholder="Search tools…"
-      className="block w-full rounded-sm border py-2 pr-3 pl-10 text-sm"
+      className="block w-full rounded-md border py-2 pr-3 pl-10 text-sm"
     />
   </div>
-  <select className="block rounded-sm border px-3 py-2 text-sm">
+  <select className="text-md block rounded-md border-2 px-4 py-2 text-sm font-semibold">
     <option>All categories</option>
   </select>
 </div>
@@ -3908,7 +3925,7 @@ increase cost."
     <AlertCircle className="h-5 w-5 shrink-0 text-amber-600" />
     <div>
       <p className="text-sm font-medium text-amber-900">
-        Requires: <button className="text-indigo-600 underline">Database Access</button>
+        Requires: <button className="text-primary-600 underline">Database Access</button>
       </p>
       <p className="mt-1 text-sm text-amber-700">
         Enable the parent tool first to use this capability.
@@ -3992,20 +4009,20 @@ increase cost."
   /* Decision node */
 }
 ;<div className="flex h-16 w-16 rotate-45 items-center justify-center border-2 border-indigo-600 bg-white">
-  <span className="-rotate-45 text-xs font-medium text-indigo-600">User intent?</span>
+  <span className="text-primary-600 -rotate-45 text-xs font-medium">User intent?</span>
 </div>
 
 {
   /* Action node */
 }
-;<div className="rounded-lg border border-gray-200 bg-white px-4 py-3">
-  <p className="text-sm font-medium text-gray-900">Process request</p>
+;<div className="border-grey-200 rounded-lg border-2 bg-white px-4 py-3">
+  <p className="text-sm font-medium text-black">Process request</p>
 </div>
 
 {
   /* End node */
 }
-;<div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600">
+;<div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-300">
   <span className="text-sm font-semibold text-white">End</span>
 </div>
 ```
@@ -4061,7 +4078,7 @@ increase cost."
   <svg className="text-indigo-500">
     <path d="M 0 0 L 100 0" stroke="currentColor" strokeWidth="2" fill="none" />
   </svg>
-  <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-white px-1.5 py-0.5 text-xs font-medium text-indigo-600">
+  <span className="text-primary-600 absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-white px-1.5 py-0.5 text-xs font-medium">
     Yes
   </span>
 </div>
@@ -4181,8 +4198,8 @@ increase cost."
   /* User message */
 }
 ;<div className="flex justify-start">
-  <div className="max-w-[80%] rounded-lg bg-gray-100 px-4 py-2">
-    <p className="text-sm text-gray-900">Hello, I need help with my order.</p>
+  <div className="bg-grey-100 max-w-[80%] rounded-lg px-4 py-2">
+    <p className="text-sm text-black">Hello, I need help with my order.</p>
     <p className="mt-1 text-xs text-gray-500">10:23:45 AM</p>
   </div>
 </div>
@@ -4192,7 +4209,7 @@ increase cost."
 }
 ;<div className="flex justify-end">
   <div className="max-w-[80%] rounded-lg bg-indigo-50 px-4 py-2">
-    <p className="text-sm text-gray-900">I'd be happy to help with your order.</p>
+    <p className="text-sm text-black">I'd be happy to help with your order.</p>
     <p className="mt-1 text-xs text-gray-500">10:23:47 AM</p>
   </div>
 </div>
@@ -4211,11 +4228,11 @@ increase cost."
   /* Message with avatar */
 }
 ;<div className="flex items-start gap-3">
-  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-600">
+  <div className="bg-primary-300 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
     <span className="text-xs font-semibold text-white">AI</span>
   </div>
   <div className="max-w-[80%] rounded-lg bg-indigo-50 px-4 py-2">
-    <p className="text-sm text-gray-900">Message content</p>
+    <p className="text-sm text-black">Message content</p>
   </div>
 </div>
 ```
@@ -4255,14 +4272,14 @@ increase cost."
     className="flex w-full items-center justify-between px-4 py-3 text-left"
     onClick={() => setDebugOpen(!debugOpen)}
   >
-    <span className="text-sm font-semibold text-gray-900">Debug Information</span>
+    <span className="text-sm font-semibold text-black">Debug Information</span>
     <ChevronDown
       className={`h-4 w-4 text-gray-500 transition-transform ${debugOpen ? 'rotate-180' : ''}`}
     />
   </button>
 
   {debugOpen && (
-    <div className="border-t bg-gray-50 px-4 py-3">
+    <div className="bg-grey-50 border-t px-4 py-3">
       <div className="space-y-2">
         <div>
           <p className="text-xs font-medium text-gray-500">Variables</p>
@@ -4283,12 +4300,12 @@ increase cost."
 **🔴 COMMAND:** Use monospace font for variable values with proper formatting.
 
 ```tsx
-<div className="rounded border bg-gray-50 p-3">
+<div className="bg-grey-50 rounded border p-3">
   <p className="text-xs font-medium text-gray-500">Conversation Variables</p>
   <dl className="mt-2 space-y-1">
     <div className="flex gap-2">
       <dt className="text-sm font-medium text-gray-700">user_name:</dt>
-      <dd className="text-sm text-gray-600">John Doe</dd>
+      <dd className="text-grey-600 text-sm">John Doe</dd>
     </div>
   </dl>
 </div>
@@ -4352,7 +4369,7 @@ increase cost."
 **🔴 COMMAND:** Export formats: JSON, CSV, or plain text.
 
 ```tsx
-<button className="inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-sm font-semibold">
+<button className="text-md inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 text-sm font-semibold">
   <Download className="h-4 w-4" />
   Export transcript
 </button>
@@ -4513,10 +4530,10 @@ const errorMessages = {
 
 ```tsx
 <div className="mt-4 flex gap-3">
-  <button className="rounded-sm bg-indigo-600 px-4 py-2 text-sm font-semibold text-white">
+  <button className="bg-primary-300 rounded-md px-4 py-2 text-sm font-semibold text-white">
     Retry connection
   </button>
-  <button className="rounded-sm border border-gray-300 px-4 py-2 text-sm font-semibold">
+  <button className="rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold">
     Check network settings
   </button>
 </div>
@@ -4528,12 +4545,12 @@ const errorMessages = {
 
 **🟡 DIRECTIVE:** Include links to relevant documentation for complex errors.
 
-**🔴 COMMAND:** Links use `text-sm text-indigo-600` with external link icon.
+**🔴 COMMAND:** Links use `text-sm text-primary-600` with external link icon.
 
 ```tsx
 <a
   href="/docs/troubleshooting/api-errors"
-  className="inline-flex items-center gap-1 text-sm font-semibold text-indigo-600 hover:text-indigo-700"
+  className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-1 text-sm font-semibold"
 >
   Learn more about API errors
   <ExternalLink className="h-4 w-4" />
@@ -4570,7 +4587,7 @@ const errorMessages = {
 
 ```tsx
 ;<button
-  className="mt-2 text-sm font-semibold text-gray-600 hover:text-gray-900"
+  className="text-grey-600 mt-2 text-sm font-semibold hover:text-black"
   onClick={() => setShowStack(!showStack)}
 >
   {showStack ? 'Hide' : 'Show'} technical details
@@ -4578,7 +4595,7 @@ const errorMessages = {
 
 {
   showStack && (
-    <pre className="mt-2 overflow-auto rounded border bg-gray-50 p-3 text-xs">{stackTrace}</pre>
+    <pre className="bg-grey-50 mt-2 overflow-auto rounded border p-3 text-xs">{stackTrace}</pre>
   )
 }
 ```
@@ -4593,9 +4610,9 @@ const errorMessages = {
 
 ```tsx
 <div>
-  <label className="block text-sm font-medium text-gray-900">API Key</label>
+  <label className="block text-sm font-medium text-black">API Key</label>
   <input
-    className="mt-1 block w-full rounded-sm border border-red-600 px-3 py-2 text-sm"
+    className="mt-1 block w-full rounded-md border border-red-600 px-3 py-2 text-sm"
     aria-invalid="true"
     aria-describedby="api-key-error"
   />
@@ -4615,7 +4632,7 @@ const errorMessages = {
 
 ```tsx
 <button
-  className="inline-flex items-center gap-2 rounded-sm border px-3 py-2 text-sm font-semibold"
+  className="text-md inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 text-sm font-semibold"
   onClick={handleCopyError}
 >
   <Copy className="h-4 w-4" />
@@ -4693,9 +4710,9 @@ const errorMessages = {
 ;<div className="flex items-start gap-3">
   <X className="h-5 w-5 shrink-0 text-red-600" />
   <div className="min-w-0 flex-1">
-    <p className="text-sm font-medium text-gray-900">API endpoint configured</p>
-    <p className="mt-1 text-sm text-gray-600">Required for agent to function</p>
-    <button className="mt-2 text-sm font-semibold text-indigo-600 underline">Fix now</button>
+    <p className="text-sm font-medium text-black">API endpoint configured</p>
+    <p className="text-grey-600 mt-1 text-sm">Required for agent to function</p>
+    <button className="text-primary-600 mt-2 text-sm font-semibold underline">Fix now</button>
   </div>
 </div>
 
@@ -4705,7 +4722,7 @@ const errorMessages = {
 ;<div className="flex items-start gap-3">
   <Check className="h-5 w-5 shrink-0 text-green-600" />
   <div className="min-w-0 flex-1">
-    <p className="text-sm font-medium text-gray-900">Voice settings configured</p>
+    <p className="text-sm font-medium text-black">Voice settings configured</p>
   </div>
 </div>
 
@@ -4715,7 +4732,7 @@ const errorMessages = {
 ;<div className="flex items-start gap-3">
   <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-400" />
   <div className="min-w-0 flex-1">
-    <p className="text-sm font-medium text-gray-900">Test conversation completed</p>
+    <p className="text-sm font-medium text-black">Test conversation completed</p>
   </div>
 </div>
 
@@ -4742,11 +4759,11 @@ const errorMessages = {
 <div className="space-y-2">
   <div className="flex items-start gap-3">
     <Check className="h-5 w-5 shrink-0 text-green-600" />
-    <p className="text-sm font-medium text-gray-900">API endpoint configured</p>
+    <p className="text-sm font-medium text-black">API endpoint configured</p>
   </div>
   <div className="ml-8 flex items-start gap-3">
     <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-400" />
-    <p className="text-sm font-medium text-gray-900">API endpoint tested</p>
+    <p className="text-sm font-medium text-black">API endpoint tested</p>
     <span className="text-xs text-gray-500">(Requires: API endpoint configured)</span>
   </div>
 </div>
@@ -4758,11 +4775,11 @@ const errorMessages = {
 
 **🟡 DIRECTIVE:** Provide "Fix now" links that navigate directly to relevant configuration.
 
-**🔴 COMMAND:** Fix links use `text-sm font-semibold text-indigo-600 underline` styling.
+**🔴 COMMAND:** Fix links use `text-sm font-semibold text-primary-600 underline` styling.
 
 ```tsx
 <button
-  className="text-sm font-semibold text-indigo-600 underline hover:text-indigo-700"
+  className="text-primary-600 hover:text-primary-700 text-sm font-semibold underline"
   onClick={() => navigateToFix('api-endpoint')}
 >
   Fix now
@@ -4775,12 +4792,12 @@ const errorMessages = {
 
 **🟡 DIRECTIVE:** Display estimated time to publish when all checks pass.
 
-**🔴 COMMAND:** Use `text-sm text-gray-600` for time estimate.
+**🔴 COMMAND:** Use `text-sm text-grey-600` for time estimate.
 
 ```tsx
-<div className="mt-4 rounded-lg border bg-gray-50 p-4">
-  <p className="text-sm text-gray-600">
-    Estimated publish time: <span className="font-medium text-gray-900">2-3 minutes</span>
+<div className="bg-grey-50 mt-4 rounded-lg border p-4">
+  <p className="text-grey-600 text-sm">
+    Estimated publish time: <span className="font-medium text-black">2-3 minutes</span>
   </p>
 </div>
 ```
@@ -4797,8 +4814,8 @@ const errorMessages = {
 <div className="flex items-start gap-3">
   <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-400" />
   <div className="min-w-0 flex-1">
-    <p className="text-sm font-medium text-gray-900">Rollback plan confirmed</p>
-    <p className="mt-1 text-sm text-gray-600">
+    <p className="text-sm font-medium text-black">Rollback plan confirmed</p>
+    <p className="text-grey-600 mt-1 text-sm">
       Required for production deployments. Review rollback procedure in settings.
     </p>
   </div>
@@ -4811,14 +4828,14 @@ const errorMessages = {
 
 **🟡 DIRECTIVE:** Display completion percentage in header: "7/10 checks passed".
 
-**🔴 COMMAND:** Use `text-sm text-gray-600` for completion status.
+**🔴 COMMAND:** Use `text-sm text-grey-600` for completion status.
 
 ```tsx
 <div className="mb-6 flex items-center justify-between">
-  <h2 className="text-xl font-bold text-gray-900">Publish Checklist</h2>
-  <p className="text-sm text-gray-600">
-    <span className="font-semibold text-gray-900">7</span> of{' '}
-    <span className="font-semibold text-gray-900">10</span> checks passed
+  <h2 className="text-xl font-bold text-black">Publish Checklist</h2>
+  <p className="text-grey-600 text-sm">
+    <span className="font-semibold text-black">7</span> of{' '}
+    <span className="font-semibold text-black">10</span> checks passed
   </p>
 </div>
 ```
@@ -4835,9 +4852,9 @@ const errorMessages = {
 <button
   disabled={!allChecksPassed}
   aria-disabled={!allChecksPassed}
-  className={`rounded-sm px-4 py-2 text-sm font-semibold text-white ${
+  className={`rounded-md px-4 py-2 text-sm font-semibold text-white ${
     allChecksPassed
-      ? 'bg-indigo-600 hover:bg-indigo-700'
+      ? 'bg-primary-300 hover:bg-primary-200'
       : 'cursor-not-allowed bg-gray-400 opacity-50'
   }`}
 >
@@ -4918,7 +4935,7 @@ const errorMessages = {
           Automatically masks SSNs and credit cards in conversation transcripts.
         </p>
       </div>
-      <input type="checkbox" className="rounded-sm" />
+      <input type="checkbox" className="rounded-md" />
     </div>
   </div>
 </div>
@@ -4946,7 +4963,7 @@ const errorMessages = {
         Sensitive data will be visible in transcripts and logs.
       </p>
     </div>
-    <input type="checkbox" className="rounded-sm" />
+    <input type="checkbox" className="rounded-md" />
   </div>
 </div>
 ```
@@ -4979,20 +4996,20 @@ const errorMessages = {
 {
   /* Confirmation dialog for disabling safety rail */
 }
-;<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+;<div className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center p-4">
   <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
     <h2 className="text-lg font-semibold">Disable PII Redaction?</h2>
-    <p className="mt-2 text-sm text-gray-600">
+    <p className="text-grey-600 mt-2 text-sm">
       This will allow sensitive data to appear in transcripts. Please provide a justification.
     </p>
     <textarea
-      className="mt-4 block w-full rounded-sm border px-3 py-2 text-sm"
+      className="text-md mt-4 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
       placeholder="Justification for disabling this safety rail..."
       rows={3}
     />
     <div className="mt-4 flex gap-3">
-      <button className="flex-1 rounded-sm border px-4 py-2 text-sm font-semibold">Cancel</button>
-      <button className="flex-1 rounded-sm bg-red-600 px-4 py-2 text-sm font-semibold text-white">
+      <button className="flex-1 rounded-md border px-4 py-2 text-sm font-semibold">Cancel</button>
+      <button className="flex-1 rounded-md bg-red-300 px-4 py-2 text-sm font-semibold text-white">
         Disable
       </button>
     </div>
@@ -5076,11 +5093,11 @@ const errorMessages = {
 ```tsx
 <div className="space-y-4">
   <div>
-    <label className="block text-sm font-medium text-gray-900">Allow Interruptions</label>
+    <label className="block text-sm font-medium text-black">Allow Interruptions</label>
     <p className="mt-1 text-sm text-gray-500">
       Users can interrupt the agent while it's speaking. Disable for strict turn-taking.
     </p>
-    <input type="checkbox" className="mt-2 rounded-sm" />
+    <input type="checkbox" className="mt-2 rounded-md" />
   </div>
 </div>
 ```
@@ -5096,8 +5113,8 @@ const errorMessages = {
 ```tsx
 <div>
   <div className="flex items-center justify-between">
-    <label className="block text-sm font-medium text-gray-900">Speech Rate</label>
-    <span className="text-sm text-gray-600">1.0x</span>
+    <label className="block text-sm font-medium text-black">Speech Rate</label>
+    <span className="text-grey-600 text-sm">1.0x</span>
   </div>
   <input type="range" min="0.5" max="2.0" step="0.1" defaultValue="1.0" className="mt-2 w-full" />
   <div className="mt-1 flex justify-between text-xs text-gray-500">
@@ -5117,14 +5134,14 @@ const errorMessages = {
 
 ```tsx
 <div>
-  <label className="block text-sm font-medium text-gray-900">Silence Timeout</label>
+  <label className="block text-sm font-medium text-black">Silence Timeout</label>
   <p className="mt-1 text-sm text-gray-500">
     Time to wait (in milliseconds) before considering user finished speaking.
   </p>
   <input
     type="number"
     defaultValue="500"
-    className="mt-2 block w-full rounded-sm border px-3 py-2 text-sm"
+    className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
   />
   <p className="mt-1 text-xs text-gray-500">Range: 200ms - 2000ms</p>
 </div>
@@ -5142,12 +5159,12 @@ const errorMessages = {
 <div>
   <div className="flex items-center justify-between">
     <div>
-      <p className="text-sm font-medium text-gray-900">Noise Cancellation</p>
+      <p className="text-sm font-medium text-black">Noise Cancellation</p>
       <p className="mt-1 text-sm text-gray-500">
         Reduces background noise but may affect speech recognition in quiet environments.
       </p>
     </div>
-    <input type="checkbox" className="rounded-sm" />
+    <input type="checkbox" className="rounded-md" />
   </div>
 </div>
 ```
@@ -5162,8 +5179,8 @@ const errorMessages = {
 
 ```tsx
 <div>
-  <label className="block text-sm font-medium text-gray-900">Voice Language</label>
-  <select className="mt-1 block w-full rounded-sm border px-3 py-2 text-sm">
+  <label className="block text-sm font-medium text-black">Voice Language</label>
+  <select className="text-md mt-1 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold">
     <option value="en-US">English (United States)</option>
     <option value="en-GB">English (United Kingdom)</option>
     <option value="en-AU">English (Australia)</option>
@@ -5217,13 +5234,13 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">Call Success Rate</h3>
+  <h3 className="text-base font-semibold text-black">Call Success Rate</h3>
   <div className="mt-4">
     <div className="flex items-baseline gap-2">
-      <span className="text-3xl font-bold text-gray-900">94.2%</span>
+      <span className="text-3xl font-bold text-black">94.2%</span>
       <span className="text-sm font-medium text-green-600">+2.1%</span>
     </div>
-    <p className="mt-2 text-sm text-gray-600">Last 30 days</p>
+    <p className="text-grey-600 mt-2 text-sm">Last 30 days</p>
   </div>
 </div>
 ```
@@ -5238,19 +5255,19 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">Response Latency</h3>
+  <h3 className="text-base font-semibold text-black">Response Latency</h3>
   <dl className="mt-4 grid grid-cols-3 gap-4">
     <div>
       <dt className="text-xs text-gray-500">Average</dt>
-      <dd className="mt-1 text-lg font-semibold text-gray-900">245ms</dd>
+      <dd className="mt-1 text-lg font-semibold text-black">245ms</dd>
     </div>
     <div>
       <dt className="text-xs text-gray-500">Median</dt>
-      <dd className="mt-1 text-lg font-semibold text-gray-900">198ms</dd>
+      <dd className="mt-1 text-lg font-semibold text-black">198ms</dd>
     </div>
     <div>
       <dt className="text-xs text-gray-500">P95</dt>
-      <dd className="mt-1 text-lg font-semibold text-gray-900">512ms</dd>
+      <dd className="mt-1 text-lg font-semibold text-black">512ms</dd>
     </div>
   </dl>
 </div>
@@ -5266,20 +5283,20 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">Error Rate</h3>
+  <h3 className="text-base font-semibold text-black">Error Rate</h3>
   <div className="mt-4">
     <div className="flex items-baseline gap-2">
-      <span className="text-3xl font-bold text-gray-900">2.3%</span>
+      <span className="text-3xl font-bold text-black">2.3%</span>
       <span className="text-sm font-medium text-red-600">-0.5%</span>
     </div>
     <div className="mt-4 space-y-2">
       <div className="flex items-center justify-between">
-        <span className="text-sm text-gray-600">API Timeout</span>
-        <span className="text-sm font-medium text-gray-900">1.2%</span>
+        <span className="text-grey-600 text-sm">API Timeout</span>
+        <span className="text-sm font-medium text-black">1.2%</span>
       </div>
       <div className="flex items-center justify-between">
-        <span className="text-sm text-gray-600">Invalid Response</span>
-        <span className="text-sm font-medium text-gray-900">0.8%</span>
+        <span className="text-grey-600 text-sm">Invalid Response</span>
+        <span className="text-sm font-medium text-black">0.8%</span>
       </div>
     </div>
   </div>
@@ -5296,15 +5313,15 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">Costs</h3>
+  <h3 className="text-base font-semibold text-black">Costs</h3>
   <dl className="mt-4 space-y-3">
     <div className="flex items-center justify-between">
-      <dt className="text-sm text-gray-600">Total (Last 30 days)</dt>
-      <dd className="text-sm font-semibold text-gray-900">$1,234.56</dd>
+      <dt className="text-grey-600 text-sm">Total (Last 30 days)</dt>
+      <dd className="text-sm font-semibold text-black">$1,234.56</dd>
     </div>
     <div className="flex items-center justify-between">
-      <dt className="text-sm text-gray-600">Average per conversation</dt>
-      <dd className="text-sm font-semibold text-gray-900">$0.12</dd>
+      <dt className="text-grey-600 text-sm">Average per conversation</dt>
+      <dd className="text-sm font-semibold text-black">$0.12</dd>
     </div>
   </dl>
 </div>
@@ -5320,13 +5337,13 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">User Satisfaction</h3>
+  <h3 className="text-base font-semibold text-black">User Satisfaction</h3>
   <div className="mt-4">
     <div className="flex items-baseline gap-2">
-      <span className="text-3xl font-bold text-gray-900">4.2</span>
-      <span className="text-sm text-gray-600">/ 5.0</span>
+      <span className="text-3xl font-bold text-black">4.2</span>
+      <span className="text-grey-600 text-sm">/ 5.0</span>
     </div>
-    <p className="mt-2 text-sm text-gray-600">Based on 1,234 responses</p>
+    <p className="text-grey-600 mt-2 text-sm">Based on 1,234 responses</p>
   </div>
 </div>
 ```
@@ -5375,16 +5392,16 @@ const errorMessages = {
 ```tsx
 <div className="grid grid-cols-2 gap-4">
   <div>
-    <h3 className="text-base font-semibold text-gray-900">Version 2.1</h3>
+    <h3 className="text-base font-semibold text-black">Version 2.1</h3>
     <dl className="mt-4 space-y-2">
       <div>
         <dt className="text-sm font-medium text-gray-500">Voice Language</dt>
-        <dd className="mt-1 text-sm text-gray-900">English (US)</dd>
+        <dd className="mt-1 text-sm text-black">English (US)</dd>
       </div>
     </dl>
   </div>
   <div>
-    <h3 className="text-base font-semibold text-gray-900">Version 2.2</h3>
+    <h3 className="text-base font-semibold text-black">Version 2.2</h3>
     <dl className="mt-4 space-y-2">
       <div className="rounded bg-green-50 p-2">
         <dt className="text-sm font-medium text-green-700">Voice Language</dt>
@@ -5406,9 +5423,9 @@ const errorMessages = {
 ```tsx
 <div className="space-y-4">
   <div className="flex items-center justify-between">
-    <span className="text-sm text-gray-600">Average Latency</span>
+    <span className="text-grey-600 text-sm">Average Latency</span>
     <div className="flex items-center gap-3">
-      <span className="text-sm font-medium text-gray-900">245ms</span>
+      <span className="text-sm font-medium text-black">245ms</span>
       <span className="text-sm font-medium text-green-600">→ 198ms (-19%)</span>
     </div>
   </div>
@@ -5425,20 +5442,20 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">A/B Test Configuration</h3>
+  <h3 className="text-base font-semibold text-black">A/B Test Configuration</h3>
   <div className="mt-4 space-y-4">
     <div>
-      <label className="block text-sm font-medium text-gray-900">Traffic Split</label>
+      <label className="block text-sm font-medium text-black">Traffic Split</label>
       <div className="mt-2 flex items-center gap-4">
         <div className="flex-1">
-          <p className="text-sm text-gray-600">Version A</p>
+          <p className="text-grey-600 text-sm">Version A</p>
           <input type="range" min="0" max="100" defaultValue="50" className="mt-1 w-full" />
-          <p className="mt-1 text-sm font-medium text-gray-900">50%</p>
+          <p className="mt-1 text-sm font-medium text-black">50%</p>
         </div>
         <div className="flex-1">
-          <p className="text-sm text-gray-600">Version B</p>
+          <p className="text-grey-600 text-sm">Version B</p>
           <input type="range" min="0" max="100" defaultValue="50" className="mt-1 w-full" />
-          <p className="mt-1 text-sm font-medium text-gray-900">50%</p>
+          <p className="mt-1 text-sm font-medium text-black">50%</p>
         </div>
       </div>
     </div>
@@ -5507,14 +5524,14 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">Team Members</h3>
+  <h3 className="text-base font-semibold text-black">Team Members</h3>
   <dl className="mt-4 divide-y">
     <div className="flex items-center justify-between py-3">
       <div>
-        <dt className="text-sm font-medium text-gray-900">john@example.com</dt>
-        <dd className="mt-1 text-sm text-gray-600">Owner</dd>
+        <dt className="text-sm font-medium text-black">john@example.com</dt>
+        <dd className="text-grey-600 mt-1 text-sm">Owner</dd>
       </div>
-      <span className="rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium text-indigo-700">
+      <span className="text-primary-700 rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium">
         Owner
       </span>
     </div>
@@ -5533,14 +5550,14 @@ const errorMessages = {
 ```tsx
 <div className="space-y-3">
   <div className="flex items-start gap-3">
-    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100">
-      <User className="h-4 w-4 text-gray-600" />
+    <div className="bg-grey-100 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
+      <User className="text-grey-600 h-4 w-4" />
     </div>
     <div className="min-w-0 flex-1">
-      <p className="text-sm font-medium text-gray-900">
+      <p className="text-sm font-medium text-black">
         <span className="font-semibold">admin@example.com</span> updated Voice Settings
       </p>
-      <p className="mt-1 text-sm text-gray-600">
+      <p className="text-grey-600 mt-1 text-sm">
         Changed language from English (US) to English (UK)
       </p>
       <p className="mt-1 text-xs text-gray-500">2 hours ago</p>
@@ -5558,14 +5575,14 @@ const errorMessages = {
 **🔴 COMMAND:** Comments use `text-sm` styling with author and timestamp.
 
 ```tsx
-<div className="mt-4 rounded-lg border bg-gray-50 p-4">
+<div className="bg-grey-50 mt-4 rounded-lg border p-4">
   <div className="flex items-start gap-3">
-    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-600">
+    <div className="bg-primary-300 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
       <span className="text-xs font-semibold text-white">JD</span>
     </div>
     <div className="min-w-0 flex-1">
       <div className="flex items-center gap-2">
-        <p className="text-sm font-semibold text-gray-900">John Doe</p>
+        <p className="text-sm font-semibold text-black">John Doe</p>
         <p className="text-xs text-gray-500">2 hours ago</p>
       </div>
       <p className="mt-1 text-sm text-gray-700">
@@ -5586,12 +5603,12 @@ const errorMessages = {
 
 ```tsx
 <div className="rounded-lg border bg-white p-6">
-  <h3 className="text-base font-semibold text-gray-900">Approval Status</h3>
+  <h3 className="text-base font-semibold text-black">Approval Status</h3>
   <div className="mt-4 space-y-3">
     <div className="flex items-center justify-between">
       <div>
-        <p className="text-sm font-medium text-gray-900">admin@example.com</p>
-        <p className="mt-1 text-sm text-gray-600">Required for production deployment</p>
+        <p className="text-sm font-medium text-black">admin@example.com</p>
+        <p className="text-grey-600 mt-1 text-sm">Required for production deployment</p>
       </div>
       <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">
         Pending
@@ -5652,11 +5669,11 @@ const errorMessages = {
 ;<div className="mb-8">
   <div className="mb-4 flex items-baseline gap-2">
     <ShieldCheck className="size-5 text-gray-400" aria-hidden="true" />
-    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Global Rules Console</h3>
+    <h3 className="text-lg font-semibold text-black dark:text-gray-100">Global Rules Console</h3>
   </div>
-  <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+  <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
     <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
-      <h4 className="text-base font-bold text-gray-900 dark:text-gray-100">
+      <h4 className="text-base font-bold text-black dark:text-gray-100">
         Global Safety Policy v2.4
       </h4>
       <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/40 dark:text-green-300">
@@ -5666,7 +5683,7 @@ const errorMessages = {
     <dl className="divide-y divide-gray-200 px-6 py-4 dark:divide-gray-700">
       <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
         <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Last Modified</dt>
-        <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0 dark:text-gray-100">
+        <dd className="mt-1 text-sm text-black sm:col-span-2 sm:mt-0 dark:text-gray-100">
           Jan 24, 2026 by @admin
         </dd>
       </div>
@@ -5693,7 +5710,7 @@ const errorMessages = {
 
 **🔴 COMMAND:** Use "Grid List" cards with `gap-4` for rule categories (e.g., "Tone," "Tools," "Data Access").
 **🔴 COMMAND:** Each card must contain a `textarea` for the natural language rule and a `select` for the "Enforcement Level" (Strict vs. Suggestion).
-**🔴 COMMAND:** Apply `rounded-sm` for fields and `rounded-lg` for card surfaces.
+**🔴 COMMAND:** Apply `rounded-md` for fields and `rounded-lg` for card surfaces.
 
 ```tsx
 <div className="mb-8">
@@ -5712,48 +5729,48 @@ const errorMessages = {
         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
       />
     </svg>
-    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Builder</h3>
+    <h3 className="text-lg font-semibold text-black dark:text-gray-100">Rule Builder</h3>
   </div>
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+    <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tone</h4>
+        <h4 className="text-sm font-semibold text-black dark:text-gray-100">Tone</h4>
         <textarea
           rows={3}
-          className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
           placeholder="Describe the desired tone…"
         />
-        <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+        <select className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
           <option>Strict</option>
           <option>Suggestion</option>
         </select>
       </div>
     </div>
 
-    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+    <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Tools</h4>
+        <h4 className="text-sm font-semibold text-black dark:text-gray-100">Tools</h4>
         <textarea
           rows={3}
-          className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
           placeholder="Specify allowed tools…"
         />
-        <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+        <select className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
           <option>Strict</option>
           <option>Suggestion</option>
         </select>
       </div>
     </div>
 
-    <div className="overflow-hidden rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900">
+    <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100">Data Access</h4>
+        <h4 className="text-sm font-semibold text-black dark:text-gray-100">Data Access</h4>
         <textarea
           rows={3}
-          className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
           placeholder="Define data access rules…"
         />
-        <select className="block w-full rounded-sm border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+        <select className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
           <option>Strict</option>
           <option>Suggestion</option>
         </select>
@@ -5799,15 +5816,15 @@ const errorMessages = {
         d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
       />
     </svg>
-    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">Rule Simulator</h3>
+    <h3 className="text-lg font-semibold text-black dark:text-gray-100">Rule Simulator</h3>
   </div>
-  <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900">
+  <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
     <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
-      <h4 className="text-base font-bold text-gray-900 dark:text-gray-100">Reasoning Trace</h4>
+      <h4 className="text-base font-bold text-black dark:text-gray-100">Reasoning Trace</h4>
     </div>
     <div className="space-y-4 px-6 py-4">
-      <div className="rounded-sm border-l-4 border-red-500 bg-gray-50 p-4 dark:bg-gray-800">
-        <p className="font-mono text-sm text-gray-900 dark:text-gray-100">
+      <div className="bg-grey-50 rounded-md border-l-4 border-red-500 p-4 dark:bg-gray-800">
+        <p className="font-mono text-sm text-black dark:text-gray-100">
           Rule: PII_REDACTION_STRICT
         </p>
         <p className="mt-1 font-mono text-sm text-gray-500 dark:text-gray-400">
@@ -5819,7 +5836,7 @@ const errorMessages = {
       </div>
       <button
         type="button"
-        className="inline-flex items-center gap-2 rounded-sm bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+        className="bg-primary-300 hover:bg-primary-200 dark:hover:bg-primary-300 inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white transition-colors focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:bg-indigo-500"
       >
         <Wand2 className="size-4" aria-hidden="true" />
         Generate fix suggestion
@@ -5855,7 +5872,7 @@ const errorMessages = {
     </div>
   </div>
   <div className="mt-4 flex gap-3">
-    <button className="rounded-sm bg-amber-600 px-4 py-2 text-sm font-bold text-white">
+    <button className="rounded-md bg-amber-600 px-4 py-2 text-sm font-bold text-white">
       Review Diff
     </button>
     <button className="text-sm text-amber-700 underline">Cancel</button>

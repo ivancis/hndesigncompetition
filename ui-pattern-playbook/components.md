@@ -33,12 +33,12 @@ Every form element consists of up to four parts:
 {
   /* Standard label */
 }
-;<label className="block text-sm font-semibold text-gray-900">Email address</label>
+;<label className="block text-sm font-semibold text-black">Email address</label>
 
 {
   /* Required field label */
 }
-;<label className="block text-sm font-semibold text-gray-900">
+;<label className="block text-sm font-semibold text-black">
   Email address <span className="text-red-500">*</span>
 </label>
 ```
@@ -53,7 +53,7 @@ Every form element consists of up to four parts:
 <input
   type="date"
   placeholder="YYYY-MM-DD"
-  className="rounded-sm border border-gray-300 px-3 py-2 placeholder:text-gray-500"
+  className="border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
 />
 ```
 
@@ -67,11 +67,14 @@ Every form element consists of up to four parts:
 
 ```tsx
 <div className="space-y-1">
-  <label className="block text-sm font-semibold text-gray-900">
+  <label className="block text-sm font-semibold text-black">
     Password <span className="text-red-500">*</span>
   </label>
-  <input type="password" className="w-full rounded-sm border border-gray-300 px-3 py-2" />
-  <p className="text-sm text-gray-600">
+  <input
+    type="password"
+    className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+  />
+  <p className="text-grey-500 text-sm">
     Must be at least 8 characters with one number and one special character
   </p>
 </div>
@@ -84,8 +87,8 @@ Every form element consists of up to four parts:
 **🔴 BOUNDARY:** Never provide wrong or inappropriate defaults - when in doubt, leave empty.
 
 ```tsx
-<select className="rounded-sm border border-gray-300 px-3 py-2">
-  <option value="">Select country...</option>
+<select className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2">
+  <option value="">Select country…</option>
   <option value="us" selected>
     United States
   </option>
@@ -117,27 +120,36 @@ Every form element consists of up to four parts:
   {/* Form group 1 */}
   <div className="space-y-4">
     <div className="space-y-1">
-      <label className="block text-sm font-semibold">Email</label>
-      <input className="w-full rounded-sm border px-3 py-2" />
+      <label className="block text-sm font-semibold text-black">Email</label>
+      <input className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2" />
     </div>
 
     <div className="space-y-1">
-      <label className="block text-sm font-semibold">Password</label>
-      <input type="password" className="w-full rounded-sm border px-3 py-2" />
+      <label className="block text-sm font-semibold text-black">Password</label>
+      <input
+        type="password"
+        className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+      />
     </div>
   </div>
 
   {/* Form group 2 */}
   <div className="space-y-4">
     <div className="space-y-2">
-      <label className="flex items-center gap-2">
-        <input type="checkbox" className="rounded-sm" />
-        <span className="text-sm">Remember me</span>
+      <label className="flex cursor-pointer items-center gap-2">
+        <input
+          type="checkbox"
+          className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-md"
+        />
+        <span className="text-grey-700 text-sm">Remember me</span>
       </label>
 
-      <label className="flex items-center gap-2">
-        <input type="checkbox" className="rounded-sm" />
-        <span className="text-sm">Send me updates</span>
+      <label className="flex cursor-pointer items-center gap-2">
+        <input
+          type="checkbox"
+          className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-md"
+        />
+        <span className="text-grey-700 text-sm">Send me updates</span>
       </label>
     </div>
   </div>
@@ -160,13 +172,13 @@ Every form element consists of up to four parts:
 }
 ;<div className="grid grid-cols-2 gap-2">
   <div className="space-y-1">
-    <label className="block text-sm font-semibold">City</label>
-    <input className="w-full rounded-sm border px-3 py-2" />
+    <label className="block text-sm font-semibold text-black">City</label>
+    <input className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2" />
   </div>
 
   <div className="space-y-1">
-    <label className="block text-sm font-semibold">ZIP</label>
-    <input className="w-full rounded-sm border px-3 py-2" />
+    <label className="block text-sm font-semibold text-black">ZIP</label>
+    <input className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2" />
   </div>
 </div>
 ```
@@ -181,12 +193,18 @@ Every form element consists of up to four parts:
 {
   /* Short expected input */
 }
-;<input className="max-w-xs rounded-sm border px-3 py-2" placeholder="Age" />
+;<input
+  className="border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-500 focus:outline-primary-600 max-w-xs rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+  placeholder="Age"
+/>
 
 {
   /* Unknown length - full width */
 }
-;<input className="w-full rounded-sm border px-3 py-2" placeholder="Address" />
+;<input
+  className="border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+  placeholder="Address"
+/>
 ```
 
 ---
@@ -207,16 +225,24 @@ Every form element consists of up to four parts:
   /* Left-aligned (default) */
 }
 ;<div className="flex gap-2">
-  <button className="bg-violet-500 px-3 py-2 text-white">Submit</button>
-  <button className="border px-3 py-2">Cancel</button>
+  <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Submit
+  </button>
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Cancel
+  </button>
 </div>
 
 {
   /* Right-aligned (modal/wizard) */
 }
 ;<div className="flex justify-end gap-2">
-  <button className="border px-3 py-2">Back</button>
-  <button className="bg-violet-500 px-3 py-2 text-white">Next</button>
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Back
+  </button>
+  <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Next
+  </button>
 </div>
 ```
 
@@ -231,8 +257,12 @@ Every form element consists of up to four parts:
   <div className="space-y-4">{/* Form fields */}</div>
 
   <div className="flex gap-2">
-    <button className="bg-violet-500 px-3 py-2">Submit</button>
-    <button className="border px-3 py-2">Cancel</button>
+    <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      Submit
+    </button>
+    <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      Cancel
+    </button>
   </div>
 </form>
 ```
@@ -252,16 +282,24 @@ Every form element consists of up to four parts:
   /* Left-aligned: primary first */
 }
 ;<div className="flex gap-2">
-  <button className="bg-violet-500 px-3 py-2 text-white">Save</button>
-  <button className="border px-3 py-2">Cancel</button>
+  <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Save
+  </button>
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Cancel
+  </button>
 </div>
 
 {
   /* Right-aligned: primary last */
 }
 ;<div className="flex justify-end gap-2">
-  <button className="border px-3 py-2">Cancel</button>
-  <button className="bg-violet-500 px-3 py-2 text-white">Save</button>
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Cancel
+  </button>
+  <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Save
+  </button>
 </div>
 ```
 
@@ -282,14 +320,14 @@ Every form element consists of up to four parts:
   /* Field with error */
 }
 ;<div className="space-y-1">
-  <label className="block text-sm font-semibold text-gray-900">
+  <label className="block text-sm font-semibold text-black">
     Email <span className="text-red-500">*</span>
   </label>
   <input
     type="email"
     aria-invalid="true"
     aria-describedby="email-error"
-    className="w-full rounded-sm border-2 border-red-500 px-3 py-2"
+    className="w-full rounded-md border-2 border-red-500 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-red-500 focus:outline-red-600"
   />
   <p id="email-error" className="text-sm text-red-600">
     Please enter a valid email address
@@ -315,7 +353,10 @@ Every form element consists of up to four parts:
 {
   /* Submit button never disabled */
 }
-;<button type="submit" className="bg-violet-500 px-3 py-2 text-white hover:bg-violet-600">
+;<button
+  type="submit"
+  className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+>
   Submit
 </button>
 ```
@@ -335,7 +376,11 @@ Every form element consists of up to four parts:
 {
   /* Validate on blur */
 }
-;<input type="email" onBlur={validateEmail} className="rounded-sm border px-3 py-2" />
+;<input
+  type="email"
+  onBlur={validateEmail}
+  className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+/>
 ```
 
 ---
@@ -346,43 +391,49 @@ Every form element consists of up to four parts:
 <form className="max-w-md space-y-8">
   {/* Personal info group */}
   <div className="space-y-4">
-    <h2 className="text-lg font-semibold">Personal Information</h2>
+    <h2 className="text-lg font-semibold text-black">Personal Information</h2>
 
     <div className="space-y-1">
-      <label className="block text-sm font-semibold text-gray-900">
+      <label className="block text-sm font-semibold text-black">
         Full name <span className="text-red-500">*</span>
       </label>
       <input
         type="text"
-        className="w-full rounded-sm border border-gray-300 px-3 py-2 focus:outline focus:outline-2 focus:outline-violet-500"
+        className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
       />
     </div>
 
     <div className="space-y-1">
-      <label className="block text-sm font-semibold text-gray-900">
+      <label className="block text-sm font-semibold text-black">
         Email <span className="text-red-500">*</span>
       </label>
       <input
         type="email"
-        className="w-full rounded-sm border border-gray-300 px-3 py-2 focus:outline focus:outline-2 focus:outline-violet-500"
+        className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
       />
-      <p className="text-sm text-gray-600">We'll never share your email</p>
+      <p className="text-grey-500 text-sm">We'll never share your email</p>
     </div>
   </div>
 
   {/* Preferences group */}
   <div className="space-y-4">
-    <h2 className="text-lg font-semibold">Preferences</h2>
+    <h2 className="text-lg font-semibold text-black">Preferences</h2>
 
     <div className="space-y-2">
-      <label className="flex items-center gap-2">
-        <input type="checkbox" className="rounded-sm" />
-        <span className="text-sm">Send me product updates</span>
+      <label className="flex cursor-pointer items-center gap-2">
+        <input
+          type="checkbox"
+          className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-md"
+        />
+        <span className="text-grey-700 text-sm">Send me product updates</span>
       </label>
 
-      <label className="flex items-center gap-2">
-        <input type="checkbox" className="rounded-sm" />
-        <span className="text-sm">Send me marketing emails</span>
+      <label className="flex cursor-pointer items-center gap-2">
+        <input
+          type="checkbox"
+          className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-md"
+        />
+        <span className="text-grey-700 text-sm">Send me marketing emails</span>
       </label>
     </div>
   </div>
@@ -391,13 +442,13 @@ Every form element consists of up to four parts:
   <div className="flex gap-2">
     <button
       type="submit"
-      className="rounded-sm bg-violet-500 px-3 py-2 font-semibold text-white hover:bg-violet-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-violet-500"
+      className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
     >
       Create account
     </button>
     <button
       type="button"
-      className="rounded-sm border border-gray-300 px-3 py-2 font-semibold text-gray-700 hover:bg-gray-50"
+      className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
     >
       Cancel
     </button>
@@ -453,7 +504,7 @@ Cursor:     not-allowed
 }
 ;<button
   disabled
-  className="rounded-sm bg-indigo-600 px-3 py-2 text-white disabled:cursor-not-allowed disabled:opacity-50"
+  className="bg-primary-300 text-md disabled:bg-grey-300 disabled:text-grey-500 disabled:border-grey-400 rounded-md border-2 px-4 py-2 font-semibold text-black disabled:cursor-not-allowed"
 >
   Submit
 </button>
@@ -463,7 +514,7 @@ Cursor:     not-allowed
 }
 ;<input
   disabled
-  className="rounded-sm border px-3 py-2 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:opacity-50"
+  className="border-grey-600 disabled:bg-grey-50 rounded-md border-2 px-3 py-2 text-sm text-black disabled:cursor-not-allowed disabled:opacity-50"
 />
 ```
 
@@ -471,10 +522,13 @@ Cursor:     not-allowed
 
 ```tsx
 <div className="space-y-2">
-  <button disabled className="disabled:opacity-50">
+  <button
+    disabled
+    className="bg-primary-300 text-md disabled:bg-grey-300 disabled:text-grey-500 disabled:border-grey-400 rounded-md border-2 px-4 py-2 font-semibold text-black disabled:cursor-not-allowed"
+  >
     Submit application
   </button>
-  <div className="flex gap-2 rounded-md border border-amber-200 bg-amber-50 p-3">
+  <div className="flex gap-2 rounded-md border-2 border-amber-200 bg-amber-50 p-3">
     <AlertTriangle className="h-4 w-4 flex-shrink-0 text-amber-600" />
     <p className="text-sm text-amber-700">Complete all required fields to enable submission</p>
   </div>
@@ -525,7 +579,9 @@ Cursor:     not-allowed
 }
 {
   hasPermission && (
-    <button className="rounded-sm bg-indigo-600 px-3 py-2 text-white">Add member</button>
+    <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      Add member
+    </button>
   )
 }
 ```
@@ -586,20 +642,22 @@ Empty states occur when no data is available to display. They keep users informe
   /* Basic first-use empty state */
 }
 ;<div className="flex flex-col items-center justify-center p-12 text-center">
-  <Database width="48" height="48" className="text-slate-400" aria-hidden="true" />
-  <h3 className="mt-4 text-lg font-semibold">No data sources yet</h3>
-  <p className="mt-2 text-sm text-slate-600">
+  <Database width="48" height="48" className="text-grey-400" aria-hidden="true" />
+  <h3 className="mt-4 text-lg font-semibold text-black">No data sources yet</h3>
+  <p className="text-grey-600 mt-2 text-sm">
     Connect your first data source to start analyzing metrics
   </p>
-  <button className="mt-6 rounded-sm bg-indigo-600 px-3 py-2 text-white">Add data source</button>
+  <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 mt-6 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Add data source
+  </button>
 </div>
 
 {
   /* Alternative: direct to UI element */
 }
 ;<div className="p-12 text-center">
-  <h3 className="text-lg font-semibold">No projects yet</h3>
-  <p className="mt-2 text-sm text-slate-600">
+  <h3 className="text-lg font-semibold text-black">No projects yet</h3>
+  <p className="text-grey-600 mt-2 text-sm">
     Click <strong>New project</strong> in the top right to get started
   </p>
 </div>
@@ -646,12 +704,15 @@ Empty states occur when no data is available to display. They keep users informe
   /* Permissions error */
 }
 ;<div className="p-12 text-center">
-  <Lock width="48" height="48" className="mx-auto text-slate-400" aria-hidden="true" />
-  <h3 className="mt-4 text-lg font-semibold">Access restricted</h3>
-  <p className="mt-2 text-sm text-slate-600">
+  <Lock width="48" height="48" className="text-grey-400 mx-auto" aria-hidden="true" />
+  <h3 className="mt-4 text-lg font-semibold text-black">Access restricted</h3>
+  <p className="text-grey-600 mt-2 text-sm">
     You don't have permission to view this data. Contact your administrator to request access.
   </p>
-  <a href="/support" className="mt-4 inline-block text-sm text-indigo-600 underline">
+  <a
+    href="/support"
+    className="text-primary-600 hover:text-primary-700 mt-4 inline-block text-sm font-semibold underline"
+  >
     Contact support
   </a>
 </div>
@@ -661,11 +722,13 @@ Empty states occur when no data is available to display. They keep users informe
 }
 ;<div className="p-12 text-center">
   <AlertCircle width="48" height="48" className="mx-auto text-amber-600" aria-hidden="true" />
-  <h3 className="mt-4 text-lg font-semibold">Unable to load data</h3>
-  <p className="mt-2 text-sm text-slate-600">
+  <h3 className="mt-4 text-lg font-semibold text-black">Unable to load data</h3>
+  <p className="text-grey-600 mt-2 text-sm">
     We're having trouble connecting to the server. Check the activity log for details.
   </p>
-  <button className="mt-6 rounded-sm border px-3 py-2">View activity log</button>
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 mt-6 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    View activity log
+  </button>
 </div>
 ```
 
@@ -686,11 +749,13 @@ Exception: Small tiles center image above left-aligned text
 {
   /* Small tile empty state */
 }
-;<div className="rounded-lg border p-4">
-  <FileQuestion width="32" height="32" className="mx-auto text-slate-400" aria-hidden="true" />
-  <h4 className="mt-3 text-sm font-semibold">No files</h4>
-  <p className="mt-1 text-xs text-slate-600">Upload your first file to get started</p>
-  <button className="mt-3 w-full rounded-sm border px-3 py-2 text-sm">Upload file</button>
+;<div className="rounded-lg border-2 p-4">
+  <FileQuestion width="32" height="32" className="text-grey-400 mx-auto" aria-hidden="true" />
+  <h4 className="mt-3 text-sm font-semibold text-black">No files</h4>
+  <p className="text-grey-600 mt-1 text-xs">Upload your first file to get started</p>
+  <button className="hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 mt-3 w-full rounded-md border-2 px-3 py-2 text-sm font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    Upload file
+  </button>
 </div>
 ```
 
@@ -705,13 +770,18 @@ Image can be above text OR to the left
 }
 ;<div className="flex min-h-screen items-center justify-center p-4">
   <div className="max-w-md text-center">
-    <Database width="64" height="64" className="mx-auto text-slate-400" aria-hidden="true" />
-    <h2 className="mt-6 text-2xl font-bold">No databases configured</h2>
-    <p className="mt-3 text-slate-600">
+    <Database width="64" height="64" className="text-grey-400 mx-auto" aria-hidden="true" />
+    <h2 className="mt-6 text-2xl font-bold text-black">No databases configured</h2>
+    <p className="text-grey-600 mt-3">
       Connect your first database to start managing your data infrastructure
     </p>
-    <button className="mt-6 rounded-sm bg-indigo-600 px-3 py-2 text-white">Connect database</button>
-    <a href="/docs" className="mt-4 block text-sm text-indigo-600 underline">
+    <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 mt-6 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      Connect database
+    </button>
+    <a
+      href="/docs"
+      className="text-primary-600 hover:text-primary-700 mt-4 block text-sm font-semibold underline"
+    >
       View documentation
     </a>
   </div>
@@ -771,18 +841,18 @@ Loading patterns communicate that processes are ongoing and prevent users from t
   /* Text skeleton */
 }
 ;<div className="space-y-2">
-  <div className="h-4 w-3/4 animate-pulse rounded bg-slate-200" />
-  <div className="h-4 w-1/2 animate-pulse rounded bg-slate-200" />
+  <div className="bg-grey-200 h-4 w-3/4 animate-pulse rounded" />
+  <div className="bg-grey-200 h-4 w-1/2 animate-pulse rounded" />
 </div>
 
 {
   /* Card skeleton */
 }
-;<div className="rounded-lg border p-4">
-  <div className="h-6 w-32 animate-pulse rounded bg-slate-200" />
+;<div className="rounded-lg border-2 p-4">
+  <div className="bg-grey-200 h-6 w-32 animate-pulse rounded" />
   <div className="mt-3 space-y-2">
-    <div className="h-4 w-full animate-pulse rounded bg-slate-200" />
-    <div className="h-4 w-5/6 animate-pulse rounded bg-slate-200" />
+    <div className="bg-grey-200 h-4 w-full animate-pulse rounded" />
+    <div className="bg-grey-200 h-4 w-5/6 animate-pulse rounded" />
   </div>
 </div>
 
@@ -791,10 +861,10 @@ Loading patterns communicate that processes are ongoing and prevent users from t
 }
 ;<tr>
   <td className="px-4 py-3">
-    <div className="h-4 w-24 animate-pulse rounded bg-slate-200" />
+    <div className="bg-grey-200 h-4 w-24 animate-pulse rounded" />
   </td>
   <td className="px-4 py-3">
-    <div className="h-4 w-32 animate-pulse rounded bg-slate-200" />
+    <div className="bg-grey-200 h-4 w-32 animate-pulse rounded" />
   </td>
 </tr>
 ```
@@ -813,15 +883,15 @@ Loading patterns communicate that processes are ongoing and prevent users from t
 {
   /* Full-screen loading */
 }
-;<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50">
-  <div className="rounded-lg bg-white p-8 text-center">
+;<div className="bg-grey-900/50 fixed inset-0 z-50 flex items-center justify-center">
+  <div className="rounded-lg border-2 bg-white p-8 text-center">
     <Loader2
       width="48"
       height="48"
-      className="mx-auto animate-spin text-indigo-600"
+      className="text-primary-600 mx-auto animate-spin"
       aria-hidden="true"
     />
-    <p className="mt-4 font-semibold">Saving changes...</p>
+    <p className="mt-4 font-semibold text-black">Saving changes…</p>
   </div>
 </div>
 ```
@@ -868,9 +938,9 @@ Loading patterns communicate that processes are ongoing and prevent users from t
   /* Phase 1: Skeleton */
 }
 ;<div className="grid grid-cols-3 gap-4">
-  <div className="rounded-lg border p-4">
-    <div className="h-6 w-32 animate-pulse rounded bg-slate-200" />
-    <div className="mt-3 h-24 animate-pulse rounded bg-slate-200" />
+  <div className="rounded-lg border-2 p-4">
+    <div className="bg-grey-200 h-6 w-32 animate-pulse rounded" />
+    <div className="bg-grey-200 mt-3 h-24 animate-pulse rounded" />
   </div>
   {/* More skeleton cards */}
 </div>
@@ -879,9 +949,9 @@ Loading patterns communicate that processes are ongoing and prevent users from t
   /* Phase 2: Partial data */
 }
 ;<div className="grid grid-cols-3 gap-4">
-  <div className="rounded-lg border p-4">
-    <h3 className="text-lg font-semibold">Revenue</h3>
-    <div className="mt-3 h-24 animate-pulse rounded bg-slate-200" />
+  <div className="rounded-lg border-2 p-4">
+    <h3 className="text-lg font-semibold text-black">Revenue</h3>
+    <div className="bg-grey-200 mt-3 h-24 animate-pulse rounded" />
   </div>
 </div>
 
@@ -889,9 +959,9 @@ Loading patterns communicate that processes are ongoing and prevent users from t
   /* Phase 3: Complete */
 }
 ;<div className="grid grid-cols-3 gap-4">
-  <div className="rounded-lg border p-4">
-    <h3 className="text-lg font-semibold">Revenue</h3>
-    <p className="mt-3 text-3xl font-bold">$45,231</p>
+  <div className="rounded-lg border-2 p-4">
+    <h3 className="text-lg font-semibold text-black">Revenue</h3>
+    <p className="mt-3 text-3xl font-bold text-black">$45,231</p>
   </div>
 </div>
 ```
@@ -940,9 +1010,9 @@ Loading patterns communicate that processes are ongoing and prevent users from t
 }
 ;<div role="status" aria-live="polite">
   {isLoading ? (
-    <div className="flex items-center gap-2">
+    <div className="text-grey-600 flex items-center gap-2 text-sm">
       <Loader2 width="16" height="16" className="animate-spin" aria-hidden="true" />
-      <span>Loading data...</span>
+      <span>Loading data…</span>
     </div>
   ) : (
     <span className="sr-only">Data loaded</span>

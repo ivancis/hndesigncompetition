@@ -2202,10 +2202,6 @@ function MyCustomComponent3() {
   )
 }
 
-function MyCustomComponent6() {
-  return <MyCustomComponentBase label="Tab6" />
-}
-
 export default function Home({ posts }) {
   const conditionOptions = [
     { label: 'Class1', className: 'class1' },
@@ -2270,24 +2266,13 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: 'AI Instructions + Global Rules patterns',
+      label: 'Voice/AI patterns',
       items: [
         {
           title: '5',
           body: 'Older items can live in a separate tab.',
           footer: 'Status: Neutral — Inactive',
           slot: <MyCustomComponent5 />,
-        },
-      ],
-    },
-    {
-      label: 'Voice-agent-builder patterns',
-      items: [
-        {
-          title: '6',
-          body: 'Older items can live in a separate tab.',
-          footer: 'Status: Neutral — Inactive',
-          slot: <MyCustomComponent6 />,
         },
       ],
     },

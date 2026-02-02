@@ -48,7 +48,10 @@ Typography establishes content hierarchy and shapes readability. It determines h
 - **Use for:** Section titles, card headings
 
 ```tsx
-<h2 className="text-xl font-bold">Section Title</h2>
+{
+  /* Section title */
+}
+;<h2 className="text-xl font-bold">Section Title</h2>
 ```
 
 #### Subheadings
@@ -385,7 +388,7 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 ```tsx
 <div className="space-y-1">
   <h1 className="text-xl font-bold">Heading</h1>
-  <p className="text-sm text-gray-600">Subtitle</p>
+  <p className="text-grey-600 text-sm">Subtitle</p>
 </div>
 ```
 
@@ -425,15 +428,15 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 **🔴 COMMAND:** Icon + label combinations must have similar visual weight. Use `text-lg leading-5` (18px font-size, 20px line-height) for labels to match icon height (typically 20px). This ensures the first line aligns with the icon even when text wraps.
 
 ```tsx
-<button className="inline-flex items-center gap-2 rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white">
+<button className="inline-flex items-center gap-2 rounded-md border-2 bg-primary-300 px-3 py-2 text-md font-semibold text-black">
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <path d="M4 3.5L12 8L4 12.5V3.5Z" fill="currentColor" />
   </svg>
   Play
 </button>
 
-<span className="inline-flex items-center gap-2 rounded-sm border border-gray-200 bg-gray-50 px-3 py-2 text-sm font-semibold text-gray-700">
-  <span className="inline-flex rounded-full bg-gray-400 p-1" aria-hidden="true" />
+<span className="inline-flex items-center gap-2 rounded-md border-2 border-grey-200 bg-grey-50 px-3 py-2 text-sm font-semibold text-grey-700">
+  <span className="inline-flex rounded-full bg-grey-400 p-1" aria-hidden="true" />
   Status
 </span>
 ```
@@ -486,7 +489,7 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 }
 ;<div className="flex items-baseline gap-2">
   <svg
-    className="size-5 shrink-0 text-gray-400"
+    className="text-grey-400 size-5 shrink-0"
     viewBox="0 0 24 24"
     fill="currentColor"
     aria-hidden="true"
@@ -503,11 +506,13 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 
 **🔴 COMMAND:** Outermost layout layer: `p-12` (48px), or `p-4` (16px) for dense
 
-**🔴 COMMAND:** Surfaces (dialogs, cards): `p-6` (24px), or `p-4` (16px) for dense
+**🔴 COMMAND:** Surfaces (dialogs, cards): `px-4 py-2 sm:p-6` (responsive padding), or `p-4` (16px) for dense
+
+**🔴 COMMAND:** Card headers: `px-6 py-4` (24px horizontal, 16px vertical)
 
 **🔴 COMMAND:** Containers: `p-4` (16px)
 
-**🔴 COMMAND:** Fields (buttons, inputs): `p-3` (12px) or less
+**🔴 COMMAND:** Fields (buttons, inputs): `px-4 py-2` (16px horizontal, 8px vertical) for standard buttons
 
 ```tsx
 {
@@ -520,21 +525,35 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 {
   /* Dialog/Surface */
 }
-;<div className="rounded-lg border p-6">
-  <Content />
+;<div className="rounded-lg border-2">
+  <div className="px-4 py-2 sm:p-6">
+    <Content />
+  </div>
+</div>
+
+{
+  /* Card with header */
+}
+;<div className="rounded-lg border-2">
+  <div className="border-grey-700 border-b-2 px-6 py-4">
+    <h3 className="text-base font-bold text-black">Card Title</h3>
+  </div>
+  <div className="px-4 py-2 sm:p-6">
+    <Content />
+  </div>
 </div>
 
 {
   /* Container */
 }
-;<div className="rounded-md border p-4">
+;<div className="rounded-md border-2 p-4">
   <Content />
 </div>
 
 {
   /* Field */
 }
-;<button className="px-3 py-2">Action</button>
+;<button className="text-md rounded-md border-2 px-4 py-2 font-semibold">Action</button>
 ```
 
 #### Text Balance in Insets
@@ -546,14 +565,14 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
   /* Text at top: reduce pt */
 }
 ;<div className="px-4 pt-2 pb-3">
-  <p>Text starts at top...</p>
+  <p>Text starts at top…</p>
 </div>
 
 {
   /* Text at bottom: reduce pb */
 }
 ;<div className="px-4 pt-3 pb-2">
-  <p>Text ends at bottom...</p>
+  <p>Text ends at bottom…</p>
 </div>
 ```
 
@@ -581,24 +600,24 @@ Understanding element nesting determines spacing strategy.
 {
   /* Base */
 }
-;<div className="bg-gray-50 p-12">
+;<div className="bg-grey-50 p-12">
   {/* Surface */}
-  <div className="rounded-lg border bg-white p-6">
+  <div className="rounded-lg border-2 bg-white p-6">
     {/* Container */}
-    <div className="rounded-md border bg-gray-50 p-4">
+    <div className="bg-grey-50 rounded-md border-2 p-4">
       <div className="space-y-1">
-        <h2 className="text-xl font-bold">Unsaved changes</h2>
-        <p className="text-sm text-gray-600">
+        <h2 className="text-xl font-bold text-black">Unsaved changes</h2>
+        <p className="text-grey-600 text-sm">
           You have unsaved changes. Save before you leave to avoid losing work.
         </p>
       </div>
       <div className="mt-4 flex justify-end gap-2 border-t pt-3">
         {/* Field */}
-        <button className="rounded-sm border border-gray-200 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100">
+        <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
           Keep editing
         </button>
         {/* Field */}
-        <button className="rounded-sm bg-gray-900 px-3 py-2 text-sm font-semibold text-white hover:bg-gray-800">
+        <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
           Save changes
         </button>
       </div>
@@ -620,13 +639,17 @@ Dialogs are conversations: statement + detail + action.
 **🔴 COMMAND:** Footer gap: `gap-2`
 
 ```tsx
-<div className="rounded-md border bg-white p-4 shadow-sm">
+<div className="rounded-md border-2 bg-white p-4 shadow-sm">
   <div className="px-4 py-3">
     <p>Are you sure you want to continue?</p>
   </div>
   <div className="flex justify-end gap-2 border-t pt-3">
-    <button className="px-3 py-2">Cancel</button>
-    <button className="px-3 py-2">Continue</button>
+    <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      Cancel
+    </button>
+    <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      Continue
+    </button>
   </div>
 </div>
 ```
@@ -657,14 +680,14 @@ Containers highlight essential information with semantic meaning.
 {
   /* Neutral container */
 }
-;<div className="rounded-lg border border-gray-200 bg-white p-4">
+;<div className="border-grey-200 rounded-lg border-2 bg-white p-4">
   <p>Neutral content</p>
 </div>
 
 {
   /* Critical emphasized */
 }
-;<div className="rounded-lg border border-red-200 bg-red-50 p-4">
+;<div className="rounded-lg border-2 border-red-200 bg-red-50 p-4">
   <p>Error: Action failed</p>
 </div>
 
@@ -691,14 +714,16 @@ Fields are interactive clickable elements that communicate state through visual 
 {
   /* Interactive field with states */
 }
-;<button className="rounded-sm bg-gray-100 p-3 hover:bg-gray-200 active:bg-gray-300">
+;<button className="bg-grey-100 text-md hover:bg-grey-200 active:bg-grey-300 rounded-md border-2 px-4 py-2 font-semibold transition-colors">
   Click me
 </button>
 
 {
   /* Small field */
 }
-;<button className="rounded-sm px-2 py-2 text-sm hover:bg-gray-100">Small action</button>
+;<button className="hover:bg-grey-100 rounded-md border-2 px-2 py-2 text-sm font-semibold transition-colors">
+  Small action
+</button>
 ```
 
 ---
@@ -717,22 +742,36 @@ rounded-lg  (8px)  →  min p-6  (24px)
 
 **Decision tree:**
 
-- **Small components** (badges, pills, buttons): `rounded-sm p-2`
-- **Standard components** (cards, panels): `rounded-md p-4`
-- **Large components** (modals, hero sections): `rounded-lg p-6`
+- **Small components** (badges, pills, buttons): `rounded-md` with `border-2`
+- **Standard components** (cards, panels): `rounded-md` with `border-2`
+- **Large components** (modals, hero sections): `rounded-lg` with `border-2`
 
-````tsx
-{/* Badge: small */}
-<span className="rounded-sm bg-blue-100 p-2 text-sm">New</span>
+```tsx
+{
+  /* Badge: small */
+}
+;<span className="bg-primary-50 text-primary-700 rounded-md px-2.5 py-0.5 text-xs font-medium">
+  New
+</span>
 
-{/* Button: small */}
-<button className="rounded-sm bg-blue-600 px-3 py-2 text-white">Submit</button>
+{
+  /* Button: small */
+}
+;<button className="bg-primary-300 text-md rounded-md border-2 px-4 py-2 font-semibold text-black">
+  Submit
+</button>
 
-{/* Card: large */}
-<div className="rounded-lg border p-6">
-  <h3>Card Title</h3>
-  <p>Card content...</p>
+{
+  /* Card: large */
+}
+;<div className="rounded-lg border-2">
+  <div className="px-4 py-2 sm:p-6">
+    <h3 className="text-base font-semibold text-black">Card Title</h3>
+    <p className="text-grey-500 mt-1 text-sm">Card content…</p>
+  </div>
 </div>
+```
+
 **🔴 BOUNDARY:** Never use `rounded` (4px) or `rounded-xl` (12px) - they break the scale.
 
 **🟡 DIRECTIVE:** Match visual weight of border radius to component importance. Larger radius = more prominent component.
@@ -754,8 +793,10 @@ These states are mutually exclusive - an element can only be in one state at a t
 **🔴 COMMAND:** Rest is the default visual state for all elements.
 
 ```tsx
-<button className="rounded-sm bg-violet-500 px-3 py-2 text-white">Default Button</button>
-````
+<button className="bg-primary-300 text-md rounded-md border-2 px-4 py-2 font-semibold text-black">
+  Default Button
+</button>
+```
 
 ##### Hover State
 
@@ -780,7 +821,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 **🟡 DIRECTIVE:** Active state communicates "currently being pressed" - works with mouse, touch, stylus, or any pointing device.
 
 ```tsx
-<button className="rounded-sm bg-violet-500 px-3 py-2 text-white hover:bg-violet-600 active:bg-violet-700">
+<button className="bg-primary-300 text-md hover:bg-primary-200 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors">
   Click me
 </button>
 ```
@@ -789,14 +830,14 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 **🔴 COMMAND:** Focus uses outline with same color as rest state.
 
-**🔴 COMMAND:** Focus outline width: `outline-2`
+**🔴 COMMAND:** Focus outline width: `outline-1`
 
 **🔴 COMMAND:** Focus outline offset: `outline-offset-2`
 
 **🟡 DIRECTIVE:** Focus states are for keyboard navigation - they must be highly visible for accessibility.
 
 ```tsx
-<button className="rounded-sm bg-violet-500 px-3 py-2 text-white hover:bg-violet-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700">
+<button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black focus:outline focus:outline-1 focus:outline-offset-2">
   Tab to focus
 </button>
 ```
@@ -804,7 +845,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 **Complete interactive button pattern:**
 
 ```tsx
-<button className="rounded-sm bg-violet-500 px-3 py-2 text-white transition-colors hover:bg-violet-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700">
+<button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
   Interactive Button
 </button>
 ```
@@ -820,7 +861,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 ```tsx
 <button
   disabled
-  className="rounded-sm bg-violet-500 px-3 py-2 text-white disabled:cursor-not-allowed disabled:opacity-50"
+  className="bg-primary-300 text-md disabled:bg-grey-300 disabled:text-grey-500 disabled:border-grey-400 rounded-md border-2 px-4 py-2 font-semibold text-black disabled:cursor-not-allowed"
 >
   Disabled Button
 </button>
@@ -846,32 +887,32 @@ These states are mutually exclusive - an element can only be in one state at a t
 {
   /* Tab navigation with selected state */
 }
-;<div className="flex gap-4 border-b">
-  <button className="border-b-2 border-violet-500 px-3 py-2 font-semibold text-violet-600">
+;<nav className="border-grey-700 flex gap-4 border-b-2">
+  <button className="border-primary-600 text-primary-600 border-b-4 px-1 py-4 text-sm font-semibold">
     Active Tab
   </button>
-  <button className="border-b-2 border-transparent px-3 py-2 text-gray-600 hover:text-gray-900">
+  <button className="text-grey-600 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium">
     Inactive Tab
   </button>
-</div>
+</nav>
 
 {
   /* Card selection */
 }
-;<div className="rounded-md border-2 border-violet-500 bg-violet-50 p-4">
+;<div className="border-primary-600 bg-primary-50 rounded-lg border-2 p-4">
   <p>Selected card</p>
 </div>
 
 {
   /* Checkbox with selected state */
 }
-;<label className="flex items-center gap-2">
+;<label className="flex cursor-pointer items-center gap-2">
   <input
     type="checkbox"
     checked
-    className="rounded-sm border-gray-300 text-violet-600 focus:ring-violet-500"
+    className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-md"
   />
-  <span>Selected option</span>
+  <span className="text-grey-700 text-sm">Selected option</span>
 </label>
 ```
 
@@ -893,28 +934,31 @@ These states are mutually exclusive - an element can only be in one state at a t
 {
   /* Inline action trigger */
 }
-;<button className="border-b border-dotted border-current text-violet-600 hover:text-violet-700">
+;<button className="text-primary-600 hover:text-primary-700 border-b-2 border-dotted border-current text-sm font-semibold">
   Show more details
 </button>
 
 {
   /* Inline link */
 }
-;<a href="/docs" className="text-violet-600 underline hover:text-violet-700">
+;<a
+  href="/docs"
+  className="text-primary-600 hover:text-primary-700 text-sm font-semibold underline"
+>
   Read documentation
 </a>
 
 {
   /* Button distinguished by context */
 }
-;<button className="rounded-sm bg-violet-500 px-3 py-2 font-semibold text-white hover:bg-violet-600">
+;<button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
   Primary Action
 </button>
 
 {
   /* Secondary button - distinguished by style */
 }
-;<button className="rounded-sm border border-gray-300 px-3 py-2 font-semibold text-gray-700 hover:bg-gray-50">
+;<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
   Secondary Action
 </button>
 ```
@@ -923,12 +967,12 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 ---
 
-### 5.3 Complete Component Patterns
+### 5.3 Basic component build
 
 #### Pattern: Primary Button
 
 ```tsx
-<button className="rounded-sm bg-violet-500 px-3 py-2 font-semibold text-white transition-colors hover:bg-violet-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700 disabled:cursor-not-allowed disabled:opacity-50">
+<button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
   Primary Action
 </button>
 ```
@@ -936,7 +980,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 #### Pattern: Secondary Button
 
 ```tsx
-<button className="rounded-sm border border-gray-300 bg-white px-3 py-2 font-semibold text-gray-700 transition-colors hover:bg-gray-50 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-500 active:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50">
+<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
   Secondary Action
 </button>
 ```
@@ -944,7 +988,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 #### Pattern: Ghost Button
 
 ```tsx
-<button className="rounded-sm px-3 py-2 font-semibold text-gray-700 transition-colors hover:bg-gray-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-500 active:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50">
+<button className="text-grey-700 hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md px-3 py-2 text-sm font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
   Ghost Action
 </button>
 ```
@@ -952,7 +996,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 #### Pattern: Danger Button
 
 ```tsx
-<button className="rounded-sm bg-red-500 px-3 py-2 font-semibold text-white transition-colors hover:bg-red-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-red-500 active:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50">
+<button className="text-md rounded-md border-2 bg-red-300 px-4 py-2 font-semibold text-black transition-colors hover:bg-red-200 focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-red-500 focus:outline-red-600 active:bg-red-100 disabled:cursor-not-allowed disabled:opacity-50">
   Delete
 </button>
 ```
@@ -962,7 +1006,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 ```tsx
 <a
   href="/docs"
-  className="text-violet-600 underline transition-colors hover:text-violet-700 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-violet-500"
+  className="text-primary-600 hover:text-primary-700 focus:outline-primary-500 focus:outline-primary-600 text-sm font-semibold underline transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
 >
   Read documentation
 </a>
@@ -971,9 +1015,9 @@ These states are mutually exclusive - an element can only be in one state at a t
 #### Pattern: Interactive Card
 
 ```tsx
-<button className="w-full rounded-lg border-2 border-gray-200 bg-white p-6 text-left transition-all hover:border-violet-300 hover:bg-violet-50 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:border-violet-400 active:bg-violet-100">
-  <h3 className="text-lg font-semibold">Card Title</h3>
-  <p className="text-sm text-gray-600">Card description</p>
+<button className="hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 w-full rounded-lg border-2 p-4 text-left transition-all focus:outline focus:outline-1 focus:outline-offset-2 sm:p-6">
+  <h3 className="text-base font-semibold text-black">Card Title</h3>
+  <p className="text-grey-500 mt-1 text-sm">Card description</p>
 </button>
 ```
 
@@ -987,11 +1031,11 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 ```tsx
 {
-  /* Icon-only close button - perfect square */
+  /* Icon-only close button - perfect square */}
 }
 ;<button
   type="button"
-  className="flex h-10 w-10 items-center justify-center rounded-sm text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-gray-500"
+  className="flex h-10 w-10 items-center justify-center rounded-md text-grey-400 transition hover:bg-grey-100 hover:text-grey-600 focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-primary-500 focus:outline-primary-600"
   aria-label="Close"
 >
   <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

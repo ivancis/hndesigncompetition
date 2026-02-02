@@ -17,8 +17,8 @@ Status communicates the health of a system, process, or object. Use consistent, 
 
 ```
 1. Ideal    →  emerald  →  Success, desired result
-2. Good     →  indigo   →  Informative, minor issues, new features
-3. Neutral  →  slate    →  Inactive, undefined, unessential
+2. Good     →  primary  →  Informative, minor issues, new features
+3. Neutral  →  grey     →  Inactive, undefined, unessential
 4. Warning  →  amber    →  Potential issues, attention needed
 5. Critical →  red     →  Failed, immediate attention required
 ```
@@ -33,30 +33,30 @@ Status communicates the health of a system, process, or object. Use consistent, 
 
 ```
 Ideal:    text-emerald-600  bg-emerald-50  border-emerald-200
-Good:     text-indigo-600   bg-indigo-50   border-indigo-200
-Neutral:  text-slate-600    bg-slate-50    border-slate-200
+Good:     text-primary-600  bg-primary-50  border-primary-200
+Neutral:  text-grey-600     bg-grey-50     border-grey-200
 Warning:  text-amber-600    bg-amber-50    border-amber-200
-Critical: text-red-600     bg-red-50     border-red-200
+Critical: text-red-600      bg-red-50      border-red-200
 ```
 
 **Emphasized (more contrast):**
 
 ```
 Ideal:    text-emerald-700  bg-emerald-100  border-emerald-300
-Good:     text-indigo-700   bg-indigo-100   border-indigo-300
-Neutral:  text-slate-700    bg-slate-100    border-slate-300
+Good:     text-primary-700  bg-primary-100   border-primary-300
+Neutral:  text-grey-700     bg-grey-100     border-grey-300
 Warning:  text-amber-700    bg-amber-100    border-amber-300
-Critical: text-red-700     bg-red-100     border-red-300
+Critical: text-red-700      bg-red-100     border-red-300
 ```
 
 **Accent (highest contrast):**
 
 ```
 Ideal:    text-emerald-900  bg-emerald-200  border-emerald-500
-Good:     text-indigo-900   bg-indigo-200   border-indigo-500
-Neutral:  text-slate-900    bg-slate-200    border-slate-500
+Good:     text-primary-900  bg-primary-200   border-primary-500
+Neutral:  text-grey-900     bg-grey-200     border-grey-500
 Warning:  text-amber-900    bg-amber-200    border-amber-500
-Critical: text-red-900     bg-red-200     border-red-500
+Critical: text-red-900      bg-red-200      border-red-500
 ```
 
 ---
@@ -162,10 +162,10 @@ Critical → Failed
 {
   /* Element-level status */
 }
-;<div className="flex items-center justify-between rounded-md border p-4">
+;<div className="flex items-center justify-between rounded-md border-2 p-4">
   <div>
-    <h3 className="font-semibold">API Service</h3>
-    <p className="text-sm text-slate-600">api.example.com</p>
+    <h3 className="font-semibold text-black">API Service</h3>
+    <p className="text-grey-600 text-sm">api.example.com</p>
   </div>
   <div className="flex items-center gap-2 text-emerald-600">
     <CheckCircle aria-hidden="true" />
@@ -219,7 +219,7 @@ Subtle status for systems, processes, or objects.
 }
 ;<div className="flex items-center gap-2">
   <div className="inline-flex rounded-full bg-emerald-100 p-1" role="status" aria-label="Healthy" />
-  <span className="text-sm text-slate-900">API Service</span>
+  <span className="text-sm text-black">API Service</span>
 </div>
 
 {
@@ -233,9 +233,9 @@ Subtle status for systems, processes, or objects.
 
 #### Pattern: Chip (Prominent Tag)
 
-**🔴 COMMAND:** Chip padding: `p-2`  
-**🔴 COMMAND:** Chip text: `text-sm font-semibold`  
-**🔴 COMMAND:** Chip radius: `rounded-sm`
+**🔴 COMMAND:** Chip padding: `px-2.5 py-0.5` for badges, or `p-2` for larger chips  
+**🔴 COMMAND:** Chip text: `text-sm font-semibold` or `text-xs font-medium` for badges  
+**🔴 COMMAND:** Chip radius: `rounded-md` for chips, `rounded-full` for badges
 
 **🔴 COMMAND:** When a chip/badge/tag has an icon as the first element (leftmost), add extra left padding (`pl-3` or `pl-2.5`) to compensate for visual weight and ensure balanced spacing.
 
@@ -245,7 +245,7 @@ Subtle status for systems, processes, or objects.
 {
   /* Chip with icon first - extra left padding */
 }
-;<span className="inline-flex items-center gap-2 rounded-sm bg-emerald-50 py-2 pr-2 pl-3 text-sm font-semibold text-emerald-700">
+;<span className="inline-flex items-center gap-2 rounded-md bg-emerald-50 py-2 pr-2 pl-3 text-sm font-semibold text-emerald-700">
   <div className="inline-flex h-2 w-2 rounded-full bg-emerald-600" aria-hidden="true" />
   Completed
 </span>
@@ -253,14 +253,14 @@ Subtle status for systems, processes, or objects.
 {
   /* Chip without icon - standard padding */
 }
-;<span className="inline-flex items-center rounded-sm bg-emerald-50 px-2 py-2 text-sm font-semibold text-emerald-700">
+;<span className="inline-flex items-center rounded-md bg-emerald-50 px-2 py-2 text-sm font-semibold text-emerald-700">
   Completed
 </span>
 
 {
-  /* Fully rounded chip with icon - NO extra left padding (exception) */
+  /* Fully rounded badge with icon - NO extra left padding (exception) */
 }
-;<span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-2.5 py-0.5 text-sm font-medium text-emerald-700">
+;<span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
   <div className="inline-flex h-2 w-2 rounded-full bg-emerald-600" aria-hidden="true" />
   Completed
 </span>
@@ -336,12 +336,12 @@ Subtle status for systems, processes, or objects.
 
 ```tsx
 <div className="flex items-center gap-2">
-  <span className="text-2xl font-bold text-slate-900">3.2%</span>
+  <span className="text-2xl font-bold text-black">3.2%</span>
   <div className="flex items-center gap-1 text-red-600">
     <TrendingUp aria-hidden="true" />
     <span className="text-sm font-semibold">+1.2%</span>
   </div>
-  <span className="text-sm text-slate-600">error rate</span>
+  <span className="text-grey-600 text-sm">error rate</span>
 </div>
 ```
 
@@ -376,24 +376,24 @@ Subtle status for systems, processes, or objects.
 ```
 STATUS COLORS (Default)
 Ideal:    emerald-600  emerald-50  emerald-200
-Good:     indigo-600   indigo-50   indigo-200
-Neutral:  slate-600    slate-50    slate-200
+Good:     primary-600  primary-50  primary-200
+Neutral:  grey-600     grey-50     grey-200
 Warning:  amber-600    amber-50    amber-200
-Critical: red-600     red-50     red-200
+Critical: red-600      red-50      red-200
 
 STATUS COLORS (Emphasized)
 Ideal:    emerald-700  emerald-100  emerald-300
-Good:     indigo-700   indigo-100   indigo-300
-Neutral:  slate-700    slate-100    slate-300
-Warning:  amber-700    amber-100    amber-300
-Critical: red-700     red-100     red-300
+Good:     primary-700  primary-100   primary-300
+Neutral:  grey-700     grey-100      grey-300
+Warning:  amber-700    amber-100     amber-300
+Critical: red-700      red-100      red-300
 
 STATUS COLORS (Accent)
 Ideal:    emerald-900  emerald-200  emerald-500
-Good:     indigo-900   indigo-200   indigo-500
-Neutral:  slate-900    slate-200    slate-500
+Good:     primary-900  primary-200   primary-500
+Neutral:  grey-900     grey-200     grey-500
 Warning:  amber-900    amber-200    amber-500
-Critical: red-900     red-200     red-500
+Critical: red-900      red-200      red-500
 ```
 
 ---
@@ -448,16 +448,25 @@ Navigation provides predictable ways for users to move through your app. Consist
 {
   /* Flat navigation example */
 }
-;<nav className="flex gap-4 border-b">
-  <a href="/dashboard" className="px-3 py-2 font-semibold text-gray-900">
+;<nav className="border-grey-700 flex gap-4 border-b-2">
+  <button
+    type="button"
+    className="border-primary-600 text-primary-600 border-b-4 px-1 py-4 text-sm font-semibold"
+  >
     Dashboard
-  </a>
-  <a href="/analytics" className="px-3 py-2 text-gray-600 hover:text-gray-900">
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium"
+  >
     Analytics
-  </a>
-  <a href="/settings" className="px-3 py-2 text-gray-600 hover:text-gray-900">
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium"
+  >
     Settings
-  </a>
+  </button>
 </nav>
 ```
 
@@ -480,15 +489,15 @@ Navigation provides predictable ways for users to move through your app. Consist
   /* Nested navigation with breadcrumbs */
 }
 ;<nav className="flex items-center gap-2 text-sm">
-  <a href="/docs" className="text-gray-600 hover:text-gray-900">
+  <button type="button" className="text-grey-600 hover:text-black">
     Documentation
-  </a>
-  <span className="text-gray-400">/</span>
-  <a href="/docs/components" className="text-gray-600 hover:text-gray-900">
+  </button>
+  <span className="text-grey-400">/</span>
+  <button type="button" className="text-grey-600 hover:text-black">
     Components
-  </a>
-  <span className="text-gray-400">/</span>
-  <span className="font-semibold text-gray-900">Button</span>
+  </button>
+  <span className="text-grey-400">/</span>
+  <span className="font-semibold text-black">Button</span>
 </nav>
 ```
 
@@ -517,25 +526,25 @@ Primary navigation contains main entry points to your app's content areas.
 {
   /* Primary navigation */
 }
-;<nav className="flex gap-4 border-b border-gray-200">
-  <a
-    href="/dashboard"
-    className="border-b-2 border-violet-500 px-3 py-2 font-semibold text-violet-600"
+;<nav className="border-grey-700 flex gap-4 border-b-2">
+  <button
+    type="button"
+    className="border-primary-600 text-primary-600 border-b-4 px-1 py-4 text-sm font-semibold"
   >
     Dashboard
-  </a>
-  <a
-    href="/projects"
-    className="border-b-2 border-transparent px-3 py-2 text-gray-600 hover:text-gray-900"
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium"
   >
     Projects
-  </a>
-  <a
-    href="/team"
-    className="border-b-2 border-transparent px-3 py-2 text-gray-600 hover:text-gray-900"
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium"
   >
     Team
-  </a>
+  </button>
 </nav>
 ```
 
@@ -550,24 +559,24 @@ Secondary navigation leads to pages branching from main entry points - hierarchi
   /* Secondary navigation (sidebar) */
 }
 ;<nav className="space-y-1">
-  <a
-    href="/settings/profile"
-    className="block rounded-sm bg-gray-100 px-3 py-2 text-sm font-semibold text-gray-900"
+  <button
+    type="button"
+    className="bg-grey-100 flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-semibold text-black"
   >
     Profile
-  </a>
-  <a
-    href="/settings/security"
-    className="block rounded-sm px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:bg-grey-50 flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
   >
     Security
-  </a>
-  <a
-    href="/settings/notifications"
-    className="block rounded-sm px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:bg-grey-50 flex w-full items-center rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
   >
     Notifications
-  </a>
+  </button>
 </nav>
 ```
 
@@ -593,19 +602,26 @@ Tabs group related content into multiple sections for quick switching.
 {
   /* Tabs navigation */
 }
-;<div className="border-b border-gray-200">
-  <nav className="flex gap-4">
-    <button className="border-b-2 border-violet-500 px-3 py-2 font-semibold text-violet-600">
-      Overview
-    </button>
-    <button className="border-b-2 border-transparent px-3 py-2 text-gray-600 hover:text-gray-900">
-      Activity
-    </button>
-    <button className="border-b-2 border-transparent px-3 py-2 text-gray-600 hover:text-gray-900">
-      Settings
-    </button>
-  </nav>
-</div>
+;<nav className="border-grey-700 flex gap-4 border-b-2">
+  <button
+    type="button"
+    className="border-primary-600 text-primary-600 border-b-4 px-1 py-4 text-sm font-semibold"
+  >
+    Overview
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium"
+  >
+    Activity
+  </button>
+  <button
+    type="button"
+    className="text-grey-600 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium"
+  >
+    Settings
+  </button>
+</nav>
 ```
 
 #### Links
@@ -622,37 +638,38 @@ Links enable navigation between pages and sections.
 {
   /* Standard inline link */
 }
-;<p className="text-base">
+;<p className="text-grey-700 text-sm">
   Learn more in our{' '}
-  <a href="/docs" className="text-violet-600 underline hover:text-violet-700">
+  <button
+    type="button"
+    className="text-primary-600 hover:text-primary-700 focus:outline-primary-500 focus:outline-primary-600 rounded-md px-1 py-0.5 text-sm font-semibold underline transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+  >
     documentation
-  </a>
+  </button>
   .
 </p>
 
 {
   /* Navigation link */
 }
-;<a
-  href="/dashboard"
-  className="flex items-center gap-2 rounded-sm px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-100"
+;<button
+  type="button"
+  className="hover:bg-grey-100 flex items-center gap-2 rounded-md px-3 py-2 text-sm font-semibold text-black"
 >
   <Icon aria-hidden="true" />
   Dashboard
-</a>
+</button>
 
 {
   /* External link with icon */
 }
-;<a
-  href="https://example.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-1 text-violet-600 underline hover:text-violet-700"
+;<button
+  type="button"
+  className="text-primary-600 hover:text-primary-700 inline-flex items-center gap-1 text-sm font-semibold underline transition-colors"
 >
   Visit website
   <ExternalLink aria-hidden="true" />
-</a>
+</button>
 ```
 
 **🟡 DIRECTIVE:** For accessibility, users must always be able to identify links - provide additional visual cues beyond color.
