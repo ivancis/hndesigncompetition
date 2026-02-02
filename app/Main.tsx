@@ -1388,7 +1388,7 @@ function MyCustomComponent3() {
             <h3 className="text-base font-bold text-black">Reasoning Trace</h3>
           </div>
           <div className="space-y-4 px-6 py-4">
-            <div className="bg-grey-100 border-1 border-l-8 border-red-600 p-4">
+            <div className="bg-grey-100 border border-l-8 border-red-600 p-4">
               <p className="font-mono text-sm text-black">Rule: PII_REDACTION_STRICT</p>
               <p className="text-grey-500 mt-1 font-mono text-sm">
                 Triggered: Patient scheduleling detected in response
@@ -1400,10 +1400,10 @@ function MyCustomComponent3() {
                 type="button"
                 className="text-md bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
               >
-                <ThumbsUp className="size-5 flex-shrink-0" />
+                <ThumbsUp />
                 Generate fix suggestion
               </button>
-              <div class="mr-0 ml-auto flex overflow-hidden rounded-md border-2">
+              <div className="mr-0 ml-auto flex overflow-hidden rounded-md border-2">
                 <button className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 min-w-32 rounded-md py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2">
                   Retry
                 </button>
