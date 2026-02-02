@@ -85,7 +85,7 @@ function MyCustomComponent1() {
       className="overflow-y-auto rounded-lg border-2 p-4"
     >
       {/* ——— 4. Visual styles ——— */}
-      <section className="space-y-4">
+      <section className="mb-8 space-y-4">
         <SectionTitle>4. Visual styles</SectionTitle>
 
         {/* Border radius: badge, button, card */}
@@ -270,21 +270,19 @@ function MyCustomComponent1() {
         </div>
 
         {/* Interactive card — card anatomy with hover/focus */}
-        <div className="rounded-lg border-2">
-          <button
-            type="button"
-            className="hover:border-primary-400 hover:bg-primary-50 focus:outline-primary-500 active:border-primary-400 active:bg-primary-100 focus:outline-primary-600 w-full p-4 text-left transition-all focus:outline-1 focus:outline-offset-2 sm:p-6"
-          >
-            <h3 className="text-base font-semibold text-black">Card Title</h3>
-            <p className="text-grey-500 mt-1 text-sm">Card description</p>
-          </button>
-        </div>
+        <button
+          type="button"
+          className="focus:outline-primary-500 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 w-full rounded-lg border-2 p-4 text-left transition-all focus:outline-1 focus:outline-offset-2 sm:p-6"
+        >
+          <h3 className="text-base font-semibold text-black">InteractiveCard Title</h3>
+          <p className="text-grey-500 mt-1 text-sm">InteractiveCard description</p>
+        </button>
       </section>
 
       <Divider />
 
       {/* ——— 5. Status and health ——— */}
-      <section className="space-y-4">
+      <section className="mt-8 space-y-4">
         <SectionTitle>5. Status and health</SectionTitle>
 
         {/* Status color tokens */}
@@ -521,285 +519,6 @@ function MyCustomComponent1() {
       </section>
 
       <Divider />
-
-      {/* ——— 7. Forms ——— */}
-      <section className="space-y-4">
-        <SectionTitle>7. Forms</SectionTitle>
-
-        {/* Labels, hint, placeholder */}
-        <ScenarioTitle>Labels: standard, required. Hint. Placeholder.</ScenarioTitle>
-        <div className="max-w-md space-y-4">
-          {/* Email — standard label */}
-          <div>
-            <label htmlFor="playbook-email" className="block text-sm font-semibold text-black">
-              Email address
-            </label>
-            <input
-              id="playbook-email"
-              type="email"
-              className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
-              placeholder="you@example.com"
-            />
-          </div>
-
-          {/* Password — required label + hint */}
-          <div>
-            <label htmlFor="playbook-pw" className="block text-sm font-semibold text-black">
-              Password <span className="text-red-500">*</span>
-            </label>
-            <input
-              id="playbook-pw"
-              type="password"
-              className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
-            />
-            <p className="text-grey-500 mt-2 text-sm">
-              Must be at least 8 characters with one number and one special character
-            </p>
-          </div>
-
-          {/* Date — placeholder */}
-          <div>
-            <label htmlFor="playbook-date" className="block text-sm font-semibold text-black">
-              Date
-            </label>
-            <input
-              id="playbook-date"
-              type="text"
-              className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
-              placeholder="YYYY-MM-DD"
-            />
-          </div>
-        </div>
-
-        {/* Address form grid */}
-        <ScenarioTitle>Address form (grid grid-cols-2 gap-2)</ScenarioTitle>
-        <div className="grid max-w-md grid-cols-2 gap-x-4 gap-y-6">
-          <div>
-            <label htmlFor="playbook-city" className="block text-sm font-semibold text-black">
-              City
-            </label>
-            <input
-              id="playbook-city"
-              type="text"
-              className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
-            />
-          </div>
-          <div>
-            <label htmlFor="playbook-zip" className="block text-sm font-semibold text-black">
-              ZIP
-            </label>
-            <input
-              id="playbook-zip"
-              type="text"
-              className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
-            />
-          </div>
-        </div>
-
-        {/* Full form structure */}
-        <ScenarioTitle>Form structure: Email / Password, checkboxes, actions</ScenarioTitle>
-        <form className="max-w-md" onSubmit={(e) => e.preventDefault()}>
-          <div className="rounded-lg border-2">
-            <div className="px-4 py-2 sm:p-6">
-              <div className="space-y-6">
-                {/* Full name */}
-                <div>
-                  <label htmlFor="playbook-name" className="block text-sm font-semibold text-black">
-                    Full name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="playbook-name"
-                    type="text"
-                    className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="playbook-email2"
-                    className="block text-sm font-semibold text-black"
-                  >
-                    Email <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    id="playbook-email2"
-                    type="email"
-                    className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
-                  />
-                  <p className="text-grey-500 mt-2 text-sm">We'll never share your email</p>
-                </div>
-              </div>
-
-              {/* Checkboxes */}
-              <div className="mt-6 space-y-2">
-                <label className="flex cursor-pointer items-center gap-2">
-                  <input
-                    type="checkbox"
-                    className="border-grey-400 text-primary-600 focus:ring-primary-500 rounded-md"
-                  />
-                  <span className="text-grey-700 text-sm">Send me product updates</span>
-                </label>
-                <label className="flex cursor-pointer items-center gap-2">
-                  <input
-                    type="checkbox"
-                    className="border-grey-400 text-primary-600 focus:ring-primary-500 rounded-md"
-                  />
-                  <span className="text-grey-700 text-sm">Send me marketing emails</span>
-                </label>
-              </div>
-
-              {/* Actions — aligned to card action footer pattern */}
-              <div className="mt-6 flex justify-end gap-3">
-                <button
-                  type="button"
-                  className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 min-w-32 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 min-w-32 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
-                >
-                  Create account
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-
-        {/* Validation error */}
-        <ScenarioTitle>Validation error: border-red-500, error message</ScenarioTitle>
-        <div className="max-w-md">
-          <label htmlFor="playbook-invalid" className="block text-sm font-semibold text-black">
-            Email <span className="text-red-500">*</span>
-          </label>
-          <input
-            id="playbook-invalid"
-            type="email"
-            defaultValue="invalid"
-            aria-invalid="true"
-            aria-describedby="playbook-email-error"
-            className="mt-1 block w-full rounded-md border-2 border-red-500 px-3 py-2 text-sm text-black"
-          />
-          <p
-            id="playbook-email-error"
-            className="mt-1 flex gap-1 text-xs font-semibold text-red-900"
-          >
-            <XCircle />
-            Please enter a valid email address
-          </p>
-        </div>
-      </section>
-
-      <Divider />
-
-      {/* ——— 8. Common Actions ——— */}
-      <section className="space-y-4">
-        <SectionTitle>8. Common Actions</SectionTitle>
-        <ScenarioTitle>
-          Add, Cancel, Clear, Close, Copy, Delete, Edit, Next, Refresh, Remove, Reset
-        </ScenarioTitle>
-        <div className="flex flex-wrap gap-2">
-          {/* Add — primary */}
-          <button
-            type="button"
-            className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            <PlusCircle className="h-5 w-5" />
-            Add document
-          </button>
-
-          {/* Cancel — secondary */}
-          <button
-            type="button"
-            className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            Cancel
-          </button>
-
-          {/* Clear — secondary with icon */}
-          <button
-            type="button"
-            className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            <XCircle className="h-5 w-5 flex-shrink-0" />
-            Clear
-          </button>
-
-          {/* Close — ghost icon button */}
-          <button
-            type="button"
-            className="text-grey-400 hover:bg-grey-100 hover:text-grey-600 focus:outline-grey-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md focus:outline-1 focus:outline-offset-2"
-            aria-label="Close"
-          >
-            <Trash2 className="h-5 w-5 flex-shrink-0" />
-          </button>
-
-          {/* Copy — secondary with icon */}
-          <button
-            type="button"
-            className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
-            aria-label="Copy to clipboard"
-          >
-            <Copy className="h-5 w-5 flex-shrink-0" />
-            Copy
-          </button>
-
-          {/* Delete — danger */}
-          <button
-            type="button"
-            className="focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 border-transparent bg-red-600 px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-red-700 focus:outline-1 focus:outline-offset-2 focus:outline-red-500"
-          >
-            <Trash2 className="h-5 w-5 flex-shrink-0" />
-            Delete
-          </button>
-
-          {/* Edit — secondary with icon */}
-          <button
-            type="button"
-            className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            <Edit2 className="h-5 w-5 flex-shrink-0" />
-            Edit
-          </button>
-
-          {/* Next — primary with icon */}
-          <button
-            type="button"
-            className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            Next
-            <ArrowRight className="h-5 w-5 flex-shrink-0" />
-          </button>
-
-          {/* Refresh — secondary with icon */}
-          <button
-            type="button"
-            className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            <RefreshCcw className="h-5 w-5 flex-shrink-0" />
-            Refresh
-          </button>
-
-          {/* Remove — secondary with icon */}
-          <button
-            type="button"
-            className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            <Trash2 className="h-5 w-5 flex-shrink-0" />
-            Remove
-          </button>
-
-          {/* Reset — link button */}
-          <button
-            type="button"
-            className="text-primary-600 hover:text-primary-700 focus:outline-primary-500 focus:outline-primary-600 rounded-md px-3 py-2 text-sm font-semibold underline transition-colors focus:outline-1 focus:outline-offset-2"
-          >
-            Reset to defaults
-          </button>
-        </div>
-      </section>
 
       <div className="mt-6 space-y-8">
         {/* ——— 1. Typography ——— */}
@@ -1382,18 +1101,126 @@ function MyCustomComponent3() {
           </div>
         </div>
 
+        <Divider />
+
+        {/* ——— 8. Common Actions ——— */}
+        <section className="space-y-4">
+          <SectionTitle>8. Common Actions</SectionTitle>
+          <ScenarioTitle>
+            Add, Cancel, Clear, Close, Copy, Delete, Edit, Next, Refresh, Remove, Reset
+          </ScenarioTitle>
+          <div className="flex flex-wrap gap-2">
+            {/* Add — primary */}
+            <button
+              type="button"
+              className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              <PlusCircle className="h-5 w-5" />
+              Add document
+            </button>
+
+            {/* Cancel — secondary */}
+            <button
+              type="button"
+              className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              Cancel
+            </button>
+
+            {/* Clear — secondary with icon */}
+            <button
+              type="button"
+              className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              <XCircle className="h-5 w-5 flex-shrink-0" />
+              Clear
+            </button>
+
+            {/* Close — ghost icon button */}
+            <button
+              type="button"
+              className="text-grey-400 hover:bg-grey-100 hover:text-grey-600 focus:outline-grey-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md focus:outline-1 focus:outline-offset-2"
+              aria-label="Close"
+            >
+              <Trash2 className="h-5 w-5 flex-shrink-0" />
+            </button>
+
+            {/* Copy — secondary with icon */}
+            <button
+              type="button"
+              className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+              aria-label="Copy to clipboard"
+            >
+              <Copy className="h-5 w-5 flex-shrink-0" />
+              Copy
+            </button>
+
+            <button
+              type="button"
+              className="text-md flex gap-2 rounded-md border-2 bg-red-300 px-4 py-2 font-semibold text-black transition-colors hover:bg-red-200 focus:outline-1 focus:outline-offset-2 focus:outline-red-500 focus:outline-red-600 active:bg-red-100"
+            >
+              <Trash2 className="h-5 w-5 flex-shrink-0" />
+              Delete
+            </button>
+
+            {/* Edit — secondary with icon */}
+            <button
+              type="button"
+              className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              <Edit2 className="h-5 w-5 flex-shrink-0" />
+              Edit
+            </button>
+
+            {/* Next — primary with icon */}
+            <button
+              type="button"
+              className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              Next
+              <ArrowRight className="h-5 w-5 flex-shrink-0" />
+            </button>
+
+            {/* Refresh — secondary with icon */}
+            <button
+              type="button"
+              className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              <RefreshCcw className="h-5 w-5 flex-shrink-0" />
+              Refresh
+            </button>
+
+            {/* Remove — secondary with icon */}
+            <button
+              type="button"
+              className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              <Trash2 className="h-5 w-5 flex-shrink-0" />
+              Remove
+            </button>
+
+            {/* Reset — link button */}
+            <button
+              type="button"
+              className="text-primary-600 hover:text-primary-700 focus:outline-primary-500 focus:outline-primary-600 rounded-md px-3 py-2 text-sm font-semibold underline transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              Reset to defaults
+            </button>
+          </div>
+        </section>
+
         {/* Rule Simulator - Reasoning Trace */}
         <div className="border-grey-700 overflow-hidden rounded-lg border-2">
           <div className="border-grey-700 border-b-2 px-6 py-4">
             <h3 className="text-base font-bold text-black">Reasoning Trace</h3>
           </div>
           <div className="space-y-4 px-6 py-4">
-            <div className="bg-grey-100 border border-l-8 border-red-600 p-4">
-              <p className="font-mono text-sm text-black">Rule: PII_REDACTION_STRICT</p>
-              <p className="text-grey-500 mt-1 font-mono text-sm">
+            <div className="border border-l-8 border-red-500 bg-red-100 p-4">
+              <p className="font-mono text-sm">Rule: PII_REDACTION_STRICT</p>
+              <small className="mt-1 font-mono">
                 Triggered: Patient scheduleling detected in response
-              </p>
-              <p className="text-grey-500 mt-1 font-mono text-sm">Action: Response blocked</p>
+              </small>
+              <small className="mt-1 font-mono">Action: Resonse blocked</small>
             </div>
             <div className="flex gap-2">
               <button
@@ -1642,6 +1469,178 @@ function MyCustomComponent3() {
       <section>
         <h2 className="mb-6 text-2xl font-bold text-black">Form Layouts</h2>
 
+        {/* ——— Forms ——— */}
+        <section className="space-y-4">
+          <SectionTitle>Forms</SectionTitle>
+
+          {/* Labels, hint, placeholder */}
+          <ScenarioTitle>Labels: standard, required. Hint. Placeholder.</ScenarioTitle>
+          <div className="max-w-md space-y-4">
+            {/* Email — standard label */}
+            <div>
+              <label htmlFor="playbook-email" className="block text-sm font-semibold text-black">
+                Email address
+              </label>
+              <input
+                id="playbook-email"
+                type="email"
+                className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
+                placeholder="you@example.com"
+              />
+            </div>
+
+            {/* Password — required label + hint */}
+            <div>
+              <label htmlFor="playbook-pw" className="block text-sm font-semibold text-black">
+                Password <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="playbook-pw"
+                type="password"
+                className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
+              />
+              <p className="text-grey-500 mt-2 text-sm">
+                Must be at least 8 characters with one number and one special character
+              </p>
+            </div>
+
+            {/* Date — placeholder */}
+            <div>
+              <label htmlFor="playbook-date" className="block text-sm font-semibold text-black">
+                Date
+              </label>
+              <input
+                id="playbook-date"
+                type="text"
+                className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
+                placeholder="YYYY-MM-DD"
+              />
+            </div>
+          </div>
+
+          {/* Address form grid */}
+          <ScenarioTitle>Address form (grid grid-cols-2 gap-2)</ScenarioTitle>
+          <div className="grid max-w-md grid-cols-2 gap-x-4 gap-y-6">
+            <div>
+              <label htmlFor="playbook-city" className="block text-sm font-semibold text-black">
+                City
+              </label>
+              <input
+                id="playbook-city"
+                type="text"
+                className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="playbook-zip" className="block text-sm font-semibold text-black">
+                ZIP
+              </label>
+              <input
+                id="playbook-zip"
+                type="text"
+                className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
+              />
+            </div>
+          </div>
+
+          {/* Full form structure */}
+          <ScenarioTitle>Form structure: Email / Password, checkboxes, actions</ScenarioTitle>
+          <form className="max-w-md" onSubmit={(e) => e.preventDefault()}>
+            <div className="rounded-lg border-2">
+              <div className="px-4 py-2 sm:p-6">
+                <div className="space-y-6">
+                  {/* Full name */}
+                  <div>
+                    <label
+                      htmlFor="playbook-name"
+                      className="block text-sm font-semibold text-black"
+                    >
+                      Full name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="playbook-name"
+                      type="text"
+                      className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <label
+                      htmlFor="playbook-email2"
+                      className="block text-sm font-semibold text-black"
+                    >
+                      Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      id="playbook-email2"
+                      type="email"
+                      className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline-1 focus:outline-offset-2"
+                    />
+                    <p className="text-grey-500 mt-2 text-sm">We'll never share your email</p>
+                  </div>
+                </div>
+
+                {/* Checkboxes */}
+                <div className="mt-6 space-y-2">
+                  <label className="flex cursor-pointer items-center gap-2">
+                    <input
+                      type="checkbox"
+                      className="border-grey-400 text-primary-600 focus:ring-primary-500 rounded-md"
+                    />
+                    <span className="text-grey-700 text-sm">Send me product updates</span>
+                  </label>
+                  <label className="flex cursor-pointer items-center gap-2">
+                    <input
+                      type="checkbox"
+                      className="border-grey-400 text-primary-600 focus:ring-primary-500 rounded-md"
+                    />
+                    <span className="text-grey-700 text-sm">Send me marketing emails</span>
+                  </label>
+                </div>
+
+                {/* Actions — aligned to card action footer pattern */}
+                <div className="mt-6 flex justify-end gap-3">
+                  <button
+                    type="button"
+                    className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 min-w-32 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 min-w-32 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+                  >
+                    Create account
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          {/* Validation error */}
+          <ScenarioTitle>Validation error: border-red-500, error message</ScenarioTitle>
+          <div className="max-w-md">
+            <label htmlFor="playbook-invalid" className="block text-sm font-semibold text-black">
+              Email <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="playbook-invalid"
+              type="email"
+              defaultValue="invalid"
+              aria-invalid="true"
+              aria-describedby="playbook-email-error"
+              className="mt-1 block w-full rounded-md border-2 border-red-500 px-3 py-2 text-sm text-black"
+            />
+            <p
+              id="playbook-email-error"
+              className="mt-1 flex gap-1 text-xs font-semibold text-red-900"
+            >
+              <XCircle />
+              Please enter a valid email address
+            </p>
+          </div>
+        </section>
         {/* Stacked Form */}
         <div className="mb-8 rounded-lg border-2">
           <div className="px-4 py-2 sm:p-6">
@@ -2218,7 +2217,7 @@ export default function Home({ posts }) {
   const activeCondition = conditionOptions.find((option) => option.label === conditionLevel)
   const tabGroups = [
     {
-      label: 'Demo 1',
+      label: 'UIKit',
       items: [
         {
           title: 'Catch me if you can',
@@ -2238,7 +2237,7 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: 'Demo 2',
+      label: 'UIBlocks',
       items: [
         {
           title: '2',
@@ -2249,7 +2248,7 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: 'Demo 3',
+      label: 'Patterns',
       items: [
         {
           title: '3',
@@ -2260,18 +2259,18 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: 'Kitchen Sink',
+      label: 'kitchenSink',
       items: [
         {
           title: '4',
-          body: 'Older items can live in a separate tab.',
+          body: 'Basic kitchenSink test unstyled and styled.',
           footer: 'Status: Warning — Needs review',
           slot: <MyCustomComponent4 />,
         },
       ],
     },
     {
-      label: 'Kitchen Sink Styled',
+      label: 'AI Instructions + Global Rules patterns',
       items: [
         {
           title: '5',
@@ -2282,7 +2281,7 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: '6',
+      label: 'Voice-agent-builder patterns',
       items: [
         {
           title: '6',
@@ -2307,9 +2306,7 @@ export default function Home({ posts }) {
               className={['w-full', activeCondition?.className].filter(Boolean).join(' ')}
               data-condition-level={conditionLevel}
             >
-              <div className="text-grey-500 mb-4 text-center text-sm font-semibold tracking-wide uppercase">
-                Render Zone
-              </div>
+              <code className="text-sm tracking-wide uppercase">Render zone</code>
               {/* <div className="flex justify-center">
                 <div className="mb-4 flex flex-wrap justify-center gap-2">
                   {conditionOptions.map((option) => (
@@ -2330,14 +2327,19 @@ export default function Home({ posts }) {
                   ))}
                 </div>
               </div> */}
-              <Tab.List className="flex justify-center gap-2" data-condition-level={conditionLevel}>
+              <Tab.List
+                className="sticky top-0 z-10 flex justify-center gap-2 border-2 bg-white"
+                data-condition-level={conditionLevel}
+              >
                 {tabGroups.map((group) => (
                   <Tab
                     key={group.label}
                     className={({ selected }) =>
                       [
-                        'rounded-full px-4 py-2 text-sm font-medium transition',
-                        selected ? 'text-emerald-500' : 'text-black hover:text-emerald-500',
+                        'px-4 py-2 text-sm font-medium transition',
+                        selected
+                          ? 'border-b-2 text-emerald-500'
+                          : 'text-black hover:text-emerald-500',
                       ].join(' ')
                     }
                   >
