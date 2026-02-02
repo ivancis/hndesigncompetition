@@ -16,7 +16,7 @@ export default function MyCustomComponent5() {
         </p>
       </header>
 
-      <hr className="border-gray-200 dark:border-gray-700" />
+      <hr className="border-gray-200" />
 
       <section id="typography" className="space-y-4">
         <h2 className="text-xl font-bold">1. Typography & Hierarchy</h2>
@@ -45,15 +45,13 @@ export default function MyCustomComponent5() {
           If the line-height is too tight, these will overlap with the text above or below.
         </p>
 
-        <blockquote className="border-l-4 border-gray-200 pl-4 text-base font-normal dark:border-gray-700">
+        <blockquote className="border-l-4 border-gray-200 pl-4 text-base font-normal">
           &quot;This is a blockquote element. It should be visually distinct from the main body
           text, often using indentation, a border, or a different font style.&quot;
-          <cite className="text-sm font-medium text-gray-600 dark:text-gray-400">
-            — Semantic Documentation Agent
-          </cite>
+          <cite className="text-sm font-medium text-gray-600">— Semantic Documentation Agent</cite>
         </blockquote>
 
-        <pre className="overflow-x-auto rounded-md border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-900">
+        <pre className="overflow-x-auto rounded-md border border-gray-200 bg-gray-50 p-4">
           <code className="text-sm font-normal">
             {`// Preformatted code block test
   function stressTest(element) {
@@ -64,7 +62,7 @@ export default function MyCustomComponent5() {
         </pre>
       </section>
 
-      <hr className="border-gray-200 dark:border-gray-700" />
+      <hr className="border-gray-200" />
 
       <section id="forms" className="space-y-4">
         <h2 className="text-xl font-bold">2. Forms & Interactive States</h2>
@@ -80,7 +78,7 @@ export default function MyCustomComponent5() {
                 type="text"
                 id="text-default-5"
                 placeholder="e.g. John Doe"
-                className="w-full rounded-md border border-gray-200 px-3 py-2 text-base dark:border-gray-700 dark:bg-gray-900"
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-base"
               />
             </div>
 
@@ -93,7 +91,7 @@ export default function MyCustomComponent5() {
                 id="text-disabled-5"
                 value="Read only content"
                 disabled
-                className="w-full rounded-md border border-gray-200 bg-gray-100 px-3 py-2 text-base dark:border-gray-700 dark:bg-gray-800"
+                className="w-full rounded-md border border-gray-200 bg-gray-100 px-3 py-2 text-base"
               />
             </div>
 
@@ -106,7 +104,7 @@ export default function MyCustomComponent5() {
                 id="text-readonly-5"
                 value="You can't edit this"
                 readOnly
-                className="w-full rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-base dark:border-gray-700 dark:bg-gray-800"
+                className="w-full rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-base"
               />
             </div>
 
@@ -119,9 +117,9 @@ export default function MyCustomComponent5() {
                 id="text-error-5"
                 value="invalid-email"
                 required
-                className="w-full rounded-md border border-red-200 px-3 py-2 text-base dark:border-red-800"
+                className="w-full rounded-md border border-red-200 px-3 py-2 text-base"
               />
-              <small className="text-sm font-medium text-red-600 dark:text-red-400">
+              <small className="text-sm font-medium text-red-600">
                 Please enter a valid email address.
               </small>
             </div>
@@ -183,7 +181,7 @@ export default function MyCustomComponent5() {
               <p className="text-sm font-medium">Dropdown Select:</p>
               <select
                 id="select-test-5"
-                className="w-full rounded-md border border-gray-200 px-3 py-2 text-base dark:border-gray-700 dark:bg-gray-900"
+                className="w-full rounded-md border border-gray-200 px-3 py-2 text-base"
               >
                 <optgroup label="Group 1">
                   <option>Option 1</option>
@@ -201,28 +199,28 @@ export default function MyCustomComponent5() {
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
-                className="rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium dark:border-gray-700 dark:bg-gray-800"
+                className="rounded-md border border-gray-200 bg-white px-4 py-2 text-sm font-medium"
               >
                 Primary Button
               </button>
               <button
                 type="submit"
                 disabled
-                className="rounded-md border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-500 dark:border-gray-700 dark:bg-gray-800"
+                className="rounded-md border border-gray-200 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-500"
               >
                 Disabled Button
               </button>
               <input
                 type="reset"
                 value="Reset Input"
-                className="cursor-pointer rounded-md border border-gray-200 px-4 py-2 text-sm font-medium dark:border-gray-700"
+                className="cursor-pointer rounded-md border border-gray-200 px-4 py-2 text-sm font-medium"
               />
             </div>
           </fieldset>
         </form>
       </section>
 
-      <hr className="border-gray-200 dark:border-gray-700" />
+      <hr className="border-gray-200" />
 
       <section id="lists" className="space-y-4">
         <h2 className="text-xl font-bold">3. List Variations</h2>
@@ -261,77 +259,60 @@ export default function MyCustomComponent5() {
         </dl>
       </section>
 
-      <hr className="border-gray-200 dark:border-gray-700" />
+      <hr className="border-gray-200" />
 
       <section id="tables" className="space-y-4">
         <h2 className="text-xl font-bold">4. Data Tables</h2>
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse border border-gray-200 dark:border-gray-700">
+          <table className="w-full border-collapse border border-gray-200">
             <caption className="text-left text-sm font-medium">Sample Transaction Data</caption>
             <thead>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold dark:border-gray-700">
+              <tr className="border-b border-gray-200">
+                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold">
                   ID
                 </th>
-                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold dark:border-gray-700">
+                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold">
                   Status
                 </th>
-                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold dark:border-gray-700">
+                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold">
                   User
                 </th>
-                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold dark:border-gray-700">
+                <th className="border-r border-gray-200 px-4 py-2 text-left text-sm font-semibold">
                   Amount
                 </th>
                 <th className="px-4 py-2 text-left text-sm font-semibold">Notes</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <td className="border-r border-gray-200 px-4 py-2 text-base dark:border-gray-700">
-                  #001
-                </td>
-                <td className="border-r border-gray-200 px-4 py-2 dark:border-gray-700">
-                  <span className="rounded bg-emerald-50 px-2 py-0.5 text-sm font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+              <tr className="border-b border-gray-200">
+                <td className="border-r border-gray-200 px-4 py-2 text-base">#001</td>
+                <td className="border-r border-gray-200 px-4 py-2">
+                  <span className="rounded bg-emerald-300 px-2 py-0.5 text-sm font-medium text-black">
                     Success
                   </span>
                 </td>
-                <td className="border-r border-gray-200 px-4 py-2 text-base dark:border-gray-700">
-                  Jane Doe
-                </td>
-                <td className="border-r border-gray-200 px-4 py-2 text-base dark:border-gray-700">
-                  $120.00
-                </td>
+                <td className="border-r border-gray-200 px-4 py-2 text-base">Jane Doe</td>
+                <td className="border-r border-gray-200 px-4 py-2 text-base">$120.00</td>
                 <td className="px-4 py-2 text-base">Standard monthly subscription</td>
               </tr>
-              <tr className="border-b border-gray-200 dark:border-gray-700">
-                <td className="border-r border-gray-200 px-4 py-2 text-base dark:border-gray-700">
-                  #002
-                </td>
-                <td className="border-r border-gray-200 px-4 py-2 dark:border-gray-700">
-                  <span className="rounded bg-red-50 px-2 py-0.5 text-sm font-medium text-red-700 dark:bg-red-900/30 dark:text-red-400">
+              <tr className="border-b border-gray-200">
+                <td className="border-r border-gray-200 px-4 py-2 text-base">#002</td>
+                <td className="border-r border-gray-200 px-4 py-2">
+                  <span className="rounded bg-red-300 px-2 py-0.5 text-sm font-medium text-black">
                     Failed
                   </span>
                 </td>
-                <td className="border-r border-gray-200 px-4 py-2 text-base dark:border-gray-700">
-                  John Smith
-                </td>
-                <td className="border-r border-gray-200 px-4 py-2 text-base dark:border-gray-700">
-                  $45.50
-                </td>
+                <td className="border-r border-gray-200 px-4 py-2 text-base">John Smith</td>
+                <td className="border-r border-gray-200 px-4 py-2 text-base">$45.50</td>
                 <td className="px-4 py-2 text-base">Insufficient funds at source</td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
-                <td
-                  colSpan={3}
-                  className="border-r border-gray-200 px-4 py-2 font-semibold dark:border-gray-700"
-                >
+                <td colSpan={3} className="border-r border-gray-200 px-4 py-2 font-semibold">
                   Total
                 </td>
-                <td className="border-r border-gray-200 px-4 py-2 font-semibold dark:border-gray-700">
-                  $165.50
-                </td>
+                <td className="border-r border-gray-200 px-4 py-2 font-semibold">$165.50</td>
                 <td className="px-4 py-2">-</td>
               </tr>
             </tfoot>
@@ -339,7 +320,7 @@ export default function MyCustomComponent5() {
         </div>
       </section>
 
-      <hr className="border-gray-200 dark:border-gray-700" />
+      <hr className="border-gray-200" />
 
       <section id="media" className="space-y-4">
         <h2 className="text-xl font-bold">5. Media & HTML5 Elements</h2>
@@ -347,28 +328,24 @@ export default function MyCustomComponent5() {
         <figure className="space-y-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://via.placeholder.com/300x150"
-            className="rounded-md border border-gray-200 dark:border-gray-700"
+            src="https://picsum.photos/200"
+            className="h-16 w-16 rounded-md border border-gray-200 p-2 outline-2"
+            alt="img"
           />
-          <figcaption className="text-sm font-medium text-gray-600 dark:text-gray-400">
+          <figcaption className="text-sm font-medium text-gray-600">
             Figure 1: A standard placeholder image with a caption.
           </figcaption>
         </figure>
 
-        <details className="rounded-md border border-gray-200 dark:border-gray-700">
+        <details className="rounded-md border-2">
           <summary className="cursor-pointer px-4 py-2 text-base font-medium">
             Select to expand: Semantic Accordion Test
           </summary>
-          <p className="border-t border-gray-200 px-4 py-2 text-base dark:border-gray-700">
+          <p className="border-t-2 border-gray-200 px-4 py-2 text-base">
             This hidden content should be revealed when the summary is selected. It tests the{' '}
-            <code className="rounded bg-gray-100 px-1 text-sm dark:bg-gray-800">
-              &lt;details&gt;
-            </code>{' '}
-            and{' '}
-            <code className="rounded bg-gray-100 px-1 text-sm dark:bg-gray-800">
-              &lt;summary&gt;
-            </code>{' '}
-            native styling.
+            <code className="rounded bg-gray-300 px-1 text-sm">&lt;details&gt;</code> and{' '}
+            <code className="rounded bg-gray-300 px-1 text-sm">&lt;summary&gt;</code> native
+            styling.
           </p>
         </details>
 
@@ -377,7 +354,7 @@ export default function MyCustomComponent5() {
           <progress
             value={70}
             max={100}
-            className="h-2 w-full appearance-none rounded-full bg-gray-200 dark:bg-gray-700"
+            className="h-2 w-full appearance-none rounded-full bg-gray-300"
             aria-valuenow={70}
             aria-valuemin={0}
             aria-valuemax={100}
@@ -387,7 +364,7 @@ export default function MyCustomComponent5() {
         </div>
       </section>
 
-      <footer className="pt-4 text-sm font-medium text-gray-600 dark:text-gray-400">
+      <footer className="pt-4 text-sm font-medium text-gray-600">
         <p>&copy; 2026 UI Kit Stress Tester. Generated for Agent-level documentation.</p>
       </footer>
     </div>

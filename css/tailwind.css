@@ -92,6 +92,7 @@
   --text-lg: 1.4rem;
 
   --radius-lg: 14px;
+  --radius-xl: 24px;
 
   /* Line heights */
   --line-height-11: 2.75rem;
@@ -283,4 +284,35 @@ button,
 input,
 a {
   cursor: pointer;
+}
+
+/* General styling for the progress element container */
+progress {
+  /* Reset default appearance in WebKit browsers */
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  width: 100%;
+  height: var(--text-lg);
+  border-radius: var(--radius-md);
+  border: 2px solid;
+  background-color: var(--color-gray-100);
+}
+
+/* Styling the track in WebKit browsers */
+progress::-webkit-progress-bar {
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+}
+
+/* Styling the progress indicator in WebKit browsers */
+progress::-webkit-progress-value {
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  background-color: var(--color-emerald-300);
+}
+
+/* Styling the progress indicator in Firefox */
+progress::-moz-progress-bar {
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  background-color: var(--color-emerald-300);
 }

@@ -86,7 +86,7 @@ export default function MyCustomComponent4() {
               <label htmlFor="text-error">Error State (HTML5 Validation):</label>
               <br />
               <input type="email" id="text-error" value="invalid-email" required />
-              <small style={{ color: 'red' }}>Please enter a valid email address.</small>
+              <small style={{ color: 'text-red-600' }}>Please enter a valid email address.</small>
             </div>
           </fieldset>
 
