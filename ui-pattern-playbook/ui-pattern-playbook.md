@@ -1,7 +1,10 @@
 # UI Pattern Playbook
 
-**Version 1.0.0**  
-January 2026
+**Version 1.1.0**  
+February 2026
+
+- [Deployed](https://teal-tanuki-9b1890.netlify.app/)
+- [GitHub](https://github.com/ivancis/hndesigncompetition)
 
 > **Note:**  
 > This document is for humans and AI agents (Cursor, Claude Code, Codex) to follow when maintaining,  
@@ -14,7 +17,7 @@ January 2026
 
 | Document                                     | Purpose                                                              |
 | -------------------------------------------- | -------------------------------------------------------------------- |
-| [foundations.md](./foundations.md)           | Core tokens (spacing, typography, layouts, visual styles)            |
+| [foundations.md](./foundaticlearons.md)      | Core tokens (spacing, typography, layouts, visual styles)            |
 | [components.md](./components.md)             | Standard UI patterns (forms, buttons, disabled/empty/loading states) |
 | [patterns.md](./patterns.md)                 | Complex workflows (common actions, modals, voice agent, AI rules)    |
 | [guidelines.md](./guidelines.md)             | Content, tone, accessibility, navigation                             |
