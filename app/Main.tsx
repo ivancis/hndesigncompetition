@@ -79,11 +79,7 @@ const Divider = () => <hr className="" />
 
 function MyCustomComponent1() {
   return (
-    <div
-      role="region"
-      aria-label="UI pattern playbook scenarios"
-      className="overflow-y-auto rounded-lg border-2 p-4"
-    >
+    <div role="region" aria-label="UI pattern playbook scenarios" className="overflow-y-auto p-4">
       {/* ——— 4. Visual styles ——— */}
       <section className="mb-8 space-y-4">
         <SectionTitle>4. Visual styles</SectionTitle>
@@ -107,7 +103,7 @@ function MyCustomComponent1() {
           </button>
 
           {/* Card — aligned to card anatomy */}
-          <div className="rounded-lg border-2">
+          <div className="rounded-lg border-2 bg-white p-4">
             <div className="px-4 py-2 sm:p-6">
               <h3 className="text-base font-semibold text-black">Card Title</h3>
               <small className="mt-1">Card content…</small>
@@ -272,7 +268,7 @@ function MyCustomComponent1() {
         {/* Interactive card — card anatomy with hover/focus */}
         <button
           type="button"
-          className="focus:outline-primary-500 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 w-full rounded-lg border-2 p-4 text-left transition-all focus:outline-1 focus:outline-offset-2 sm:p-6"
+          className="focus:outline-primary-500 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 w-full rounded-lg border-2 bg-white p-4 text-left transition-all focus:outline-1 focus:outline-offset-2 sm:p-6"
         >
           <h3 className="text-base font-semibold text-black">InteractiveCard Title</h3>
           <p className="text-grey-500 mt-1 text-sm">InteractiveCard description</p>
@@ -553,7 +549,7 @@ function MyCustomComponent1() {
           <ScenarioTitle>No Data (First Use), User Action Result, Error Management</ScenarioTitle>
           <div className="space-y-4">
             {/* First use — card anatomy */}
-            <div className="rounded-lg border-2">
+            <div className="rounded-lg border-2 bg-white">
               <div className="px-4 py-2 sm:p-6">
                 <div className="text-center">
                   <User className="m-auto h-6 w-6" />
@@ -574,7 +570,7 @@ function MyCustomComponent1() {
             </div>
 
             {/* No results */}
-            <div className="rounded-lg border-2">
+            <div className="rounded-lg border-2 bg-white">
               <div className="px-4 py-2 sm:p-6">
                 <div className="text-center">
                   <HelpCircle className="m-auto h-6 w-6" />
@@ -587,7 +583,7 @@ function MyCustomComponent1() {
             </div>
 
             {/* Error recovery */}
-            <div className="rounded-lg border-2">
+            <div className="rounded-lg border-2 bg-white">
               <div className="px-4 py-2 sm:p-6">
                 <div className="text-center">
                   <XCircle className="m-auto h-6 w-6" />
@@ -626,7 +622,7 @@ function MyCustomComponent1() {
             </div>
 
             {/* Skeleton card — aligned to card anatomy */}
-            <div className="rounded-lg border-2">
+            <div className="rounded-lg border-2 bg-white">
               <div className="px-4 py-2 sm:p-6">
                 <div className="bg-grey-200 h-6 w-32 animate-pulse rounded" />
                 <div className="mt-3 space-y-2">
@@ -664,7 +660,7 @@ function MyCustomComponent1() {
           </ScenarioTitle>
           <div className="space-y-4">
             {/* Confirm modal */}
-            <div className="rounded-lg border-2">
+            <div className="rounded-lg border-2 bg-white">
               <div className="px-4 py-2 sm:p-6">
                 <h3 className="text-lg font-bold text-black">Publish article?</h3>
                 <p className="text-grey-500 mt-2 text-sm">
@@ -688,7 +684,7 @@ function MyCustomComponent1() {
             </div>
 
             {/* Destructive modal */}
-            <div className="rounded-lg border-2">
+            <div className="rounded-lg border-2 bg-white">
               <div className="px-4 py-2 sm:p-6">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 rounded-full bg-red-100 p-2">
@@ -722,7 +718,7 @@ function MyCustomComponent1() {
             </div>
 
             {/* Error recovery modal */}
-            <div className="rounded-lg border-2">
+            <div className="rounded-lg border-2 bg-white">
               <div className="px-4 py-2 sm:p-6">
                 <div className="flex items-center gap-3">
                   <div className="bg-primary-100 flex h-12 w-12 rounded-full p-2">
@@ -2248,7 +2244,7 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: 'Patterns',
+      label: 'Generic patterns',
       items: [
         {
           title: '3',
