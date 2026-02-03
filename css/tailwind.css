@@ -277,7 +277,7 @@ input:-webkit-autofill:focus {
 }
 
 body {
-  background: var(--color-grey-100);
+  background: var(--color-grey-200);
   padding: 4vw;
 }
 

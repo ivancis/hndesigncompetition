@@ -110,7 +110,7 @@ function MyCustomComponent1() {
           <div className="rounded-lg border-2">
             <div className="px-4 py-2 sm:p-6">
               <h3 className="text-base font-semibold text-black">Card Title</h3>
-              <p className="text-grey-500 mt-1 text-sm">Card content…</p>
+              <small className="mt-1">Card content…</small>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ function MyCustomComponent1() {
           {/* Rest */}
           <button
             type="button"
-            className="text-md focus: bg-primary-300 rounded-md border-2 px-4 py-2 font-semibold text-black"
+            className="text-md bg-primary-300 rounded-md border-2 px-4 py-2 font-semibold text-black"
           >
             Default
           </button>
@@ -153,7 +153,7 @@ function MyCustomComponent1() {
           {/* FocusActive */}
           <button
             type="button"
-            className="text-md outline-primary-600 bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black outline-1 outline-offset-2 transition-colors"
+            className="text-md focus:outline-primary-500 bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
           >
             Focus + Active
           </button>
@@ -162,7 +162,7 @@ function MyCustomComponent1() {
           <button
             type="button"
             disabled
-            className="text-md disabled:bg-grey-300 text-grey-500 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:border-gray-400"
+            className="text-md disabled:bg-grey-300 text-grey-500 disabled:border-grey-400 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed"
           >
             Disabled
           </button>
@@ -194,7 +194,7 @@ function MyCustomComponent1() {
               <input
                 type="checkbox"
                 defaultChecked
-                className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-md"
+                className="border-grey-600 text-primary-600 focus:outline-primary-500 focus:outline-primary-600 h-4 w-4 rounded border-2 focus:outline focus:outline-1 focus:outline-offset-2"
               />
               <span className="text-grey-700 text-sm">Selected option</span>
             </label>
@@ -390,7 +390,7 @@ function MyCustomComponent1() {
               +1.2%
               <TrendingUp className="m-auto h-4 w-4" />
             </div>
-            <span className="text-grey-500 text-sm">error rate</span>
+            <small>error rate</small>
           </div>
         </div>
       </section>
@@ -530,7 +530,7 @@ function MyCustomComponent1() {
             <h2 className="text-2xl font-bold text-black">Section Title</h2>
             <h3 className="text-lg font-medium text-black">Subsection</h3>
             <p className="text-grey-700 text-base font-normal">Main content text…</p>
-            <p className="text-grey-500 text-sm font-medium">Helper text</p>
+            <small className="font-medium">Helper text</small>
           </div>
           <ScenarioTitle>Content rules: ellipsis, curly quotes, non‑breaking space</ScenarioTitle>
           <div className="text-grey-700 space-y-1 text-sm">
@@ -541,7 +541,7 @@ function MyCustomComponent1() {
           <ScenarioTitle>Typography vertical spacing (space-y-1)</ScenarioTitle>
           <div className="space-y-1">
             <h2 className="text-2xl font-bold text-black">Heading</h2>
-            <p className="text-grey-500 text-sm">Subtitle</p>
+            <small>Subtitle</small>
           </div>
         </section>
 
@@ -752,269 +752,264 @@ function MyCustomComponent1() {
   )
 }
 
-function MyCustomComponent2() {
-  return (
-    <div className="flex flex-col gap-4">
-      {/* Header — C3 navbar pattern: rounded-lg border-2 outer, h-16 inner flex, border-primary-600 active tab */}
-      <div className="border-b-2">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <label htmlFor="dashboard-search" className="sr-only">
-                  Search
-                </label>
-                <input
-                  id="dashboard-search"
-                  type="search"
-                  placeholder="Search…"
-                  className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 block w-64 rounded-md border-2 py-2 pr-3 pl-10 text-sm text-black focus:outline-1 focus:outline-offset-2"
-                />
-                <Search className="text-grey-400 pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <button
-                type="button"
-                className="focus:outline-primary-500 text-grey-600 hover:bg-grey-100 focus:outline-primary-600 relative rounded-md p-2 transition focus:outline-1 focus:outline-offset-2"
-                aria-label="Notifications"
-              >
-                <Bell />
-                <span
-                  className="bg-primary-600 absolute top-2 right-2 size-2 rounded-full"
-                  aria-hidden="true"
-                />
-              </button>
-              <button
-                type="button"
-                className="focus:outline-primary-500 focus:outline-primary-600 flex items-center gap-2 rounded-md transition focus:outline-1 focus:outline-offset-2"
-                aria-label="Profile menu"
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt="User profile"
-                  width={32}
-                  height={32}
-                  className="size-8 rounded-full"
-                />
-                <svg
-                  className="text-grey-400 size-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar — C3 vertical nav pattern: rounded-lg border-2 outer, px-4 py-2 sm:p-6 surface, space-y-1 nav */}
-        <aside className="w-64 overflow-y-auto">
-          <div className="px-4 py-2 sm:p-6">
-            <nav className="space-y-1" aria-label="Main">
-              <button
-                type="button"
-                className="bg-grey-100 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-semibold text-black"
-              >
-                <Layers />
-                Dashboard
-              </button>
-              <button
-                type="button"
-                className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
-              >
-                <Users />
-                Teams
-              </button>
-              <nav className="mb-4" aria-label="Teams">
-                <button
-                  type="button"
-                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm font-medium hover:text-black"
-                >
-                  <span
-                    className="bg-primary-100 flex size-6 shrink-0 items-center justify-center rounded-md text-sm font-semibold text-black"
-                    aria-hidden="true"
-                  >
-                    H
-                  </span>
-                  Heroicons
-                </button>
-                <button
-                  type="button"
-                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm font-medium hover:text-black"
-                >
-                  <span
-                    className="flex size-6 shrink-0 items-center justify-center rounded-md bg-emerald-100 text-sm font-semibold text-black"
-                    aria-hidden="true"
-                  >
-                    T
-                  </span>
-                  Tailwind Labs
-                </button>
-                <button
-                  type="button"
-                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm font-medium hover:text-black"
-                >
-                  <span
-                    className="flex size-6 shrink-0 items-center justify-center rounded-md bg-red-100 text-sm font-semibold text-black"
-                    aria-hidden="true"
-                  >
-                    W
-                  </span>
-                  Workcation
-                </button>
-              </nav>
-              <button
-                type="button"
-                className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
-              >
-                <Folder />
-                Projects
-              </button>
-              <button
-                type="button"
-                className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
-              >
-                <Calendar />
-                Calendar
-              </button>
-              <button
-                type="button"
-                className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
-              >
-                <FileText />
-                Documents
-              </button>
-              <button
-                type="button"
-                className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
-              >
-                <HardDrive />
-                Reports
-              </button>
-            </nav>
-          </div>
-        </aside>
-
-        {/* Main content — C3 surface pattern: px-4 py-2 sm:p-6 inside rounded-lg border-2 cards */}
-        <main className="flex-1 overflow-y-auto">
-          <div className="space-y-8 p-6">
-            <div className="space-y-1">
-              <h1 className="text-2xl font-bold text-black">Dashboard</h1>
-              <p className="text-grey-600 text-sm font-medium">
-                Welcome back. Here&apos;s what&apos;s happening with your projects today.
-              </p>
-            </div>
-
-            {/* Stat cards — C3 Stats pattern: overflow-hidden rounded-lg border-2, inner px-4 py-2 sm:p-6 */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="overflow-hidden rounded-lg border-2">
-                <div className="px-4 py-2 sm:p-6">
-                  <div className="flex items-baseline gap-2">
-                    <Octagon className="my-auto" />
-                    <dt className="text-grey-500 truncate text-sm font-medium">Total Revenue</dt>
-                  </div>
-                  <dd className="mt-1 text-3xl font-semibold text-black">$45,231</dd>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <div className="inline-flex items-baseline gap-1 rounded-full bg-emerald-400 px-2 py-1 text-sm font-medium text-black">
-                      <ArrowUpRight className="m-auto h-4 w-4" />
-                      <span className="sr-only">Increased by</span>
-                      12%
-                    </div>
-                    <span className="text-grey-500 text-sm">from last month</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="overflow-hidden rounded-lg border-2">
-                <div className="px-4 py-2 sm:p-6">
-                  <div className="flex items-baseline gap-2">
-                    <User className="my-auto" />
-                    <dt className="text-grey-500 truncate text-sm font-medium">Active Users</dt>
-                  </div>
-                  <dd className="mt-1 text-3xl font-semibold text-black">2,340</dd>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <div className="inline-flex items-baseline gap-1 rounded-full bg-emerald-400 px-2 py-1 text-sm font-medium text-black">
-                      <ArrowUpRight className="m-auto h-4 w-4" />
-                      <span className="sr-only">Increased by</span>
-                      8%
-                    </div>
-                    <span className="text-grey-500 text-sm">from last month</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="overflow-hidden rounded-lg border-2">
-                <div className="px-4 py-2 sm:p-6">
-                  <div className="flex items-baseline gap-2">
-                    <Folder className="my-auto" />
-                    <dt className="text-grey-500 truncate text-sm font-medium">New Projects</dt>
-                  </div>
-                  <dd className="mt-1 text-3xl font-semibold text-black">12</dd>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <div className="inline-flex items-baseline gap-1 rounded-full bg-red-400 px-2 py-1 text-sm font-medium text-black">
-                      <ArrowDownLeft className="m-auto h-4 w-4" />
-                      <span className="sr-only">Decreased by</span>
-                      3%
-                    </div>
-                    <span className="text-grey-500 text-sm">from last month</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="overflow-hidden rounded-lg border-2">
-                <div className="px-4 py-2 sm:p-6">
-                  <div className="flex items-baseline gap-2">
-                    <MessageCircle className="my-auto" />
-                    <dt className="text-grey-500 truncate text-sm font-medium">Avg. Response</dt>
-                  </div>
-                  <dd className="mt-1 text-3xl font-semibold text-black">2.4h</dd>
-                  <div className="mt-2 flex items-baseline gap-1">
-                    <div className="inline-flex items-baseline gap-1 rounded-full bg-emerald-400 px-2 py-1 text-sm font-medium text-black">
-                      <ArrowUpRight className="m-auto h-4 w-4" />
-                      <span className="sr-only">Increased by</span>
-                      5%
-                    </div>
-                    <span className="text-grey-500 text-sm">from last month</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Recent Activity — C3 card heading pattern: border-grey-700 overflow-hidden rounded-lg border-2, border-grey-700 border-b-2 px-6 py-4 header */}
-            <div className="border-grey-700 overflow-hidden rounded-lg border-2">
-              <div className="border-grey-700 border-b-2 px-6 py-4">
-                <h3 className="text-base font-bold text-black">Recent Activity</h3>
-              </div>
-              <div className="px-4 py-2 sm:p-6">
-                <p className="text-grey-500 text-sm font-medium">Content goes here…</p>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
-  )
-}
-
 function MyCustomComponent3() {
   return (
     <div className="mx-auto max-w-7xl space-y-16 p-4">
+      <div className="flex flex-col gap-4">
+        {/* Header — C3 navbar pattern: rounded-lg border-2 outer, h-16 inner flex, border-primary-600 active tab */}
+        <div className="border-b-2">
+          <div className="mx-auto px-4">
+            <div className="flex h-16 items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <label htmlFor="dashboard-search" className="sr-only">
+                    Search
+                  </label>
+                  <input
+                    id="dashboard-search"
+                    type="search"
+                    placeholder="Search…"
+                    className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 block w-64 rounded-md border-2 py-2 pr-3 pl-10 text-sm text-black focus:outline-1 focus:outline-offset-2"
+                  />
+                  <Search className="text-grey-400 pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <button
+                  type="button"
+                  className="focus:outline-primary-500 text-grey-600 hover:bg-grey-100 focus:outline-primary-600 relative rounded-md p-2 transition focus:outline-1 focus:outline-offset-2"
+                  aria-label="Notifications"
+                >
+                  <Bell />
+                  <span
+                    className="bg-primary-600 absolute top-2 right-2 size-2 rounded-full"
+                    aria-hidden="true"
+                  />
+                </button>
+                <button
+                  type="button"
+                  className="focus:outline-primary-500 focus:outline-primary-600 flex items-center gap-2 rounded-md transition focus:outline-1 focus:outline-offset-2"
+                  aria-label="Profile menu"
+                >
+                  <Image
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt="User profile"
+                    width={32}
+                    height={32}
+                    className="size-8 rounded-full"
+                  />
+                  <svg
+                    className="text-grey-400 size-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-1 overflow-hidden">
+          {/* Sidebar — C3 vertical nav pattern: rounded-lg border-2 outer, px-4 py-2 sm:p-6 surface, space-y-1 nav */}
+          <aside className="w-64 overflow-y-auto">
+            <div className="px-4 py-2 sm:p-6">
+              <nav className="space-y-1" aria-label="Main">
+                <button
+                  type="button"
+                  className="bg-grey-100 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-semibold text-black"
+                >
+                  <Layers />
+                  Dashboard
+                </button>
+                <button
+                  type="button"
+                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
+                >
+                  <Users />
+                  Teams
+                </button>
+                <nav className="mb-4" aria-label="Teams">
+                  <button
+                    type="button"
+                    className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm font-medium hover:text-black"
+                  >
+                    <span
+                      className="bg-primary-100 flex size-6 shrink-0 items-center justify-center rounded-md text-sm font-semibold text-black"
+                      aria-hidden="true"
+                    >
+                      H
+                    </span>
+                    Heroicons
+                  </button>
+                  <button
+                    type="button"
+                    className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm font-medium hover:text-black"
+                  >
+                    <span
+                      className="flex size-6 shrink-0 items-center justify-center rounded-md bg-emerald-100 text-sm font-semibold text-black"
+                      aria-hidden="true"
+                    >
+                      T
+                    </span>
+                    Tailwind Labs
+                  </button>
+                  <button
+                    type="button"
+                    className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sm font-medium hover:text-black"
+                  >
+                    <span
+                      className="flex size-6 shrink-0 items-center justify-center rounded-md bg-red-100 text-sm font-semibold text-black"
+                      aria-hidden="true"
+                    >
+                      W
+                    </span>
+                    Workcation
+                  </button>
+                </nav>
+                <button
+                  type="button"
+                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
+                >
+                  <Folder />
+                  Projects
+                </button>
+                <button
+                  type="button"
+                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
+                >
+                  <Calendar />
+                  Calendar
+                </button>
+                <button
+                  type="button"
+                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
+                >
+                  <FileText />
+                  Documents
+                </button>
+                <button
+                  type="button"
+                  className="text-grey-600 hover:bg-grey-50 flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-medium hover:text-black"
+                >
+                  <HardDrive />
+                  Reports
+                </button>
+              </nav>
+            </div>
+          </aside>
+
+          {/* Main content — C3 surface pattern: px-4 py-2 sm:p-6 inside rounded-lg border-2 cards */}
+          <main className="flex-1 overflow-y-auto rounded-lg bg-white">
+            <div className="space-y-8 p-6">
+              <div className="space-y-1">
+                <h1 className="text-2xl font-bold text-black">Dashboard</h1>
+                <p className="text-grey-600 text-sm font-medium">
+                  Welcome back. Here&apos;s what&apos;s happening with your projects today.
+                </p>
+              </div>
+
+              {/* Stat cards — C3 Stats pattern: overflow-hidden rounded-lg border-2, inner px-4 py-2 sm:p-6 */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="overflow-hidden rounded-lg border-2">
+                  <div className="px-4 py-2 sm:p-6">
+                    <div className="flex items-baseline gap-2">
+                      <Octagon className="my-auto" />
+                      <dt className="text-grey-500 truncate text-sm font-medium">Total Revenue</dt>
+                    </div>
+                    <dd className="mt-1 text-3xl font-semibold text-black">$45,231</dd>
+                    <div className="mt-2 flex items-baseline gap-1">
+                      <div className="inline-flex items-baseline gap-1 rounded-full bg-emerald-400 px-2 py-1 text-sm font-medium text-black">
+                        <ArrowUpRight className="m-auto h-4 w-4" />
+                        <span className="sr-only">Increased by</span>
+                        12%
+                      </div>
+                      <span className="text-grey-500 text-sm">from last month</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="overflow-hidden rounded-lg border-2">
+                  <div className="px-4 py-2 sm:p-6">
+                    <div className="flex items-baseline gap-2">
+                      <User className="my-auto" />
+                      <dt className="text-grey-500 truncate text-sm font-medium">Active Users</dt>
+                    </div>
+                    <dd className="mt-1 text-3xl font-semibold text-black">2,340</dd>
+                    <div className="mt-2 flex items-baseline gap-1">
+                      <div className="inline-flex items-baseline gap-1 rounded-full bg-emerald-400 px-2 py-1 text-sm font-medium text-black">
+                        <ArrowUpRight className="m-auto h-4 w-4" />
+                        <span className="sr-only">Increased by</span>
+                        8%
+                      </div>
+                      <span className="text-grey-500 text-sm">from last month</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="overflow-hidden rounded-lg border-2">
+                  <div className="px-4 py-2 sm:p-6">
+                    <div className="flex items-baseline gap-2">
+                      <Folder className="my-auto" />
+                      <dt className="text-grey-500 truncate text-sm font-medium">New Projects</dt>
+                    </div>
+                    <dd className="mt-1 text-3xl font-semibold text-black">12</dd>
+                    <div className="mt-2 flex items-baseline gap-1">
+                      <div className="inline-flex items-baseline gap-1 rounded-full bg-red-400 px-2 py-1 text-sm font-medium text-black">
+                        <ArrowDownLeft className="m-auto h-4 w-4" />
+                        <span className="sr-only">Decreased by</span>
+                        3%
+                      </div>
+                      <span className="text-grey-500 text-sm">from last month</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="overflow-hidden rounded-lg border-2">
+                  <div className="px-4 py-2 sm:p-6">
+                    <div className="flex items-baseline gap-2">
+                      <MessageCircle className="my-auto" />
+                      <dt className="text-grey-500 truncate text-sm font-medium">Avg. Response</dt>
+                    </div>
+                    <dd className="mt-1 text-3xl font-semibold text-black">2.4h</dd>
+                    <div className="mt-2 flex items-baseline gap-1">
+                      <div className="inline-flex items-baseline gap-1 rounded-full bg-emerald-400 px-2 py-1 text-sm font-medium text-black">
+                        <ArrowUpRight className="m-auto h-4 w-4" />
+                        <span className="sr-only">Increased by</span>
+                        5%
+                      </div>
+                      <span className="text-grey-500 text-sm">from last month</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recent Activity — C3 card heading pattern: border-grey-700 overflow-hidden rounded-lg border-2, border-grey-700 border-b-2 px-6 py-4 header */}
+              <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white">
+                <div className="border-grey-700 border-b-2 px-6 py-4">
+                  <h3 className="text-base font-bold text-black">Recent Activity</h3>
+                </div>
+                <div className="px-4 py-2 sm:p-6">
+                  <p className="text-grey-500 text-sm font-medium">Content goes here…</p>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
       {/* DESCRIPTION LISTS */}
       <section className="space-y-16">
         {/* Global Rules Console - Ref: Tailwind UI Card Headings + Description Lists */}
         <div className="mb-8">
-          <div className="border-grey-700 overflow-hidden rounded-lg border-2">
+          <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white">
             <div className="border-grey-700 flex items-center justify-between border-b-2 px-6 py-4">
               <h4 className="text-base font-bold text-black">Global Safety Policy v2.4</h4>
               <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium">
@@ -1033,7 +1028,7 @@ function MyCustomComponent3() {
         </div>
 
         {/* Agent-Specific Instructions with Inheritance Indicator */}
-        <div className="border-grey-700 overflow-hidden rounded-lg border-2">
+        <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white">
           <div className="border-grey-700 flex items-center justify-between border-b-2 px-6 py-4">
             <h3 className="text-base font-bold">Agent Instructions</h3>
             <button
@@ -1054,7 +1049,7 @@ function MyCustomComponent3() {
         {/* Rule Builder - Grid List Cards */}
         <div className="mb-8">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="border-grey-700 overflow-hidden rounded-lg border-2 p-4">
+            <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white p-4">
               <div className="space-y-4">
                 <h4 className="text-sm font-semibold text-black">Tone</h4>
                 <textarea
@@ -1069,7 +1064,7 @@ function MyCustomComponent3() {
               </div>
             </div>
 
-            <div className="border-grey-700 overflow-hidden rounded-lg border-2 p-4">
+            <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white p-4">
               <div className="space-y-4">
                 <h4 className="text-sm font-semibold text-black">Tools</h4>
                 <textarea
@@ -1084,7 +1079,7 @@ function MyCustomComponent3() {
               </div>
             </div>
 
-            <div className="border-grey-700 overflow-hidden rounded-lg border-2 p-4">
+            <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white p-4">
               <div className="space-y-4">
                 <h4 className="text-sm font-semibold text-black">Data Access</h4>
                 <textarea
@@ -1210,7 +1205,7 @@ function MyCustomComponent3() {
         </section>
 
         {/* Rule Simulator - Reasoning Trace */}
-        <div className="border-grey-700 overflow-hidden rounded-lg border-2">
+        <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white">
           <div className="border-grey-700 border-b-2 px-6 py-4">
             <h3 className="text-base font-bold text-black">Reasoning Trace</h3>
           </div>
@@ -1231,10 +1226,16 @@ function MyCustomComponent3() {
                 Generate fix suggestion
               </button>
               <div className="mr-0 ml-auto flex overflow-hidden rounded-md border-2">
-                <button className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 min-w-32 rounded-md py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2">
+                <button
+                  type="button"
+                  className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 min-w-32 rounded-md border-2 border-r-0 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+                >
                   Retry
                 </button>
-                <button className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 border-l-2 px-2 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+                <button
+                  type="button"
+                  className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 border-r-2 border-l-2 px-2 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+                >
                   <ChevronDown />
                 </button>
               </div>
@@ -1243,7 +1244,7 @@ function MyCustomComponent3() {
         </div>
 
         {/* Publish Gate with Rollback Selection */}
-        <div className="border-grey-700 overflow-hidden rounded-lg border-2">
+        <div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white">
           <div className="border-grey-700 border-b-2 px-6 py-4">
             <h3 className="text-base font-bold text-black">Publish Settings</h3>
           </div>
@@ -1287,11 +1288,11 @@ function MyCustomComponent3() {
         <h2 className="mb-6 text-2xl font-bold text-black">Card Headings</h2>
 
         {/* With description and action */}
-        <div className="rounded-lg border-2">
+        <div className="rounded-lg border-2 bg-white">
           <div className="px-4 py-2 sm:p-6">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-lg font-medium text-black">Profile Information</h3>
+                <h3 className="text-base font-bold text-black">Profile Information</h3>
                 <p className="text-grey-500 mt-1 text-sm">
                   Update your account&apos;s profile information and email address.
                 </p>
@@ -1311,7 +1312,7 @@ function MyCustomComponent3() {
       <section>
         <h2 className="mb-6 text-2xl font-bold text-black">Global rules</h2>
         {/* With preview */}
-        <div className="overflow-hidden rounded-lg border-2">
+        <div className="overflow-hidden rounded-lg border-2 bg-white">
           <div className="flex">
             <div className="w-1/2 border-r-2">
               <div className="border-b-2 p-4">
@@ -1456,7 +1457,10 @@ function MyCustomComponent3() {
             <div className="ml-3">
               <h3 className="text-lg font-medium">A new software update is available.</h3>
               <div className="text-md mt-2">
-                <button type="button" className="font-semibold text-black underline">
+                <button
+                  type="button"
+                  className="text-primary-600 hover:text-primary-700 focus:outline-primary-500 focus:outline-primary-600 text-sm font-semibold underline transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+                >
                   See what&apos;s new
                 </button>
               </div>
@@ -1858,13 +1862,13 @@ function MyCustomComponent3() {
               <div className="bg-grey-50 border-b-2 p-2 text-center text-xs font-semibold">Sat</div>
 
               {/* Calendar days */}
-              <div className="text-grey-400 text-grey-500 h-24 border-1 bg-white p-2 text-sm">
+              <div className="text-grey-400 text-grey-500 h-24 border-2 bg-white p-2 text-sm">
                 29
               </div>
-              <div className="text-grey-400 text-grey-500 h-24 border-1 bg-white p-2 text-sm">
+              <div className="text-grey-400 text-grey-500 h-24 border-2 bg-white p-2 text-sm">
                 30
               </div>
-              <div className="text-grey-400 text-grey-500 h-24 border-1 bg-white p-2 text-sm">
+              <div className="text-grey-400 text-grey-500 h-24 border-2 bg-white p-2 text-sm">
                 31
               </div>
               <div className="h-24 border-1 bg-white p-2 text-sm text-black">1</div>
@@ -2217,7 +2221,7 @@ export default function Home({ posts }) {
       items: [
         {
           title: 'Catch me if you can',
-          body: 'Just a mess of scenarios',
+          body: 'Collection of examples from the playbook',
           footer: 'Status: Good — In progress',
         },
         {
@@ -2233,13 +2237,13 @@ export default function Home({ posts }) {
       ],
     },
     {
-      label: 'UIBlocks',
+      label: 'kitchenSink',
       items: [
         {
-          title: '2',
-          body: 'Demo dashboard.',
-          footer: 'Status: Neutral — Inactive',
-          slot: <MyCustomComponent2 />,
+          title: '4',
+          body: 'Basic kitchenSink test unstyled and styled.',
+          footer: 'Status: Warning — Needs review',
+          slot: <MyCustomComponent4 />,
         },
       ],
     },
@@ -2251,17 +2255,6 @@ export default function Home({ posts }) {
           body: 'Simple organisms',
           footer: 'Status: Neutral — Inactive',
           slot: <MyCustomComponent3 />,
-        },
-      ],
-    },
-    {
-      label: 'kitchenSink',
-      items: [
-        {
-          title: '4',
-          body: 'Basic kitchenSink test unstyled and styled.',
-          footer: 'Status: Warning — Needs review',
-          slot: <MyCustomComponent4 />,
         },
       ],
     },
@@ -2291,7 +2284,6 @@ export default function Home({ posts }) {
               className={['w-full', activeCondition?.className].filter(Boolean).join(' ')}
               data-condition-level={conditionLevel}
             >
-              <code className="text-sm tracking-wide uppercase">Render zone</code>
               {/* <div className="flex justify-center">
                 <div className="mb-4 flex flex-wrap justify-center gap-2">
                   {conditionOptions.map((option) => (
@@ -2322,9 +2314,7 @@ export default function Home({ posts }) {
                     className={({ selected }) =>
                       [
                         'px-4 py-2 text-sm font-medium transition',
-                        selected
-                          ? 'border-b-2 text-emerald-500'
-                          : 'text-black hover:text-emerald-500',
+                        selected ? 'border-b-3 text-black' : 'text-grey-500 hover:text-black',
                       ].join(' ')
                     }
                   >

@@ -46,12 +46,23 @@ Typography establishes content hierarchy and shapes readability. It determines h
 - **Size:** `text-xl`
 - **Weight:** `font-bold`
 - **Use for:** Section titles, card headings
+- **Alignment:** Left-aligned by default
+
+**🔴 COMMAND:** Section titles and labels MUST be left-aligned by default. Use `text-left` on flex containers or ensure parent containers align content left.
 
 ```tsx
 {
-  /* Section title */
+  /* Section title - left-aligned */
 }
-;<h2 className="text-xl font-bold">Section Title</h2>
+;<h2 className="text-left text-xl font-bold">Section Title</h2>
+
+{
+  /* Section title in flex container - ensure left alignment */
+}
+;<div className="flex flex-col text-left">
+  <span className="text-sm font-bold text-black">Job Details</span>
+  <small>Subtext description</small>
+</div>
 ```
 
 #### Subheadings
@@ -76,13 +87,30 @@ Typography establishes content hierarchy and shapes readability. It determines h
 
 #### Subtext
 
-- **Size:** `text-sm`
-- **Weight:** `font-medium`
-- **Use for:** Secondary information, captions, helper text
+- **Element:** `<small>` (semantic HTML element)
+- **Use for:** Secondary information, captions, helper text, timestamps, metadata
+
+**🔴 COMMAND:** Subtexts MUST use the `<small>` HTML element. Do not use className for subtext styling.
 
 ```tsx
-<p className="text-sm font-medium">Helper text</p>
+{
+  /* Subtext with small element */
+}
+;<div>
+  <h3 className="text-sm font-bold text-black">Section Title</h3>
+  <small>Subtext description or helper text</small>
+</div>
+
+{
+  /* Timestamp/metadata with small element */
+}
+;<div>
+  <p className="text-sm text-black">Activity description</p>
+  <small className="mt-1">19m ago</small>
+</div>
 ```
+
+**🔴 COMMAND:** Section titles and labels MUST be left-aligned by default. Use `text-left` on flex containers or ensure parent containers align content left.
 
 ---
 
@@ -343,6 +371,10 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 
 **🔴 COMMAND:** Between list items: `space-y-0` (0px)
 
+**🔴 COMMAND:** List items with a lot of information can have dividers between them using `border-b-2 border-grey-500` (2px divider).
+
+**🟡 DIRECTIVE:** Use dividers when list items contain substantial content (multiple lines, metadata, actions) to improve visual separation and readability.
+
 ```tsx
 {
   /* Groups of elements */
@@ -369,13 +401,33 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 </div>
 
 {
-  /* List items */
+  /* List items without dividers */
 }
 ;<ul className="space-y-0">
   <li>Item</li>
   <li>Item</li>
 </ul>
+
+{
+  /* List items with dividers (when there's a lot of information) */
+}
+;<div className="space-y-0">
+  <div className="border-grey-500 flex items-start gap-4 border-b-2 px-6 py-4">
+    <p>Item with substantial content</p>
+    <small>Metadata</small>
+  </div>
+  <div className="border-grey-500 flex items-start gap-4 border-b-2 px-6 py-4">
+    <p>Another item with content</p>
+    <small>More metadata</small>
+  </div>
+  <div className="flex items-start gap-4 px-6 py-4">
+    <p>Last item (no divider)</p>
+    <small>Metadata</small>
+  </div>
+</div>
 ```
+
+**🔴 COMMAND:** The last item in a list should NOT have a divider (`border-b-2`).
 
 #### Typography Vertical Spacing
 
@@ -435,7 +487,7 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
   Play
 </button>
 
-<span className="inline-flex items-center gap-2 rounded-md border-2 border-grey-200 bg-grey-50 px-3 py-2 text-sm font-semibold text-grey-700">
+<span className="inline-flex items-center gap-2 rounded-md border-2 border-grey-300 bg-grey-50 px-3 py-2 text-sm font-semibold text-grey-700">
   <span className="inline-flex rounded-full bg-grey-400 p-1" aria-hidden="true" />
   Status
 </span>
@@ -672,16 +724,30 @@ Containers highlight essential information with semantic meaning.
 
 **Emphasis levels:**
 
-1. **Default** - standard contrast
-2. **Emphasized** - more contrast
-3. **Accent** - highest contrast
+1. **Default** - standard contrast (subtle backgrounds: `-50`, `-100`)
+2. **Emphasized** - more contrast (medium backgrounds: `-100`, `-200`)
+3. **Accent** - highest contrast (prominent backgrounds: `-400` for alerts)
+
+**🔴 COMMAND:** Surfaces with `border-grey-700` MUST have `bg-white` background. This ensures proper contrast and visual separation for container surfaces.
 
 ```tsx
 {
   /* Neutral container */
 }
-;<div className="border-grey-200 rounded-lg border-2 bg-white p-4">
+;<div className="border-grey-300 rounded-lg border-2 bg-white p-4">
   <p>Neutral content</p>
+</div>
+
+{
+  /* Container with border-grey-700 - MUST have bg-white */
+}
+;<div className="border-grey-700 overflow-hidden rounded-lg border-2 bg-white">
+  <div className="border-grey-700 border-b-2 px-6 py-4">
+    <h3 className="text-base font-bold text-black">Card Title</h3>
+  </div>
+  <div className="px-4 py-2 sm:p-6">
+    <p>Card content</p>
+  </div>
 </div>
 
 {
@@ -692,14 +758,18 @@ Containers highlight essential information with semantic meaning.
 </div>
 
 {
-  /* Critical accent */
+  /* Critical accent - Alert container */
 }
-;<div className="rounded-lg border-2 border-red-500 bg-red-100 p-4">
+;<div className="rounded-lg border-2 bg-red-400 p-4 text-black">
   <p>Critical: Immediate action required</p>
 </div>
 ```
 
-**🟡 DIRECTIVE:** Use accent emphasis sparingly - reserve for highest priority alerts.
+**🔴 COMMAND:** Surfaces with `border-grey-700` MUST have `bg-white` background. This ensures proper contrast and visual separation for container surfaces.
+
+**🔴 COMMAND:** Alert containers (prominent semantic containers) use `-400` color variants (`bg-emerald-400`, `bg-amber-400`, `bg-red-400`, `bg-indigo-400`) with `text-black` for maximum contrast and visibility.
+
+**🟡 DIRECTIVE:** Use accent emphasis sparingly - reserve for highest priority alerts. For detailed alert container patterns, see [Section 6.9: Alert Container Pattern](./guidelines.md#pattern-alert-container-semantic-containers) in Guidelines.
 
 ---
 
@@ -730,7 +800,36 @@ Fields are interactive clickable elements that communicate state through visual 
 
 ## 5. Visual Styles
 
-### 5.1 Border Radius
+### 5.1 Border Colors
+
+**🔴 BOUNDARY:** Never use `border-grey-200`. Use `border-grey-300` or higher for all border colors.
+
+**🔴 COMMAND:** Border color usage:
+
+- **Neutral containers/cards:** `border-grey-300` (light borders for subtle separation)
+- **Card headers/dividers:** `border-grey-500` or `border-grey-700` (stronger borders for emphasis)
+- **Interactive elements:** `border-grey-600` (inputs, buttons)
+- **Card surfaces:** `border-grey-700` with `bg-white` (prominent card borders)
+
+```tsx
+{
+  /* Correct: Neutral container with border-grey-300 */
+}
+;<div className="border-grey-300 rounded-lg border-2 bg-white p-4">
+  <p>Neutral content</p>
+</div>
+
+{
+  /* Wrong: Using border-grey-200 */
+}
+;<div className="border-grey-200 rounded-lg border-2 bg-white p-4">
+  <p>Neutral content</p>
+</div>
+```
+
+---
+
+### 5.2 Border Radius
 
 **🔴 COMMAND:** Use border radius paired with minimum padding:
 
@@ -776,15 +875,92 @@ rounded-lg  (8px)  →  min p-6  (24px)
 
 **🟡 DIRECTIVE:** Match visual weight of border radius to component importance. Larger radius = more prominent component.
 
+**🔴 COMMAND:** Use `rounded-full` only for:
+
+- Badges, chips, tags, and labels (small inline elements)
+- Status indicators and avatars (circular elements)
+- Progress bars and sliders (circular handles)
+
+**🔴 BOUNDARY:** Never use `rounded-full` for containers, cards, panels, or any element with `border-2` - use `rounded-md` or `rounded-lg` instead.
+
+```tsx
+{
+  /* Correct: Badge with rounded-full */
+}
+;<span className="bg-primary-50 text-primary-700 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium">
+  New
+</span>
+
+{
+  /* Correct: Container with rounded-md */
+}
+;<div className="border-grey-300 rounded-md border-2 bg-white p-4">
+  <p>Container content</p>
+</div>
+
+{
+  /* Wrong: Container with rounded-full */
+}
+;<div className="border-grey-300 rounded-full border-2 bg-white p-4">
+  <p>Container content</p>
+</div>
+```
+
 ---
 
-### 5.2 Interaction States
+### 5.3 Shadows
+
+Shadows create depth and hierarchy by elevating elements above the page surface.
+
+**🔴 COMMAND:** Use shadows only for these specific cases:
+
+1. **Modals and overlays** - `shadow-xl` (elevated above all content)
+2. **Floating elements** - `shadow-xl` (tooltips, dropdowns, popovers)
+3. **Card hover states** - `hover:shadow-md` (interactive feedback only)
+
+**🔴 BOUNDARY:** Never use shadows on:
+
+- Standard containers, cards, or panels (use `border-2` instead)
+- Buttons (use background color changes for interaction)
+- Form elements (use borders for structure)
+- Inline components (use borders for separation)
+
+**🔴 COMMAND:** Standard containers must use `border-2` for visual separation, not shadows.
+
+```tsx
+{
+  /* Correct: Modal with shadow-xl */
+}
+;<div className="w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
+  <p>Modal content</p>
+</div>
+
+{
+  /* Correct: Card with border-2, no shadow */
+}
+;<div className="border-grey-300 rounded-lg border-2 bg-white p-4">
+  <p>Card content</p>
+</div>
+
+{
+  /* Wrong: Standard container with shadow */
+}
+;<div className="rounded-lg border-2 bg-white p-4 shadow-sm">
+  <p>Card content</p>
+</div>
+```
+
+**🟡 DIRECTIVE:** Shadows create visual weight - use sparingly to maintain hierarchy. When in doubt, use `border-2` instead.
+
+---
+
+### 5.4 Interaction States
 
 Interaction states visually reflect the current state of UI elements. States communicate affordance and feedback to users.
 
 ---
 
-#### 5.2.1 Exclusive States
+#### 5.3.1 Exclusive States
 
 These states are mutually exclusive - an element can only be in one state at a time.
 
@@ -871,7 +1047,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 ---
 
-#### 5.2.2 Selected State
+#### 5.3.2 Selected State
 
 **🔴 COMMAND:** Selected uses primary color tokens.
 
@@ -920,7 +1096,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 ---
 
-#### 5.2.3 Indicating Interactivity
+#### 5.3.3 Indicating Interactivity
 
 **🔴 COMMAND:** Use these patterns to indicate interactivity:
 
@@ -967,15 +1143,33 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 ---
 
-### 5.3 Basic component build
+### 5.5 Basic component build
 
 #### Pattern: Primary Button
 
+**🔴 COMMAND:** Primary buttons MUST use this exact configuration:
+
 ```tsx
-<button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+<button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
   Primary Action
 </button>
 ```
+
+**🔴 COMMAND:** Class order must be:
+
+1. Focus outline colors (`focus:outline-primary-500` first, then `focus:outline-primary-600`)
+2. Background colors (`bg-primary-300`)
+3. Hover state (`hover:bg-primary-200`)
+4. Active state (`active:bg-primary-100`)
+5. Border radius (`rounded-md`)
+6. Border (`border-2`)
+7. Typography (`font-semibold text-black`)
+8. Transitions (`transition-colors`)
+9. Focus outline utilities (`focus:outline-1 focus:outline-offset-2`)
+
+**🔴 COMMAND:** Primary buttons must include BOTH `focus:outline-primary-500` AND `focus:outline-primary-600` for proper focus states.
+
+**🟡 DIRECTIVE:** For icon-only buttons, omit `px-4 py-2` and use appropriate padding (`p-2` or `p-3`). For text buttons, always include `px-4 py-2`.
 
 #### Pattern: Secondary Button
 

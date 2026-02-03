@@ -34,7 +34,7 @@ Status communicates the health of a system, process, or object. Use consistent, 
 ```
 Ideal:    text-emerald-600  bg-emerald-50  border-emerald-200
 Good:     text-primary-600  bg-primary-50  border-primary-200
-Neutral:  text-grey-600     bg-grey-50     border-grey-200
+Neutral:  text-grey-600     bg-grey-50     border-grey-300
 Warning:  text-amber-600    bg-amber-50    border-amber-200
 Critical: text-red-600      bg-red-50      border-red-200
 ```
@@ -283,6 +283,153 @@ Subtle status for systems, processes, or objects.
   </div>
 </div>
 ```
+
+#### Pattern: Alert Container (Semantic Containers)
+
+Alert containers are prominent semantic containers that communicate status through color, icon, and text.
+
+**🔴 COMMAND:** Alert containers MUST use this exact configuration:
+
+**Container structure:**
+
+- Border: `border-2`
+- Border radius: `rounded-lg`
+- Padding: `p-4` (16px)
+- Text color: `text-black` (for contrast on colored backgrounds)
+- Layout: Flex with icon + content structure
+- Icon spacing: `ml-3` (12px) between icon and content
+
+**🔴 COMMAND:** Alert container color schemes (semantic containers):
+
+**Success Alert (Ideal):**
+
+```
+bg-emerald-400 border-2 text-black
+```
+
+**Warning Alert:**
+
+```
+bg-amber-400 border-2 text-black
+```
+
+**Error Alert (Critical):**
+
+```
+bg-red-400 border-2 text-black
+```
+
+**Info Alert (Good):**
+
+```
+bg-indigo-400 border-2 text-black
+```
+
+**🔴 COMMAND:** Alert structure must include:
+
+1. Icon container: `flex-shrink-0` with status icon
+2. Content container: `ml-3` spacing from icon
+3. Title: `text-lg font-medium`
+4. Description: `text-md mt-2` or `text-sm mt-2`
+
+```tsx
+{
+  /* Success Alert */
+}
+;<div className="mb-4 rounded-lg border-2 bg-emerald-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <CheckCircle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Successfully uploaded</h3>
+      <div className="text-md mt-2">
+        <p>Your file has been uploaded and is now being processed.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{
+  /* Warning Alert */
+}
+;<div className="mb-4 rounded-lg border-2 bg-amber-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertTriangle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Attention needed</h3>
+      <div className="text-md mt-2">
+        <p>Your subscription will expire in 7 days. Please update your payment information.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{
+  /* Error Alert with Actions */
+}
+;<div className="mb-4 rounded-lg border-2 bg-red-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <XCircle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">There were errors with your submission</h3>
+      <div className="mt-2 text-sm">
+        <ul className="list-disc space-y-1 pl-5">
+          <li>Email address is required</li>
+          <li>Password must be at least 8 characters</li>
+        </ul>
+      </div>
+      <div className="mt-6 mb-3">
+        <div className="-mx-2 -my-1.5 flex">
+          <button
+            type="button"
+            className="focus:outline-primary-600 ml-3 rounded-md border-2 px-2 py-1.5 text-sm font-semibold transition-colors hover:bg-red-100 focus:outline-1 focus:outline-offset-2 active:bg-red-300"
+          >
+            View details
+          </button>
+          <button
+            type="button"
+            className="focus:outline-primary-600 ml-3 rounded-md border-2 px-2 py-1.5 text-sm font-semibold transition-colors hover:bg-red-100 focus:outline-1 focus:outline-offset-2 active:bg-red-300"
+          >
+            Dismiss
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{
+  /* Info Alert */
+}
+;<div className="mb-4 rounded-lg border-2 bg-indigo-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <Info className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">A new software update is available.</h3>
+      <div className="text-md mt-2">
+        <button type="button" className="font-semibold text-black underline">
+          See what's new
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** Alert container spacing between alerts: `mb-4` (16px)
+
+**🟡 DIRECTIVE:** Alert containers use `-400` color variants (emerald-400, amber-400, red-400, indigo-400) for high visibility and contrast with `text-black`. This differs from subtle status indicators which use `-50`/`-100` variants.
+
+**🔴 COMMAND:** Icons in alert containers must be accessible - use semantic icons (CheckCircle for success, AlertTriangle for warning, XCircle for error, Info for information).
+
+**🔴 COMMAND:** Icons in alert containers must have proper contrast - use `text-black` or `text-white` depending on background color. For `-400` backgrounds, icons inherit `text-black` from the container for consistency.
 
 #### Pattern: Toast Notification
 

@@ -2084,12 +2084,12 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Each card must include: icon, title, description, capability badges, and action area.
 
-**🔴 COMMAND:** Cards use `rounded-lg border-2 border-grey-200 bg-white p-6` as base styling.
+**🔴 COMMAND:** Cards use `rounded-lg border-2 border-grey-300 bg-white p-6` as base styling.
 
 **🔴 COMMAND:** Apply `dark:border-grey-700 dark:bg-grey-900` for dark mode support.
 
 ```tsx
-<div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
+<div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
   <div className="flex items-start gap-4">
     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
       {/* Icon */}
@@ -2144,7 +2144,7 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Hover state */
 }
-;<div className="border-grey-200 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
+;<div className="border-grey-300 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
   {/* Content */}
 </div>
 
@@ -2706,7 +2706,7 @@ ACCESSIBILITY REQUIREMENTS
   /* Review step */
 }
 ;<div className="space-y-6">
-  <div className="border-grey-200 rounded-lg border-2 bg-white p-6">
+  <div className="border-grey-300 rounded-lg border-2 bg-white p-6">
     <div className="mb-4 flex items-center justify-between">
       <h3 className="text-base font-semibold text-black">Basic Information</h3>
       <button className="text-primary-600 text-sm font-semibold" onClick={() => goToStep(1)}>
@@ -2947,7 +2947,7 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Advanced section */
 }
-;<div className="border-grey-200 bg-grey-50 mt-4 overflow-hidden rounded-lg border-2 p-6">
+;<div className="border-grey-300 bg-grey-50 mt-4 overflow-hidden rounded-lg border-2 p-6">
   <div className="mb-4">
     <h4 className="text-sm font-semibold text-black">Advanced LLM Parameters</h4>
     <p className="mt-1 text-sm text-gray-500">Fine-tune model behavior for specific use cases</p>
@@ -4015,7 +4015,7 @@ increase cost."
 {
   /* Action node */
 }
-;<div className="border-grey-200 rounded-lg border-2 bg-white px-4 py-3">
+;<div className="border-grey-300 rounded-lg border-2 bg-white px-4 py-3">
   <p className="text-sm font-medium text-black">Process request</p>
 </div>
 
@@ -5671,7 +5671,7 @@ const errorMessages = {
     <ShieldCheck className="size-5 text-gray-400" aria-hidden="true" />
     <h3 className="text-lg font-semibold text-black dark:text-gray-100">Global Rules Console</h3>
   </div>
-  <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
+  <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
     <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
       <h4 className="text-base font-bold text-black dark:text-gray-100">
         Global Safety Policy v2.4
@@ -5732,7 +5732,7 @@ const errorMessages = {
     <h3 className="text-lg font-semibold text-black dark:text-gray-100">Rule Builder</h3>
   </div>
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
+    <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
         <h4 className="text-sm font-semibold text-black dark:text-gray-100">Tone</h4>
         <textarea
@@ -5747,7 +5747,7 @@ const errorMessages = {
       </div>
     </div>
 
-    <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
+    <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
         <h4 className="text-sm font-semibold text-black dark:text-gray-100">Tools</h4>
         <textarea
@@ -5762,7 +5762,7 @@ const errorMessages = {
       </div>
     </div>
 
-    <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
+    <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
         <h4 className="text-sm font-semibold text-black dark:text-gray-100">Data Access</h4>
         <textarea
@@ -5818,7 +5818,7 @@ const errorMessages = {
     </svg>
     <h3 className="text-lg font-semibold text-black dark:text-gray-100">Rule Simulator</h3>
   </div>
-  <div className="border-grey-200 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
+  <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
     <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
       <h4 className="text-base font-bold text-black dark:text-gray-100">Reasoning Trace</h4>
     </div>

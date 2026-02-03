@@ -1,6 +1,16 @@
 'use client'
 
-import { CheckCircle, XCircle } from 'react-feather'
+import {
+  ArrowUp,
+  ArrowRight,
+  CheckCircle,
+  Pause,
+  Trash2,
+  XCircle,
+  Zap,
+  X,
+  Filter,
+} from 'react-feather'
 
 /**
  * Kitchen Sink / UI Kit Stress Test component.
@@ -10,26 +20,92 @@ import { CheckCircle, XCircle } from 'react-feather'
 export default function MyCustomComponent5() {
   return (
     <div className="flex flex-col gap-12">
+      <div className="flex w-full max-w-xl items-center rounded-lg border-2 bg-white p-4">
+        {/* Left: Delete and Timer */}
+        <div className="flex items-center gap-2 pl-1">
+          <button
+            type="button"
+            className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+            aria-label="Filter"
+          >
+            <Trash2 />
+          </button>
+
+          <button
+            type="button"
+            className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+            aria-label="Filter"
+          >
+            <Pause />
+          </button>
+
+          <span className="text-grey-700 px-2 text-sm font-medium tabular-nums">0:28</span>
+        </div>
+
+        {/* Center: Waveform SVG */}
+        <div className="flex-1 px-6">
+          <svg
+            className="text-primary-500 m-auto w-auto max-w-40"
+            viewBox="0 0 100 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            {/* Representative bars */}
+            <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+            <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+            <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+            <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
+            <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+            <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+            <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+            <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+            <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+            <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
+            <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+            <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
+            <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+            <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+            <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+            {/* Trailing dots */}
+            <circle cx="96" cy="12" r="1.5" className="fill-current" />
+            <circle cx="102" cy="12" r="1.5" className="fill-current" />
+          </svg>
+        </div>
+
+        {/* Right: Controls */}
+        <div className="flex items-center gap-2">
+          {/* Send Button */}
+          <button
+            type="button"
+            className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 p-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+            aria-label="Filter"
+          >
+            <ArrowUp />
+          </button>
+        </div>
+      </div>
+
       <div className="flex gap-8">
         {/* <!-- Versions Panel --> */}
-        <div className="border-grey-200 w-full max-w-md rounded-lg border-2 bg-white shadow-sm">
+        <div className="w-full max-w-md rounded-lg border-2 bg-white shadow-sm">
           {/* <!-- Header --> */}
-          <div className="border-grey-700 flex items-center justify-between border-b-2 px-6 py-4">
-            <h2 className="text-xl font-bold text-black">Versions</h2>
-            <div className="flex items-center gap-2">
+          <div className="border-grey-700 flex items-center justify-between border-b-2 px-3 py-4">
+            <h2 className="pl-2 text-lg font-bold text-black">Activity</h2>
+            <div className="flex gap-2">
               <button
                 type="button"
-                className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
-                aria-label="Filter"
+                className="hover:bg-grey-100 hover:text-grey-600 focus:outline-grey-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md text-black focus:outline-1 focus:outline-offset-2"
+                aria-label="Close"
               >
-                <XCircle />
+                <Filter className="h-5 w-5 flex-shrink-0" />
               </button>
               <button
                 type="button"
-                className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+                className="hover:bg-grey-100 hover:text-grey-600 focus:outline-grey-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md text-black focus:outline-1 focus:outline-offset-2"
                 aria-label="Close"
               >
-                <XCircle />
+                <X className="h-5 w-5 flex-shrink-0" />
               </button>
             </div>
           </div>
@@ -37,7 +113,7 @@ export default function MyCustomComponent5() {
           {/* <!-- Version List --> */}
           <div className="space-y-0">
             {/* <!-- New Version - Selected --> */}
-            <div className="border-primary-600 bg-primary-50 flex items-start gap-4 border-l-4 px-6 py-4">
+            <div className="border-primary-600 bg-primary-50 flex items-start gap-4 border-l-4 p-4">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-white">
                 <XCircle />
               </div>
@@ -51,7 +127,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Version 3.0 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
+            <div className="flex items-start gap-4 p-4">
               <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-md">
                 <svg
                   className="text-primary-600 h-5 w-5"
@@ -75,7 +151,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Version 2.3 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
+            <div className="flex items-start gap-4 p-4">
               <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-md">
                 <svg
                   className="text-primary-600 h-5 w-5"
@@ -174,7 +250,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Show More Button --> */}
-            <div className="px-6 py-4">
+            <div className="p-4">
               <button
                 type="button"
                 className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 w-full rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
@@ -184,7 +260,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Version 1.0 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
+            <div className="flex items-start gap-4 p-4">
               <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-md">
                 <svg
                   className="text-primary-600 h-5 w-5"
@@ -210,51 +286,25 @@ export default function MyCustomComponent5() {
         </div>
 
         {/* <!-- Activity Panel --> */}
-        <div className="border-grey-200 w-full max-w-md rounded-lg border-2 bg-white shadow-sm">
+        <div className="w-full max-w-md rounded-lg border-2 bg-white shadow-sm">
           {/* <!-- Header --> */}
-          <div className="border-grey-700 flex items-center justify-between border-b-2 px-6 py-4">
-            <h2 className="text-xl font-bold text-black">Activity</h2>
+          <div className="border-grey-700 flex items-center justify-between border-b-2 px-3 py-4">
+            <h2 className="pl-2 text-lg font-bold text-black">Activity</h2>
             <button
               type="button"
-              className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+              className="hover:bg-grey-100 hover:text-grey-600 focus:outline-grey-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md text-black focus:outline-1 focus:outline-offset-2"
               aria-label="Close"
             >
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <X className="h-5 w-5 flex-shrink-0" />
             </button>
           </div>
 
           {/* <!-- Activity List --> */}
           <div className="space-y-0">
             {/* <!-- Activity Item 1 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-50">
-                <svg
-                  className="h-5 w-5 text-amber-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100">
+                <XCircle />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-black">
@@ -262,108 +312,56 @@ export default function MyCustomComponent5() {
                   <span className="font-semibold">Draft</span> to{' '}
                   <span className="font-semibold">In Progress</span>
                 </p>
-                <p className="text-grey-500 mt-1 text-sm">19m ago</p>
+                <small className="mt-1">19m ago</small>
               </div>
             </div>
 
             {/* <!-- Activity Item 2 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
-              <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
-                <svg
-                  className="text-primary-600 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                  />
-                </svg>
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+              <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                <XCircle />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-black">
                   <span className="font-semibold">Monty Hayton</span> created the{' '}
                   <span className="font-semibold">Energy Charter Treaty</span>
                 </p>
-                <p className="text-grey-500 mt-1 text-sm">Yesterday</p>
+                <small className="mt-1">Yesterday</small>
               </div>
             </div>
 
             {/* <!-- Activity Item 3 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
-              <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
-                <svg
-                  className="text-primary-600 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                  />
-                </svg>
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+              <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                <XCircle />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-black">
                   <span className="font-semibold">Monty Hayton</span> edited the{' '}
                   <span className="font-semibold">Energy Charter Treaty</span>
                 </p>
-                <p className="text-grey-500 mt-1 text-sm">Yesterday</p>
+                <small className="mt-1">Yesterday</small>
               </div>
             </div>
 
             {/* <!-- Activity Item 4 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
-              <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
-                <svg
-                  className="text-primary-600 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                  />
-                </svg>
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+              <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                <XCircle />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-black">
                   <span className="font-semibold">Monty Hayton</span> change the title to
                   <span className="font-semibold">Energy Charter Treaty V2.0</span>
                 </p>
-                <p className="text-grey-500 mt-1 text-sm">Yesterday</p>
+                <small className="mt-1">Yesterday</small>
               </div>
             </div>
 
             {/* <!-- Activity Item 5 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50">
-                <svg
-                  className="h-5 w-5 text-emerald-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                  />
-                </svg>
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                <XCircle />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-black">
@@ -371,41 +369,28 @@ export default function MyCustomComponent5() {
                   <span className="font-semibold">Energy Charter Treaty V2.0</span> to the{' '}
                   <span className="font-semibold">Supply Chain Transparency</span>
                 </p>
-                <p className="text-grey-500 mt-1 text-sm">Yesterday</p>
+                <small className="mt-1">Yesterday</small>
               </div>
             </div>
 
             {/* <!-- Activity Item 6 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
-              <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
-                <svg
-                  className="text-primary-600 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                  />
-                </svg>
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+              <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                <XCircle />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-black">
                   <span className="font-semibold">Monty Hayton</span> moved the{' '}
                   <span className="font-semibold">Supply Chain Transparency</span>
                 </p>
-                <p className="text-grey-500 mt-1 text-sm">Yesterday</p>
+                <small className="mt-1">Yesterday</small>
               </div>
             </div>
 
             {/* <!-- Activity Item 7 --> */}
-            <div className="flex items-start gap-4 px-6 py-4">
-              <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
-                <XCircle className="text-primary-600 h-5 w-5" />
+            <div className="flex items-start gap-4 p-4">
+              <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                <XCircle />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm text-black">
@@ -413,7 +398,7 @@ export default function MyCustomComponent5() {
                   <span className="font-semibold">Energy Charter Treaty V2.0</span> to{' '}
                   <span className="font-semibold">Supply Chain Transparency</span>
                 </p>
-                <p className="text-grey-500 mt-1 text-sm">Yesterday</p>
+                <small className="mt-1">Yesterday</small>
               </div>
             </div>
           </div>
@@ -425,90 +410,11 @@ export default function MyCustomComponent5() {
       <hr />
       <hr />
 
-      <div className="p-8">
-        <nav aria-label="Progress">
-          <ol className="divide-grey-800 border-grey-800 flex divide-y rounded-lg border-2 md:flex md:divide-y-0">
-            <li className="relative md:flex md:flex-1">
-              <button type="button" className="group flex w-full items-center">
-                <span className="flex items-center px-6 py-4 text-sm font-medium">
-                  <span className="bg-primary-600 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full">
-                    <CheckCircle />
-                  </span>
-                  <span className="ml-4 flex flex-col">
-                    <span className="text-sm font-bold text-black">Job Details</span>
-                    <span className="text-grey-500 text-sm">Vitae sed mi luctus laoreet.</span>
-                  </span>
-                </span>
-              </button>
-              <div className="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
-                <svg
-                  className="text-grey-800 h-full w-full"
-                  viewBox="0 0 22 80"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 -2L20 40L0 82"
-                    vectorEffect="non-scaling-stroke"
-                    stroke="currentColor"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </li>
-
-            <li className="relative md:flex md:flex-1">
-              <button
-                type="button"
-                className="flex items-center px-6 py-4 text-sm font-medium"
-                aria-current="step"
-              >
-                <span className="border-primary-600 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2">
-                  <span className="text-primary-600">02</span>
-                </span>
-                <span className="ml-4 flex flex-col">
-                  <span className="text-primary-600 text-sm font-bold">Application form</span>
-                  <span className="text-grey-500 text-sm">Cursus semper viverra.</span>
-                </span>
-              </button>
-              <div className="absolute top-0 right-0 hidden h-full w-5 md:block" aria-hidden="true">
-                <svg
-                  className="text-grey-800 h-full w-full"
-                  viewBox="0 0 22 80"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 -2L20 40L0 82"
-                    vectorEffect="non-scaling-stroke"
-                    stroke="currentColor"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </li>
-
-            <li className="relative md:flex md:flex-1">
-              <button type="button" className="group flex items-center">
-                <span className="flex items-center px-6 py-4 text-sm font-medium">
-                  <span className="border-grey-700 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2">
-                    <span className="text-grey-500">03</span>
-                  </span>
-                  <span className="ml-4 flex flex-col">
-                    <span className="text-grey-600 text-sm font-bold">Preview</span>
-                    <span className="text-grey-500 text-sm">Penatibus eu quis ante.</span>
-                  </span>
-                </span>
-              </button>
-            </li>
-          </ol>
-        </nav>
-      </div>
-
-      <div>
-        <div className="max-w-md bg-white p-8">
+      <div className="flex overflow-hidden rounded-lg border-2 bg-white">
+        <div className="max-w-md border-r-2 p-8">
           <nav aria-label="Progress">
             <ol className="overflow-hidden">
+              <li className="relative pb-10">Hello</li>
               <li className="relative pb-10">
                 <div
                   className="bg-primary-600 absolute top-4 left-4 mt-0.5 -ml-px h-full w-0.5"
@@ -518,12 +424,12 @@ export default function MyCustomComponent5() {
                 <div className="group relative flex items-start">
                   <span className="flex h-9 items-center">
                     <span className="bg-primary-600 relative z-10 flex h-8 w-8 items-center justify-center rounded-full">
-                      <CheckCircle />
+                      <CheckCircle className="text-white" />
                     </span>
                   </span>
-                  <span className="ml-4 flex min-w-0 flex-col">
-                    <span className="text-sm font-bold text-black">Create account</span>
-                    <span className="text-grey-500 text-sm">Vitae sed mi luctus laoreet.</span>
+                  <span className="ml-4 flex min-w-0 flex-col text-left">
+                    <span className="text-sm font-bold text-black">Step 1</span>
+                    <small>Description of step 1.</small>
                   </span>
                 </div>
               </li>
@@ -540,11 +446,9 @@ export default function MyCustomComponent5() {
                       <span className="bg-primary-600 h-2.5 w-2.5 rounded-full"></span>
                     </span>
                   </span>
-                  <span className="ml-4 flex min-w-0 flex-col">
+                  <span className="ml-4 flex min-w-0 flex-col text-left">
                     <span className="text-primary-600 text-sm font-bold">Profile information</span>
-                    <span className="text-grey-500 text-sm">
-                      Cursus semper viverra facilisis et et some more.
-                    </span>
+                    <small>Cursus semper viverra facilisis et et some more.</small>
                   </span>
                 </div>
               </li>
@@ -558,9 +462,9 @@ export default function MyCustomComponent5() {
                   <span className="flex h-9 items-center" aria-hidden="true">
                     <span className="border-grey-300 relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-white"></span>
                   </span>
-                  <span className="ml-4 flex min-w-0 flex-col">
+                  <span className="ml-4 flex min-w-0 flex-col text-left">
                     <span className="text-grey-500 text-sm font-medium">Business information</span>
-                    <span className="text-grey-500 text-sm">Penatibus eu quis ante.</span>
+                    <small>Penatibus eu quis ante.</small>
                   </span>
                 </div>
               </li>
@@ -574,9 +478,9 @@ export default function MyCustomComponent5() {
                   <span className="flex h-9 items-center" aria-hidden="true">
                     <span className="border-grey-300 relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-white"></span>
                   </span>
-                  <span className="ml-4 flex min-w-0 flex-col">
+                  <span className="ml-4 flex min-w-0 flex-col text-left">
                     <span className="text-grey-500 text-sm font-medium">Theme</span>
-                    <span className="text-grey-500 text-sm">Faucibus nec enim leo et.</span>
+                    <small>Faucibus nec enim leo et.</small>
                   </span>
                 </div>
               </li>
@@ -586,16 +490,171 @@ export default function MyCustomComponent5() {
                   <span className="flex h-9 items-center" aria-hidden="true">
                     <span className="border-grey-300 relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-white"></span>
                   </span>
-                  <span className="ml-4 flex min-w-0 flex-col">
+                  <span className="ml-4 flex min-w-0 flex-col text-left">
                     <span className="text-grey-500 text-sm font-medium">Preview</span>
-                    <span className="text-grey-500 text-sm">
-                      Iusto et officia maiores porro ad non quas.
-                    </span>
+                    <small>Iusto et officia maiores porro ad non quas.</small>
                   </span>
                 </div>
               </li>
             </ol>
           </nav>
+        </div>
+        <div className="flex w-full flex-col">
+          <nav className="mb-4" aria-label="Progress">
+            <ol className="mb-4 flex divide-y border-b-2 bg-white px-4 md:flex md:divide-y-0">
+              <li className="relative md:flex md:flex-1">
+                <button type="button" className="group flex w-full items-center">
+                  <span className="flex items-center p-4 text-sm font-medium">
+                    <span className="bg-primary-600 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full">
+                      <CheckCircle className="text-white" />
+                    </span>
+                    <span className="ml-4 flex flex-col text-left">
+                      <span className="text-sm font-bold text-black">Job Details</span>
+                      <small>Vitae sed mi luctus laoreet.</small>
+                    </span>
+                  </span>
+                </button>
+                <div
+                  className="absolute top-0 right-0 hidden h-full w-5 md:block"
+                  aria-hidden="true"
+                >
+                  <svg
+                    className="text-grey-800 h-full w-full stroke-2"
+                    viewBox="0 0 22 80"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0 -2L20 40L0 82"
+                      vectorEffect="non-scaling-stroke"
+                      stroke="currentColor"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </li>
+
+              <li className="relative md:flex md:flex-1">
+                <button
+                  type="button"
+                  className="flex items-center p-4 text-sm font-medium"
+                  aria-current="step"
+                >
+                  <span className="border-primary-600 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2">
+                    <span className="text-primary-600">02</span>
+                  </span>
+                  <span className="ml-4 flex flex-col text-left">
+                    <span className="text-primary-600 text-sm font-bold">Application form</span>
+                    <small>Cursus semper viverra.</small>
+                  </span>
+                </button>
+                <div
+                  className="absolute top-0 right-0 hidden h-full w-5 md:block"
+                  aria-hidden="true"
+                >
+                  <svg
+                    className="text-grey-800 h-full w-full stroke-2"
+                    viewBox="0 0 22 80"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0 -2L20 40L0 82"
+                      vectorEffect="non-scaling-stroke"
+                      stroke="currentColor"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </li>
+
+              <li className="relative md:flex md:flex-1">
+                <button type="button" className="group flex items-center">
+                  <span className="flex items-center p-4 text-sm font-medium">
+                    <span className="border-grey-700 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2">
+                      <span className="text-grey-500">03</span>
+                    </span>
+                    <span className="ml-4 flex flex-col text-left">
+                      <span className="text-grey-600 text-sm font-bold">Preview</span>
+                      <small>Penatibus eu quis ante.</small>
+                    </span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </nav>
+          <h3 className="text-md p-4 font-semibold">Content</h3>
+          <div className="bg-grey-100 m-4 max-h-100 overflow-y-auto rounded-md border-2 p-8">
+            <p>
+              <strong>The standard Lorem Ipsum passage, used since the 1500s:</strong> "Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum."
+            </p>
+
+            <p>
+              <strong>
+                Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC:
+              </strong>{' '}
+              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+              laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+              architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+              sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+              voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit
+              amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut
+              labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
+              nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
+              commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+              esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+              nulla pariatur?"
+            </p>
+
+            <p>
+              <strong>1914 translation by H. Rackham:</strong> "But I must explain to you how all
+              this mistaken idea of denouncing pleasure and praising pain was born and I will give
+              you a complete account of the system, and expound the actual teachings of the great
+              explorer of the truth, the master-builder of human happiness. No one rejects,
+              dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
+              not know how to pursue pleasure rationally encounter consequences that are extremely
+              painful. Nor again is there anyone who loves or pursues or desires to obtain pain of
+              itself, because it is pain, but because occasionally circumstances occur in which toil
+              and pain can procure him some great pleasure. To take a trivial example, which of us
+              ever undertakes laborious physical exercise, except to obtain some advantage from it?
+              But who has any right to find fault with a man who chooses to enjoy a pleasure that
+              has no annoying consequences, or one who avoids a pain that produces no resultant
+              pleasure?"
+            </p>
+
+            <p>
+              <strong>
+                Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC:
+              </strong>{' '}
+              "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+              voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
+              occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+              mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
+              expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque
+              nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
+              assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis
+              debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+              molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut
+              reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
+              repellat."
+            </p>
+          </div>
+          <div className="mt-auto mb-0 p-4">
+            {/* Next — primary with icon */}
+            <button
+              type="button"
+              className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+            >
+              Next
+              <ArrowRight className="h-5 w-5 flex-shrink-0" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
