@@ -184,7 +184,7 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Moderate-impact: confirmation dialog */
 }
-;<div className="rounded-md border p-4">
+;<div className="border-grey-300 rounded-md border-2 bg-white p-4">
   <h3 className="font-semibold">Delete 3 items?</h3>
   <p className="text-grey-600 text-sm">This action cannot be undone.</p>
   <div className="mt-4 flex gap-2">
@@ -948,7 +948,7 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Icon + title */}
     <div className="flex items-center gap-3">
-      <div className="rounded-full bg-indigo-100 p-2">
+      <div className="bg-primary-100 rounded-full p-2">
         <Camera className="text-primary-600 h-6 w-6" aria-hidden="true" />
       </div>
       <h2 id="permission-title" className="text-lg font-bold sm:text-xl">
@@ -1069,9 +1069,9 @@ const Modal = ({ isOpen, onClose }) => {
       </p>
 
       {/* Permissions list */}
-      <div className="bg-grey-50 mt-3 space-y-2 rounded-md border p-3">
-        <p className="text-xs font-semibold text-slate-500 uppercase">This will allow us to:</p>
-        <ul className="space-y-1.5 text-sm text-slate-700">
+      <div className="bg-grey-50 border-grey-300 mt-3 space-y-2 rounded-md border-2 p-3">
+        <p className="text-grey-500 text-xs font-semibold uppercase">This will allow us to:</p>
+        <ul className="text-grey-700 space-y-1.5 text-sm">
           <li className="flex items-start gap-2">
             <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-600" aria-hidden="true" />
             <span>Send messages to channels</span>
@@ -1179,7 +1179,7 @@ const Modal = ({ isOpen, onClose }) => {
     {/* Preview content - scrollable */}
     <div className="max-h-96 overflow-y-auto p-4 sm:p-6">
       {/* Metadata */}
-      <div className="bg-grey-50 mb-4 space-y-1 rounded-md border p-3 text-sm">
+      <div className="bg-grey-50 border-grey-300 mb-4 space-y-1 rounded-md border-2 p-3 text-sm">
         <div className="flex justify-between">
           <span className="text-grey-600">Visibility:</span>
           <span className="font-semibold">All subscribers</span>
@@ -1409,7 +1409,7 @@ const Modal = ({ isOpen, onClose }) => {
 
     {/* Icon + title */}
     <div className="flex items-center gap-3">
-      <div className="rounded-full bg-indigo-100 p-2">
+      <div className="bg-primary-100 rounded-full p-2">
         <HelpCircle className="text-primary-600 h-6 w-6" aria-hidden="true" />
       </div>
       <h2 id="help-title" className="text-lg font-bold sm:text-xl">
@@ -1425,9 +1425,9 @@ const Modal = ({ isOpen, onClose }) => {
       </p>
 
       {/* Example */}
-      <div className="bg-grey-50 rounded-md border p-3">
-        <p className="text-xs font-semibold text-slate-500 uppercase">Example</p>
-        <p className="mt-1 text-sm text-slate-700">
+      <div className="bg-grey-50 border-grey-300 rounded-md border-2 p-3">
+        <p className="text-grey-500 text-xs font-semibold uppercase">Example</p>
+        <p className="text-grey-700 mt-1 text-sm">
           With a 1,000 requests/hour limit, you can make about 16 requests per minute.
         </p>
       </div>
@@ -1526,7 +1526,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
 
 **Action Rules:**
 
-- Primary button: Specific action verb (indigo-600)
+- Primary button: Specific action verb (primary-600)
 - Secondary button: "Cancel" (border only)
 - Button order: Cancel → Primary
 
@@ -1597,7 +1597,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
 
 **Action Rules:**
 
-- Single primary button (indigo-600)
+- Single primary button (primary-600)
 - Button text: "Got it", "OK", or "Close"
 - Button width: 50% width, right-aligned
 
@@ -1664,7 +1664,7 @@ These are simpler modal patterns for common use cases. They follow the same univ
 
 **Action Rules:**
 
-- Primary button: "Next" (indigo-600) or "Complete" on final step
+- Primary button: "Next" (primary-600) or "Complete" on final step
 - Secondary button: "Previous" (border only)
 - Tertiary button: "Cancel" (text only, left-aligned)
 
@@ -2023,13 +2023,13 @@ const AccessibleModal = ({ isOpen, onClose, title, children }) => {
 
 ```
 MODAL TYPE               PRIMARY BUTTON COLOR    FOCUS FIRST    BACKDROP DISMISS
-Confirm/Cancel           indigo-600              Primary        ✅
+Confirm/Cancel           primary-600              Primary        ✅
 Destructive              red-600                Secondary      ❌
-Error Recovery           indigo-600              Primary        ✅ (if safe)
-Permissions Request      indigo-600              Primary        ✅
-Tool Connection          indigo-600              Primary        ✅
-Preview Before Publish   indigo-600              Primary        ✅
-Unsaved Changes          indigo-600              Primary        ✅
+Error Recovery           primary-600              Primary        ✅ (if safe)
+Permissions Request      primary-600              Primary        ✅
+Tool Connection          primary-600              Primary        ✅
+Preview Before Publish   primary-600              Primary        ✅
+Unsaved Changes          primary-600              Primary        ✅
 Contextual Help          border only             Close button   ✅
 
 ESCAPE BEHAVIOR
@@ -2089,19 +2089,13 @@ ACCESSIBILITY REQUIREMENTS
 **🔴 COMMAND:** Apply `dark:border-grey-700 dark:bg-grey-900` for dark mode support.
 
 ```tsx
-<div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
-  <div className="flex items-start gap-4">
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20">
-      {/* Icon */}
-    </div>
-    <div className="min-w-0 flex-1">
-      <h3 className="text-lg font-bold text-black dark:text-gray-100">Title</h3>
-      <p className="text-grey-600 mt-1 text-sm dark:text-gray-400">Description</p>
-      <div className="mt-3 flex flex-wrap gap-2">{/* Badges */}</div>
-      <button className="mt-4">{/* Action */}</button>
-    </div>
-  </div>
-</div>
+<button
+  type="button"
+  className="focus:outline-primary-500 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 w-full rounded-lg border-2 bg-white p-4 text-left transition-all focus:outline focus:outline-1 focus:outline-offset-2 sm:p-6"
+>
+  <h3 className="text-base font-semibold text-black">Card Title</h3>
+  <small className="mt-1">Card description</small>
+</button>
 ```
 
 ---
@@ -2114,18 +2108,18 @@ ACCESSIBILITY REQUIREMENTS
 
 | Badge Type | Color Scheme                                                              | Use Case                       |
 | ---------- | ------------------------------------------------------------------------- | ------------------------------ |
-| Popular    | `bg-blue-50 text-blue-700` (dark: `bg-blue-900/40 text-blue-300`)         | High usage templates           |
+| Popular    | `bg-indigo-50 text-indigo-700` (dark: `bg-indigo-900/40 text-indigo-300`) | High usage templates           |
 | New        | `bg-green-50 text-green-700` (dark: `bg-green-900/40 text-green-300`)     | Recently added (< 30 days)     |
 | Enterprise | `bg-purple-50 text-purple-700` (dark: `bg-purple-900/40 text-purple-300`) | Advanced features, higher tier |
 | Beta       | `bg-amber-50 text-amber-700` (dark: `bg-amber-900/40 text-amber-300`)     | Experimental features          |
-| Capability | `bg-grey-100 text-gray-700` (dark: `bg-gray-800 text-gray-300`)           | Technical capabilities         |
+| Capability | `bg-grey-100 text-grey-700` (dark: `bg-grey-800 text-grey-300`)           | Technical capabilities         |
 
 **🔴 COMMAND:** Status badges (Popular, New, Enterprise, Beta) must appear before capability badges.
 
 **🔴 BOUNDARY:** Maximum 4 badges visible per card; use "+N more" indicator if exceeding limit.
 
 ```tsx
-<span className="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+<span className="rounded-full bg-indigo-50 px-2.5 py-0.5 text-xs font-medium text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
   Popular
 </span>
 ```
@@ -2134,9 +2128,9 @@ ACCESSIBILITY REQUIREMENTS
 
 #### Hover and Selection States
 
-**🔴 COMMAND:** Cards must show visual feedback on hover: border color changes to `indigo-500` and shadow appears.
+**🔴 COMMAND:** Cards must show visual feedback on hover: border color changes to `primary-500` and shadow appears.
 
-**🔴 COMMAND:** Selected cards display `border-indigo-500 border-2` with a checkmark icon in the top-right corner.
+**🔴 COMMAND:** Selected cards display `border-primary-600 border-2` with a checkmark icon in the top-right corner.
 
 **🟡 DIRECTIVE:** Use `transition-all` for smooth state changes between default, hover, and selected states.
 
@@ -2144,14 +2138,12 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Hover state */
 }
-;<div className="border-grey-300 rounded-lg border-2 bg-white p-6 transition-all hover:border-indigo-500 hover:shadow-md">
-  {/* Content */}
-</div>
+;<div className="border-grey-300 rounded-lg border-2 bg-white p-6">{/* Content */}</div>
 
 {
   /* Selected state */
 }
-;<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6 shadow-md">
+;<div className="border-primary-600 relative rounded-lg border-2 bg-white p-6">
   <div className="bg-primary-300 absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full">
     <Check className="h-4 w-4 text-white" />
   </div>
@@ -2169,16 +2161,16 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Use centered layout with `max-w-md mx-auto` for empty state content.
 
-**🔴 COMMAND:** Empty state heading uses `text-lg font-semibold`, description uses `text-sm text-grey-600`.
+**🔴 COMMAND:** Empty state heading uses `text-md font-medium text-black`, description uses `<small>` element.
 
 ```tsx
 <div className="flex min-h-[400px] items-center justify-center px-4 py-12">
   <div className="max-w-md text-center">
     <div className="bg-grey-100 mx-auto flex h-16 w-16 items-center justify-center rounded-full">
-      <Search className="h-8 w-8 text-gray-400" />
+      <Search className="text-grey-400 h-8 w-8" />
     </div>
-    <h3 className="mt-4 text-lg font-semibold text-black">No templates found</h3>
-    <p className="text-grey-600 mt-2 text-sm">Try adjusting your filters or search terms.</p>
+    <h3 className="text-md mt-4 font-medium text-black">No templates found</h3>
+    <small className="mt-2">Try adjusting your filters or search terms.</small>
     <button className="mt-6">Clear all filters</button>
   </div>
 </div>
@@ -2202,7 +2194,7 @@ ACCESSIBILITY REQUIREMENTS
     <div className="border-b px-6 py-4">
       <div className="flex items-start justify-between">
         <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-50">
+          <div className="bg-primary-50 flex h-12 w-12 items-center justify-center rounded-lg">
             {/* Icon */}
           </div>
           <div>
@@ -2216,21 +2208,25 @@ ACCESSIBILITY REQUIREMENTS
       </div>
     </div>
 
-    <div className="border-b">
-      <nav className="flex gap-4 px-6">
-        <button className="text-primary-600 border-b-2 border-indigo-600 px-1 py-3 text-sm font-semibold">
-          Overview
-        </button>
-        <button className="border-b-2 border-transparent px-1 py-3 text-sm font-semibold text-gray-500">
-          Features
-        </button>
-      </nav>
-    </div>
+    <nav className="border-grey-700 flex gap-4 border-b-2 px-6" aria-label="Tabs">
+      <button
+        type="button"
+        className="border-primary-600 text-primary-600 border-b-4 px-1 py-4 text-sm font-semibold"
+      >
+        Overview
+      </button>
+      <button
+        type="button"
+        className="text-grey-600 hover:text-grey-400 hover:text-grey-700 border-b-2 border-transparent px-1 py-4 text-sm font-medium"
+      >
+        Features
+      </button>
+    </nav>
 
     <div className="max-h-[500px] overflow-y-auto px-6 py-4">{/* Tab content */}</div>
 
     <div className="flex items-center justify-between border-t px-6 py-4">
-      <button className="text-sm font-semibold text-gray-700">View documentation</button>
+      <button className="text-grey-700 text-sm font-semibold">View documentation</button>
       <div className="flex gap-3">
         <button>Preview demo</button>
         <button>Use this template</button>
@@ -2259,12 +2255,12 @@ ACCESSIBILITY REQUIREMENTS
 <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
   <div className="relative flex-1 sm:max-w-xs">
     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-      <Search className="h-4 w-4 text-gray-400" />
+      <Search className="text-grey-400 h-4 w-4" />
     </div>
     <input
       type="text"
       placeholder="Search templates…"
-      className="block w-full rounded-md border py-2 pr-3 pl-10 text-sm"
+      className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 block w-full rounded-md border-2 py-2 pr-3 pl-10 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
     />
   </div>
   <div className="flex gap-3">
@@ -2290,7 +2286,7 @@ ACCESSIBILITY REQUIREMENTS
 
 ```tsx
 <div className="mb-4">
-  <p className="text-grey-600 text-sm dark:text-gray-400">Showing 12 of 48 templates</p>
+  <small className="dark:text-grey-400">Showing 12 of 48 templates</small>
 </div>
 ```
 
@@ -2356,11 +2352,11 @@ ACCESSIBILITY REQUIREMENTS
   /* Grid List Pattern - Ref: Tailwind UI Grid Lists */
 }
 ;<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  <div className="rounded-lg border bg-white p-6 hover:border-indigo-500">
+  <div className="border-grey-300 rounded-lg border-2 bg-white p-6">
     <div className="flex items-baseline gap-2">
-      <h3 className="text-lg font-bold">Inbound Support</h3>
+      <h3 className="text-base font-semibold text-black">Inbound Support</h3>
     </div>
-    <p className="text-grey-600 mt-1 text-sm">Handles FAQs and routing.</p>
+    <small className="mt-1">Handles FAQs and routing.</small>
   </div>
 </div>
 ```
@@ -2378,7 +2374,7 @@ ACCESSIBILITY REQUIREMENTS
 
 #### Step Indicator Pattern
 
-**🔴 COMMAND:** Step indicators must show three states: completed (checkmark + green-600), current (number + indigo-600), upcoming (number + gray-400).
+**🔴 COMMAND:** Step indicators must show three states: completed (checkmark + green-600), current (number + primary-600), upcoming (number + gray-400).
 
 **🔴 COMMAND:** Display "X of Y steps" in page header using `text-sm text-grey-600`.
 
@@ -2396,24 +2392,24 @@ ACCESSIBILITY REQUIREMENTS
         <Check className="h-5 w-5 text-white" />
       </div>
       <span className="text-sm font-medium text-green-600">Setup</span>
-      <ChevronRight className="h-4 w-4 text-gray-400" />
+      <ChevronRight className="text-grey-400 h-4 w-4" />
     </li>
 
     {/* Current step */}
     <li className="flex items-center gap-2">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-indigo-600 bg-white">
+      <div className="border-primary-600 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 bg-white">
         <span className="text-primary-600 text-sm font-semibold">2</span>
       </div>
       <span className="text-primary-600 text-sm font-semibold">Voice Settings</span>
-      <ChevronRight className="h-4 w-4 text-gray-400" />
+      <ChevronRight className="text-grey-400 h-4 w-4" />
     </li>
 
     {/* Upcoming step */}
     <li className="flex items-center gap-2">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-gray-300 bg-white">
-        <span className="text-sm font-medium text-gray-500">3</span>
+      <div className="border-grey-300 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 bg-white">
+        <span className="text-grey-500 text-sm font-medium">3</span>
       </div>
-      <span className="text-sm font-medium text-gray-500">Review</span>
+      <span className="text-grey-500 text-sm font-medium">Review</span>
     </li>
   </ol>
 </nav>
@@ -2425,7 +2421,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Progress bar must reflect completion percentage based on step count.
 
-**🔴 COMMAND:** Use `h-2 rounded-full` for progress bar container with `bg-gray-200` background.
+**🔴 COMMAND:** Use `h-2 rounded-full` for progress bar container with `bg-grey-200` background.
 
 **🔴 COMMAND:** Progress fill uses `bg-primary-300` with smooth transition animation.
 
@@ -2435,10 +2431,10 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div className="mb-8">
   <div className="mb-2 flex items-center justify-between">
-    <span className="text-sm font-medium text-gray-700">Step 2 of 4</span>
-    <span className="text-sm font-medium text-gray-700">50% complete</span>
+    <span className="text-grey-700 text-sm font-medium">Step 2 of 4</span>
+    <span className="text-grey-700 text-sm font-medium">50% complete</span>
   </div>
-  <div className="h-2 overflow-hidden rounded-full bg-gray-200">
+  <div className="bg-grey-200 h-2 overflow-hidden rounded-full">
     <div
       className="bg-primary-300 h-full rounded-full transition-all duration-300"
       style={{ width: '50%' }}
@@ -2463,12 +2459,14 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Error Summary */
 }
-;<div className="mb-6 rounded-lg border border-red-600 bg-red-50 p-4">
-  <div className="flex gap-3">
-    <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
-    <div>
-      <h3 className="text-sm font-semibold text-red-800">Please fix the following errors:</h3>
-      <ul className="mt-2 space-y-1 text-sm text-red-700">
+;<div className="mb-6 rounded-lg border-2 bg-red-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertCircle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Please fix the following errors:</h3>
+      <ul className="mt-2 space-y-1 text-sm">
         <li>• Agent name is required</li>
         <li>• Voice language must be selected</li>
       </ul>
@@ -2482,7 +2480,7 @@ ACCESSIBILITY REQUIREMENTS
 ;<div>
   <label className="block text-sm font-medium text-black">Agent Name</label>
   <input
-    className="mt-1 block w-full rounded-md border border-red-600 bg-white px-3 py-2 text-sm"
+    className="focus:outline-primary-500 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 mt-1 block w-full rounded-md border-2 border-red-600 bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
     aria-invalid="true"
     aria-describedby="name-error"
   />
@@ -2564,7 +2562,7 @@ ACCESSIBILITY REQUIREMENTS
 ;<div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
   <button
     type="button"
-    className="hover:bg-grey-50 order-2 rounded-md px-4 py-2 text-sm font-semibold text-gray-700 sm:order-1"
+    className="hover:bg-grey-50 text-grey-700 order-2 rounded-md px-4 py-2 text-sm font-semibold sm:order-1"
   >
     Cancel
   </button>
@@ -2572,7 +2570,7 @@ ACCESSIBILITY REQUIREMENTS
   <div className="order-1 flex gap-3 sm:order-2">
     <button
       type="button"
-      className="flex-1 rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold sm:flex-initial"
+      className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 flex-1 rounded-md border-2 px-4 py-2 text-sm font-semibold text-black focus:outline focus:outline-1 focus:outline-offset-2 sm:flex-initial"
     >
       Previous
     </button>
@@ -2606,7 +2604,7 @@ ACCESSIBILITY REQUIREMENTS
     <span className="font-medium text-black">Step 2 of 4:</span>
     <span className="text-grey-600">Voice Settings</span>
   </div>
-  <div className="mt-2 h-1 overflow-hidden rounded-full bg-gray-200">
+  <div className="bg-grey-200 mt-2 h-1 overflow-hidden rounded-full">
     <div className="bg-primary-300 h-full transition-all" style={{ width: '50%' }} />
   </div>
 </div>
@@ -2715,7 +2713,7 @@ ACCESSIBILITY REQUIREMENTS
     </div>
     <dl className="space-y-3">
       <div>
-        <dt className="text-sm font-medium text-gray-500">Agent Name</dt>
+        <dt className="text-grey-500 text-sm font-medium">Agent Name</dt>
         <dd className="mt-1 text-sm text-black">Customer Support Agent</dd>
       </div>
     </dl>
@@ -2937,9 +2935,9 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Advanced section must appear immediately below the toggle with smooth transition animation.
 
-**🔴 COMMAND:** Advanced settings container uses lighter background: `bg-grey-50 border border-gray-200 rounded-lg p-6`.
+**🔴 COMMAND:** Advanced settings container uses lighter background: `bg-grey-50 border border-grey-200 rounded-lg p-6`.
 
-**🔴 COMMAND:** Advanced setting labels use `text-sm font-medium text-black` with helper text in `text-sm text-gray-500`.
+**🔴 COMMAND:** Advanced setting labels use `text-sm font-medium text-black` with helper text in `text-sm text-grey-500`.
 
 **🟡 DIRECTIVE:** Group advanced settings by technical complexity or user persona (curious vs. cautious users).
 
@@ -2950,13 +2948,13 @@ ACCESSIBILITY REQUIREMENTS
 ;<div className="border-grey-300 bg-grey-50 mt-4 overflow-hidden rounded-lg border-2 p-6">
   <div className="mb-4">
     <h4 className="text-sm font-semibold text-black">Advanced LLM Parameters</h4>
-    <p className="mt-1 text-sm text-gray-500">Fine-tune model behavior for specific use cases</p>
+    <p className="text-grey-500 mt-1 text-sm">Fine-tune model behavior for specific use cases</p>
   </div>
 
   <div className="space-y-4">
     <div>
       <label className="block text-sm font-medium text-black">Temperature</label>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="text-grey-500 mt-1 text-sm">
         Controls randomness. Lower values make responses more focused and deterministic.
       </p>
       <input
@@ -2971,7 +2969,7 @@ ACCESSIBILITY REQUIREMENTS
 
     <div>
       <label className="block text-sm font-medium text-black">Max Tokens</label>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="text-grey-500 mt-1 text-sm">
         Maximum length of the response in tokens (roughly 4 characters per token)
       </p>
       <input
@@ -2988,7 +2986,7 @@ ACCESSIBILITY REQUIREMENTS
 
 #### Modified State Indicators
 
-**🔴 COMMAND:** Advanced parameters modified from defaults must show indigo-600 dot indicator next to label.
+**🔴 COMMAND:** Advanced parameters modified from defaults must show primary-600 dot indicator next to label.
 
 **🔴 COMMAND:** Display "Reset to default" link button next to modified fields using `text-sm text-grey-600`.
 
@@ -3004,7 +3002,7 @@ ACCESSIBILITY REQUIREMENTS
     <div className="bg-primary-300 h-2 w-2 rounded-full" />
   </div>
   <div className="mt-1 flex items-center justify-between">
-    <p className="text-sm text-gray-500">Controls response randomness</p>
+    <p className="text-grey-500 text-sm">Controls response randomness</p>
     <button className="text-grey-600 text-sm font-medium hover:text-black">Reset to default</button>
   </div>
   <input
@@ -3023,7 +3021,7 @@ ACCESSIBILITY REQUIREMENTS
 >
   <ChevronRight className="h-4 w-4" />
   Show advanced settings
-  <span className="text-primary-700 rounded-full bg-indigo-100 px-2 py-0.5 text-xs font-medium">
+  <span className="text-primary-700 bg-primary-100 rounded-full px-2 py-0.5 text-xs font-medium">
     3 modified
   </span>
 </button>
@@ -3047,7 +3045,7 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div>
   <label className="block text-sm font-medium text-black">Top P (Nucleus Sampling)</label>
-  <div className="mt-1 text-sm text-gray-500">
+  <div className="text-grey-500 mt-1 text-sm">
     <p>Controls diversity by limiting token selection to top probability mass.</p>
     <button
       className="text-primary-600 hover:text-primary-700 mt-1 text-sm font-semibold"
@@ -3095,13 +3093,13 @@ ACCESSIBILITY REQUIREMENTS
     <label className="block text-sm font-medium text-black">Frequency Penalty</label>
     <button
       type="button"
-      className="hover:text-grey-600 flex h-4 w-4 items-center justify-center rounded-full text-gray-400"
+      className="hover:text-grey-600 text-grey-400 flex h-4 w-4 items-center justify-center rounded-full"
       aria-label="More information about frequency penalty"
     >
       <Info className="h-4 w-4" />
     </button>
   </div>
-  <p className="mt-1 text-sm text-gray-500">Reduces likelihood of repeating the same phrases</p>
+  <p className="text-grey-500 mt-1 text-sm">Reduces likelihood of repeating the same phrases</p>
   <input
     type="number"
     step="0.1"
@@ -3141,7 +3139,7 @@ ACCESSIBILITY REQUIREMENTS
     <div className="space-y-4">{/* Parameters */}</div>
   </div>
 
-  <div className="border-t border-gray-200" />
+  <div className="border-grey-200 border-t" />
 
   {/* Category 2 */}
   <div>
@@ -3169,7 +3167,7 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div className="mb-6">
   <label className="block text-sm font-medium text-black">Configuration Preset</label>
-  <p className="mt-1 text-sm text-gray-500">
+  <p className="text-grey-500 mt-1 text-sm">
     Choose a preset or customize individual parameters below
   </p>
   <select
@@ -3199,15 +3197,18 @@ ACCESSIBILITY REQUIREMENTS
 {
   /* Risky parameter with warning */
 }
-;<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
-  <div className="flex gap-3">
-    <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
-    <div className="min-w-0 flex-1">
-      <label className="block text-sm font-semibold text-amber-900">Disable Safety Filters</label>
-      <p className="mt-1 text-sm text-amber-700">
-        Removing safety filters may result in inappropriate responses. Only disable for controlled
-        testing environments.
-      </p>
+;<div className="rounded-lg border-2 bg-amber-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertTriangle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Disable Safety Filters</h3>
+      <div className="mt-2 text-sm">
+        <p>
+          Removing safety filters may result in inappropriate responses. Only disable for controlled
+          testing environments.
+        </p>
       <div className="mt-3 flex items-center gap-2">
         <input type="checkbox" id="disable-safety" className="rounded-md" />
         <label htmlFor="disable-safety" className="text-sm font-medium text-amber-900">
@@ -3244,7 +3245,7 @@ ACCESSIBILITY REQUIREMENTS
     <ChevronRight className="h-4 w-4" />
     Show advanced settings
   </button>
-  <kbd className="bg-grey-50 text-grey-600 rounded border border-gray-300 px-2 py-0.5 font-mono text-xs">
+  <kbd className="bg-grey-50 text-grey-600 border-grey-300 rounded border px-2 py-0.5 font-mono text-xs">
     ⌘⇧A
   </kbd>
 </div>
@@ -3362,7 +3363,7 @@ ACCESSIBILITY REQUIREMENTS
 
 #### Visual Treatment of Terms
 
-**🔴 COMMAND:** Glossary terms must use dotted underline with `border-b-2 border-dotted border-gray-400` styling.
+**🔴 COMMAND:** Glossary terms must use dotted underline with `border-b-2 border-dotted border-grey-400` styling.
 
 **🔴 COMMAND:** Term text color uses `text-black` (not link color) to distinguish from navigation links.
 
@@ -3376,7 +3377,7 @@ ACCESSIBILITY REQUIREMENTS
   The agent uses{' '}
   <button
     type="button"
-    className="cursor-help border-b-2 border-dotted border-gray-400 text-black hover:border-gray-600"
+    className="border-grey-400 hover:border-grey-600 cursor-help border-b-2 border-dotted text-black"
     onClick={() => showTooltip('temperature')}
   >
     temperature
@@ -3391,7 +3392,7 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Tooltip appears on hover (desktop) with 200ms delay, on click/tap (mobile) with immediate display.
 
-**🔴 COMMAND:** Tooltip container uses `bg-gray-900 text-white rounded-md px-3 py-2 text-sm` with max width of `max-w-xs`.
+**🔴 COMMAND:** Tooltip container uses `bg-grey-900 text-white rounded-md px-3 py-2 text-sm` with max width of `max-w-xs`.
 
 **🔴 COMMAND:** Position tooltip above term by default; adjust to below if insufficient space above.
 
@@ -3403,14 +3404,14 @@ ACCESSIBILITY REQUIREMENTS
 }
 ;<div
   role="tooltip"
-  className="absolute z-50 max-w-xs rounded-md bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
+  className="bg-grey-900 absolute z-50 max-w-xs rounded-md px-3 py-2 text-sm text-white"
 >
   <p>
     Controls randomness in responses. Lower values produce more focused output; higher values
     increase creativity.
   </p>
   {/* Arrow */}
-  <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-gray-900" />
+  <div className="bg-grey-900 absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45" />
 </div>
 ```
 
@@ -3472,7 +3473,7 @@ increase cost."
 }
 ;<div
   role="tooltip"
-  className="absolute z-50 max-w-xs rounded-md bg-gray-900 px-3 py-2 text-sm text-white shadow-lg"
+  className="bg-grey-900 absolute z-50 max-w-xs rounded-md px-3 py-2 text-sm text-white"
 >
   <p>
     Reduces likelihood of repeating tokens that have already appeared. Range: -2.0 to 2.0. Higher
@@ -3482,7 +3483,7 @@ increase cost."
     href="https://docs.example.com/frequency-penalty"
     target="_blank"
     rel="noopener noreferrer"
-    className="mt-2 inline-flex items-center gap-1 text-indigo-300 hover:text-indigo-200"
+    className="text-primary-300 hover:text-primary-200 mt-2 inline-flex items-center gap-1"
   >
     Learn more about frequency penalty
     <ExternalLink className="h-3 w-3" />
@@ -3534,7 +3535,7 @@ increase cost."
 {
   /* Terminology overlay - for definitions */
 }
-;<span className="cursor-help border-b-2 border-dotted border-gray-400 text-black">
+;<span className="border-grey-400 cursor-help border-b-2 border-dotted text-black">
   temperature
 </span>
 
@@ -3543,7 +3544,7 @@ increase cost."
 }
 ;<div className="flex items-center gap-2">
   <label className="text-sm font-medium text-black">Response Delay</label>
-  <button className="hover:text-grey-600 flex h-4 w-4 items-center justify-center text-gray-400">
+  <button className="hover:text-grey-600 text-grey-400 flex h-4 w-4 items-center justify-center">
     <Info className="h-4 w-4" />
   </button>
 </div>
@@ -3565,7 +3566,7 @@ increase cost."
 }
 ;<button
   type="button"
-  className="inline-block min-h-[44px] border-b-2 border-dotted border-gray-400 py-2 text-black"
+  className="border-grey-400 inline-block min-h-[44px] border-b-2 border-dotted py-2 text-black"
   onClick={() => setActiveTooltip('temperature')}
 >
   temperature
@@ -3574,9 +3575,9 @@ increase cost."
 {
   /* Mobile tooltip with close button */
 }
-;<div className="fixed inset-x-4 bottom-4 z-50 rounded-lg bg-gray-900 p-4 text-sm text-white shadow-xl sm:hidden">
+;<div className="bg-grey-900 fixed inset-x-4 bottom-4 z-50 rounded-lg p-4 text-sm text-white shadow-xl sm:hidden">
   <button
-    className="absolute top-2 right-2 rounded-md p-1 hover:bg-gray-800"
+    className="hover:bg-grey-800 absolute top-2 right-2 rounded-md p-1"
     onClick={() => setActiveTooltip(null)}
   >
     <X className="h-4 w-4" />
@@ -3612,7 +3613,7 @@ increase cost."
         onClick={() => toggleTerm('temperature')}
       >
         <span className="text-sm font-semibold text-black">Temperature</span>
-        <ChevronDown className="h-4 w-4 text-gray-500" />
+        <ChevronDown className="text-grey-500 h-4 w-4" />
       </button>
       {expandedTerm === 'temperature' && (
         <p className="text-grey-600 mt-2 text-sm">
@@ -3642,7 +3643,7 @@ increase cost."
 }
 ;<button
   type="button"
-  className="cursor-help border-b-2 border-dotted border-gray-400 text-black hover:border-gray-600 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
+  className="border-grey-400 hover:border-grey-600 focus:outline-primary-500 cursor-help border-b-2 border-dotted text-black focus:outline focus:outline-2 focus:outline-offset-2"
   onFocus={() => showTooltip('temperature')}
   onBlur={() => hideTooltip()}
   onKeyDown={(e) => e.key === 'Escape' && hideTooltip()}
@@ -3697,7 +3698,7 @@ increase cost."
   role="button"
   aria-describedby="tooltip-temperature"
   aria-label="Definition for temperature"
-  className="border-b-2 border-dotted border-gray-400 text-black cursor-help"
+  className="border-b-2 border-dotted border-grey-400 text-black cursor-help"
 >
   temperature
 </button>
@@ -3706,7 +3707,7 @@ increase cost."
   id="tooltip-temperature"
   role="tooltip"
   aria-live="polite"
-  className="absolute z-50 max-w-xs rounded-md bg-gray-900 px-3 py-2 text-sm text-white"
+  className="absolute z-50 max-w-xs rounded-md bg-grey-900 px-3 py-2 text-sm text-white"
 >
   Controls randomness in responses. Lower values produce more focused output.
 </div>
@@ -3819,7 +3820,7 @@ increase cost."
     <AlertTriangle className="h-5 w-5 shrink-0 text-red-600" />
     <div className="min-w-0 flex-1">
       <div className="flex items-center gap-2">
-        <h3 className="text-lg font-bold text-black">Delete Data API</h3>
+        <h3 className="text-base font-semibold text-black">Delete Data API</h3>
         <span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-700">
           High Risk
         </span>
@@ -3852,11 +3853,11 @@ increase cost."
 
 **🟡 DIRECTIVE:** Display cost implications as "~$X per 1k calls" in card footer.
 
-**🔴 COMMAND:** Use `text-sm text-gray-500` for cost information.
+**🔴 COMMAND:** Use `text-sm text-grey-500` for cost information.
 
 ```tsx
 <div className="mt-4 border-t pt-4">
-  <p className="text-sm text-gray-500">Estimated cost: ~$2.50 per 1k calls</p>
+  <p className="text-grey-500 text-sm">Estimated cost: ~$2.50 per 1k calls</p>
 </div>
 ```
 
@@ -3866,13 +3867,13 @@ increase cost."
 
 **🔴 COMMAND:** Selected tools must show checkmark icon in top-right corner.
 
-**🔴 COMMAND:** Use `border-indigo-500 border-2` for selected state.
+**🔴 COMMAND:** Use `border-primary-600 border-2` for selected state.
 
 ```tsx
 {
   /* Selected tool card */
 }
-;<div className="relative rounded-lg border-2 border-indigo-500 bg-white p-6">
+;<div className="border-primary-600 relative rounded-lg border-2 bg-white p-6">
   <div className="bg-primary-300 absolute top-4 right-4 flex h-6 w-6 items-center justify-center rounded-full">
     <Check className="h-4 w-4 text-white" />
   </div>
@@ -3892,12 +3893,12 @@ increase cost."
 <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
   <div className="relative flex-1 sm:max-w-xs">
     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-      <Search className="h-4 w-4 text-gray-400" />
+      <Search className="text-grey-400 h-4 w-4" />
     </div>
     <input
       type="text"
       placeholder="Search tools…"
-      className="block w-full rounded-md border py-2 pr-3 pl-10 text-sm"
+      className="focus:outline-primary-500 border-grey-600 placeholder-grey-400 placeholder-grey-500 focus:outline-primary-600 block w-full rounded-md border-2 py-2 pr-3 pl-10 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
     />
   </div>
   <select className="text-md block rounded-md border-2 px-4 py-2 text-sm font-semibold">
@@ -3920,7 +3921,7 @@ increase cost."
 {
   /* Dependent tool warning */
 }
-;<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
+;<div className="rounded-lg border-2 bg-amber-400 p-4 text-black">
   <div className="flex gap-3">
     <AlertCircle className="h-5 w-5 shrink-0 text-amber-600" />
     <div>
@@ -3993,7 +3994,7 @@ increase cost."
 | Node Type | Visual Treatment                       | Use Case              |
 | --------- | -------------------------------------- | --------------------- |
 | Start     | Green-600 circle with "Start" label    | Entry point           |
-| Decision  | Diamond shape with indigo-600 border   | Conditional branching |
+| Decision  | Diamond shape with primary-600 border  | Conditional branching |
 | Action    | Rounded rectangle with gray-200 border | Process step          |
 | End       | Red-600 circle with "End" label        | Exit point            |
 
@@ -4008,7 +4009,7 @@ increase cost."
 {
   /* Decision node */
 }
-;<div className="flex h-16 w-16 rotate-45 items-center justify-center border-2 border-indigo-600 bg-white">
+;<div className="border-primary-600 flex h-16 w-16 rotate-45 items-center justify-center border-2 bg-white">
   <span className="text-primary-600 -rotate-45 text-xs font-medium">User intent?</span>
 </div>
 
@@ -4031,7 +4032,7 @@ increase cost."
 
 #### Connection Line Styles
 
-**🔴 COMMAND:** Primary path uses solid indigo-500 connections.
+**🔴 COMMAND:** Primary path uses solid primary-500 connections.
 
 **🔴 COMMAND:** Fallback paths use dashed amber-500 connections.
 
@@ -4043,7 +4044,7 @@ increase cost."
 {
   /* Primary path connection */
 }
-;<svg className="text-indigo-500">
+;<svg className="text-primary-500">
   <path d="M 0 0 L 100 0" stroke="currentColor" strokeWidth="2" fill="none" />
 </svg>
 
@@ -4075,7 +4076,7 @@ increase cost."
 
 ```tsx
 <div className="relative">
-  <svg className="text-indigo-500">
+  <svg className="text-primary-500">
     <path d="M 0 0 L 100 0" stroke="currentColor" strokeWidth="2" fill="none" />
   </svg>
   <span className="text-primary-600 absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-white px-1.5 py-0.5 text-xs font-medium">
@@ -4093,12 +4094,15 @@ increase cost."
 **🔴 COMMAND:** Loop warnings use amber-50 background with amber-600 border.
 
 ```tsx
-<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
-  <div className="flex gap-3">
-    <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
-    <div>
-      <p className="text-sm font-semibold text-amber-900">Potential infinite loop detected</p>
-      <p className="mt-1 text-sm text-amber-700">
+<div className="rounded-lg border-2 bg-amber-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertTriangle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Potential infinite loop detected</h3>
+      <div className="mt-2 text-sm">
+        <p>
         Decision node "User intent?" connects back to itself without exit condition.
       </p>
     </div>
@@ -4120,10 +4124,14 @@ increase cost."
 {
   /* Validation error on node */
 }
-;<div className="rounded-lg border-2 border-red-600 bg-red-50 px-4 py-3">
-  <div className="flex items-center gap-2">
-    <AlertCircle className="h-4 w-4 text-red-600" />
-    <p className="text-sm font-medium text-red-900">No connection to end node</p>
+;<div className="rounded-lg border-2 bg-red-400 px-4 py-3 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertCircle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <p className="text-sm font-medium">No connection to end node</p>
+    </div>
   </div>
 </div>
 ```
@@ -4189,9 +4197,9 @@ increase cost."
 
 **🔴 COMMAND:** User messages align left with gray-100 background.
 
-**🔴 COMMAND:** Agent messages align right with indigo-50 background.
+**🔴 COMMAND:** Agent messages align right with primary-50 background.
 
-**🔴 COMMAND:** Timestamps use `text-xs text-gray-500` below each message.
+**🔴 COMMAND:** Timestamps use `text-xs text-grey-500` below each message.
 
 ```tsx
 {
@@ -4200,7 +4208,7 @@ increase cost."
 ;<div className="flex justify-start">
   <div className="bg-grey-100 max-w-[80%] rounded-lg px-4 py-2">
     <p className="text-sm text-black">Hello, I need help with my order.</p>
-    <p className="mt-1 text-xs text-gray-500">10:23:45 AM</p>
+    <p className="text-grey-500 mt-1 text-xs">10:23:45 AM</p>
   </div>
 </div>
 
@@ -4208,9 +4216,9 @@ increase cost."
   /* Agent message */
 }
 ;<div className="flex justify-end">
-  <div className="max-w-[80%] rounded-lg bg-indigo-50 px-4 py-2">
+  <div className="bg-primary-50 max-w-[80%] rounded-lg px-4 py-2">
     <p className="text-sm text-black">I'd be happy to help with your order.</p>
-    <p className="mt-1 text-xs text-gray-500">10:23:47 AM</p>
+    <p className="text-grey-500 mt-1 text-xs">10:23:47 AM</p>
   </div>
 </div>
 ```
@@ -4231,7 +4239,7 @@ increase cost."
   <div className="bg-primary-300 flex h-8 w-8 shrink-0 items-center justify-center rounded-full">
     <span className="text-xs font-semibold text-white">AI</span>
   </div>
-  <div className="max-w-[80%] rounded-lg bg-indigo-50 px-4 py-2">
+  <div className="bg-primary-50 max-w-[80%] rounded-lg px-4 py-2">
     <p className="text-sm text-black">Message content</p>
   </div>
 </div>
@@ -4241,16 +4249,16 @@ increase cost."
 
 #### Timestamp Display
 
-**🔴 COMMAND:** Timestamps use `text-xs text-gray-500` below each message.
+**🔴 COMMAND:** Timestamps use `text-xs text-grey-500` below each message.
 
 **🟡 DIRECTIVE:** Show relative time (e.g., "2s ago") for recent messages, absolute time for older messages.
 
 ```tsx
-;<p className="mt-1 text-xs text-gray-500">10:23:45 AM</p>
+;<p className="text-grey-500 mt-1 text-xs">10:23:45 AM</p>
 {
   /* Or relative */
 }
-;<p className="mt-1 text-xs text-gray-500">2 seconds ago</p>
+;<p className="text-grey-500 mt-1 text-xs">2 seconds ago</p>
 ```
 
 ---
@@ -4274,7 +4282,7 @@ increase cost."
   >
     <span className="text-sm font-semibold text-black">Debug Information</span>
     <ChevronDown
-      className={`h-4 w-4 text-gray-500 transition-transform ${debugOpen ? 'rotate-180' : ''}`}
+      className={`text-grey-500 h-4 w-4 transition-transform ${debugOpen ? 'rotate-180' : ''}`}
     />
   </button>
 
@@ -4282,8 +4290,8 @@ increase cost."
     <div className="bg-grey-50 border-t px-4 py-3">
       <div className="space-y-2">
         <div>
-          <p className="text-xs font-medium text-gray-500">Variables</p>
-          <pre className="mt-1 text-sm text-gray-700">{JSON.stringify(variables, null, 2)}</pre>
+          <p className="text-grey-500 text-xs font-medium">Variables</p>
+          <pre className="text-grey-700 mt-1 text-sm">{JSON.stringify(variables, null, 2)}</pre>
         </div>
       </div>
     </div>
@@ -4301,10 +4309,10 @@ increase cost."
 
 ```tsx
 <div className="bg-grey-50 rounded border p-3">
-  <p className="text-xs font-medium text-gray-500">Conversation Variables</p>
+  <p className="text-grey-500 text-xs font-medium">Conversation Variables</p>
   <dl className="mt-2 space-y-1">
     <div className="flex gap-2">
-      <dt className="text-sm font-medium text-gray-700">user_name:</dt>
+      <dt className="text-grey-700 text-sm font-medium">user_name:</dt>
       <dd className="text-grey-600 text-sm">John Doe</dd>
     </div>
   </dl>
@@ -4324,15 +4332,18 @@ increase cost."
   /* Error message */
 }
 ;<div className="flex justify-end">
-  <div className="max-w-[80%] rounded-lg border border-red-600 bg-red-100 px-4 py-2">
-    <div className="flex items-start gap-2">
-      <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
+  <div className="max-w-[80%] rounded-lg border-2 bg-red-400 px-4 py-2 text-black">
+    <div className="flex">
+      <div className="flex-shrink-0">
+        <AlertCircle className="h-6 w-6" />
+      </div>
+      <div className="ml-3">
       <div>
         <p className="text-sm font-medium text-red-900">Error processing request</p>
         <p className="mt-1 text-xs text-red-700">API timeout after 5 seconds</p>
       </div>
     </div>
-    <p className="mt-1 text-xs text-gray-500">10:23:50 AM</p>
+    <p className="mt-1 text-xs text-grey-500">10:23:50 AM</p>
   </div>
 </div>
 ```
@@ -4443,18 +4454,21 @@ increase cost."
 
 **🔴 COMMAND:** Warning errors use amber-50 background with amber-700 text.
 
-**🔴 COMMAND:** Info errors use blue-50 background with blue-700 text.
+**🔴 COMMAND:** Info alerts use `bg-indigo-400 border-2 text-black` following the Alert Container pattern.
 
 ```tsx
 {
   /* Critical error */
 }
-;<div className="rounded-lg border border-red-600 bg-red-50 p-4">
-  <div className="flex gap-3">
-    <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
-    <div>
-      <h3 className="text-sm font-semibold text-red-800">Unable to connect to API</h3>
-      <p className="mt-1 text-sm text-red-700">
+;<div className="rounded-lg border-2 bg-red-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertCircle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Unable to connect to API</h3>
+      <div className="mt-2 text-sm">
+        <p>
         The service is temporarily unavailable. Please try again in a few minutes.
       </p>
     </div>
@@ -4464,12 +4478,15 @@ increase cost."
 {
   /* Warning error */
 }
-;<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
-  <div className="flex gap-3">
-    <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
-    <div>
-      <h3 className="text-sm font-semibold text-amber-800">Rate limit approaching</h3>
-      <p className="mt-1 text-sm text-amber-700">
+;<div className="rounded-lg border-2 bg-amber-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertTriangle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Rate limit approaching</h3>
+      <div className="mt-2 text-sm">
+        <p>
         You've used 90% of your API quota. Consider upgrading your plan.
       </p>
     </div>
@@ -4479,14 +4496,18 @@ increase cost."
 {
   /* Info error */
 }
-;<div className="rounded-lg border border-blue-600 bg-blue-50 p-4">
-  <div className="flex gap-3">
-    <Info className="h-5 w-5 shrink-0 text-blue-600" />
-    <div>
-      <h3 className="text-sm font-semibold text-blue-800">Configuration updated</h3>
-      <p className="mt-1 text-sm text-blue-700">
-        Your changes have been saved. The agent will use new settings on next call.
-      </p>
+;<div className="rounded-lg border-2 bg-indigo-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <Info className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Configuration updated</h3>
+      <div className="mt-2 text-sm">
+        <p>
+          Your changes have been saved. The agent will use new settings on next call.
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -4526,14 +4547,17 @@ const errorMessages = {
 
 **🟡 DIRECTIVE:** Provide one-click fix buttons for common resolvable errors.
 
-**🔴 COMMAND:** Action buttons use primary styling (indigo-600) and descriptive labels.
+**🔴 COMMAND:** Action buttons use primary styling (primary-600) and descriptive labels.
 
 ```tsx
 <div className="mt-4 flex gap-3">
   <button className="bg-primary-300 rounded-md px-4 py-2 text-sm font-semibold text-white">
     Retry connection
   </button>
-  <button className="rounded-md border border-gray-300 px-4 py-2 text-sm font-semibold">
+  <button
+    type="button"
+    className="focus:outline-primary-600 border-grey-300 hover:bg-grey-100 rounded-md border-2 px-4 py-2 text-sm font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+  >
     Check network settings
   </button>
 </div>
@@ -4567,11 +4591,11 @@ const errorMessages = {
 
 ```tsx
 <div className="mt-2 flex items-center gap-2">
-  <span className="text-xs text-gray-500">This error occurred</span>
+  <span className="text-grey-500 text-xs">This error occurred</span>
   <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
     3 times
   </span>
-  <span className="text-xs text-gray-500">in the last hour</span>
+  <span className="text-grey-500 text-xs">in the last hour</span>
 </div>
 ```
 
@@ -4730,7 +4754,7 @@ const errorMessages = {
   /* Incomplete item */
 }
 ;<div className="flex items-start gap-3">
-  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-400" />
+  <div className="border-grey-400 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2" />
   <div className="min-w-0 flex-1">
     <p className="text-sm font-medium text-black">Test conversation completed</p>
   </div>
@@ -4740,9 +4764,9 @@ const errorMessages = {
   /* Optional item */
 }
 ;<div className="flex items-start gap-3">
-  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-300" />
+  <div className="border-grey-300 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2" />
   <div className="min-w-0 flex-1">
-    <p className="text-sm font-medium text-gray-500 italic">Custom branding applied</p>
+    <p className="text-grey-500 text-sm font-medium italic">Custom branding applied</p>
   </div>
 </div>
 ```
@@ -4762,9 +4786,9 @@ const errorMessages = {
     <p className="text-sm font-medium text-black">API endpoint configured</p>
   </div>
   <div className="ml-8 flex items-start gap-3">
-    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-400" />
+    <div className="border-grey-400 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2" />
     <p className="text-sm font-medium text-black">API endpoint tested</p>
-    <span className="text-xs text-gray-500">(Requires: API endpoint configured)</span>
+    <span className="text-grey-500 text-xs">(Requires: API endpoint configured)</span>
   </div>
 </div>
 ```
@@ -4812,7 +4836,7 @@ const errorMessages = {
 
 ```tsx
 <div className="flex items-start gap-3">
-  <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 border-gray-400" />
+  <div className="border-grey-400 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2" />
   <div className="min-w-0 flex-1">
     <p className="text-sm font-medium text-black">Rollback plan confirmed</p>
     <p className="text-grey-600 mt-1 text-sm">
@@ -4855,7 +4879,7 @@ const errorMessages = {
   className={`rounded-md px-4 py-2 text-sm font-semibold text-white ${
     allChecksPassed
       ? 'bg-primary-300 hover:bg-primary-200'
-      : 'cursor-not-allowed bg-gray-400 opacity-50'
+      : 'bg-grey-400 cursor-not-allowed opacity-50'
   }`}
 >
   Publish Agent
@@ -4918,12 +4942,12 @@ const errorMessages = {
 
 #### Multiple Toggle Patterns
 
-**🔴 COMMAND:** Safety toggles must show impact description with `text-sm text-gray-500`.
+**🔴 COMMAND:** Safety toggles must show impact description with `text-sm text-grey-500`.
 
 **🔴 COMMAND:** Disabling safety rails requires confirmation dialog with written justification.
 
 ```tsx
-<div className="rounded-lg border bg-white shadow-sm">
+<div className="rounded-lg border bg-white">
   <div className="border-b px-4 py-3">
     <h3 className="text-base font-semibold">Safety Rails</h3>
   </div>
@@ -4931,7 +4955,7 @@ const errorMessages = {
     <div className="flex items-center justify-between">
       <div className="space-y-1">
         <p className="text-sm font-medium">Redact PII</p>
-        <p className="text-sm text-gray-500">
+        <p className="text-grey-500 text-sm">
           Automatically masks SSNs and credit cards in conversation transcripts.
         </p>
       </div>
@@ -4959,7 +4983,7 @@ const errorMessages = {
           High Risk
         </span>
       </div>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="text-grey-500 mt-1 text-sm">
         Sensitive data will be visible in transcripts and logs.
       </p>
     </div>
@@ -4974,11 +4998,11 @@ const errorMessages = {
 
 **🟡 DIRECTIVE:** Show "Last modified by X on Y" below each safety rail.
 
-**🔴 COMMAND:** Use `text-xs text-gray-500` for audit information.
+**🔴 COMMAND:** Use `text-xs text-grey-500` for audit information.
 
 ```tsx
 <div className="mt-2">
-  <p className="text-xs text-gray-500">
+  <p className="text-grey-500 text-xs">
     Last modified by <span className="font-medium">admin@example.com</span> on Jan 24, 2026
   </p>
 </div>
@@ -5027,14 +5051,14 @@ const errorMessages = {
 {
   /* Correct: Active voice */
 }
-;<p className="text-sm text-gray-500">
+;<p className="text-grey-500 text-sm">
   The system masks credit card numbers and SSNs in all conversation transcripts.
 </p>
 
 {
   /* Avoid: Passive voice */
 }
-;<p className="text-sm text-gray-500">
+;<p className="text-grey-500 text-sm">
   Credit card numbers and SSNs are masked in conversation transcripts.
 </p>
 ```
@@ -5094,7 +5118,7 @@ const errorMessages = {
 <div className="space-y-4">
   <div>
     <label className="block text-sm font-medium text-black">Allow Interruptions</label>
-    <p className="mt-1 text-sm text-gray-500">
+    <p className="text-grey-500 mt-1 text-sm">
       Users can interrupt the agent while it's speaking. Disable for strict turn-taking.
     </p>
     <input type="checkbox" className="mt-2 rounded-md" />
@@ -5117,7 +5141,7 @@ const errorMessages = {
     <span className="text-grey-600 text-sm">1.0x</span>
   </div>
   <input type="range" min="0.5" max="2.0" step="0.1" defaultValue="1.0" className="mt-2 w-full" />
-  <div className="mt-1 flex justify-between text-xs text-gray-500">
+  <div className="text-grey-500 mt-1 flex justify-between text-xs">
     <span>0.5x (Slow)</span>
     <span>2.0x (Fast)</span>
   </div>
@@ -5135,7 +5159,7 @@ const errorMessages = {
 ```tsx
 <div>
   <label className="block text-sm font-medium text-black">Silence Timeout</label>
-  <p className="mt-1 text-sm text-gray-500">
+  <p className="text-grey-500 mt-1 text-sm">
     Time to wait (in milliseconds) before considering user finished speaking.
   </p>
   <input
@@ -5143,7 +5167,7 @@ const errorMessages = {
     defaultValue="500"
     className="text-md mt-2 block w-full rounded-md border-2 px-4 py-2 text-sm font-semibold"
   />
-  <p className="mt-1 text-xs text-gray-500">Range: 200ms - 2000ms</p>
+  <p className="text-grey-500 mt-1 text-xs">Range: 200ms - 2000ms</p>
 </div>
 ```
 
@@ -5160,7 +5184,7 @@ const errorMessages = {
   <div className="flex items-center justify-between">
     <div>
       <p className="text-sm font-medium text-black">Noise Cancellation</p>
-      <p className="mt-1 text-sm text-gray-500">
+      <p className="text-grey-500 mt-1 text-sm">
         Reduces background noise but may affect speech recognition in quiet environments.
       </p>
     </div>
@@ -5258,15 +5282,15 @@ const errorMessages = {
   <h3 className="text-base font-semibold text-black">Response Latency</h3>
   <dl className="mt-4 grid grid-cols-3 gap-4">
     <div>
-      <dt className="text-xs text-gray-500">Average</dt>
+      <dt className="text-grey-500 text-xs">Average</dt>
       <dd className="mt-1 text-lg font-semibold text-black">245ms</dd>
     </div>
     <div>
-      <dt className="text-xs text-gray-500">Median</dt>
+      <dt className="text-grey-500 text-xs">Median</dt>
       <dd className="mt-1 text-lg font-semibold text-black">198ms</dd>
     </div>
     <div>
-      <dt className="text-xs text-gray-500">P95</dt>
+      <dt className="text-grey-500 text-xs">P95</dt>
       <dd className="mt-1 text-lg font-semibold text-black">512ms</dd>
     </div>
   </dl>
@@ -5395,7 +5419,7 @@ const errorMessages = {
     <h3 className="text-base font-semibold text-black">Version 2.1</h3>
     <dl className="mt-4 space-y-2">
       <div>
-        <dt className="text-sm font-medium text-gray-500">Voice Language</dt>
+        <dt className="text-grey-500 text-sm font-medium">Voice Language</dt>
         <dd className="mt-1 text-sm text-black">English (US)</dd>
       </div>
     </dl>
@@ -5472,17 +5496,17 @@ const errorMessages = {
 **🔴 COMMAND:** Highlight key differences that may impact rollback decision.
 
 ```tsx
-<div className="rounded-lg border border-amber-600 bg-amber-50 p-4">
-  <div className="flex gap-3">
-    <AlertTriangle className="h-5 w-5 shrink-0 text-amber-600" />
-    <div>
-      <h3 className="text-sm font-semibold text-amber-900">Performance Degradation Detected</h3>
-      <p className="mt-1 text-sm text-amber-700">
-        Current version shows 15% increase in error rate compared to previous version.
-      </p>
-      <button className="mt-3 text-sm font-semibold text-amber-900 underline">
-        Review rollback options
-      </button>
+<div className="rounded-lg border-2 bg-amber-400 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <AlertTriangle className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">Performance Degradation Detected</h3>
+      <div className="mt-2 text-sm">
+        <p>Current version shows 15% increase in error rate compared to previous version.</p>
+      </div>
+      <button className="mt-3 text-sm font-semibold underline">Review rollback options</button>
     </div>
   </div>
 </div>
@@ -5531,7 +5555,7 @@ const errorMessages = {
         <dt className="text-sm font-medium text-black">john@example.com</dt>
         <dd className="text-grey-600 mt-1 text-sm">Owner</dd>
       </div>
-      <span className="text-primary-700 rounded-full bg-indigo-100 px-2.5 py-0.5 text-xs font-medium">
+      <span className="text-primary-700 bg-primary-100 rounded-full px-2.5 py-0.5 text-xs font-medium">
         Owner
       </span>
     </div>
@@ -5560,7 +5584,7 @@ const errorMessages = {
       <p className="text-grey-600 mt-1 text-sm">
         Changed language from English (US) to English (UK)
       </p>
-      <p className="mt-1 text-xs text-gray-500">2 hours ago</p>
+      <p className="text-grey-500 mt-1 text-xs">2 hours ago</p>
     </div>
   </div>
 </div>
@@ -5583,9 +5607,9 @@ const errorMessages = {
     <div className="min-w-0 flex-1">
       <div className="flex items-center gap-2">
         <p className="text-sm font-semibold text-black">John Doe</p>
-        <p className="text-xs text-gray-500">2 hours ago</p>
+        <p className="text-grey-500 text-xs">2 hours ago</p>
       </div>
-      <p className="mt-1 text-sm text-gray-700">
+      <p className="text-grey-700 mt-1 text-sm">
         Should we enable interrupt handling for this use case?
       </p>
     </div>
@@ -5668,12 +5692,12 @@ const errorMessages = {
 }
 ;<div className="mb-8">
   <div className="mb-4 flex items-baseline gap-2">
-    <ShieldCheck className="size-5 text-gray-400" aria-hidden="true" />
-    <h3 className="text-lg font-semibold text-black dark:text-gray-100">Global Rules Console</h3>
+    <ShieldCheck className="text-grey-400 size-5" aria-hidden="true" />
+    <h3 className="dark:text-grey-100 text-lg font-semibold text-black">Global Rules Console</h3>
   </div>
-  <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
-    <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4 dark:border-gray-700">
-      <h4 className="text-base font-bold text-black dark:text-gray-100">
+  <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white">
+    <div className="border-grey-200 dark:border-grey-700 flex items-center justify-between border-b px-6 py-4">
+      <h4 className="dark:text-grey-100 text-base font-bold text-black">
         Global Safety Policy v2.4
       </h4>
       <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900/40 dark:text-green-300">
@@ -5682,8 +5706,8 @@ const errorMessages = {
     </div>
     <dl className="divide-y divide-gray-200 px-6 py-4 dark:divide-gray-700">
       <div className="py-3 sm:grid sm:grid-cols-3 sm:gap-4">
-        <dt className="text-sm font-medium text-gray-500 dark:text-gray-400">Last Modified</dt>
-        <dd className="mt-1 text-sm text-black sm:col-span-2 sm:mt-0 dark:text-gray-100">
+        <dt className="text-grey-500 dark:text-grey-400 text-sm font-medium">Last Modified</dt>
+        <dd className="dark:text-grey-100 mt-1 text-sm text-black sm:col-span-2 sm:mt-0">
           Jan 24, 2026 by @admin
         </dd>
       </div>
@@ -5716,7 +5740,7 @@ const errorMessages = {
 <div className="mb-8">
   <div className="mb-4 flex items-baseline gap-2">
     <svg
-      className="size-5 shrink-0 text-gray-400"
+      className="text-grey-400 size-5 shrink-0"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -5729,18 +5753,18 @@ const errorMessages = {
         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
       />
     </svg>
-    <h3 className="text-lg font-semibold text-black dark:text-gray-100">Rule Builder</h3>
+    <h3 className="dark:text-grey-100 text-lg font-semibold text-black">Rule Builder</h3>
   </div>
   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-semibold text-black dark:text-gray-100">Tone</h4>
+        <h4 className="dark:text-grey-100 text-sm font-semibold text-black">Tone</h4>
         <textarea
           rows={3}
-          className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          className="border-grey-300 focus:outline-primary-500 dark:border-grey-600 dark:bg-grey-800 dark:text-grey-100 block w-full rounded-md border bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 dark:placeholder-gray-400"
           placeholder="Describe the desired tone…"
         />
-        <select className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+        <select className="border-grey-300 focus:outline-primary-500 dark:border-grey-600 dark:bg-grey-800 dark:text-grey-100 block w-full rounded-md border bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2">
           <option>Strict</option>
           <option>Suggestion</option>
         </select>
@@ -5749,13 +5773,13 @@ const errorMessages = {
 
     <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-semibold text-black dark:text-gray-100">Tools</h4>
+        <h4 className="dark:text-grey-100 text-sm font-semibold text-black">Tools</h4>
         <textarea
           rows={3}
-          className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          className="border-grey-300 focus:outline-primary-500 dark:border-grey-600 dark:bg-grey-800 dark:text-grey-100 block w-full rounded-md border bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 dark:placeholder-gray-400"
           placeholder="Specify allowed tools…"
         />
-        <select className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+        <select className="border-grey-300 focus:outline-primary-500 dark:border-grey-600 dark:bg-grey-800 dark:text-grey-100 block w-full rounded-md border bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2">
           <option>Strict</option>
           <option>Suggestion</option>
         </select>
@@ -5764,13 +5788,13 @@ const errorMessages = {
 
     <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-semibold text-black dark:text-gray-100">Data Access</h4>
+        <h4 className="dark:text-grey-100 text-sm font-semibold text-black">Data Access</h4>
         <textarea
           rows={3}
-          className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-400"
+          className="border-grey-300 focus:outline-primary-500 dark:border-grey-600 dark:bg-grey-800 dark:text-grey-100 block w-full rounded-md border bg-white px-3 py-2 text-sm text-black placeholder-gray-500 focus:outline focus:outline-2 focus:outline-offset-2 dark:placeholder-gray-400"
           placeholder="Define data access rules…"
         />
-        <select className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100">
+        <select className="border-grey-300 focus:outline-primary-500 dark:border-grey-600 dark:bg-grey-800 dark:text-grey-100 block w-full rounded-md border bg-white px-3 py-2 text-sm text-black focus:outline focus:outline-2 focus:outline-offset-2">
           <option>Strict</option>
           <option>Suggestion</option>
         </select>
@@ -5803,7 +5827,7 @@ const errorMessages = {
 <div className="mb-8">
   <div className="mb-4 flex items-baseline gap-2">
     <svg
-      className="size-5 shrink-0 text-gray-400"
+      className="text-grey-400 size-5 shrink-0"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -5816,27 +5840,27 @@ const errorMessages = {
         d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
       />
     </svg>
-    <h3 className="text-lg font-semibold text-black dark:text-gray-100">Rule Simulator</h3>
+    <h3 className="dark:text-grey-100 text-lg font-semibold text-black">Rule Simulator</h3>
   </div>
-  <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white shadow-sm">
-    <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
-      <h4 className="text-base font-bold text-black dark:text-gray-100">Reasoning Trace</h4>
+  <div className="border-grey-300 dark:border-grey-700 dark:bg-grey-900 overflow-hidden rounded-lg border-2 bg-white">
+    <div className="border-grey-200 dark:border-grey-700 border-b px-6 py-4">
+      <h4 className="dark:text-grey-100 text-base font-bold text-black">Reasoning Trace</h4>
     </div>
     <div className="space-y-4 px-6 py-4">
-      <div className="bg-grey-50 rounded-md border-l-4 border-red-500 p-4 dark:bg-gray-800">
-        <p className="font-mono text-sm text-black dark:text-gray-100">
+      <div className="bg-grey-50 dark:bg-grey-800 rounded-md border-l-4 border-red-500 p-4">
+        <p className="dark:text-grey-100 font-mono text-sm text-black">
           Rule: PII_REDACTION_STRICT
         </p>
-        <p className="mt-1 font-mono text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-grey-500 dark:text-grey-400 mt-1 font-mono text-sm">
           Triggered: Credit card number detected in response
         </p>
-        <p className="mt-1 font-mono text-sm text-gray-500 dark:text-gray-400">
+        <p className="text-grey-500 dark:text-grey-400 mt-1 font-mono text-sm">
           Action: Response blocked
         </p>
       </div>
       <button
         type="button"
-        className="bg-primary-300 hover:bg-primary-200 dark:hover:bg-primary-300 inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white transition-colors focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500 dark:bg-indigo-500"
+        className="bg-primary-300 hover:bg-primary-200 dark:hover:bg-primary-300 focus:outline-primary-500 dark:bg-primary-500 inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white transition-colors focus:outline focus:outline-2 focus:outline-offset-2"
       >
         <Wand2 className="size-4" aria-hidden="true" />
         Generate fix suggestion
