@@ -56,3 +56,19 @@ When providing feedback to agents, use the following structured format to ensure
 ### Component: {Element Name}
 **Selector/Path:** {Full DOM Path}
 ```
+
+---
+
+## Referenced sources
+
+- [https://github.com/metabrainz/design-system/](https://github.com/metabrainz/design-system/)
+- [https://github.com/unicef/design-system/tree/master](https://github.com/unicef/design-system/tree/master)
+- [https://tailwindcss.com/plus/ui-blocks/application-ui](https://tailwindcss.com/plus/ui-blocks/application-ui)
+- [https://carbondesignsystem.com/](https://carbondesignsystem.com/)
+- [https://atlassian.design/](https://atlassian.design/)
+- [https://developer.dynatrace.com/design/about-strato-design-system/](https://developer.dynatrace.com/design/about-strato-design-system/)
+- [https://axesslab.com/disabled-buttons-suck/](https://axesslab.com/disabled-buttons-suck/)
+- [https://www.youtube.com/watch?v=cmUQiPfl1ak](https://www.youtube.com/watch?v=cmUQiPfl1ak)
+- [https://uxdesign.cc/dear-llm-heres-how-my-design-system-works-b59fb9a342b7](https://uxdesign.cc/dear-llm-heres-how-my-design-system-works-b59fb9a342b7)
+- [https://uxdesign.cc/designers-as-agent-orchestrators-what-i-learnt-shipping-with-ai-in-2025-3b1bf30048a3](https://uxdesign.cc/designers-as-agent-orchestrators-what-i-learnt-shipping-with-ai-in-2025-3b1bf30048a3)
+- [https://uxdesign.cc/designers-as-agent-orchestrators-what-i-learnt-shipping-with-ai-in-2025-3b1bf30048a3](https://medium.com/design-bootcamp/simplified-jakob-nielsens-10-usability-heuristics-36a860c2ac9c)
