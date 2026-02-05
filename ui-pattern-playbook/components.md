@@ -249,10 +249,10 @@ Every form element consists of up to four parts:
   /* Left-aligned (default) */
 }
 ;<div className="flex gap-2">
-  <button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+  <button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Submit
   </button>
-  <button className="hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2">
+  <button className="hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Cancel
   </button>
 </div>
@@ -261,10 +261,10 @@ Every form element consists of up to four parts:
   /* Right-aligned (modal/wizard) */
 }
 ;<div className="flex justify-end gap-2">
-  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Back
   </button>
-  <button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+  <button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Next
   </button>
 </div>
@@ -281,10 +281,10 @@ Every form element consists of up to four parts:
   <div className="space-y-4">{/* Form fields */}</div>
 
   <div className="flex gap-2">
-    <button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+    <button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
       Submit
     </button>
-    <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    <button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
       Cancel
     </button>
   </div>
@@ -306,10 +306,10 @@ Every form element consists of up to four parts:
   /* Left-aligned: primary first */
 }
 ;<div className="flex gap-2">
-  <button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+  <button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Save
   </button>
-  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Cancel
   </button>
 </div>
@@ -318,10 +318,10 @@ Every form element consists of up to four parts:
   /* Right-aligned: primary last */
 }
 ;<div className="flex justify-end gap-2">
-  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Cancel
   </button>
-  <button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+  <button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Save
   </button>
 </div>
@@ -603,7 +603,7 @@ Cursor:     not-allowed
 }
 {
   hasPermission && (
-    <button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+    <button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
       Add member
     </button>
   )

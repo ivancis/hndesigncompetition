@@ -26,6 +26,7 @@ Detailed design system documentation, component patterns, and coding guidelines 
   - Simple→Advanced transitions, conversation flows, and human handoff logic.
   - Inline glossaries, risk-based tool pickers, and test simulators.
   - PII masking and publish checklists.
+- Responsive design, fluid widths all the way, parameters based on viewport size. I applied the basics for the purpose of the playbook. I think a lot of this depends on page layouts and content templates, very much context sensible IMO.
 
 ---
 

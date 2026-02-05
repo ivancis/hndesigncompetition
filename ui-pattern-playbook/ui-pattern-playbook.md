@@ -17,7 +17,7 @@ February 2026
 
 | Document                                     | Purpose                                                              |
 | -------------------------------------------- | -------------------------------------------------------------------- |
-| [foundations.md](./foundaticlearons.md)      | Core tokens (spacing, typography, layouts, visual styles)            |
+| [foundations.md](./foundations.md)           | Core tokens (spacing, typography, layouts, visual styles)            |
 | [components.md](./components.md)             | Standard UI patterns (forms, buttons, disabled/empty/loading states) |
 | [patterns.md](./patterns.md)                 | Complex workflows (common actions, modals, voice agent, AI rules)    |
 | [guidelines.md](./guidelines.md)             | Content, tone, accessibility, navigation                             |
@@ -51,11 +51,13 @@ February 2026
 
 **Patterns** ([patterns.md](./patterns.md))
 
-10. [Common Actions](./patterns.md#10-common-actions)
-11. [Permission Restrictions](./patterns.md#11-permission-restrictions)
-12. [Modal Patterns](./patterns.md#14-modal-patterns)
-13. [Voice Agent Builder Patterns](./patterns.md#15-voice-agent-builder-patterns)
-14. [AI Instructions + Global Rules](./patterns.md#16-ai-instructions--global-rules)
+13. [Common Actions](./patterns.md#10-common-actions)
+14. [Permission Restrictions](./patterns.md#11-permission-restrictions)
+15. [Error Translation](./patterns.md#104-error-translation)
+16. [Platform Input Assistance](./patterns.md#105-platform-input-assistance)
+17. [Modal Patterns](./patterns.md#14-modal-patterns)
+18. [Voice Agent Builder Patterns](./patterns.md#15-voice-agent-builder-patterns)
+19. [AI Instructions + Global Rules](./patterns.md#16-ai-instructions--global-rules)
 
 **Quick References** ([quick-references.md](./quick-references.md))
 

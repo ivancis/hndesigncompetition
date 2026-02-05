@@ -10,6 +10,8 @@ import {
   Filter,
   Play,
   Mic,
+  ArrowLeft,
+  Octagon,
 } from 'react-feather'
 
 /**
@@ -47,33 +49,7 @@ export default function MyCustomComponent5() {
 
           {/* Center: Waveform SVG */}
           <div className="flex-1 px-6">
-            <svg
-              className="text-primary-500 m-auto w-auto max-w-40"
-              viewBox="0 0 100 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Representative bars */}
-              <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-              <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
-              <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-              <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-              <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-              <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
-              <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-              <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
-              <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-              <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              {/* Trailing dots */}
-              <circle cx="96" cy="12" r="1.5" className="fill-current" />
-              <circle cx="102" cy="12" r="1.5" className="fill-current" />
-            </svg>
+            <Octagon className="text-primary-500 m-auto w-auto max-w-40" aria-hidden="true" />
           </div>
 
           {/* Right: Controls */}
@@ -124,33 +100,7 @@ export default function MyCustomComponent5() {
 
           {/* Center: Waveform SVG */}
           <div className="flex-1 px-6">
-            <svg
-              className="text-primary-500 m-auto w-auto max-w-40"
-              viewBox="0 0 100 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Representative bars */}
-              <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-              <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
-              <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-              <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-              <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-              <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
-              <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-              <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
-              <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-              <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              {/* Trailing dots */}
-              <circle cx="96" cy="12" r="1.5" className="fill-current" />
-              <circle cx="102" cy="12" r="1.5" className="fill-current" />
-            </svg>
+            <Octagon className="text-primary-500 m-auto w-auto max-w-40" aria-hidden="true" />
           </div>
 
           {/* Right: Controls */}
@@ -193,33 +143,7 @@ export default function MyCustomComponent5() {
 
           {/* Center: Waveform SVG */}
           <div className="flex-1 px-6">
-            <svg
-              className="text-primary-500 m-auto w-auto max-w-40"
-              viewBox="0 0 100 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Representative bars */}
-              <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-              <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
-              <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-              <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-              <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-              <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
-              <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-              <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
-              <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-              <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-              <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-              {/* Trailing dots */}
-              <circle cx="96" cy="12" r="1.5" className="fill-current" />
-              <circle cx="102" cy="12" r="1.5" className="fill-current" />
-            </svg>
+            <Octagon className="text-primary-500 m-auto w-auto max-w-40" aria-hidden="true" />
           </div>
 
           {/* Right: Controls */}
@@ -278,20 +202,7 @@ export default function MyCustomComponent5() {
             {/* <!-- Version 3.0 --> */}
             <div className="flex items-start gap-4 p-4">
               <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-md">
-                <svg
-                  className="text-primary-600 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
+                <Octagon className="text-primary-600 h-5 w-5" aria-hidden="true" />
               </div>
               <div className="min-w-0 flex-1">
                 <h3 className="text-base font-bold text-black">Version: 3.0</h3>
@@ -302,20 +213,7 @@ export default function MyCustomComponent5() {
             {/* <!-- Version 2.3 --> */}
             <div className="flex items-start gap-4 p-4">
               <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-md">
-                <svg
-                  className="text-primary-600 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
+                <Octagon className="text-primary-600 h-5 w-5" aria-hidden="true" />
               </div>
               <div className="min-w-0 flex-1">
                 <h3 className="text-base font-bold text-black">Version: 2.3</h3>
@@ -328,20 +226,7 @@ export default function MyCustomComponent5() {
               {/* <!-- Version 2.2 --> */}
               <div className="flex items-start gap-4 px-6 py-3">
                 <div className="bg-grey-50 flex h-8 w-8 shrink-0 items-center justify-center rounded-md">
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
+                  <Octagon className="h-4 w-4" aria-hidden="true" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h4 className="text-sm font-semibold text-black">Version: 2.2</h4>
@@ -352,20 +237,7 @@ export default function MyCustomComponent5() {
               {/* <!-- Version 2.1 --> */}
               <div className="flex items-start gap-4 px-6 py-3">
                 <div className="bg-grey-50 flex h-8 w-8 shrink-0 items-center justify-center rounded-md">
-                  <svg
-                    className="text-grey-600 h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
+                  <Octagon className="text-grey-600 h-4 w-4" aria-hidden="true" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h4 className="text-sm font-semibold text-black">Version: 2.1</h4>
@@ -376,20 +248,7 @@ export default function MyCustomComponent5() {
               {/* <!-- Version 2.0 --> */}
               <div className="flex items-start gap-4 px-6 py-3">
                 <div className="bg-grey-50 flex h-8 w-8 shrink-0 items-center justify-center rounded-md">
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
+                  <Octagon className="h-4 w-4" aria-hidden="true" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <h4 className="text-sm font-semibold text-black">Version: 2.0</h4>
@@ -411,20 +270,7 @@ export default function MyCustomComponent5() {
             {/* <!-- Version 1.0 --> */}
             <div className="flex items-start gap-4 p-4">
               <div className="bg-primary-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-md">
-                <svg
-                  className="text-primary-600 h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
+                <Octagon className="text-primary-600 h-5 w-5" aria-hidden="true" />
               </div>
               <div className="min-w-0 flex-1">
                 <h3 className="text-base font-bold text-black">Version 1.0</h3>
@@ -663,24 +509,6 @@ export default function MyCustomComponent5() {
                     </span>
                   </span>
                 </button>
-                <div
-                  className="absolute top-0 right-0 hidden h-full w-5 md:block"
-                  aria-hidden="true"
-                >
-                  <svg
-                    className="text-grey-800 h-full w-full stroke-2"
-                    viewBox="0 0 22 80"
-                    fill="none"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M0 -2L20 40L0 82"
-                      vectorEffect="non-scaling-stroke"
-                      stroke="currentColor"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
               </li>
 
               <li className="relative md:flex md:flex-1">
@@ -690,38 +518,20 @@ export default function MyCustomComponent5() {
                   aria-current="step"
                 >
                   <span className="border-primary-600 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2">
-                    <span className="text-primary-600">02</span>
+                    <span className="text-primary-600">B</span>
                   </span>
                   <span className="ml-4 flex flex-col text-left">
                     <span className="text-primary-600 text-sm font-bold">Step 1.B</span>
                     <small>Cursus semper viverra.</small>
                   </span>
                 </button>
-                <div
-                  className="absolute top-0 right-0 hidden h-full w-5 md:block"
-                  aria-hidden="true"
-                >
-                  <svg
-                    className="text-grey-800 h-full w-full stroke-2"
-                    viewBox="0 0 22 80"
-                    fill="none"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M0 -2L20 40L0 82"
-                      vectorEffect="non-scaling-stroke"
-                      stroke="currentColor"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
               </li>
 
               <li className="relative md:flex md:flex-1">
                 <button type="button" className="group flex items-center">
                   <span className="flex items-center p-4 text-sm font-medium">
                     <span className="border-grey-700 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2">
-                      <span className="text-grey-500">03</span>
+                      <span className="text-grey-500">C</span>
                     </span>
                     <span className="ml-4 flex flex-col text-left">
                       <span className="text-grey-600 text-sm font-bold">Step 1.C</span>
@@ -732,6 +542,13 @@ export default function MyCustomComponent5() {
               </li>
             </ol>
           </nav>
+
+          <div className="m-4 flex flex-col gap-2">
+            <h3 className="text-lg font-bold text-black">Step 1.A</h3>
+            <p className="text-grey-600 text-sm">
+              Vitae sed mi luctus laoreet sed mi luctus laoreet.
+            </p>
+          </div>
 
           {/* Autocomplete suggestion bar */}
           <div className="mx-4 mb-4 flex flex-wrap items-center gap-2">
@@ -766,21 +583,38 @@ export default function MyCustomComponent5() {
             </button>
           </div>
 
-          <div className="bg-grey-100 m-4 max-h-100 overflow-y-auto rounded-md border-2 p-8">
+          <div className="bg-grey-100 m-4 max-h-90 overflow-y-auto rounded-md p-8">
             <p>
-              <strong>The standard Lorem Ipsum passage, used since the 1500s:</strong> "Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-              ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              <strong className="cursor-pointer outline-2 outline-offset-2 outline-dotted">
+                The standard Lorem Ipsum passage, used since the 1500s:
+              </strong>{' '}
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
               mollit anim id est laborum."
             </p>
 
             <p>
-              <strong>
-                Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC:
-              </strong>{' '}
+              <div className="relative">
+                <strong className="outline-primary-500 bg-primary-100 text-primary-900 cursor-pointer outline-2 outline-offset-2 outline-dotted">
+                  Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC:
+                </strong>{' '}
+                <div className="position-absolute top-full left-0 flex h-full w-full justify-center">
+                  <div
+                    id="tooltip-default"
+                    role="tooltip"
+                    className="rounded-base absolute mx-auto inline-block min-w-56 cursor-pointer bg-black px-3 py-2 text-center text-sm font-medium text-white shadow-xs duration-300"
+                  >
+                    Anti-pattern: content only on hover
+                    <div
+                      className="tooltip-arrow absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-r-12 border-b-12 border-l-12 border-r-transparent border-b-black border-l-transparent"
+                      data-popper-arrow
+                    ></div>
+                  </div>
+                </div>
+              </div>
               "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
               laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
               architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
@@ -795,23 +629,25 @@ export default function MyCustomComponent5() {
             </p>
 
             <p>
-              <strong>1914 translation by H. Rackham:</strong> "But I must explain to you how all
-              this mistaken idea of denouncing pleasure and praising pain was born and I will give
-              you a complete account of the system, and expound the actual teachings of the great
-              explorer of the truth, the master-builder of human happiness. No one rejects,
-              dislikes, or avoids pleasure itself, because it is pleasure, but because those who do
-              not know how to pursue pleasure rationally encounter consequences that are extremely
-              painful. Nor again is there anyone who loves or pursues or desires to obtain pain of
-              itself, because it is pain, but because occasionally circumstances occur in which toil
-              and pain can procure him some great pleasure. To take a trivial example, which of us
-              ever undertakes laborious physical exercise, except to obtain some advantage from it?
-              But who has any right to find fault with a man who chooses to enjoy a pleasure that
-              has no annoying consequences, or one who avoids a pain that produces no resultant
-              pleasure?"
+              <strong className="cursor-pointer outline-2 outline-offset-2 outline-dotted">
+                1914 translation by H. Rackham:
+              </strong>{' '}
+              "But I must explain to you how all this mistaken idea of denouncing pleasure and
+              praising pain was born and I will give you a complete account of the system, and
+              expound the actual teachings of the great explorer of the truth, the master-builder of
+              human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is
+              pleasure, but because those who do not know how to pursue pleasure rationally
+              encounter consequences that are extremely painful. Nor again is there anyone who loves
+              or pursues or desires to obtain pain of itself, because it is pain, but because
+              occasionally circumstances occur in which toil and pain can procure him some great
+              pleasure. To take a trivial example, which of us ever undertakes laborious physical
+              exercise, except to obtain some advantage from it? But who has any right to find fault
+              with a man who chooses to enjoy a pleasure that has no annoying consequences, or one
+              who avoids a pain that produces no resultant pleasure?"
             </p>
 
             <p>
-              <strong>
+              <strong className="cursor-pointer outline-2 outline-offset-2 outline-dotted">
                 Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC:
               </strong>{' '}
               "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
@@ -827,15 +663,48 @@ export default function MyCustomComponent5() {
               repellat."
             </p>
           </div>
-          <div className="mt-auto mb-0 p-4">
-            {/* Next — primary with icon */}
-            <button
-              type="button"
-              className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
-            >
-              Next
-              <ArrowRight className="h-5 w-5 flex-shrink-0" />
-            </button>
+          <div className="mt-auto mb-0 flex flex-col gap-2 border-t-2 p-4">
+            <p className="flex gap-1 text-xs font-semibold text-red-900">
+              <XCircle />
+              Please apply suggestions to continue
+            </p>
+            <div className="mr-0 ml-auto flex gap-2">
+              {/* Start — primary with icon */}
+              <button
+                type="button"
+                className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+              >
+                Start
+                <ArrowRight className="h-5 w-5 flex-shrink-0" />
+              </button>
+            </div>
+            <div className="flex justify-between gap-2">
+              {/* Next — primary with icon */}
+              <button
+                type="button"
+                className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2"
+              >
+                <ArrowLeft className="h-5 w-5 flex-shrink-0" />
+                Back
+              </button>
+              {/* Back — primary with icon */}
+              <button
+                type="button"
+                className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+              >
+                Next
+                <ArrowRight className="h-5 w-5 flex-shrink-0" />
+              </button>
+            </div>
+            <div className="mr-0 ml-auto flex gap-2">
+              {/* Finish — primary with icon */}
+              <button
+                type="button"
+                className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+              >
+                Done
+              </button>
+            </div>
           </div>
         </div>
       </div>

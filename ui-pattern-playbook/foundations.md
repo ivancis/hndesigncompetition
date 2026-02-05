@@ -17,6 +17,7 @@ Typography establishes content hierarchy and shapes readability. It determines h
 ```tsx
 <p className="text-sm">Small text</p>      {/* 14px */}
 <p className="text-base">Base text</p>     {/* 16px */}
+<p className="text-md">Medium text</p>     {/* 16px - alias for text-base, used for buttons */}
 <p className="text-lg">Large text</p>      {/* 18px */}
 <p className="text-xl">Extra large</p>     {/* 20px */}
 <p className="text-2xl">2X large</p>       {/* 24px */}
@@ -24,6 +25,10 @@ Typography establishes content hierarchy and shapes readability. It determines h
 <p className="text-4xl">4X large</p>       {/* 36px */}
 <p className="text-5xl">5X large</p>       {/* 48px */}
 ```
+
+**🔴 COMMAND:** `text-md` is equivalent to `text-base` (16px) and is used for button text and form elements. Use `text-base` for body text, `text-md` for interactive elements.
+
+**🟡 DIRECTIVE:** If your Tailwind configuration doesn't include `text-md`, use `text-base` instead - they are equivalent (16px).
 
 ---
 
@@ -620,7 +625,9 @@ Large:   8, 10, 12, 16, 20   (32px, 40px, 48px, 64px, 80px)
 
 **🔴 COMMAND:** Containers: `p-4` (16px)
 
-**🔴 COMMAND:** Fields (buttons, inputs): `px-4 py-2` (16px horizontal, 8px vertical) for standard buttons
+**🔴 COMMAND:** Fields (buttons, inputs): `px-4 py-2` (16px horizontal, 8px vertical) for standard buttons.
+
+**🔴 COMMAND:** Icon + label buttons and chips: `px-3 py-2` (12px horizontal, 8px vertical) - horizontal padding one step larger than vertical.
 
 ```tsx
 {
@@ -721,7 +728,7 @@ Understanding element nesting determines spacing strategy.
       </div>
       <div className="mt-4 flex justify-end gap-2 border-t pt-3">
         {/* Field */}
-        <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+        <button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
           Keep editing
         </button>
         {/* Field */}
@@ -752,7 +759,7 @@ Dialogs are conversations: statement + detail + action.
     <p>Are you sure you want to continue?</p>
   </div>
   <div className="flex justify-end gap-2 border-t pt-3">
-    <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    <button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
       Cancel
     </button>
     <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
@@ -1066,6 +1073,8 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 **🔴 COMMAND:** Focus outline offset: `outline-offset-2`
 
+**🔴 COMMAND:** All interactive buttons (primary and secondary) must include BOTH `focus:outline-primary-500` AND `focus:outline-primary-600` for proper focus states. Use `focus:outline-primary-500` first, then `focus:outline-primary-600`.
+
 **🟡 DIRECTIVE:** Focus states are for keyboard navigation - they must be highly visible for accessibility.
 
 ```tsx
@@ -1142,7 +1151,7 @@ These states are mutually exclusive - an element can only be in one state at a t
   <input
     type="checkbox"
     checked
-    className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-md"
+    className="border-grey-400 text-primary-600 focus:outline-primary-500 focus:outline-primary-600 h-4 w-4 rounded-md focus:outline focus:outline-1 focus:outline-offset-2"
   />
   <span className="text-grey-700 text-sm">Selected option</span>
 </label>
@@ -1200,7 +1209,7 @@ These states are mutually exclusive - an element can only be in one state at a t
 {
   /* Secondary button - distinguished by style */
 }
-;<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+;<button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
   Secondary Action
 </button>
 ```
@@ -1236,7 +1245,7 @@ Toggle features control on/off states for settings and preferences. They must be
     <label className="text-base font-semibold">Dark mode</label>
     <small>Switch between light and dark themes</small>
   </div>
-  <button className="bg-primary-300 relative inline-flex h-6 w-11 items-center rounded-full transition-colors">
+  <button className="bg-primary-300 relative inline-flex h-6 w-11 items-center rounded-full border-2 border-transparent transition-colors">
     <span className="inline-block h-4 w-4 translate-x-6 rounded-full bg-white transition-transform" />
   </button>
 </div>
@@ -1273,7 +1282,7 @@ Toggle features control on/off states for settings and preferences. They must be
     </div>
     <button
       onClick={() => setShowConfirm(true)}
-      className="bg-grey-300 relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
+      className="bg-grey-300 relative inline-flex h-6 w-11 items-center rounded-full border-2 border-transparent transition-colors"
     >
       <span className="inline-block h-4 w-4 translate-x-1 rounded-full bg-white transition-transform" />
     </button>
@@ -1292,7 +1301,7 @@ Toggle features control on/off states for settings and preferences. They must be
       <div className="mt-4 flex justify-end gap-2 border-t pt-3">
         <button
           onClick={() => setShowConfirm(false)}
-          className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+          className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
         >
           Cancel
         </button>
@@ -1341,7 +1350,7 @@ Toggle features control on/off states for settings and preferences. They must be
 **🔴 COMMAND:** Primary buttons MUST use this exact configuration:
 
 ```tsx
-<button className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2">
+<button className="bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
   Primary Action
 </button>
 ```
@@ -1364,16 +1373,20 @@ Toggle features control on/off states for settings and preferences. They must be
 
 #### Pattern: Secondary Button
 
+**🔴 COMMAND:** Secondary buttons must include BOTH `focus:outline-primary-500` AND `focus:outline-primary-600` for proper focus states, same as primary buttons.
+
 ```tsx
-<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+<button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
   Secondary Action
 </button>
 ```
 
 #### Pattern: Ghost Button
 
+**🔴 COMMAND:** Ghost buttons must include BOTH `focus:outline-primary-500` AND `focus:outline-primary-600` for proper focus states, same as primary and secondary buttons.
+
 ```tsx
-<button className="text-grey-700 hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md px-3 py-2 text-sm font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+<button className="text-grey-700 hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md px-3 py-2 text-sm font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
   Ghost Action
 </button>
 ```

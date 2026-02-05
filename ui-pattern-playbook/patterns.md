@@ -42,7 +42,7 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Low emphasis add */
 }
-;<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+;<button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
   <PlusCircle className="h-5 w-5" />
   Add
 </button>
@@ -63,7 +63,7 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
   /* Cancel in modal */
 }
 ;<div className="flex justify-end gap-2">
-  <button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+  <button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
     Cancel
   </button>
   <button className="bg-primary-300 text-md hover:bg-primary-200 focus:outline-primary-500 focus:outline-primary-600 active:bg-primary-100 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
@@ -301,7 +301,7 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 {
   /* Refresh button */
 }
-;<button className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+;<button className="text-md hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 active:bg-grey-200 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
   <RefreshCcw className="h-5 w-5 flex-shrink-0" aria-hidden="true" />
   Refresh
 </button>
@@ -443,7 +443,7 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
       {/* Primary action - strongly suggested solution */}
       <button
         type="button"
-        className="text-md bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+        className="text-md bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-500 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
       >
         <ThumbsUp className="h-5 w-5 flex-shrink-0" />
         Generate fix suggestion
@@ -2602,6 +2602,12 @@ These are simpler modal patterns for common use cases. They follow the same univ
 
 **🔴 COMMAND:** Includes cancel, previous, and next/complete buttons.
 
+**🔴 COMMAND:** Step controllers must follow the controller variants pattern (first, middle, last) as defined in [Guided Wizard: Step Controller Variants](./patterns.md#step-controller-variants).
+
+**🔴 COMMAND:** First-level steps must not exceed 7 steps maximum.
+
+**🔴 COMMAND:** Each step must have minimal anatomy: title, description, and optional yes-no choice.
+
 **Title Formula:** `[Process name] (Step [N] of [Total])`
 
 **Action Rules:**
@@ -3311,6 +3317,161 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Use `gap-8` between vertical steps to maintain clear grouping.
 **🔴 COMMAND:** Pre-fill all fields with "Safe Defaults" to allow immediate "Next" actions.
+
+**🔴 COMMAND:** First-level steps must not exceed 7 steps maximum.
+
+**🔴 COMMAND:** Sub-steps should aim for a maximum of 3 sub-steps per parent step.
+
+**🔴 COMMAND:** Each step must have minimal anatomy:
+
+1. **Title** - Clear, descriptive step name
+2. **Description** - Explanation of what the step accomplishes
+3. **Optional yes-no** - When applicable, provide binary choice for quick decisions
+
+---
+
+#### Step Controller Variants
+
+**🔴 COMMAND:** Step controllers must adapt based on step position: first step, middle steps, or last step.
+
+**First Step Variant:**
+
+- Single primary action button: "Start" with forward arrow icon
+- Right-aligned (`ml-auto mr-0`)
+- No back button (no previous step)
+
+**Middle Step Variant:**
+
+- Two buttons: "Back" (secondary) and "Next" (primary)
+- Back button: Left-aligned with backward arrow icon
+- Next button: Right-aligned with forward arrow icon
+- Layout: `justify-between` to space buttons apart
+
+**Last Step Variant:**
+
+- Single primary action button: "Done" or "Finish"
+- Right-aligned (`ml-auto mr-0`)
+- No next button (final step)
+
+```tsx
+{
+  /* First step controller */
+}
+;<div className="mr-0 ml-auto flex gap-2">
+  <button
+    type="button"
+    className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+  >
+    Start
+    <ArrowRight className="h-5 w-5 flex-shrink-0" />
+  </button>
+</div>
+
+{
+  /* Middle step controller */
+}
+;<div className="flex justify-between gap-2">
+  <button
+    type="button"
+    className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+  >
+    <ArrowLeft className="h-5 w-5 flex-shrink-0" />
+    Back
+  </button>
+  <button
+    type="button"
+    className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+  >
+    Next
+    <ArrowRight className="h-5 w-5 flex-shrink-0" />
+  </button>
+</div>
+
+{
+  /* Last step controller */
+}
+;<div className="mr-0 ml-auto flex gap-2">
+  <button
+    type="button"
+    className="text-md focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex min-w-32 items-center justify-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+  >
+    Done
+  </button>
+</div>
+```
+
+**🔴 COMMAND:** Controller button styling:
+
+- Minimum width: `min-w-32` (128px) for consistent button sizes
+- Primary buttons: `bg-primary-300` with hover/active states
+- Secondary buttons: `hover:bg-grey-100` with border
+- Icons: `h-5 w-5 flex-shrink-0` for consistent icon sizing
+- Gap between icon and text: `gap-2` (8px)
+
+**🔴 COMMAND:** Icon placement:
+
+- Forward arrow (`ArrowRight`) appears on right side of "Start" and "Next" buttons
+- Backward arrow (`ArrowLeft`) appears on left side of "Back" button
+- "Done" button typically has no icon (final action)
+
+---
+
+#### Step Anatomy
+
+**🔴 COMMAND:** Each step must have minimal anatomy:
+
+1. **Title** - Clear, descriptive step name (`text-xl font-bold` or `text-lg font-semibold`)
+2. **Description** - Explanation of what the step accomplishes (`text-base` or `text-sm text-grey-600`)
+3. **Optional yes-no** - When applicable, provide binary choice for quick decisions (toggle, radio group, or checkbox)
+
+**Step Structure:**
+
+```tsx
+{
+  /* Step with minimal anatomy */
+}
+;<div className="space-y-4">
+  {/* Title */}
+  <h2 className="text-xl font-bold text-black">Configure Voice Settings</h2>
+
+  {/* Description */}
+  <p className="text-grey-600 text-base">
+    Choose the voice characteristics and language for your agent. These settings affect how the
+    agent sounds to users.
+  </p>
+
+  {/* Optional yes-no choice */}
+  <div className="space-y-2">
+    <label className="flex cursor-pointer items-center gap-2">
+      <input
+        type="radio"
+        name="voice-type"
+        value="professional"
+        defaultChecked
+        className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-full"
+      />
+      <span className="text-grey-700 text-sm">Use professional voice</span>
+    </label>
+    <label className="flex cursor-pointer items-center gap-2">
+      <input
+        type="radio"
+        name="voice-type"
+        value="casual"
+        className="border-grey-400 text-primary-600 focus:ring-primary-500 h-4 w-4 rounded-full"
+      />
+      <span className="text-grey-700 text-sm">Use casual voice</span>
+    </label>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** Title and description must follow EXPLAIN before ASK principle - explain what the step does before requesting input.
+
+**🟡 DIRECTIVE:** Yes-no choices can be implemented as:
+
+- Radio buttons for mutually exclusive options
+- Toggle switches for on/off decisions
+- Checkboxes for multiple selections
 
 ---
 
