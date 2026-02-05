@@ -165,13 +165,15 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 **Moderate-impact deletion:**
 
 - Cannot undo or recreate easily
-- Ask for confirmation with explanation
+- Ask for confirmation with explanation (EXPLAIN before ASK)
+- **🔴 COMMAND:** Must provide UNDO action immediately after deletion
 
 **High-impact deletion:**
 
 - Very expensive or time-consuming to recreate
 - Large amount of data deleted
 - Require typed confirmation (manual verification)
+- **🔴 COMMAND:** Must provide UNDO action immediately after deletion
 
 ```tsx
 {
@@ -182,14 +184,31 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 </button>
 
 {
-  /* Moderate-impact: confirmation dialog */
+  /* Moderate-impact: confirmation dialog with EXPLAIN before ASK */
 }
 ;<div className="border-grey-300 rounded-md border-2 bg-white p-4">
-  <h3 className="font-semibold">Delete 3 items?</h3>
-  <p className="text-grey-600 text-sm">This action cannot be undone.</p>
+  <h3 className="font-semibold">Delete 3 items</h3>
+  <p className="text-grey-600 text-sm">
+    These items will be permanently removed from your account. This action cannot be undone.
+  </p>
   <div className="mt-4 flex gap-2">
     <button className="text-md rounded-md border-2 px-4 py-2 font-semibold">Cancel</button>
-    <button className="rounded-md bg-red-300 px-3 py-2 text-white">Delete</button>
+    <button className="rounded-md bg-red-300 px-3 py-2 text-white">Delete 3 items</button>
+  </div>
+</div>
+
+{
+  /* After deletion: UNDO action prominently displayed */
+}
+;<div className="mt-4 rounded-md border-2 bg-emerald-50 p-4">
+  <div className="flex items-center justify-between">
+    <div>
+      <p className="text-base font-semibold">3 items deleted</p>
+      <small>You can restore these items within 30 days</small>
+    </div>
+    <button className="rounded-md border-2 bg-emerald-300 px-4 py-2 text-sm font-semibold text-black">
+      Undo
+    </button>
   </div>
 </div>
 
@@ -216,9 +235,13 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 
 **🔴 COMMAND:** Animate removal from list.
 
-**🔴 COMMAND:** Show success notification.
+**🔴 COMMAND:** Show success notification with UNDO action prominently displayed.
+
+**🔴 COMMAND:** UNDO action must be part of the initial confirmation flow - displayed immediately after deletion, not hidden in menus or settings.
 
 **🔴 COMMAND:** If deletion fails, show error notification and animate data back.
+
+**🔴 COMMAND:** Frame deletion messages with positive intent - guide users rather than warn them. Use EXPLAIN before ASK structure.
 
 ---
 
@@ -367,6 +390,884 @@ Use consistent patterns and clear labeling to reduce uncertainty and guide users
 
 ---
 
+### 10.4 Error Translation
+
+**🔴 COMMAND:** Complex technical errors must be translated into user-friendly language that explains the root problem and solution without overwhelming users with technical jargon.
+
+**🔴 COMMAND:** Error translation follows the EXPLAIN before ASK principle - explain what happened and why, then guide users toward resolution.
+
+**🔴 COMMAND:** Error messages must keep users in context - avoid losing them with technical details they cannot act upon.
+
+**Key principles:**
+
+1. **Translate technical to human** - Convert system errors, rule violations, and technical failures into clear, actionable language
+2. **Focus on root cause** - Explain what actually went wrong, not just the error code or technical term
+3. **Provide solution path** - Offer strongly suggested actions from the platform to solve the problem
+4. **Offer quick retry** - When appropriate, provide quick-access retry actions for transient errors
+5. **Preserve technical details** - Keep technical information available but secondary (collapsible or in trace sections)
+
+---
+
+#### 10.4.1 Complex Error Pattern
+
+**Use when:** System errors, rule violations, or complex failures require explanation and resolution guidance.
+
+**Structure:**
+
+1. **Error container** - Visual indicator of the problem (alert container or error trace section)
+2. **Translated message** - User-friendly explanation of what happened and why
+3. **Technical details** - Collapsible or secondary section with technical information (optional)
+4. **Primary action** - Strongly suggested action from platform to resolve the issue
+5. **Quick retry** - Retry button group when appropriate
+
+```tsx
+{
+  /* Complex error with error translation */
+}
+;<div className="overflow-hidden rounded-lg border-2 bg-white">
+  {/* Section header */}
+  <div className="border-b-2 px-6 py-4">
+    <h3 className="text-base font-bold text-black">Reasoning Trace</h3>
+  </div>
+
+  <div className="space-y-4 px-6 py-4">
+    {/* Error container - technical details preserved but secondary */}
+    <div className="border-l-8 border-red-500 bg-red-100 p-4">
+      <p className="font-mono text-sm">Rule: PII_REDACTION_STRICT</p>
+      <small className="mt-1 font-mono">Triggered: Patient scheduling detected in response</small>
+      <small className="mt-1 font-mono">Action: Response blocked</small>
+    </div>
+
+    {/* Action buttons */}
+    <div className="flex gap-2">
+      {/* Primary action - strongly suggested solution */}
+      <button
+        type="button"
+        className="text-md bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+      >
+        <ThumbsUp className="h-5 w-5 flex-shrink-0" />
+        Generate fix suggestion
+      </button>
+
+      {/* Quick retry - when appropriate */}
+      <div className="mr-0 ml-auto flex overflow-hidden rounded-md border-2">
+        <button className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 min-w-32 rounded-md py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+          Retry
+        </button>
+        <button className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 border-l-2 px-2 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+          <ChevronDown className="h-5 w-5" />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** Error container styling:
+
+- Left border accent: `border-l-8 border-red-500` (for critical errors)
+- Background: `bg-red-100` (subtle, not alarming)
+- Padding: `p-4`
+- Technical details: Use `font-mono text-sm` for code/technical text
+
+**🔴 COMMAND:** Primary action button:
+
+- Use primary button styling (`bg-primary-300`)
+- Include descriptive icon (e.g., ThumbsUp for suggestions, Wrench for fixes)
+- Label must describe the solution, not just "Fix" or "Resolve"
+
+**🔴 COMMAND:** Quick retry group:
+
+- Use secondary button styling
+- Group retry button with dropdown/chevron button
+- Only show when retry is appropriate (transient errors, network issues)
+
+---
+
+#### 10.4.2 Error Translation Guidelines
+
+**🔴 COMMAND:** Translate technical errors into user-friendly language:
+
+**✅ DO:**
+
+- Explain what happened in plain language
+- Focus on the impact to the user's workflow
+- Provide actionable guidance
+- Offer platform-suggested solutions
+- Keep technical details available but secondary
+
+**❌ DON'T:**
+
+- Show raw error codes or technical jargon without translation
+- Overwhelm users with technical details upfront
+- Provide dead-end errors with no solution path
+- Use vague messages ("Something went wrong")
+- Lose users out of context with irrelevant technical information
+
+**Translation Examples:**
+
+```tsx
+{
+  /* Wrong: Technical jargon */
+}
+;<div className="bg-red-100 p-4">
+  <p className="font-mono">Error 500: PII_REDACTION_STRICT violation</p>
+  <p className="font-mono">NullPointerException at line 342</p>
+</div>
+
+{
+  /* Correct: Translated to user-friendly */
+}
+;<div className="border-l-8 border-red-500 bg-red-100 p-4">
+  <p className="text-sm font-semibold text-black">Response blocked due to privacy protection</p>
+  <p className="mt-1 text-sm text-black">
+    Your response contained patient information that needs to be protected. We can help you rewrite
+    it safely.
+  </p>
+  {/* Technical details available but secondary */}
+  <details className="mt-2">
+    <summary className="text-grey-600 cursor-pointer text-xs">Technical details</summary>
+    <div className="mt-2 font-mono text-xs">
+      Rule: PII_REDACTION_STRICT | Triggered: Patient scheduling detected
+    </div>
+  </details>
+</div>
+```
+
+---
+
+#### 10.4.3 When to Show Technical Details
+
+**🔴 COMMAND:** Technical details must be available but secondary:
+
+**Show technical details when:**
+
+- Users need to debug or troubleshoot
+- Developers need error information
+- Support teams need diagnostic information
+- Users explicitly request technical information
+
+**🔴 COMMAND:** Technical details should be:
+
+- Collapsible (use `<details>` element or expandable section)
+- Clearly labeled ("Technical details", "Error trace", "Debug information")
+- Formatted with monospace font (`font-mono`)
+- Secondary to the translated message
+
+**🟡 DIRECTIVE:** For reasoning traces and complex error logs, use a dedicated "Reasoning Trace" or "Error Details" section that preserves technical information while keeping the primary message user-friendly.
+
+---
+
+#### 10.4.4 Solution Actions
+
+**🔴 COMMAND:** Complex errors must include strongly suggested solution actions from the platform.
+
+**Solution action types:**
+
+1. **Generate fix suggestion** - Platform analyzes error and suggests a fix
+2. **Review and adjust** - Guide user to review settings or configuration
+3. **Contact support** - When user action cannot resolve the issue
+4. **Retry** - For transient errors that may resolve on retry
+
+**🔴 COMMAND:** Primary solution action must:
+
+- Use primary button styling
+- Include descriptive icon
+- Clearly describe what the action will do
+- Be prominently placed (left side for LTR layouts)
+
+**🔴 COMMAND:** Retry actions must:
+
+- Only appear when retry is appropriate (network errors, transient failures)
+- Use secondary button styling
+- Be grouped with additional options (dropdown) when multiple retry strategies exist
+
+```tsx
+{
+  /* Solution actions layout */
+}
+;<div className="flex gap-2">
+  {/* Primary solution - strongly suggested */}
+  <button className="text-md bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 inline-flex items-center gap-2 rounded-md border-2 px-4 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+    <ThumbsUp className="h-5 w-5 flex-shrink-0" />
+    Generate fix suggestion
+  </button>
+
+  {/* Quick retry - when appropriate */}
+  <div className="mr-0 ml-auto flex overflow-hidden rounded-md border-2">
+    <button className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 min-w-32 rounded-md py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      Retry
+    </button>
+    <button className="text-md active:bg-grey-200 hover:bg-grey-100 focus:outline-primary-600 border-l-2 px-2 py-2 font-semibold text-black transition-colors focus:outline focus:outline-1 focus:outline-offset-2">
+      <ChevronDown className="h-5 w-5" />
+    </button>
+  </div>
+</div>
+```
+
+---
+
+#### 10.4.5 Error Translation Checklist
+
+**Before showing an error to users, verify:**
+
+- [ ] Technical error has been translated to user-friendly language
+- [ ] Root cause is explained, not just the error code
+- [ ] Solution path is provided (strongly suggested action)
+- [ ] Technical details are available but secondary
+- [ ] User remains in context (not lost with irrelevant details)
+- [ ] Retry action is included when appropriate
+- [ ] Message follows EXPLAIN before ASK principle
+- [ ] Message uses GUIDING, supportive tone
+
+---
+
+---
+
+### 10.5 Platform Input Assistance
+
+**🔴 COMMAND:** The platform must proactively provide assistance to users when they are inputting content, especially in contexts involving generative AI, AI rule instructions, or AGENT handling.
+
+**🔴 COMMAND:** Platform assistance should include:
+
+1. **Recommendations** - Suggested content, patterns, or best practices
+2. **Auto-complete** - Predictive text completion based on context
+3. **Linting suggestions** - Real-time feedback on input quality, errors, or improvements
+
+**🔴 COMMAND:** Assistance must be contextual, non-intrusive, and easily dismissible.
+
+**🔴 COMMAND:** Visual indicators for assistance must use established patterns:
+
+- **Chips** - For actionable recommendations or suggestions
+- **Dotted underline** - For inline terminology, jargon, or expandable hints (see [Foundations: Indicating Interactivity](./foundations.md#533-indicating-interactivity))
+
+---
+
+#### 10.5.1 Recommendations
+
+**Use when:** Platform can suggest content, patterns, or best practices based on context.
+
+**🔴 COMMAND:** Recommendations must be:
+
+- Contextually relevant to the current input
+- Clearly actionable (user can accept with one click)
+- Non-intrusive (don't block input)
+- Easily dismissible
+
+**Visual Pattern:** Use chips for recommendations
+
+```tsx
+{
+  /* Recommendations as chips below input */
+}
+;<div className="space-y-2">
+  <textarea
+    className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+    placeholder="Enter AI instructions..."
+  />
+
+  {/* Recommendations */}
+  <div className="flex flex-wrap gap-2">
+    <span className="text-grey-600 text-xs">Suggestions:</span>
+    <button
+      type="button"
+      onClick={() => insertRecommendation('Use clear, specific language')}
+      className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+    >
+      Use clear, specific language
+    </button>
+    <button
+      type="button"
+      onClick={() => insertRecommendation('Include examples')}
+      className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+    >
+      Include examples
+    </button>
+    <button
+      type="button"
+      onClick={() => insertRecommendation('Specify output format')}
+      className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+    >
+      Specify output format
+    </button>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** Recommendation chip styling:
+
+- Background: `bg-primary-50`
+- Border: `border-2 border-primary-200`
+- Text: `text-xs font-medium text-primary-700`
+- Padding: `px-2.5 py-1`
+- Hover: `hover:bg-primary-100`
+- Rounded: `rounded-md`
+
+**🟡 DIRECTIVE:** Show recommendations based on:
+
+- Common patterns in similar contexts
+- Best practices for the input type
+- User's previous inputs (if available)
+- Platform knowledge base
+
+---
+
+#### 10.5.2 Auto-complete
+
+**Use when:** Platform can predict or complete user input based on context, patterns, or previous usage.
+
+**🔴 COMMAND:** Auto-complete must:
+
+- Appear inline or as a dropdown below the input
+- Be clearly distinguishable from user input
+- Allow users to accept or dismiss easily
+- Not interfere with typing
+
+**Visual Pattern:** Dropdown list or inline suggestions
+
+```tsx
+{
+  /* Auto-complete dropdown */
+}
+;<div className="relative">
+  <input
+    type="text"
+    className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+    placeholder="Enter rule name..."
+  />
+
+  {/* Auto-complete suggestions */}
+  {showSuggestions && (
+    <div className="absolute z-50 mt-1 w-full rounded-md border-2 bg-white shadow-lg">
+      <div className="max-h-60 overflow-y-auto">
+        {suggestions.map((suggestion) => (
+          <button
+            key={suggestion}
+            type="button"
+            onClick={() => selectSuggestion(suggestion)}
+            className="hover:bg-grey-100 w-full px-3 py-2 text-left text-sm text-black transition-colors"
+          >
+            {suggestion}
+          </button>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+```
+
+**🔴 COMMAND:** Auto-complete dropdown styling:
+
+- Position: `absolute` below input
+- Background: `bg-white`
+- Border: `border-2`
+- Shadow: `shadow-lg`
+- Max height: `max-h-60` with `overflow-y-auto`
+- Item hover: `hover:bg-grey-100`
+
+**🟡 DIRECTIVE:** Trigger auto-complete:
+
+- After user stops typing (debounced)
+- On focus (if context allows)
+- Based on partial matches
+
+---
+
+#### 10.5.3 Linting Suggestions
+
+**Use when:** Platform can provide real-time feedback on input quality, potential errors, or improvements.
+
+**🔴 COMMAND:** Linting suggestions must:
+
+- Appear in real-time or near real-time
+- Be clearly marked as suggestions (not errors)
+- Explain why the suggestion is being made
+- Allow users to accept, dismiss, or ignore
+
+**Visual Patterns:**
+
+- **Inline hints** - Dotted underline for expandable suggestions
+- **Below input** - Suggestions list with explanations
+- **Chips** - Quick-fix suggestions
+
+```tsx
+{
+  /* Linting suggestions with dotted underline hints */
+}
+;<div className="space-y-2">
+  <div className="relative">
+    <textarea
+      className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+      placeholder="Enter AI instructions..."
+    />
+
+    {/* Inline hint with dotted underline */}
+    <div className="mt-2 flex items-center gap-2">
+      <button
+        type="button"
+        className="text-primary-600 hover:text-primary-700 border-b-2 border-dotted border-current text-xs font-semibold"
+        onClick={() => showLintingDetails('vague-language')}
+      >
+        Consider being more specific
+      </button>
+      <span className="text-grey-500 text-xs">•</span>
+      <button
+        type="button"
+        className="text-primary-600 hover:text-primary-700 border-b-2 border-dotted border-current text-xs font-semibold"
+        onClick={() => showLintingDetails('missing-examples')}
+      >
+        Add examples for clarity
+      </button>
+    </div>
+  </div>
+</div>
+
+{
+  /* Linting suggestions as chips with quick fixes */
+}
+;<div className="space-y-2">
+  <textarea
+    className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+    placeholder="Enter AI instructions..."
+  />
+
+  {/* Linting suggestions */}
+  <div className="flex flex-wrap gap-2">
+    <span className="text-grey-600 text-xs">Suggestions:</span>
+    <button
+      type="button"
+      onClick={() => applyLintingFix('add-examples')}
+      className="inline-flex items-center gap-1 rounded-md border-2 border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700 transition-colors hover:bg-amber-100"
+    >
+      <span>Add examples</span>
+      <span className="text-amber-600">→</span>
+    </button>
+    <button
+      type="button"
+      onClick={() => applyLintingFix('clarify-intent')}
+      className="inline-flex items-center gap-1 rounded-md border-2 border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700 transition-colors hover:bg-amber-100"
+    >
+      <span>Clarify intent</span>
+      <span className="text-amber-600">→</span>
+    </button>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** Linting suggestion styling:
+
+- **Dotted underline hints:** Use `border-b-2 border-dotted border-current` with `text-primary-600`
+- **Chip suggestions:** Use `bg-amber-50 border-2 border-amber-200 text-amber-700` (warning/informational, not error)
+- Include arrow or icon to indicate actionability
+
+**🔴 COMMAND:** Linting suggestions must explain:
+
+- What could be improved
+- Why it matters (especially for AI/agent contexts)
+- How to apply the fix
+
+---
+
+#### 10.5.4 Context-Specific Assistance
+
+**🔴 COMMAND:** Platform assistance must be context-aware, especially for:
+
+**Generative AI Inputs:**
+
+- Suggest prompt patterns and best practices
+- Recommend specific language for better AI understanding
+- Provide examples of effective prompts
+- Lint for clarity, specificity, and completeness
+
+**AI Rule Instructions:**
+
+- Auto-complete common rule patterns
+- Suggest rule syntax and structure
+- Validate rule logic in real-time
+- Recommend rule combinations or alternatives
+
+**AGENT Handling:**
+
+- Suggest agent configuration patterns
+- Auto-complete common agent parameters
+- Lint for agent compatibility and best practices
+- Recommend agent combinations or workflows
+
+```tsx
+{
+  /* AI instruction input with comprehensive assistance */
+}
+;<div className="space-y-4">
+  <div className="space-y-2">
+    <label className="block text-sm font-semibold text-black">AI Instructions</label>
+    <textarea
+      className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+      placeholder="Describe what you want the AI to do..."
+    />
+
+    {/* Recommendations */}
+    <div className="flex flex-wrap gap-2">
+      <span className="text-grey-600 text-xs">Try:</span>
+      <button
+        type="button"
+        onClick={() => insertRecommendation('Use specific examples')}
+        className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+      >
+        Use specific examples
+      </button>
+      <button
+        type="button"
+        onClick={() => insertRecommendation('Define output format')}
+        className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+      >
+        Define output format
+      </button>
+    </div>
+
+    {/* Linting suggestions */}
+    <div className="flex flex-wrap gap-2">
+      <button
+        type="button"
+        className="text-primary-600 hover:text-primary-700 border-b-2 border-dotted border-current text-xs font-semibold"
+        onClick={() => showDetails('vague-language')}
+      >
+        This instruction could be more specific
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+#### 10.5.5 Assistance Best Practices
+
+**🔴 COMMAND:** Platform assistance must:
+
+**✅ DO:**
+
+- Provide contextual, relevant suggestions
+- Make assistance easily dismissible
+- Use established visual patterns (chips, dotted underline)
+- Explain why suggestions are being made
+- Allow users to accept suggestions with minimal effort
+- Respect user input (don't override without permission)
+
+**❌ DON'T:**
+
+- Overwhelm users with too many suggestions
+- Block or interfere with user input
+- Use assistance patterns for errors (use error patterns instead)
+- Suggest without context
+- Force users to interact with assistance
+
+**🟡 DIRECTIVE:** Balance helpfulness with non-intrusiveness - assistance should feel supportive, not demanding.
+
+---
+
+#### 10.5.6 Accessibility for Assistance
+
+**🔴 COMMAND:** Platform assistance must be accessible:
+
+- Chips and suggestions must be keyboard accessible
+- Dotted underline hints must be focusable and announceable
+- Screen readers must announce assistance availability
+- Users must be able to dismiss assistance via keyboard
+- Focus management must not trap users in assistance UI
+
+**🔴 COMMAND:** Use appropriate ARIA attributes:
+
+- `role="button"` for actionable chips
+- `aria-label` for icon-only assistance triggers
+- `aria-describedby` for linking hints to inputs
+- `aria-live="polite"` for dynamic assistance updates
+
+---
+
+## 11. Permission Restrictions
+
+### 11.1 Overview
+
+Permission restrictions occur when users lack the necessary access rights to perform actions or view content. These restrictions must be clearly communicated to help users understand why they cannot interact with certain elements and what they can do instead.
+
+**🔴 COMMAND:** Disabled interactive elements due to permission restrictions are always non-interactive (disabled state).
+
+**🔴 COMMAND:** Permission restrictions must be communicated through complementary informative elements, not through the disabled element itself.
+
+**🔴 COMMAND:** Permission messages must follow the EXPLAIN before ASK principle - explain why access is restricted and guide users on next steps.
+
+**🔴 COMMAND:** Always assume positive intent - frame permission messages in a GUIDING, supportive manner.
+
+---
+
+### 11.2 Permission Restriction Patterns
+
+There are two primary patterns for communicating permission restrictions:
+
+1. **Individual Element Restriction** - A single disabled element with a complementary informative sibling
+2. **Global/Area Restriction** - A standalone alert container that restricts multiple elements or a global area
+
+---
+
+### 11.3 Individual Element Restriction
+
+**Use when:** A single interactive element (button, input, checkbox, radio) is disabled due to permission restrictions.
+
+**🔴 COMMAND:** The disabled element must remain visible but non-interactive.
+
+**🔴 COMMAND:** A complementary informative element (info icon with tooltip) must be placed adjacent to the disabled element to explain the restriction.
+
+**🔴 COMMAND:** Info icon must be interactive (button) to trigger tooltip on hover (desktop) or click/tap (mobile).
+
+**Structure:**
+
+- Disabled element (button, input, checkbox, radio)
+- Adjacent info icon button (sibling element)
+- Tooltip that appears on interaction with info icon
+
+```tsx
+{
+  /* Individual disabled button with permission info */
+}
+;<div className="flex items-center gap-2">
+  <button
+    type="button"
+    disabled
+    className="text-md disabled:bg-grey-300 disabled:text-grey-500 disabled:border-grey-400 flex gap-2 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline-1 focus:outline-offset-2 disabled:cursor-not-allowed"
+  >
+    <Trash2 className="h-5 w-5 flex-shrink-0" />
+    Delete
+  </button>
+
+  <div className="relative">
+    <button
+      type="button"
+      className="hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md focus:outline focus:outline-1 focus:outline-offset-2"
+      aria-label="Permission information"
+      aria-describedby="delete-permission-tooltip"
+    >
+      <Info className="h-5 w-5 flex-shrink-0" />
+    </button>
+
+    {/* Tooltip - shown on hover/click */}
+    <div
+      id="delete-permission-tooltip"
+      role="tooltip"
+      className="bg-grey-900 absolute top-full left-0 z-50 mt-2 min-w-56 rounded-md px-3 py-2 text-center text-sm font-medium text-white shadow-lg"
+    >
+      No permission to delete
+      <div className="border-b-grey-900 absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-r-[6px] border-b-[6px] border-l-[6px] border-r-transparent border-l-transparent"></div>
+    </div>
+  </div>
+</div>
+
+{
+  /* Individual disabled radio with permission info */
+}
+;<div className="flex items-center gap-2">
+  <label className="flex min-h-10 cursor-pointer items-center gap-2">
+    <input
+      type="radio"
+      disabled
+      className="disabled:bg-grey-300 disabled:text-grey-500 disabled:border-grey-400 h-4 w-4 rounded-full disabled:cursor-not-allowed"
+    />
+    <span className="text-grey-700 text-sm">Option 3</span>
+  </label>
+
+  <div className="relative">
+    <button
+      type="button"
+      className="hover:bg-grey-100 focus:outline-primary-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md focus:outline focus:outline-1 focus:outline-offset-2"
+      aria-label="Permission information"
+      aria-describedby="select-permission-tooltip"
+    >
+      <Info className="h-5 w-5 flex-shrink-0" />
+    </button>
+
+    {/* Tooltip */}
+    <div
+      id="select-permission-tooltip"
+      role="tooltip"
+      className="bg-grey-900 absolute top-full left-0 z-50 mt-2 min-w-56 rounded-md px-3 py-2 text-center text-sm font-medium text-white shadow-lg"
+    >
+      No permission to select
+      <div className="border-b-grey-900 absolute bottom-full left-1/2 h-0 w-0 -translate-x-1/2 border-r-[6px] border-b-[6px] border-l-[6px] border-r-transparent border-l-transparent"></div>
+    </div>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** Tooltip must be accessible:
+
+- Use `role="tooltip"`
+- Link via `aria-describedby` on info button
+- Include `aria-label` on info button describing its purpose
+- Tooltip appears on hover (desktop) or click/tap (mobile)
+
+**🔴 COMMAND:** Tooltip styling:
+
+- Background: `bg-grey-900`
+- Text: `text-white`
+- Padding: `px-3 py-2`
+- Text size: `text-sm`
+- Rounded: `rounded-md`
+- Shadow: `shadow-lg`
+- Max width: `min-w-56` (224px)
+
+**🟡 DIRECTIVE:** Position tooltip above info icon by default; adjust to below if insufficient space.
+
+---
+
+### 11.4 Global/Area Restriction
+
+**Use when:** Multiple interactive elements or a global area of the page is restricted due to permissions.
+
+**🔴 COMMAND:** Use a standalone alert container (semantic container) to communicate the restriction.
+
+**🔴 COMMAND:** Alert container must follow the Alert Container pattern from [Guidelines: Status and Health](./guidelines.md#pattern-alert-container-semantic-containers).
+
+**🔴 COMMAND:** Alert container must include:
+
+1. **EXPLAIN:** Clear title explaining the restriction
+2. **EXPLAIN:** Body text explaining why access is restricted and what users can do
+3. **GUIDE:** Action button(s) for next steps (e.g., "Contact admin", "Request access", "Copy details")
+
+**Structure:**
+
+- Alert container with Info icon
+- Title explaining restriction
+- Body text with guidance
+- Action buttons for next steps
+
+```tsx
+{
+  /* Global permission restriction alert */
+}
+;<div className="bg-grey-300 mb-4 rounded-lg border-2 p-4 text-black">
+  <div className="flex">
+    <div className="flex-shrink-0">
+      <Info className="h-6 w-6" />
+    </div>
+    <div className="ml-3">
+      <h3 className="text-lg font-medium">No permission to edit</h3>
+      <div className="text-md mt-2">
+        <p>
+          You don't have permission to edit this content. Contact your administrator to request
+          access, or share these details with someone who can help.
+        </p>
+      </div>
+      <div className="mt-6 mb-3">
+        <div className="-mx-2 -my-1.5 flex">
+          <button
+            type="button"
+            className="focus:outline-primary-600 hover:bg-grey-100 active:bg-grey-300 ml-3 flex gap-2 rounded-md border-2 px-2 py-1.5 text-sm font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+          >
+            <Copy className="h-5 w-5 flex-shrink-0" />
+            Copy details
+          </button>
+          <button
+            type="button"
+            className="focus:outline-primary-600 hover:bg-grey-100 active:bg-grey-300 ml-3 rounded-md border-2 px-2 py-1.5 text-sm font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+          >
+            Contact admin
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+**🔴 COMMAND:** Alert container styling for permission restrictions:
+
+- Background: `bg-grey-300` (neutral, informational)
+- Border: `border-2`
+- Border radius: `rounded-lg`
+- Padding: `p-4`
+- Text color: `text-black`
+
+**🔴 COMMAND:** All interactive elements within the restricted area must be disabled, but the alert container itself provides the explanation.
+
+**🟡 DIRECTIVE:** When multiple elements are restricted, show one alert container rather than individual info icons for each element.
+
+---
+
+### 11.5 Permission Message Guidelines
+
+**🔴 COMMAND:** Permission messages must be clear and actionable:
+
+**✅ DO:**
+
+- Explain what permission is missing
+- Explain why access is restricted
+- Provide guidance on how to obtain access
+- Offer alternative actions (copy details, contact admin)
+- Use GUIDING, supportive tone
+
+**❌ DON'T:**
+
+- Use vague messages ("Access denied")
+- Blame the user ("You don't have permission")
+- Hide the disabled elements
+- Use alarming or threatening language
+- Provide no guidance on next steps
+
+**Message Structure:**
+
+1. **Title:** State the restriction clearly ("No permission to [action]")
+2. **Body:** Explain why and provide guidance
+3. **Actions:** Offer helpful next steps
+
+```tsx
+{/* Correct: GUIDING with guidance */}
+<h3 className="text-lg font-medium">No permission to edit</h3>
+<p>
+  You don't have permission to edit this content. Contact your administrator to request access, or share these details with someone who can help.
+</p>
+
+{/* Wrong: Vague and unhelpful */}
+<h3 className="text-lg font-medium">Access Denied</h3>
+<p>You don't have permission.</p>
+```
+
+---
+
+### 11.6 Accessibility Requirements
+
+**🔴 COMMAND:** Permission restrictions must be accessible:
+
+- Disabled elements must have `disabled` attribute
+- Info icons must have `aria-label` describing their purpose
+- Tooltips must have `role="tooltip"` and be linked via `aria-describedby`
+- Alert containers must have proper heading hierarchy
+- Screen readers must announce permission restrictions
+
+**🔴 COMMAND:** Keyboard navigation:
+
+- Disabled elements are not focusable (by default)
+- Info icon buttons must be keyboard accessible
+- Tooltips must appear on focus for info buttons
+- Alert container actions must be keyboard accessible
+
+---
+
+### 11.7 When to Use Each Pattern
+
+**Use Individual Element Restriction when:**
+
+- Only one or a few elements are restricted
+- Restriction is specific to that element
+- Other elements on the page remain interactive
+
+**Use Global/Area Restriction when:**
+
+- Multiple elements are restricted
+- An entire section or page area is restricted
+- Restriction affects a workflow or process
+- Users need comprehensive guidance on obtaining access
+
+**🟡 DIRECTIVE:** When in doubt, use Global/Area Restriction for better user understanding and guidance.
+
 ---
 
 ## 14. Modal Patterns
@@ -427,6 +1328,40 @@ All modals share this structure:
 - Focus trap (keyboard navigation stays within modal)
 - `role="dialog"` and `aria-modal="true"`
 - `aria-labelledby` pointing to title
+
+**🔴 COMMAND:** Modal content must follow the EXPLAIN before ASK principle - provide context and explanation before requesting user action.
+
+**🔴 COMMAND:** Always assume positive intent from the user - frame modal content in a GUIDING, supportive manner rather than demanding or warning.
+
+**Structure:** `[Title] → [Explanation/Context] → [Action Request]`
+
+```tsx
+{
+  /* Correct: EXPLAIN before ASK */
+}
+;<div className="max-w-md rounded-lg bg-white p-6 shadow-xl">
+  <h2 className="text-xl font-bold">Publish article</h2>
+  <p className="text-grey-600 mt-4 text-sm">
+    Publishing makes your article visible to all subscribers immediately. You'll receive a
+    notification when it's live.
+  </p>
+  <div className="mt-6 flex justify-end gap-2">
+    <button>Cancel</button>
+    <button>Publish now</button>
+  </div>
+</div>
+
+{
+  /* Wrong: ASK without EXPLAIN */
+}
+;<div className="max-w-md rounded-lg bg-white p-6 shadow-xl">
+  <h2 className="text-xl font-bold">Publish article?</h2>
+  <div className="mt-6 flex justify-end gap-2">
+    <button>Cancel</button>
+    <button>Confirm</button>
+  </div>
+</div>
+```
 
 ---
 
@@ -667,17 +1602,19 @@ const Modal = ({ isOpen, onClose }) => {
 
 **Body Formula:**
 
-1. State what will be deleted
-2. Explain consequences (data loss, affected users)
-3. Mention if action is permanent
-4. PREFERRED: Offer undo mechanism instead of confirmation
+1. **EXPLAIN:** State what will be deleted and why it matters
+2. **EXPLAIN:** Explain consequences (data loss, affected users) in a GUIDING manner
+3. **EXPLAIN:** Mention if action is permanent
+4. **ASK:** Request confirmation with clear action buttons
+5. **PROVIDE:** UNDO mechanism must be part of initial flow (displayed immediately after action)
 
 **Action Rules:**
 
 - Primary button: Destructive action (red/red)
 - Secondary button: "Cancel" (border only)
 - Button text: Use specific verb ("Delete account", not "Confirm")
-- **🔴 COMMAND:** Show undo toast after action when possible
+- **🔴 COMMAND:** Show UNDO action immediately after deletion - prominently displayed, not hidden
+- **🔴 COMMAND:** UNDO must be part of initial confirmation flow, available for reasonable time period
 
 **Escape Rules:**
 
@@ -700,10 +1637,11 @@ const Modal = ({ isOpen, onClose }) => {
 
 **Anti-patterns:**
 
-- ❌ Don't ask "Are you sure?" - be specific about what's being deleted
+- ❌ Don't ask "Are you sure?" - be specific about what's being deleted (EXPLAIN before ASK)
 - ❌ Don't use generic "Confirm" or "OK" - use "Delete [thing]"
-- ❌ Don't omit consequences - tell user what they'll lose
-- ❌ Don't skip undo mechanism - prefer undo toast over confirmation
+- ❌ Don't omit consequences - tell user what they'll lose (EXPLAIN)
+- ❌ Don't skip UNDO mechanism - UNDO must be prominently displayed immediately after action
+- ❌ Don't assume negative intent - frame messages in GUIDING, supportive manner
 
 ```tsx
 {
@@ -787,19 +1725,22 @@ const Modal = ({ isOpen, onClose }) => {
 
 **Examples:** Network failures, permission errors, data conflicts, failed uploads.
 
+**🔴 COMMAND:** Error Recovery modals must follow [Error Translation](./patterns.md#104-error-translation) principles - translate technical errors to user-friendly language.
+
 **Title Formula:** `[Problem description]` (NOT "Error" or "Oops")
 
 **Body Formula:**
 
-1. Explain what happened (in plain language)
-2. Explain why it happened (if known and helpful)
-3. Tell user what to do next
+1. **EXPLAIN:** Explain what happened (in plain language, translated from technical)
+2. **EXPLAIN:** Explain why it happened (if known and helpful)
+3. **ASK/GUIDE:** Tell user what to do next with strongly suggested action
 
 **Action Rules:**
 
-- Primary button: Recovery action (indigo/blue) - "Try again", "Contact support"
+- Primary button: Recovery action (indigo/blue) - "Try again", "Contact support", "Generate fix suggestion"
 - Secondary button: Alternative path (border) - "Go back", "Cancel"
 - **🔴 COMMAND:** Always provide actionable next step
+- **🔴 COMMAND:** For complex errors, offer platform-suggested solutions (see Error Translation)
 
 **Escape Rules:**
 
@@ -822,10 +1763,11 @@ const Modal = ({ isOpen, onClose }) => {
 
 **Anti-patterns:**
 
-- ❌ Don't use technical error messages ("Error 500", "NullPointerException")
+- ❌ Don't use technical error messages ("Error 500", "NullPointerException") - translate to user-friendly language
 - ❌ Don't blame the user ("You did something wrong")
 - ❌ Don't provide dead-end errors with no action
 - ❌ Don't use red for system errors (reserve for user mistakes)
+- ❌ Don't lose users with technical jargon - keep them in context
 
 ```tsx
 {
@@ -3359,11 +4301,15 @@ ACCESSIBILITY REQUIREMENTS
 
 **🔴 COMMAND:** Trigger via hover or click on dotted-underlined text.
 
+**🔴 COMMAND:** Terminology overlays and inline jargon must use dotted underline pattern as defined in [Foundations: Indicating Interactivity](./foundations.md#533-indicating-interactivity).
+
 ---
 
 #### Visual Treatment of Terms
 
 **🔴 COMMAND:** Glossary terms must use dotted underline with `border-b-2 border-dotted border-grey-400` styling.
+
+**🟡 DIRECTIVE:** For terminology overlays that reveal context on hover or interaction, you may use `border-current` to inherit text color for better visual integration (see Foundations guidance).
 
 **🔴 COMMAND:** Term text color uses `text-black` (not link color) to distinguish from navigation links.
 

@@ -65,8 +65,15 @@ Every form element consists of up to four parts:
 
 **🔴 COMMAND:** Keep hint text concise.
 
+**🔴 COMMAND:** Form labels, hints, and helper text must follow the EXPLAIN before ASK principle - provide context and guidance before requesting input.
+
+**🔴 COMMAND:** Always assume positive intent - frame form guidance in a GUIDING, supportive manner.
+
 ```tsx
-<div className="space-y-1">
+{
+  /* Correct: EXPLAIN before ASK with GUIDING tone */
+}
+;<div className="space-y-1">
   <label className="block text-sm font-semibold text-black">
     Password <span className="text-red-500">*</span>
   </label>
@@ -75,7 +82,24 @@ Every form element consists of up to four parts:
     className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
   />
   <p className="text-grey-500 text-sm">
-    Must be at least 8 characters with one number and one special character
+    Create a strong password with at least 8 characters, including one number and one special
+    character for better security.
+  </p>
+</div>
+
+{
+  /* Wrong: Demanding tone without explanation */
+}
+;<div className="space-y-1">
+  <label className="block text-sm font-semibold text-black">
+    Password <span className="text-red-500">*</span>
+  </label>
+  <input
+    type="password"
+    className="border-grey-600 focus:outline-primary-500 focus:outline-primary-600 w-full rounded-md border-2 px-3 py-2 text-sm text-black focus:outline focus:outline-1 focus:outline-offset-2"
+  />
+  <p className="text-grey-500 text-sm">
+    Password must meet requirements or account creation will fail.
   </p>
 </div>
 ```
@@ -588,6 +612,28 @@ Cursor:     not-allowed
 
 ---
 
+### 11.3 Permission Restrictions
+
+**🔴 COMMAND:** When interactive elements are disabled due to permission restrictions, they must remain visible but non-interactive.
+
+**🔴 COMMAND:** Permission restrictions must be communicated through complementary informative elements, not through the disabled element itself.
+
+**Read about permissions:** See [Patterns: Permission Restrictions](./patterns.md#11-permission-restrictions) for complete guidance on:
+
+- Individual element restrictions (disabled element + info icon with tooltip)
+- Global/area restrictions (standalone alert container)
+- Permission message guidelines
+- Accessibility requirements
+
+**Key principles:**
+
+- Disabled elements due to permissions are always non-interactive
+- Complementary informative sibling elements explain the restriction
+- Messages follow EXPLAIN before ASK principle
+- GUIDING, supportive tone assumes positive intent
+
+---
+
 ## 12. Empty States
 
 ### 12.1 Overview
@@ -698,6 +744,8 @@ Empty states occur when no data is available to display. They keep users informe
 **Use for:** Permissions issue, system error, or configuration required.
 
 **Goal:** User understands problem and knows corrective actions.
+
+**🔴 COMMAND:** Complex errors must follow [Error Translation](./patterns.md#104-error-translation) principles - translate technical errors to user-friendly language that explains root cause and solution.
 
 ```tsx
 {

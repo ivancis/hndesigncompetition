@@ -71,4 +71,41 @@ When providing feedback to agents, use the following structured format to ensure
 - [https://www.youtube.com/watch?v=cmUQiPfl1ak](https://www.youtube.com/watch?v=cmUQiPfl1ak)
 - [https://uxdesign.cc/dear-llm-heres-how-my-design-system-works-b59fb9a342b7](https://uxdesign.cc/dear-llm-heres-how-my-design-system-works-b59fb9a342b7)
 - [https://uxdesign.cc/designers-as-agent-orchestrators-what-i-learnt-shipping-with-ai-in-2025-3b1bf30048a3](https://uxdesign.cc/designers-as-agent-orchestrators-what-i-learnt-shipping-with-ai-in-2025-3b1bf30048a3)
-- [https://uxdesign.cc/designers-as-agent-orchestrators-what-i-learnt-shipping-with-ai-in-2025-3b1bf30048a3](https://medium.com/design-bootcamp/simplified-jakob-nielsens-10-usability-heuristics-36a860c2ac9c)
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.6.0] - 2026-02-05
+
+### Added
+
+- New UI patterns for Error Handling and Permission Restrictions.
+- Patterns for Multi-step processes.
+- Common organisms: Linear horizontal and vertical progressions (with and without dividers).
+- Detailed documentation for Spacing rules and layout rhythm.
+
+## [1.5.0] - 2026-02-03
+
+### Added
+
+- Voice and AI interaction patterns.
+- New structural distinction for Base, Surface, Container, and Field element types.
+- Specialized patterns for Dialogs and Modals.
+- Morphology documentation and improved markup anatomy examples.
+
+### Changed
+
+- Refined UI for improved accessibility and "wow factor" visual polish.
+
+## [1.0.0] - 2026-01-27
+
+### Added
+
+- Initial project build using Next.js, TailwindCSS, React, and TypeScript.
+- Core `ui-patterns-playbook.md` structure for foundations and basic components.
+- Automated linting for staged changes via pre-commit hooks.
+- Single-file compilation for the playbook assets.

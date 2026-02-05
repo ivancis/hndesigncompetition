@@ -7,9 +7,9 @@ import {
   Pause,
   Trash2,
   XCircle,
-  Zap,
-  X,
   Filter,
+  Play,
+  Mic,
 } from 'react-feather'
 
 /**
@@ -20,69 +20,219 @@ import {
 export default function MyCustomComponent5() {
   return (
     <div className="flex flex-col gap-12">
-      <div className="flex w-full max-w-xl items-center rounded-lg border-2 bg-white p-4">
-        {/* Left: Delete and Timer */}
-        <div className="flex items-center gap-2 pl-1">
-          <button
-            type="button"
-            className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
-            aria-label="Filter"
-          >
-            <Trash2 />
-          </button>
+      <div className="flex flex-col gap-12">
+        <div className="flex w-full max-w-xl items-center rounded-lg border-2 bg-white p-4">
+          {/* Left: Delete and Timer */}
+          <div className="flex items-center gap-4 pl-1">
+            <button
+              type="button"
+              className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+              aria-label="Filter"
+            >
+              <Trash2 />
+            </button>
 
-          <button
-            type="button"
-            className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
-            aria-label="Filter"
-          >
-            <Pause />
-          </button>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+                aria-label="Filter"
+              >
+                <Mic />
+              </button>
 
-          <span className="text-grey-700 px-2 text-sm font-medium tabular-nums">0:28</span>
+              <span className="text-grey-700 px-2 text-sm font-medium tabular-nums">0:28</span>
+            </div>
+          </div>
+
+          {/* Center: Waveform SVG */}
+          <div className="flex-1 px-6">
+            <svg
+              className="text-primary-500 m-auto w-auto max-w-40"
+              viewBox="0 0 100 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              {/* Representative bars */}
+              <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+              <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
+              <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+              <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+              <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+              <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
+              <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+              <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
+              <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+              <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              {/* Trailing dots */}
+              <circle cx="96" cy="12" r="1.5" className="fill-current" />
+              <circle cx="102" cy="12" r="1.5" className="fill-current" />
+            </svg>
+          </div>
+
+          {/* Right: Controls */}
+          <div className="flex items-center gap-2">
+            {/* Pause Button */}
+            <button
+              type="button"
+              className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+              aria-label="Filter"
+            >
+              <Pause />
+            </button>
+            {/* Send Button */}
+            <button
+              type="button"
+              className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 p-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+              aria-label="Filter"
+            >
+              <ArrowUp />
+            </button>
+          </div>
         </div>
+      </div>
+      <div className="flex flex-col gap-12">
+        <div className="flex w-full max-w-xl items-center rounded-lg border-2 bg-white p-4">
+          {/* Left: Delete and Timer */}
+          <div className="flex items-center gap-4 pl-1">
+            <button
+              type="button"
+              className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+              aria-label="Filter"
+            >
+              <Trash2 />
+            </button>
 
-        {/* Center: Waveform SVG */}
-        <div className="flex-1 px-6">
-          <svg
-            className="text-primary-500 m-auto w-auto max-w-40"
-            viewBox="0 0 100 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            {/* Representative bars */}
-            <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-            <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-            <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-            <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
-            <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-            <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
-            <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-            <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-            <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-            <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
-            <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
-            <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
-            <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
-            <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
-            <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
-            {/* Trailing dots */}
-            <circle cx="96" cy="12" r="1.5" className="fill-current" />
-            <circle cx="102" cy="12" r="1.5" className="fill-current" />
-          </svg>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+                aria-label="Filter"
+              >
+                <Play />
+              </button>
+
+              <span className="text-grey-700 px-2 text-sm font-medium tabular-nums">0:28</span>
+            </div>
+          </div>
+
+          {/* Center: Waveform SVG */}
+          <div className="flex-1 px-6">
+            <svg
+              className="text-primary-500 m-auto w-auto max-w-40"
+              viewBox="0 0 100 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              {/* Representative bars */}
+              <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+              <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
+              <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+              <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+              <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+              <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
+              <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+              <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
+              <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+              <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              {/* Trailing dots */}
+              <circle cx="96" cy="12" r="1.5" className="fill-current" />
+              <circle cx="102" cy="12" r="1.5" className="fill-current" />
+            </svg>
+          </div>
+
+          {/* Right: Controls */}
+          <div className="flex items-center gap-2">
+            {/* Send Button */}
+            <button
+              type="button"
+              className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 p-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+              aria-label="Filter"
+            >
+              <ArrowUp />
+            </button>
+          </div>
         </div>
+      </div>
+      <div className="flex flex-col gap-12">
+        <div className="flex w-full max-w-xl items-center rounded-lg border-2 bg-white p-4">
+          {/* Left: Delete and Timer */}
+          <div className="flex items-center gap-4 pl-1">
+            <button
+              type="button"
+              className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+              aria-label="Filter"
+            >
+              <Trash2 />
+            </button>
 
-        {/* Right: Controls */}
-        <div className="flex items-center gap-2">
-          {/* Send Button */}
-          <button
-            type="button"
-            className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 p-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
-            aria-label="Filter"
-          >
-            <ArrowUp />
-          </button>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                className="border-grey-600 hover:bg-grey-100 focus:outline-primary-600 rounded-md border-2 p-2 transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+                aria-label="Filter"
+              >
+                <Pause />
+              </button>
+
+              <span className="text-grey-700 px-2 text-sm font-medium tabular-nums">0:28</span>
+            </div>
+          </div>
+
+          {/* Center: Waveform SVG */}
+          <div className="flex-1 px-6">
+            <svg
+              className="text-primary-500 m-auto w-auto max-w-40"
+              viewBox="0 0 100 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              {/* Representative bars */}
+              <rect x="0" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              <rect x="6" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+              <rect x="12" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="18" y="2" width="2.5" height="20" rx="1.25" className="fill-current" />
+              <rect x="24" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+              <rect x="30" y="4" width="2.5" height="16" rx="1.25" className="fill-current" />
+              <rect x="36" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              <rect x="42" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+              <rect x="48" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="54" y="3" width="2.5" height="18" rx="1.25" className="fill-current" />
+              <rect x="60" y="6" width="2.5" height="12" rx="1.25" className="fill-current" />
+              <rect x="66" y="9" width="2.5" height="6" rx="1.25" className="fill-current" />
+              <rect x="72" y="7" width="2.5" height="10" rx="1.25" className="fill-current" />
+              <rect x="78" y="5" width="2.5" height="14" rx="1.25" className="fill-current" />
+              <rect x="84" y="8" width="2.5" height="8" rx="1.25" className="fill-current" />
+              {/* Trailing dots */}
+              <circle cx="96" cy="12" r="1.5" className="fill-current" />
+              <circle cx="102" cy="12" r="1.5" className="fill-current" />
+            </svg>
+          </div>
+
+          {/* Right: Controls */}
+          <div className="flex items-center gap-2">
+            {/* Send Button */}
+            <button
+              type="button"
+              className="focus:outline-primary-500 bg-primary-300 hover:bg-primary-200 active:bg-primary-100 focus:outline-primary-600 rounded-md border-2 p-2 font-semibold text-black transition-colors focus:outline-1 focus:outline-offset-2"
+              aria-label="Filter"
+            >
+              <ArrowUp />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -91,7 +241,7 @@ export default function MyCustomComponent5() {
         <div className="w-full max-w-md rounded-lg border-2 bg-white shadow-sm">
           {/* <!-- Header --> */}
           <div className="border-grey-700 flex items-center justify-between border-b-2 px-3 py-4">
-            <h2 className="pl-2 text-lg font-bold text-black">Activity</h2>
+            <h2 className="pl-2 text-lg font-bold text-black">Versions</h2>
             <div className="flex gap-2">
               <button
                 type="button"
@@ -105,7 +255,7 @@ export default function MyCustomComponent5() {
                 className="hover:bg-grey-100 hover:text-grey-600 focus:outline-grey-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md text-black focus:outline-1 focus:outline-offset-2"
                 aria-label="Close"
               >
-                <X className="h-5 w-5 flex-shrink-0" />
+                <XCircle className="h-5 w-5 flex-shrink-0" />
               </button>
             </div>
           </div>
@@ -120,7 +270,6 @@ export default function MyCustomComponent5() {
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between">
                   <h3 className="text-base font-bold text-black">New Version</h3>
-                  <XCircle />
                 </div>
                 <p className="text-grey-600 mt-1 text-sm">Aug 30, 2024</p>
               </div>
@@ -175,7 +324,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Nested Versions --> */}
-            <div className="space-y-0 pl-14">
+            <div className="border-grey-100 ml-8 space-y-0 border-l-2">
               {/* <!-- Version 2.2 --> */}
               <div className="flex items-start gap-4 px-6 py-3">
                 <div className="bg-grey-50 flex h-8 w-8 shrink-0 items-center justify-center rounded-md">
@@ -295,14 +444,14 @@ export default function MyCustomComponent5() {
               className="hover:bg-grey-100 hover:text-grey-600 focus:outline-grey-500 focus:outline-primary-600 flex h-10 w-10 items-center justify-center rounded-md text-black focus:outline-1 focus:outline-offset-2"
               aria-label="Close"
             >
-              <X className="h-5 w-5 flex-shrink-0" />
+              <XCircle className="h-5 w-5 flex-shrink-0" />
             </button>
           </div>
 
           {/* <!-- Activity List --> */}
           <div className="space-y-0">
             {/* <!-- Activity Item 1 --> */}
-            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 px-4 pt-4 pb-2">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-amber-100">
                 <XCircle />
               </div>
@@ -317,7 +466,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Activity Item 2 --> */}
-            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 px-4 pt-4 pb-2">
               <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
                 <XCircle />
               </div>
@@ -331,7 +480,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Activity Item 3 --> */}
-            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 px-4 pt-4 pb-2">
               <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
                 <XCircle />
               </div>
@@ -345,7 +494,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Activity Item 4 --> */}
-            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 px-4 pt-4 pb-2">
               <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
                 <XCircle />
               </div>
@@ -359,7 +508,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Activity Item 5 --> */}
-            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 px-4 pt-4 pb-2">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100">
                 <XCircle />
               </div>
@@ -374,7 +523,7 @@ export default function MyCustomComponent5() {
             </div>
 
             {/* <!-- Activity Item 6 --> */}
-            <div className="border-grey-500 flex items-start gap-4 border-b-2 py-3 pr-4 pl-3">
+            <div className="border-grey-500 flex items-start gap-4 border-b-2 px-4 pt-4 pb-2">
               <div className="bg-primary-100 flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
                 <XCircle />
               </div>
@@ -414,7 +563,7 @@ export default function MyCustomComponent5() {
         <div className="max-w-md border-r-2 p-8">
           <nav aria-label="Progress">
             <ol className="overflow-hidden">
-              <li className="relative pb-10">Hello</li>
+              <h3 className="mb-8 text-base font-bold text-black">Multi-step process</h3>
               <li className="relative pb-10">
                 <div
                   className="bg-primary-600 absolute top-4 left-4 mt-0.5 -ml-px h-full w-0.5"
@@ -447,7 +596,7 @@ export default function MyCustomComponent5() {
                     </span>
                   </span>
                   <span className="ml-4 flex min-w-0 flex-col text-left">
-                    <span className="text-primary-600 text-sm font-bold">Profile information</span>
+                    <span className="text-primary-600 text-sm font-bold">Step 2</span>
                     <small>Cursus semper viverra facilisis et et some more.</small>
                   </span>
                 </div>
@@ -463,7 +612,7 @@ export default function MyCustomComponent5() {
                     <span className="border-grey-300 relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-white"></span>
                   </span>
                   <span className="ml-4 flex min-w-0 flex-col text-left">
-                    <span className="text-grey-500 text-sm font-medium">Business information</span>
+                    <span className="text-grey-500 text-sm font-medium">Step 3</span>
                     <small>Penatibus eu quis ante.</small>
                   </span>
                 </div>
@@ -479,7 +628,7 @@ export default function MyCustomComponent5() {
                     <span className="border-grey-300 relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-white"></span>
                   </span>
                   <span className="ml-4 flex min-w-0 flex-col text-left">
-                    <span className="text-grey-500 text-sm font-medium">Theme</span>
+                    <span className="text-grey-500 text-sm font-medium">Step 4</span>
                     <small>Faucibus nec enim leo et.</small>
                   </span>
                 </div>
@@ -491,7 +640,7 @@ export default function MyCustomComponent5() {
                     <span className="border-grey-300 relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 bg-white"></span>
                   </span>
                   <span className="ml-4 flex min-w-0 flex-col text-left">
-                    <span className="text-grey-500 text-sm font-medium">Preview</span>
+                    <span className="text-grey-500 text-sm font-medium">Step 5</span>
                     <small>Iusto et officia maiores porro ad non quas.</small>
                   </span>
                 </div>
@@ -500,7 +649,7 @@ export default function MyCustomComponent5() {
           </nav>
         </div>
         <div className="flex w-full flex-col">
-          <nav className="mb-4" aria-label="Progress">
+          <nav className="mb-0" aria-label="Progress">
             <ol className="mb-4 flex divide-y border-b-2 bg-white px-4 md:flex md:divide-y-0">
               <li className="relative md:flex md:flex-1">
                 <button type="button" className="group flex w-full items-center">
@@ -509,7 +658,7 @@ export default function MyCustomComponent5() {
                       <CheckCircle className="text-white" />
                     </span>
                     <span className="ml-4 flex flex-col text-left">
-                      <span className="text-sm font-bold text-black">Job Details</span>
+                      <span className="text-sm font-bold text-black">Step 1.A</span>
                       <small>Vitae sed mi luctus laoreet.</small>
                     </span>
                   </span>
@@ -544,7 +693,7 @@ export default function MyCustomComponent5() {
                     <span className="text-primary-600">02</span>
                   </span>
                   <span className="ml-4 flex flex-col text-left">
-                    <span className="text-primary-600 text-sm font-bold">Application form</span>
+                    <span className="text-primary-600 text-sm font-bold">Step 1.B</span>
                     <small>Cursus semper viverra.</small>
                   </span>
                 </button>
@@ -575,7 +724,7 @@ export default function MyCustomComponent5() {
                       <span className="text-grey-500">03</span>
                     </span>
                     <span className="ml-4 flex flex-col text-left">
-                      <span className="text-grey-600 text-sm font-bold">Preview</span>
+                      <span className="text-grey-600 text-sm font-bold">Step 1.C</span>
                       <small>Penatibus eu quis ante.</small>
                     </span>
                   </span>
@@ -583,7 +732,40 @@ export default function MyCustomComponent5() {
               </li>
             </ol>
           </nav>
-          <h3 className="text-md p-4 font-semibold">Content</h3>
+
+          {/* Autocomplete suggestion bar */}
+          <div className="mx-4 mb-4 flex flex-wrap items-center gap-2">
+            <span className="text-grey-600 text-xs">Suggestions:</span>
+            <button
+              type="button"
+              onClick={() => {}}
+              className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+            >
+              Use clear, specific language
+            </button>
+            <button
+              type="button"
+              onClick={() => {}}
+              className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+            >
+              Include examples
+            </button>
+            <button
+              type="button"
+              onClick={() => {}}
+              className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+            >
+              Specify output format
+            </button>
+            <button
+              type="button"
+              onClick={() => {}}
+              className="hover:bg-primary-100 border-primary-200 bg-primary-50 text-primary-700 inline-flex items-center rounded-md border-2 px-2.5 py-1 text-xs font-medium transition-colors"
+            >
+              Define constraints
+            </button>
+          </div>
+
           <div className="bg-grey-100 m-4 max-h-100 overflow-y-auto rounded-md border-2 p-8">
             <p>
               <strong>The standard Lorem Ipsum passage, used since the 1500s:</strong> "Lorem ipsum

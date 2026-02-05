@@ -9,6 +9,10 @@ Status communicates the health of a system, process, or object. Use consistent, 
 **🔴 COMMAND:** Follow WCAG 2.1 AA accessibility guidelines.  
 **🔴 BOUNDARY:** Never use color alone to convey status.
 
+**🔴 COMMAND:** Status messages must follow the EXPLAIN before ASK principle - provide context and explanation before requesting action.
+
+**🔴 COMMAND:** Always assume positive intent - frame status messages in a GUIDING, supportive manner rather than alarming or demanding.
+
 ---
 
 ### 6.2 Status Levels
@@ -272,14 +276,33 @@ Subtle status for systems, processes, or objects.
 **🔴 COMMAND:** Use icon + title + description structure  
 **🔴 COMMAND:** Use semantic color variants
 
+**🔴 COMMAND:** Message containers must follow EXPLAIN before ASK - provide context before requesting action.
+
+**🔴 COMMAND:** Frame messages with positive intent and GUIDING spirit - help users understand what's happening and what they can do.
+
 ```tsx
-<div className="flex gap-3 rounded-md border-2 border-red-300 bg-red-100 p-4">
+{
+  /* Correct: EXPLAIN before ASK with GUIDING tone */
+}
+;<div className="flex gap-3 rounded-md border-2 border-red-300 bg-red-100 p-4">
   <div className="inline-flex flex-shrink-0 rounded-full bg-red-700" aria-hidden="true" />
   <div className="space-y-1">
-    <h3 className="text-sm font-semibold text-red-700">Service Unavailable</h3>
+    <h3 className="text-sm font-semibold text-red-700">Service temporarily unavailable</h3>
     <p className="text-sm text-red-700">
-      The API service is currently down. Our team has been notified and is working on a fix.
+      The API service is currently experiencing issues. Our team has been notified and is working on
+      a fix. You can check back in a few minutes or view the status page for updates.
     </p>
+  </div>
+</div>
+
+{
+  /* Wrong: Alarming tone without guidance */
+}
+;<div className="flex gap-3 rounded-md border-2 border-red-300 bg-red-100 p-4">
+  <div className="inline-flex flex-shrink-0 rounded-full bg-red-700" aria-hidden="true" />
+  <div className="space-y-1">
+    <h3 className="text-sm font-semibold text-red-700">Error: Service Down</h3>
+    <p className="text-sm text-red-700">The API service has failed. Contact support immediately.</p>
   </div>
 </div>
 ```

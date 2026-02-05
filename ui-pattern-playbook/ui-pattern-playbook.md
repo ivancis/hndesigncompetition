@@ -1,6 +1,6 @@
 # UI Pattern Playbook
 
-**Version 1.1.0**  
+**Version 1.1.5**  
 February 2026
 
 - [Deployed](https://teal-tanuki-9b1890.netlify.app/)
@@ -52,9 +52,10 @@ February 2026
 **Patterns** ([patterns.md](./patterns.md))
 
 10. [Common Actions](./patterns.md#10-common-actions)
-11. [Modal Patterns](./patterns.md#14-modal-patterns)
-12. [Voice Agent Builder Patterns](./patterns.md#15-voice-agent-builder-patterns)
-13. [AI Instructions + Global Rules](./patterns.md#16-ai-instructions--global-rules)
+11. [Permission Restrictions](./patterns.md#11-permission-restrictions)
+12. [Modal Patterns](./patterns.md#14-modal-patterns)
+13. [Voice Agent Builder Patterns](./patterns.md#15-voice-agent-builder-patterns)
+14. [AI Instructions + Global Rules](./patterns.md#16-ai-instructions--global-rules)
 
 **Quick References** ([quick-references.md](./quick-references.md))
 

@@ -156,6 +156,62 @@ Typography establishes content hierarchy and shapes readability. It determines h
 
 ---
 
+#### Text Content Principles
+
+**🔴 COMMAND:** Headers, body text, and all text shown to users in the final UI must follow the EXPLAIN before ASK principle.
+
+**🔴 COMMAND:** Always assume positive intent from the user - frame guidance and instructions in a supportive, helpful manner.
+
+**🔴 COMMAND:** The spirit of all user-facing text should be GUIDING - help users understand what's happening and what they can do, rather than simply requesting actions.
+
+**Structure:** `[Explanation/Context] → [Action/Request]`
+
+```tsx
+{
+  /* Correct: EXPLAIN before ASK */
+}
+;<div>
+  <h2 className="text-xl font-bold">Enable notifications</h2>
+  <p className="text-base">
+    Notifications help you stay updated on important changes. You can customize which types you
+    receive.
+  </p>
+  <button>Enable notifications</button>
+</div>
+
+{
+  /* Correct: GUIDING with positive intent */
+}
+;<div>
+  <h2 className="text-xl font-bold">Save your changes</h2>
+  <p className="text-base">
+    Your changes look good. Save them now to keep your work, or continue editing if you need to make
+    adjustments.
+  </p>
+  <button>Save changes</button>
+</div>
+
+{
+  /* Wrong: ASK without EXPLAIN */
+}
+;<div>
+  <h2 className="text-xl font-bold">Enable notifications?</h2>
+  <button>Enable</button>
+</div>
+
+{
+  /* Wrong: Assumes negative intent */
+}
+;<div>
+  <h2 className="text-xl font-bold">Warning: Unsaved changes</h2>
+  <p className="text-base">You haven't saved your work. Save now or lose your changes.</p>
+</div>
+```
+
+**🟡 DIRECTIVE:** Provide context first, then guide users toward the action. Frame messages as helpful guidance rather than demands or warnings.
+
+---
+
 #### Active Voice
 
 **🔴 COMMAND:** Write in active voice by default.
@@ -1102,7 +1158,10 @@ These states are mutually exclusive - an element can only be in one state at a t
 
 1. **Inline text action (not a link):** Dotted underline
 2. **Inline text link:** Solid underline
-3. **Other elements:** Distinguished by position, emphasized text, or context
+3. **Terminology overlays or inline jargon:** Dotted underline (for hover tooltips or expandable definitions)
+4. **Other elements:** Distinguished by position, emphasized text, or context
+
+**🔴 COMMAND:** Use dotted underline (`border-b-2 border-dotted border-current`) for terminology overlays or inline jargon that reveals additional context on hover or interaction.
 
 **🔴 BOUNDARY:** Color alone is NOT an indicator of interactivity.
 
@@ -1112,6 +1171,13 @@ These states are mutually exclusive - an element can only be in one state at a t
 }
 ;<button className="text-primary-600 hover:text-primary-700 border-b-2 border-dotted border-current text-sm font-semibold">
   Show more details
+</button>
+
+{
+  /* Terminology overlay or inline jargon */
+}
+;<button className="text-primary-600 hover:text-primary-700 border-b-2 border-dotted border-current text-sm font-semibold">
+  API endpoint
 </button>
 
 {
@@ -1140,6 +1206,131 @@ These states are mutually exclusive - an element can only be in one state at a t
 ```
 
 **🟡 DIRECTIVE:** Ensure interactive elements have sufficient visual weight or position to signal they're clickable - users shouldn't have to guess.
+
+---
+
+#### 5.3.4 Toggle Features
+
+Toggle features control on/off states for settings and preferences. They must be categorized into two distinct types based on their impact and reversibility.
+
+**🔴 COMMAND:** Categorize all toggle features into one of two categories:
+
+1. **SIMPLE toggles** - Immediate, low-impact changes that can be easily reversed
+2. **ADVANCED toggles** - Significant changes that require confirmation and include UNDO capability
+
+**🔴 COMMAND:** SIMPLE toggles execute immediately without confirmation dialogs.
+
+**Use for:**
+
+- UI preferences (theme, layout)
+- Display options (show/hide elements)
+- Non-destructive settings
+- Changes that don't affect data or other users
+
+```tsx
+{
+  /* Simple toggle - immediate execution */
+}
+;<div className="flex items-center justify-between">
+  <div>
+    <label className="text-base font-semibold">Dark mode</label>
+    <small>Switch between light and dark themes</small>
+  </div>
+  <button className="bg-primary-300 relative inline-flex h-6 w-11 items-center rounded-full transition-colors">
+    <span className="inline-block h-4 w-4 translate-x-6 rounded-full bg-white transition-transform" />
+  </button>
+</div>
+```
+
+**🔴 COMMAND:** ADVANCED toggles MUST include a confirmation dialog before execution.
+
+**🔴 COMMAND:** ADVANCED toggles MUST provide an UNDO action as part of the initial confirmation flow.
+
+**Use for:**
+
+- Data deletion or removal
+- Changes affecting other users
+- Irreversible actions
+- High-impact settings
+- Features that disable important functionality
+
+**Confirmation dialog structure:**
+
+1. **EXPLAIN** what will happen (context and impact)
+2. **ASK** for confirmation with clear action buttons
+3. **PROVIDE** UNDO option immediately after execution
+
+```tsx
+{
+  /* Advanced toggle with confirmation dialog */
+}
+;<div>
+  {/* Toggle UI */}
+  <div className="flex items-center justify-between">
+    <div>
+      <label className="text-base font-semibold">Delete account</label>
+      <small>Permanently remove your account and all data</small>
+    </div>
+    <button
+      onClick={() => setShowConfirm(true)}
+      className="bg-grey-300 relative inline-flex h-6 w-11 items-center rounded-full transition-colors"
+    >
+      <span className="inline-block h-4 w-4 translate-x-1 rounded-full bg-white transition-transform" />
+    </button>
+  </div>
+
+  {/* Confirmation dialog */}
+  {showConfirm && (
+    <div className="mt-4 rounded-md border-2 bg-white p-4">
+      <div className="space-y-1">
+        <h3 className="text-xl font-bold">Delete your account?</h3>
+        <p className="text-base">
+          This will permanently delete your account and all associated data. This action cannot be
+          reversed after 30 days.
+        </p>
+      </div>
+      <div className="mt-4 flex justify-end gap-2 border-t pt-3">
+        <button
+          onClick={() => setShowConfirm(false)}
+          className="text-md hover:bg-grey-100 focus:outline-primary-600 active:bg-grey-200 rounded-md border-2 px-4 py-2 font-semibold transition-colors focus:outline focus:outline-1 focus:outline-offset-2"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleDelete}
+          className="text-md rounded-md border-2 bg-red-300 px-4 py-2 font-semibold text-black transition-colors hover:bg-red-200 focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-red-500 focus:outline-red-600 active:bg-red-100"
+        >
+          Delete account
+        </button>
+      </div>
+    </div>
+  )}
+
+  {/* UNDO action after execution */}
+  {isDeleted && (
+    <div className="mt-4 rounded-md border-2 bg-emerald-50 p-4">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-base font-semibold">Account deletion initiated</p>
+          <small>You have 30 days to restore your account</small>
+        </div>
+        <button
+          onClick={handleUndo}
+          className="text-md rounded-md border-2 bg-emerald-300 px-4 py-2 font-semibold text-black transition-colors hover:bg-emerald-200 focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-emerald-500 focus:outline-emerald-600 active:bg-emerald-100"
+        >
+          Undo
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+```
+
+**🔴 COMMAND:** UNDO actions must be prominently displayed immediately after ADVANCED toggle execution, not hidden in menus or settings.
+
+**🔴 COMMAND:** UNDO actions must be available for a reasonable time period (e.g., 30 days for account deletion, immediate for feature toggles).
+
+**🟡 DIRECTIVE:** When in doubt, categorize as ADVANCED - it's better to confirm than to allow irreversible mistakes.
 
 ---
 

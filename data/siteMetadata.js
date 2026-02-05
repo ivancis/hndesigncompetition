@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Next.js Starter Blog',
   author: 'Tails Azimuth',
   headerTitle: 'TailwindBlog',
-  description: 'Version 1.1.0 - February 2026',
+  description: 'Version 1.6.0 - February 2026',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
