@@ -15,6 +15,46 @@ import {
 } from 'react-feather'
 
 /**
+ * Phone with microphone and waveform visualization SVG component
+ */
+function PhoneWaveformSVG({ className = '', ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="20" y="45" width="6" height="10" rx="3" fill="inherit" />
+      <rect x="32" y="40" width="6" height="20" rx="3" fill="inherit" />
+      <rect x="44" y="30" width="6" height="40" rx="3" fill="inherit" />
+      <rect x="56" y="35" width="6" height="30" rx="3" fill="inherit" />
+      <rect x="68" y="25" width="6" height="50" rx="3" fill="inherit" />
+      <rect x="80" y="20" width="6" height="60" rx="3" fill="inherit" />
+      <rect x="92" y="15" width="6" height="70" rx="3" fill="inherit" />
+      <rect x="104" y="10" width="6" height="80" rx="3" fill="inherit" />
+      <rect x="116" y="5" width="6" height="90" rx="3" fill="inherit" />
+      <rect x="128" y="8" width="6" height="84" rx="3" fill="inherit" />
+      <rect x="140" y="12" width="6" height="76" rx="3" fill="inherit" />
+      <rect x="152" y="18" width="6" height="64" rx="3" fill="inherit" />
+      <rect x="164" y="22" width="6" height="56" rx="3" fill="inherit" />
+      <rect x="176" y="28" width="6" height="44" rx="3" fill="inherit" />
+      <rect x="188" y="20" width="6" height="60" rx="3" fill="inherit" />
+      <rect x="200" y="15" width="6" height="70" rx="3" fill="inherit" />
+      <rect x="212" y="25" width="6" height="50" rx="3" fill="inherit" />
+      <rect x="224" y="30" width="6" height="40" rx="3" fill="inherit" />
+      <rect x="236" y="35" width="6" height="30" rx="3" fill="inherit" />
+      <rect x="248" y="28" width="6" height="44" rx="3" fill="inherit" />
+      <rect x="260" y="22" width="6" height="56" rx="3" fill="inherit" />
+      <rect x="272" y="18" width="6" height="64" rx="3" fill="inherit" />
+      <rect x="284" y="25" width="6" height="50" rx="3" fill="inherit" />
+      <rect x="296" y="32" width="6" height="36" rx="3" fill="inherit" />
+      <rect x="308" y="38" width="6" height="24" rx="3" fill="inherit" />
+      <rect x="320" y="42" width="6" height="16" rx="3" fill="inherit" />
+      <rect x="332" y="45" width="6" height="10" rx="3" fill="inherit" />
+      <rect x="344" y="47" width="6" height="6" rx="3" fill="inherit" />
+      <rect x="356" y="48" width="6" height="4" rx="2" fill="inherit" />
+      <rect x="368" y="49" width="6" height="2" rx="1" fill="inherit" />
+    </svg>
+  )
+}
+
+/**
  * Kitchen Sink / UI Kit Stress Test component.
  * Renders a comprehensive set of HTML elements for consistency testing.
  * Styled per ui-pattern-playbook/: Tailwind only, typography/spacing from scale.
@@ -48,8 +88,8 @@ export default function MyCustomComponent5() {
           </div>
 
           {/* Center: Waveform SVG */}
-          <div className="flex-1 px-6">
-            <Octagon className="text-primary-500 m-auto w-auto max-w-40" aria-hidden="true" />
+          <div className="flex-1 px-2">
+            <PhoneWaveformSVG className="m-auto w-auto max-w-40" aria-hidden="true" />
           </div>
 
           {/* Right: Controls */}
@@ -100,7 +140,7 @@ export default function MyCustomComponent5() {
 
           {/* Center: Waveform SVG */}
           <div className="flex-1 px-6">
-            <Octagon className="text-primary-500 m-auto w-auto max-w-40" aria-hidden="true" />
+            <PhoneWaveformSVG className="m-auto w-auto max-w-40" aria-hidden="true" />
           </div>
 
           {/* Right: Controls */}
@@ -143,7 +183,7 @@ export default function MyCustomComponent5() {
 
           {/* Center: Waveform SVG */}
           <div className="flex-1 px-6">
-            <Octagon className="text-primary-500 m-auto w-auto max-w-40" aria-hidden="true" />
+            <PhoneWaveformSVG className="m-auto w-auto max-w-40" aria-hidden="true" />
           </div>
 
           {/* Right: Controls */}
